@@ -1,5 +1,4 @@
 (function() {
-
 	angular.module('ynl.states')
 
 	.config(function($stateProvider) {
@@ -15,29 +14,19 @@
 	})
 
 	// router.root
-	.controller('rootCtrl', function(config, Api, iState, broadcasterService, $state, trackingPixel) {
+	.controller('rootCtrl', function(config, Api, $state) {
 		var params = $state.current.params;
 		var vm = this;
 		vm.config = config;
 
 		var getTrending = function() {
-			Api.get('younow/dashboard', {}, 'usecdn').success(function(data) {
-				if (data.trending_users) {
-					vm.trendingUser = data.trending_users[0];
-				}
-			});
+			// Api.get('younow/dashboard', {}, 'usecdn').success(function(data) {
+			// 	if (data.trending_users) {
+			// 		vm.trendingUser = data.trending_users[0];
+			// 	}
+			// });
+			vm.trendingUser = {};
 		};
 		getTrending();
-
-
-		vm.trackClick = function(action, url) {
-			// deeplinking works, but click sometimes isn't tracked
-			trackingPixel.trackClick(action);
-			Api.trackClick(action, url);
-		};
-
-		config.yozio = Api.generateDynamicYozio('x7.c.j', broadcasterService, config, iState, Api);
-		vm.gaAction = 'GetTheApp';
 	});
-
 })();

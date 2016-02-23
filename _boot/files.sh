@@ -1,0 +1,1 @@
+http-server src -p 8000 -s -c 30 #-d false

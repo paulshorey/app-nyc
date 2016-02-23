@@ -1,7 +1,6 @@
 angular.module('younow.services.pusher', [])
 
-.factory('pusher', function($http, config, Api, $window, $q, $rootScope, broadcasterService, pusherCore) {
-	console.log('pusher factory');
+.factory('pusher', function($http, config, Api, $window, $q, $rootScope, pusherCore) {
 
 	var debug = {
 		console: function(name, data) {
