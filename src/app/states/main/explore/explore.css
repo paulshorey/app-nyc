@@ -1,0 +1,158 @@
+.main-content.explore-content .main-content-left {
+  width: 700px;
+  min-height: 100vh;
+  float: left;
+  margin-left: 0px; }
+.main-content.explore-content .main-content-right {
+  width: 300px;
+  float: right;
+  margin-right: 5px;
+  overflow: hidden; }
+.main-content.explore-content .explore_header {
+  margin: 0 0 15px; }
+.main-content.explore-content .result {
+  float: left;
+  margin-right: 4px;
+  height: 179px;
+  overflow: hidden; }
+  .main-content.explore-content .result .result-text {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    max-width: 169px; }
+    .main-content.explore-content .result .result-text.text2 {
+      margin-left: 3px; }
+  .main-content.explore-content .result .box-thumb {
+    width: 168px;
+    height: 126px;
+    cursor: pointer;
+    position: relative;
+    display: block; }
+  .main-content.explore-content .result .user-profile {
+    height: 100%;
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0; }
+  .main-content.explore-content .result .user-tag {
+    bottom: 0;
+    color: #FFFFFF;
+    padding-left: 5px;
+    padding-bottom: 8px;
+    padding-top: 5px;
+    width: 122px;
+    font-size: 18px;
+    font-weight: 100;
+    z-index: 100;
+    display: block;
+    bottom: 0;
+    position: absolute; }
+    .main-content.explore-content .result .user-tag:hover {
+      text-decoration: underline; }
+  .main-content.explore-content .result .name {
+    font-weight: bold;
+    font-size: 13px;
+    margin-top: 7px;
+    cursor: pointer; }
+    .main-content.explore-content .result .name:hover {
+      text-decoration: underline; }
+  .main-content.explore-content .result .ynicon-broadcast {
+    color: #61c13e;
+    margin-right: 5px; }
+  .main-content.explore-content .result .user-viewers, .main-content.explore-content .result .user-fans, .main-content.explore-content .result .user-status {
+    color: #999999;
+    font-size: 12px;
+    margin-bottom: 10px; }
+  .main-content.explore-content .result .user-status {
+    margin-right: 5px; }
+.main-content.explore-content .explore_results {
+  margin: 0 0 40px; }
+  .main-content.explore-content .explore_results .explore_more {
+    background: #fff;
+    margin: 0 14px 55px 0;
+    padding: 8px;
+    border-radius: 5px;
+    color: #2782d4;
+    text-align: center;
+    cursor: pointer; }
+.main-content.explore-content .explore_results.tag .result {
+  position: relative;
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  background: #fff;
+  margin: 0 6px 9px 0;
+  width: 225px;
+  height: 303px; }
+  .main-content.explore-content .explore_results.tag .result .box-thumb {
+    width: 100%;
+    height: 126px;
+    margin: 0; }
+  .main-content.explore-content .explore_results.tag .result .tagged-thumb {
+    display: block;
+    position: absolute;
+    top: 108px;
+    width: 55px;
+    height: 55px;
+    left: 6px; }
+    .main-content.explore-content .explore_results.tag .result .tagged-thumb .circle-thumb {
+      width: 55px;
+      height: 55px;
+      z-index: 100; }
+  .main-content.explore-content .explore_results.tag .result .tagged-text {
+    position: relative; }
+    .main-content.explore-content .explore_results.tag .result .tagged-text .tagged-title {
+      margin-left: 70px;
+      width: 152px; }
+    .main-content.explore-content .explore_results.tag .result .tagged-text .tagged-fans {
+      margin-left: 73px; }
+    .main-content.explore-content .explore_results.tag .result .tagged-text .tagged-desc {
+      margin: 0 2px 0 7px; }
+  .main-content.explore-content .explore_results.tag .result .tagged-button {
+    position: absolute;
+    bottom: 10px;
+    left: 8px; }
+  .main-content.explore-content .explore_results.tag .result .wide_button_container {
+    width: 207px; }
+    .main-content.explore-content .explore_results.tag .result .wide_button_container .btn-fan {
+      width: 100%;
+      font-size: 14px;
+      height: 30px; }
+.main-content.explore-content .side-column {
+  position: relative;
+  transition: margin-top 0.6s linear;
+  margin-left: 30px; }
+.main-content.explore-content .mini-player {
+  margin-bottom: 20px; }
+  .main-content.explore-content .mini-player .broadcast-info {
+    margin-bottom: 13px; }
+    .main-content.explore-content .mini-player .broadcast-info, .main-content.explore-content .mini-player .broadcast-info .name {
+      font-size: 14px; }
+  .main-content.explore-content .mini-player .name:hover {
+    text-decoration: none; }
+.main-content.explore-content .column-list {
+  width: 300px;
+  margin-bottom: 20px; }
+  .main-content.explore-content .column-list .title {
+    margin-bottom: 10px;
+    font-weight: bold; }
+  .main-content.explore-content .column-list .column-scroll .list-item {
+    margin-top: 5px;
+    position: relative; }
+    .main-content.explore-content .column-list .column-scroll .list-item .circle-thumb {
+      cursor: pointer; }
+    .main-content.explore-content .column-list .column-scroll .list-item .description {
+      width: 138px;
+      height: 42px;
+      vertical-align: middle;
+      display: inline-block;
+      line-height: 42px;
+      padding-left: 20px;
+      font-size: 13px;
+      font-weight: bold; }
+    .main-content.explore-content .column-list .column-scroll .list-item .fan-button-placeholder {
+      position: absolute;
+      right: 0px;
+      top: 11px; }
+      .main-content.explore-content .column-list .column-scroll .list-item .fan-button-placeholder .btn-to-fan {
+        background-color: transparent; }

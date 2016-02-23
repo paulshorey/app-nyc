@@ -1,0 +1,374 @@
+.profile-summary-wrapper {
+    width: 480px;
+    height: auto;
+    &, .modal-content {
+        border-radius: 4px;
+    }
+    .close {
+        color: #999;
+    }
+    .profile-summary {
+        outline: none !important;
+    }
+    .summary {
+        -ms-word-break: break-word;
+        word-break: break-word;
+        // Non standard for webkit
+        overflow: hidden;
+        hyphens: auto;
+    }
+    .modal-header {
+        padding: 0;
+        margin: 0;
+    }
+    .modal-content {
+        border: 0;
+    }
+    .cover-image {
+        width: 480px;
+        height: 180px;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 4px;
+    }
+    .profile-description {
+        .circle-thumb {
+        	position:relative;
+            width: 70px;
+            height: 70px;
+            margin-top: -55px;
+		.ynbadge {
+			color: #76b343;
+			display: block;
+			position: absolute;
+			bottom: -4px;
+			right: -1px;
+			width:24px;
+			height:24px;
+			img {
+				height:100%;
+				width:100%;
+			}
+		}
+        }
+    }
+    .bullet {
+        color: #999999;
+        vertical-align: middle;
+    }
+
+    .social-action {
+
+        .ynicon-icon-check {
+            color: #568b08;
+            margin-right: 5px;
+        }
+
+        span {
+            overflow: hidden;
+            font-weight: bold;
+            vertical-align: middle;
+        }
+
+        .name {
+            max-width: 166px !important;
+            display: inline-block;
+            font-size: 14px !important;
+        }
+
+        .name,
+        span {
+            vertical-align: middle;
+        }
+    }
+
+    .user-info {
+	margin-left: 10px;
+	margin-top: -2px;
+        .action-message {
+            cursor: default !important;
+            .name {
+                font-weight: bold;
+                cursor: pointer;
+                display: inline-block;
+            }
+        }
+
+        .action-message.ban-state {
+            .name {
+                max-width: 200px;
+           }
+        }
+        
+	.crowns-container {
+		.user-crowns {
+			vertical-align:5px;
+			margin-top:-4px;
+			.ynicon-icon-whale {
+			    margin-right: -5px;
+			    color: #f2b332;
+			    &:last-child {
+			        margin-right: 0;
+			    }
+			}
+			.ynicon-icon-whale2 {
+			    margin-right: -5px;
+			    color: #f90102;
+			    &:last-child {
+			        margin-right: 0;
+			    }
+			}
+			.chat-name {
+			    margin-right: 5px;
+			}
+		}
+	}
+
+        .name,
+        .action-message {
+            font-weight: bold;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        .name {
+            color: #333;
+		position:relative;
+		width:290px;
+		&.short-text {
+			width:auto;
+		}
+	        .short-text {
+	        	display:inline-block;
+	        	max-width:169px;
+	        	vertical-align:middle;
+	        }
+	        .ynbadges {
+			.ynbadge {
+				margin:-1px;
+			}
+			.ynbadge-ellipsis {
+				position:relative;
+				color:#ccc;
+			}
+			.dropup {
+				position: absolute;
+				bottom: 14px;
+				height: 0;
+				transition:height 1s linear;
+				overflow: hidden;
+				right: -12px;
+				width: 270px;
+				.dropdown-menu {
+					top: auto;
+					bottom: 9px;
+					margin-bottom: 2px;
+					right: 5px;
+					min-width:30px;
+					.ynicon-carrot-dwn {
+						bottom:-17px;
+						right:-2px;
+					}
+					ul {
+						li {
+							display:block;
+							text-align:right;
+							padding:0 3px 0 3px;
+						}
+					}
+				}
+			}
+	          }
+		    .ynbadge-ellipsis:hover {
+			.dropup {
+				height:350px;
+			}
+		    }
+		  }
+
+        .special-role {
+            margin-right: 5px;
+        }
+
+        .special-role-display {
+            margin-top:-1px;
+            &.block {
+            	margin:-3px 1px 3px;
+            	display:block;
+            	clear:both;
+            }
+            span {
+                font-weight: bold;
+                color: #999;
+            }
+        }
+    }
+
+    form[name="modal.reasonForm"] {
+        padding-top: 20px;
+    }
+
+    .flagging-reasons {
+        margin-left: 10px;
+        margin-top: 10px;
+        font-size: 13px;
+        input {
+            margin-bottom: 5px;
+            margin-right: 10px;
+        }
+    }
+    .suspending-reasons {
+        padding: 5px 8px;
+        height: 60px;
+        resize: none;
+        margin-top: 10px;
+    }
+
+    .suspending-options {
+        box-shadow: none;
+    }
+
+    .suspending-options,
+    .suspending-reasons {
+        width: 340px;
+        border: 1px solid #E7E7E6;
+        font-size: 13px;
+
+        &:focus {
+            outline: none;
+        }
+    }
+    .action-notifications {
+        text-align: center;
+        padding: 20px 0;
+        .error {
+            color: #cc0033;
+        }
+        .success {
+            color: #568b08;
+        }
+        .error,
+        .success {
+            display: inline-block;
+        }
+        .ynicon-icon-mod {
+            font-size: 17px;
+            margin-top: -2px;
+            margin-right: 5px;
+        }
+    }
+    .user-bio,
+    .action-notifications {
+        margin-top: 6px;
+        margin-bottom:0;
+        max-height: 90px;
+        overflow: hidden;
+        font-size: 13px;
+        clear:both;
+        position:relative;
+        .emoji {
+            margin-top: -2px;
+            width: 15px;
+        }
+    }
+    .user-bio {
+    	.more-info {
+    		padding-left:1px;
+    	}
+      .join-date {
+          font-size:12px;
+          color: #999999;
+      }
+    }
+    .line-clamp::after {
+    	width:10%;
+    }
+    @supports (-webkit-line-clamp: 3) {
+        .line-clamp {
+            -webkit-line-clamp: 3;
+        }
+    }
+    .center {
+        .btn:first-child {
+            margin-left: 0 !important;
+        }
+    }
+
+    .social-actions {
+        width: 100%;
+        margin-left: -5px;
+        padding-top: 5px;
+
+        .btn {
+            margin-right: 5px;
+            color: #999;
+
+            &:hover {
+                color: #ccc;
+            }
+            &.social-google {
+            	margin-right:0;
+            }
+
+        }
+
+        .ynicon {
+            font-size: 20px;
+        }
+
+    }
+
+    .actions {
+        border-top: 1px solid #e7e7e7;
+        width: 100%;
+        text-align: center;
+        height: 42px;
+        padding-top: 7px;
+        .btn {
+            height: 26px;
+            min-width: 90px;
+            margin-left: 10px;
+            font-size: 13px;
+        }
+
+        .error {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+
+        .full-profile {
+            line-height: 27px;
+            color: #999999;
+            cursor: pointer;
+            font-size: 13px;
+            text-decoration: none;
+            padding-left:10px;
+            &:hover {
+                color: #cccccc;
+            }
+        }
+    }
+    .btn.btn-subscribed {
+    	padding-right:2px;
+    }
+    .flagging-menu {
+        position: relative;
+        padding: 3px 15px 3px 0;
+        color:#666;
+        cursor:pointer;
+        .ynicon-flag {
+        	color:#d1021c;
+        }
+        li a {
+            width: 100%;
+            display: block;
+            padding-left: 15px;
+            color: #333;
+            text-decoration: none;
+        }
+        .mini-scroll {
+            max-height: 200px;
+        }
+        .dropdown-menu {
+            margin-top: 5px;
+        }
+    }
+}

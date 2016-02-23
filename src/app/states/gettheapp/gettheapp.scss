@@ -1,0 +1,35 @@
+#gettheapp {
+	width: auto !important;
+	margin: 50px 0 0px;
+	padding: 50px 0;
+	background: #fff;
+	min-height: calc(100vh - 150px);
+	.content {
+		max-width:860px;
+		margin:15px auto 25px;
+	}
+	.inner-container {
+		.download-image {
+			background:transparent center no-repeat;
+			background-size:auto 100%;
+			> img {
+				height:480px;
+				opacity:0;
+			}
+		}
+	}
+}
+@media screen and (max-width: 860px) {
+	#gettheapp {
+		.inner-container {
+			.download-image {
+				background-size:auto 110%;
+				background-position:top;
+			}
+			> * {
+				float:none !important;
+				margin:0 auto;
+			}
+		}
+	}
+}

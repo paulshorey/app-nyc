@@ -1,0 +1,40 @@
+[buybarsmodal_paypal]
+[smartling]	متابعة مع PayPal
+[manually]	تواصل مع باي بال
+
+[reconnect_title]
+[smartling]	هل تريد متابعة البث الخاص بك؟
+[manually]	تواصل البث ؟
+
+[reconnect_message]
+[smartling]	مشاهدو {{value}} في انتظارك!
+[manually]	لديك {{value}} المشاهدين في انتظاركم !
+
+[reconnect_no]
+[smartling]	لا شكرًا
+[manually]	لا شكرا
+
+[golive_tag_title]
+[smartling]	ضع علامة على البث الخاص بك
+[manually]	علامة البث
+
+[golive_tag_text]
+[smartling]	يساعد وضع العلامة الأشخاص في اكتشافك.
+[manually]	إضافة علامة يساعد الناس على اكتشاف لك.
+
+[golive_share_title]
+[smartling]	مشاركة
+[manually]	حصة
+
+[golive_share_text]
+[smartling]	أخبر أصدقائك للمجيء للمشاهدة والدعم
+[manually]	أخبر أصدقاءك أن تأتي ساعة والدعم
+
+[golive_share_input]
+[smartling]	ماذا يحدث؟
+[manually]	ماذا حدث؟
+
+[golive_go]
+[smartling]	اعمل بث حي
+[manually]	الذهاب لايف
+

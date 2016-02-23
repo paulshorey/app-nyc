@@ -1,0 +1,53 @@
+<div class="root_experiment root_experiment_button live_experiment live_experiment_button">
+	<div thin-banner></div>
+	<div class="live_background" ng-style="::{'background-image': 'url({{::vm.config.settings.ServerCDNBaseUrl}}{{::vm.config.mobileImageUrls.assets}}/images/mobile/background3.jpg)'}">
+		<div class="live_logo" ng-click="vm.trackClick(vm.gaAction, vm.config.yozio.yozioLink)">
+			<img ng-src="{{::vm.config.settings.ServerCDNBaseUrl}}{{::vm.config.mobileImageUrls.assets}}/images/logo/skewed_white.svg" />
+		</div>
+		<table class="live_content">
+			<tr><td>
+				<div class="live_image watchlive_image">
+					<img ng-src="{{::vm.config.settings.ServerCDNBaseUrl}}/php/api/channel/getImage/channelId={{::( vm.trendingUser.userId ) }}" ng-click="vm.trackClick(vm.gaAction, vm.config.yozio.yozioLink)" />
+				</div>
+				<div class="watchlive_blurbs">
+					<div class="live_blurb watchlive_above">
+						<h2>{{ vm.trendingUser.profile }}</h2>
+						<i>Trending now</i>
+					</div>
+				</div>
+				<div class="live_blurb watchlive_below">
+					Watch Live <br />on YouNow
+				</div>
+
+				<div class="watchlive_button" ng-if="vm.config.platform=='ios'" ng-click="vm.trackClick(vm.gaAction, vm.config.yozio.yozioLink)">
+					<div class="root_button android_button">
+						<table><tr>
+						<td class="button_logo">
+							<img ng-src="{{::vm.config.settings.ServerCDNBaseUrl}}{{::vm.config.mobileImageUrls.assets}}/svg/ffffff/apple_logo.svg" />
+						</td>
+						<td class="button_text">
+							Download on the<br />
+							<img ng-src="{{::vm.config.settings.ServerCDNBaseUrl}}{{::vm.config.mobileImageUrls.assets}}/svg/ffffff/app_store.svg" />
+						</td>
+						</tr></table>
+					</div>
+				</div>
+
+				<div class="watchlive_button" ng-if="vm.config.platform=='android'" ng-click="vm.trackClick(vm.gaAction, vm.config.yozio.yozioLink)">
+					<div class="root_button android_button">
+						<table><tr>
+						<td class="button_logo">
+							<img ng-src="{{::vm.config.settings.ServerCDNBaseUrl}}{{::vm.config.mobileImageUrls.assets}}/svg/ffffff/android_logo.svg" />
+						</td>
+						<td class="button_text">
+							GET IT ON<br />
+							<img ng-src="{{::vm.config.settings.ServerCDNBaseUrl}}{{::vm.config.mobileImageUrls.assets}}/svg/ffffff/google_play.svg" />
+						</td>
+						</tr></table>
+					</div>
+				</div>
+
+			</td></tr>
+		</table>
+	</div>
+</div>

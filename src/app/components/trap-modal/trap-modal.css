@@ -1,0 +1,92 @@
+.iframe-modal.fade.in {
+  width: 88%;
+  margin-left: -45%;
+  top: 10%;
+  height: 80%;
+  padding: 1%; }
+
+.iframe-modal iframe {
+  width: 100%;
+  height: 100%;
+  border: 0; }
+
+.trap-modal {
+  width: 700px; }
+  .trap-modal .modal-body {
+    padding: 0; }
+  .trap-modal .cover-photo {
+    height: 270px;
+    width: 100%;
+    position: relative; }
+    .trap-modal .cover-photo .little-fade {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      height: 40px;
+      background-image: linear-gradient(rgba(255, 255, 255, 0), #000); }
+  .trap-modal .bottom {
+    margin-top: 30px; }
+    .trap-modal .bottom .heading {
+      font-weight: bold;
+      font-size: 18px; }
+    .trap-modal .bottom .subheading {
+      color: #9F9F9F;
+      font-size: 13px; }
+  .trap-modal .top {
+    width: 100%; }
+  .trap-modal .right {
+    margin-left: 20px;
+    width: 555px;
+    padding-top: 20px; }
+  .trap-modal .bottom-cont {
+    margin-top: -8%;
+    padding: 0 10px; }
+    .trap-modal .bottom-cont .top-half {
+      height: 95px;
+      position: absolute; }
+    .trap-modal .bottom-cont .bottom-half {
+      background-color: #fff;
+      text-align: center;
+      padding: 125px 0 0 0;
+      height: 200px; }
+    .trap-modal .bottom-cont .call-to-action {
+      margin-top: 29px; }
+    .trap-modal .bottom-cont .thumb {
+      width: 95px;
+      height: 95px;
+      border-radius: 50%; }
+    .trap-modal .bottom-cont .circle-thumb {
+      overflow: hidden; }
+  .trap-modal .level {
+    position: relative;
+    height: 25px;
+    bottom: -5px;
+    margin-left: 0;
+    margin-right: 5px;
+    width: auto;
+    padding: 1px 13px 1px 5px;
+    border-top-right-radius: 4px; }
+  .trap-modal .level-num span {
+    color: #FFC459;
+    font-size: 16px;
+    position: relative;
+    top: 16%; }
+  .trap-modal .star {
+    position: relative;
+    height: 100%;
+    width: 16px; }
+  .trap-modal .channel-name {
+    color: #ffffff;
+    font-size: 20px;
+    margin-top: -6px;
+    max-width: 400px;
+    display: inline-block;
+    margin-bottom: -13px; }
+  .trap-modal .no-thanks span {
+    font-size: 15px;
+    color: #B4B4B4;
+    cursor: pointer;
+    text-decoration: underline;
+    position: absolute;
+    bottom: 10px;
+    right: 20px; }

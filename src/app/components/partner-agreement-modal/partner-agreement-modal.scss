@@ -1,0 +1,27 @@
+.partner-agreement-modal {
+	width: 348px;
+	height: 168px;
+
+	.agreement-title {
+		text-align: center;
+		font-weight: bold;
+	}
+
+	.agreement-message {
+		font-size: 13px;
+		width: 251px;
+		text-align: center;
+		margin: 0 auto;
+		padding: 5px 0 25px 0;
+		line-height: 13px;
+	}
+
+	.actions {
+		text-align: center;
+	}
+
+	.btn-primary, .btn-cancel {
+		width: 100px;
+		height: 30px;
+	}
+}

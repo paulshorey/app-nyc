@@ -1,0 +1,137 @@
+<div ng-if="vm.renderPage" class="home-container expC expX" scrolled-class="440">
+
+	<div id="old_navbar" data-header></div>
+
+	<section class="homeSection top-container search-container">
+		
+		<div class="search-top">
+			<a href ui-sref="main.channel.detail">
+				<img class="logo-image" ng-src="{{::cdn.base}}/angularjsapp/src/assets/images/logo/skewed_white.svg" alt="Live Stream Video Chat">
+			</a>
+			<div class="search-cta pull-right">
+				<a href="#" prevent-default ng-click="vm.openLoginModal('LOGIN')" translate="header_login"></a>
+				<button class="btn btn-outline" ng-click="vm.openLoginModal('SIGNUP')" translate="header_signup"></button>
+				<button class="btn btn-primary" ng-click="vm.getTheApp()" translate="header_get_the_app"></button>
+			</div>
+		</div>
+		<div class="home-video-container">
+			<video class="home-video" autoplay="" loop="" ng-attr-poster="{{::vm.baseCDN +'/landing/video/home_exp_composition.jpg'}}" id="homeVideo">
+				<source ng-src="{{::vm.baseCDN + '/landing/video/home_exp_composition.webm'}}" type="video/webm" />
+				<source ng-src="{{::vm.baseCDN + '/landing/video/home_exp_composition.mp4'}}" type="video/mp4" />
+			</video>
+		</div>
+		<div class="home-video-lighten"></div>
+		<h1 class="homeTitle" translate="home_tagline"></h1>
+		<h4 class="homeSubtitle" translate="home_tagline_subtext"></h4>
+		<yn-search-bar type="home"></yn-search-bar>
+
+	</section>
+
+	<section class="homeSection">
+
+		<div class="trending_things">
+			<div class="trending_topics">
+				<h2 class="trending_title" translate="topics_trending"></h2>
+				<div class="tags_items">
+					<a ng-repeat="tag in ::vm.liveTopics"
+						class="tags_tag"
+						ng-href="/explore/{{::tag.tagLink}}" prevent-default 
+						ng-click="vm.stateChange('main.explore', { 'tag': tag.tag })"
+						>{{::tag.tag}}</a>
+				</div>
+				<a class="trending_more" ng-href="/explore/" prevent-default ng-click="vm.stateChange('main.explore', undefined, true)" prevent-default translate="topics_more"></a>
+			</div>
+
+			<div class="trending_broadcasters">
+				<h2 class="trending_title" translate="homepage_trending_now"></h2>
+				<div class="trending_items clearfix">
+					
+					<div class="trending_item" ng-repeat="bcst in ::vm.trendingBroadcasts">
+						<div class="trending_square" ng-if="bcst.tags">
+							<div class="trending_content">
+								
+								<a class="trending_image" ng-href="/{{::bcst.profile}}" prevent-default ng-click="vm.stateChange('main.channel.detail', { 'profileUrlString': bcst.profile })">
+									<div class="thumb-image" ng-style="::{'background-image':'url('+vm.nothumb+')'}">
+										<div class="thumb-image-wide">
+											<img class="thumb-image-img" ng-src="{{::vm.config.broadcasterThumb}}{{bcst.broadcastId}}" ng-alt="Watch {{::bcst.profile}}'s broadcast" />
+										</div>
+										<div class="thumb_viewers">
+											<i class="ynicon ynicon-viewers"></i> 
+											{{::bcst.viewers}}
+										</div>
+									</div>
+								</a>
+								<div class="trending_info transline-mid">
+									<a
+									 	class="trending_thumb"
+										ng-href="/explore/{{::bcst.tags[0]}}" prevent-default 
+										ng-click="vm.stateChange('main.explore', { 'tag': bcst.tags[0] })">
+										<img
+											alt="{{::bcst.profile}}" 
+											ng-src="{{::bcst.thumb}}" 
+											class="thumb circle-thumb">
+										</img>
+									</a>
+									<div class="trending_description clearfix">
+										<span class="trend_right" ng-if="bcst.totalFans">
+											<i class="ynicon ynicon-user"></i>{{::bcst.totalFans}}
+										</span>
+										<a class="trend_left short-text" ng-href="/{{::bcst.profile}}" prevent-default ng-click="vm.stateChange('main.channel.detail', { 'profileUrlString': bcst.profile })" prevent-default>
+											{{::bcst.profile}}
+										</a>
+										<a class="trend_bottom short-text" ng-href="/explore/{{::bcst.tags[0]}}" prevent-default ng-click="vm.stateChange('main.explore', { 'tag': bcst.tags[0] })">
+											#{{::bcst.tags[0]}}
+										</a>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+						<div class="trending_square ad_square" ng-if="!bcst.tags" ng-click="vm.openLoginModal('EXPERIMENT')">
+							<div class="trending_content">
+
+								<div class="title" translate="homepage_see_friends">
+								</div>
+								<div class="button" translate="homepage_join">
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+				<div class="more-link-container">
+					<a class="more-link" href="/explore/" prevent-default ng-click="vm.stateChange('main.explore')" prevent-default>{{'homepage_view_more' | translate}} &raquo;</a>
+				</div>
+			</div>
+		</div>
+		
+	</section>
+
+	<section class="homeSection experiment_connect">
+
+		<div class="experiment_connect_title" translate="home_tagline_subtext"></div>
+
+		<div class="homeButtons">
+			<button class="btn bigButt" ng-click="vm.openLoginModal('EXPERIMENT')" translate="homepage_join"></button>
+		</div>
+
+	</section>
+
+	<section class="homeSection experiment_app">
+		<span class="the_text" translate="homepage_orapp"></span>
+		<span class="the_buttons">
+
+			<a class="mobile-link" ng-click="vm.trackMobile('IOS')" href="https://itunes.apple.com/app/apple-store/id471347413?mt=8&pt=669563&ct=d-web-sidebar-1" target="_blank">
+				<img ng-src="{{::cdn.base}}/angularjsapp/src/assets/images/home/download_apple.png" />
+			</a>
+			<a class="mobile-link" ng-click="vm.trackMobile('ANDROID')" href="https://play.google.com/store/apps/details?id=younow.live&referrer=utm_source%3Dyounow.com%26utm_campaign%3Dapp-promo-android%26utm_medium%3Dreferral%26utm_content%3Dd-web-sidebar-1" target="_blank">
+				<img ng-src="{{::cdn.base}}/angularjsapp/src/assets/images/home/download_google.png" />
+			</a>
+		</span>
+	</section>
+	
+	<div class="xTemp homeSection darkFooter" data-footer></div>
+</div>

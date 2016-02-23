@@ -1,0 +1,45 @@
+<div class="root_experiment root_experiment_button">
+<div thin-banner></div>
+<div class="root_background" ng-style="::{'background-image':'url('+vm.config.mobileImageUrls.assetsMobile+'/landing_bg.jpg)'}">
+<table class="root_content" style="background:rgba(0,0,0,0.5);">
+
+	<tr><td class="root_logo">
+		<img ng-src="{{::vm.config.settings.ServerCDNBaseUrl}}{{::vm.config.mobileImageUrls.assets}}/images/logo/skewed_white.svg" />
+	</tr></td>
+	<tr><td>
+		<div class="root_blurb">
+			Discover talented broadcasters &amp; chat live with people from around the world for free.
+		</div>
+	</tr></td>
+
+	<tr><td ng-if="vm.config.platform=='ios'" ng-click="vm.trackClick(vm.gaAction, vm.config.yozio.yozioLink)">
+		<div class="root_button android_button">
+			<table><tr>
+			<td class="button_logo">
+				<img ng-src="{{::vm.config.settings.ServerCDNBaseUrl}}{{::vm.config.mobileImageUrls.assets}}/svg/ffffff/apple_logo.svg" />
+			</td>
+			<td class="button_text">
+				Download on the<br />
+				<img ng-src="{{::vm.config.settings.ServerCDNBaseUrl}}{{::vm.config.mobileImageUrls.assets}}/svg/ffffff/app_store.svg" />
+			</td>
+			</tr></table>
+		</div>
+	</tr></td>
+
+	<tr><td ng-if="vm.config.platform=='android'" ng-click="vm.trackClick(vm.gaAction, vm.config.yozio.yozioLink)">
+		<div class="root_button android_button">
+			<table><tr>
+			<td class="button_logo">
+				<img ng-src="{{::vm.config.settings.ServerCDNBaseUrl}}{{::vm.config.mobileImageUrls.assets}}/svg/ffffff/android_logo.svg" />
+			</td>
+			<td class="button_text">
+				GET IT ON<br />
+				<img ng-src="{{::vm.config.settings.ServerCDNBaseUrl}}{{::vm.config.mobileImageUrls.assets}}/svg/ffffff/google_play.svg" />
+			</td>
+			</tr></table>
+		</div>
+	</tr></td>
+
+</table>
+</div>
+</div>

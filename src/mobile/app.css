@@ -1,0 +1,359 @@
+/* Anything that isn't attached to a component goes in here */
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 19px;
+  background-color: #efefef; }
+
+@font-face {
+  font-family: Lato;
+  src: url('https://cdn2.younow.com/angularjsapp/src/assets/fonts/lato/Lato-Regular.ttf');
+  src: url('https://cdn-vpc.younow.com/angularjsapp/src/assets/fonts/lato/Lato-Regular.ttf'); }
+
+@font-face {
+  font-family: Lato-Bold;
+  src: url('https://cdn2.younow.com/angularjsapp/src/assets/fonts/lato/Lato-Bold.ttf');
+  src: url('https://cdn-vpc.younow.com/angularjsapp/src/assets/fonts/lato/Lato-Bold.ttf'); }
+
+a:link {
+  color: #999999;
+  text-decoration: none; }
+
+a:visited {
+  color: #999999;
+  text-decoration: none; }
+
+a:hover {
+  color: #999999;
+  text-decoration: none; }
+
+a:active {
+  color: #999999;
+  text-decoration: none; }
+
+.m-wrapper {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  height: 100vh;
+  font-size: 14px; }
+
+.r-wrapper {
+  font-family: Arial, Helvetica, sans-serif;
+  position: absolute;
+  margin: 0;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  font-size: 14px; }
+
+.r-logo {
+  margin-top: 70px;
+  margin-bottom: 10px;
+  max-width: 50%; }
+
+.r-text {
+  color: #999999;
+  font-size: 17px; }
+
+.r-cta {
+  color: white;
+  background-color: #649A3D;
+  padding: 8px 15px 8px 15px;
+  border-radius: 5px;
+  max-width: 40%;
+  margin: 0 auto;
+  margin-top: 50px;
+  font-size: 17px; }
+
+.r-open {
+  font-size: 18px;
+  color: #999999;
+  text-align: center;
+  display: inline-block;
+  margin-top: 20px; }
+
+.contentholder-wrapper {
+  min-height: 100%;
+  width: 100%;
+  position: absolute; }
+
+img.blur {
+  width: 367;
+  height: 459px;
+  filter: blur(3px);
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: url(blur.svg#blur);
+  filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='3'); }
+
+@media screen and (orientation: portrait) {
+  .contentholder {
+    text-align: center;
+    vertical-align: middle;
+    margin: auto;
+    top: 85px;
+    position: relative; }
+
+  .font {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: regular;
+    font-size: 54px;
+    line-height: 64px;
+    color: #999999; }
+
+  .fontusername {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 42px;
+    line-height: 48px;
+    margin-bottom: 5px;
+    color: #ffffff; }
+
+  .fontuser {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: regular;
+    font-size: 42px;
+    line-height: 46px;
+    color: #999999; }
+
+  .content {
+    position: relative;
+    width: 100%;
+    top: 120px;
+    text-align: center; }
+
+  .contenttext {
+    width: 98%;
+    padding-top: 20px;
+    height: 300px;
+    min-height: 300px;
+    max-height: 300px;
+    padding-left: 20px; }
+
+  .photo {
+    width: 160px;
+    height: 160px; }
+
+  .contentusercenter {
+    width: 98%;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    height: 300px;
+    min-height: 300px;
+    max-height: 300px;
+    padding-left: 20px; }
+
+  .spacer {
+    position: relative;
+    height: 100px;
+    text-align: center; }
+
+  .spacer2 {
+    position: relative;
+    height: 20px;
+    text-align: center; }
+
+  .logo {
+    height: 191px;
+    width: 500px;
+    margin-bottom: 10px; }
+
+  .button {
+    height: 123px;
+    width: 500px; }
+
+  .userthumb {
+    z-index: 50;
+    margin-top: 22px;
+    height: 135px;
+    width: 135px;
+    background-color: #333;
+    position: absolute;
+    float: left; }
+
+  .userthumblive {
+    z-index: 100;
+    margin-top: 22px;
+    position: absolute;
+    float: left; }
+
+  .usertext {
+    margin-top: 22px;
+    margin-right: 20px;
+    text-align: left;
+    position: absolute;
+    left: 185px;
+    float: right; }
+
+  .userthumb2 {
+    display: inherit;
+    margin-bottom: 5px;
+    text-align: center;
+    position: relative;
+    height: 160px;
+    width: 160px; }
+
+  .userthumbcenter {
+    display: inherit;
+    z-index: 50;
+    position: relative;
+    text-align: center;
+    height: 160px;
+    width: 160px;
+    background-color: #333; }
+
+  .userthumblivecenter {
+    position: absolute;
+    z-index: 100; }
+
+  .usertextcenter {
+    width: 98%;
+    display: inline-table;
+    margin-top: 13px;
+    margin-bottom: 22px;
+    margin-right: 20px;
+    text-align: center; }
+ }
+
+@media screen and (orientation: landscape) {
+  .contentholder {
+    position: relative;
+    width: 80%;
+    height: 80%;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 10px;
+    margin-left: auto;
+    margin-right: auto; }
+
+  .font {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: regular;
+    font-size: 36px;
+    line-height: 46px;
+    color: #999999; }
+
+  .fontusername {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 36px;
+    color: #ffffff; }
+
+  .fontuser {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: regular;
+    font-size: 26px;
+    line-height: 30px;
+    color: #999999; }
+
+  .content {
+    position: relative;
+    width: 100%;
+    top: 20px;
+    text-align: center; }
+
+  .contenttext {
+    width: 99%;
+    height: 180px; }
+
+  .photo {
+    width: 115px;
+    height: 115px; }
+
+  .contentusercenter {
+    width: 98%;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    height: 220px;
+    min-height: 220px;
+    max-height: 220px;
+    padding-left: 20px; }
+
+  .logo {
+    height: 117px;
+    width: 306px;
+    margin-bottom: 5px; }
+
+  .spacer {
+    position: relative;
+    height: 25px;
+    text-align: center; }
+
+  .spacer2 {
+    position: relative;
+    height: 0px;
+    text-align: center; }
+
+  .button {
+    height: 76px;
+    width: 306px; }
+
+  .userthumb {
+    margin-top: 10px;
+    height: 115px;
+    width: 115px;
+    background-color: #333;
+    position: absolute;
+    float: left; }
+
+  .userthumblive {
+    z-index: 100;
+    margin-top: 15px;
+    position: absolute;
+    float: left; }
+
+  .usertext {
+    margin-top: 5px;
+    margin-right: 20px;
+    text-align: left;
+    position: absolute;
+    left: 185px;
+    float: right; }
+
+  .usertextcenter {
+    width: 98%;
+    display: inline-table;
+    margin-top: 5px;
+    margin-bottom: 18px;
+    margin-right: 20px;
+    text-align: center; }
+
+  .userthumb2 {
+    display: inherit;
+    text-align: center;
+    position: relative;
+    height: 115px;
+    width: 115px; }
+
+  .userthumbcenter {
+    display: inherit;
+    z-index: 50;
+    position: relative;
+    text-align: center;
+    height: 115px;
+    width: 115px;
+    background-color: #333; }
+
+  .userthumblivecenter {
+    position: absolute;
+    z-index: 100; }
+ }

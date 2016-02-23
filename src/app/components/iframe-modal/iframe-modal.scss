@@ -1,0 +1,32 @@
+.iframe-modal {
+	height: 83%;
+	width: 90%;
+	padding: 1%;
+	margin-top: 5% !important;
+
+	.modal-content {
+		height: 100%;
+	}
+}
+.iframe-modal.iframe-modal-dark {
+	background:#000;
+}
+.iframe-modal iframe {
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+#fancybox-close {
+	position: absolute;
+	top: -15px;
+	right: -15px;
+	width: 30px;
+	height: 30px;
+	background: transparent url('http://cdnv2-vd.younow.com/css/fancybox/fancybox.png') -40px 0px;
+	cursor: pointer;
+	z-index: 1103;
+	display:inline;
+}
+.youtube-modal {
+	width: 425px;
+}

@@ -1,0 +1,50 @@
+.thin_banner {
+	background:#efefef;
+	
+	display:table;
+	width:100%;
+	> * {
+		display:table-cell;
+		vertical-align:middle;
+	}
+
+	.banner-logo {
+		img {
+			width: 30px;
+			background: #61c03e;
+			height: 30px;
+			padding: 0;
+			border-radius: 6px;
+			margin: 6px 10px 2px 14px;
+			color: #fff;
+		}
+	}
+
+	.banner-text {
+		white-space:nowrap;
+		color:#111;
+		.text-top {
+			margin-top: 2px;
+			margin-bottom: 0px;
+			font-size: 14px;
+			max-width: calc(100vw - 125px);
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+		.text-sub {
+			margin-top: 0;
+			margin-bottom: 2px;
+			font-size: 12px;
+		}
+	}
+
+	.banner-button {
+		width: auto;
+		padding: 2px 13px 0 9px;
+		color: #1f7bda;
+		font-size: 18px;
+		text-align: right;
+		cursor: pointer;
+	}
+
+}

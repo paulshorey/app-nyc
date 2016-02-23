@@ -1,0 +1,234 @@
+.profile-summary-wrapper {
+  width: 480px;
+  height: auto;
+  @supports  {
+    .line-clamp {
+      -webkit-line-clamp: 3; } }
+ }
+  .profile-summary-wrapper, .profile-summary-wrapper .modal-content {
+    border-radius: 4px; }
+  .profile-summary-wrapper .close {
+    color: #999; }
+  .profile-summary-wrapper .profile-summary {
+    outline: none !important; }
+  .profile-summary-wrapper .summary {
+    -ms-word-break: break-word;
+    word-break: break-word;
+    overflow: hidden;
+    hyphens: auto; }
+  .profile-summary-wrapper .modal-header {
+    padding: 0;
+    margin: 0; }
+  .profile-summary-wrapper .modal-content {
+    border: 0; }
+  .profile-summary-wrapper .cover-image {
+    width: 480px;
+    height: 180px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 4px; }
+  .profile-summary-wrapper .profile-description .circle-thumb {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    margin-top: -55px; }
+    .profile-summary-wrapper .profile-description .circle-thumb .ynbadge {
+      color: #76b343;
+      display: block;
+      position: absolute;
+      bottom: -4px;
+      right: -1px;
+      width: 24px;
+      height: 24px; }
+      .profile-summary-wrapper .profile-description .circle-thumb .ynbadge img {
+        height: 100%;
+        width: 100%; }
+  .profile-summary-wrapper .bullet {
+    color: #999999;
+    vertical-align: middle; }
+  .profile-summary-wrapper .social-action .ynicon-icon-check {
+    color: #568b08;
+    margin-right: 5px; }
+  .profile-summary-wrapper .social-action span {
+    overflow: hidden;
+    font-weight: bold;
+    vertical-align: middle; }
+  .profile-summary-wrapper .social-action .name {
+    max-width: 166px !important;
+    display: inline-block;
+    font-size: 14px !important; }
+  .profile-summary-wrapper .social-action .name, .profile-summary-wrapper .social-action span {
+    vertical-align: middle; }
+  .profile-summary-wrapper .user-info {
+    margin-left: 10px;
+    margin-top: -2px; }
+    .profile-summary-wrapper .user-info .action-message {
+      cursor: default !important; }
+      .profile-summary-wrapper .user-info .action-message .name {
+        font-weight: bold;
+        cursor: pointer;
+        display: inline-block; }
+    .profile-summary-wrapper .user-info .action-message.ban-state .name {
+      max-width: 200px; }
+    .profile-summary-wrapper .user-info .name, .profile-summary-wrapper .user-info .action-message {
+      font-weight: bold;
+      font-size: 13px;
+      cursor: pointer; }
+    .profile-summary-wrapper .user-info .name {
+      color: #333;
+      position: relative;
+      width: 290px; }
+      .profile-summary-wrapper .user-info .name.short-text {
+        width: auto; }
+      .profile-summary-wrapper .user-info .name .short-text {
+        display: inline-block;
+        max-width: 169px;
+        vertical-align: middle; }
+      .profile-summary-wrapper .user-info .name .ynbadges .ynbadge {
+        margin: -1px; }
+      .profile-summary-wrapper .user-info .name .ynbadges .ynbadge-ellipsis {
+        position: relative;
+        color: #ccc; }
+      .profile-summary-wrapper .user-info .name .ynbadges .dropup {
+        position: absolute;
+        bottom: 14px;
+        height: 0;
+        transition: height 1s linear;
+        overflow: hidden;
+        right: -12px;
+        width: 270px; }
+        .profile-summary-wrapper .user-info .name .ynbadges .dropup .dropdown-menu {
+          top: auto;
+          bottom: 9px;
+          margin-bottom: 2px;
+          right: 5px;
+          min-width: 30px; }
+          .profile-summary-wrapper .user-info .name .ynbadges .dropup .dropdown-menu .ynicon-carrot-dwn {
+            bottom: -17px;
+            right: -2px; }
+          .profile-summary-wrapper .user-info .name .ynbadges .dropup .dropdown-menu ul li {
+            display: block;
+            text-align: right;
+            padding: 0 3px 0 3px; }
+      .profile-summary-wrapper .user-info .name .ynbadge-ellipsis:hover .dropup {
+        height: 350px; }
+    .profile-summary-wrapper .user-info .special-role {
+      margin-right: 5px; }
+    .profile-summary-wrapper .user-info .special-role-display {
+      margin-top: -1px; }
+      .profile-summary-wrapper .user-info .special-role-display.block {
+        margin: -3px 1px 3px;
+        display: block;
+        clear: both; }
+      .profile-summary-wrapper .user-info .special-role-display span {
+        font-weight: bold;
+        color: #999; }
+  .profile-summary-wrapper form[name="modal.reasonForm"] {
+    padding-top: 20px; }
+  .profile-summary-wrapper .flagging-reasons {
+    margin-left: 10px;
+    margin-top: 10px;
+    font-size: 13px; }
+    .profile-summary-wrapper .flagging-reasons input {
+      margin-bottom: 5px;
+      margin-right: 10px; }
+  .profile-summary-wrapper .suspending-reasons {
+    padding: 5px 8px;
+    height: 60px;
+    resize: none;
+    margin-top: 10px; }
+  .profile-summary-wrapper .suspending-options {
+    box-shadow: none; }
+  .profile-summary-wrapper .suspending-options, .profile-summary-wrapper .suspending-reasons {
+    width: 340px;
+    border: 1px solid #E7E7E6;
+    font-size: 13px; }
+    .profile-summary-wrapper .suspending-options:focus, .profile-summary-wrapper .suspending-reasons:focus {
+      outline: none; }
+  .profile-summary-wrapper .action-notifications {
+    text-align: center;
+    padding: 20px 0; }
+    .profile-summary-wrapper .action-notifications .error {
+      color: #cc0033; }
+    .profile-summary-wrapper .action-notifications .success {
+      color: #568b08; }
+    .profile-summary-wrapper .action-notifications .error, .profile-summary-wrapper .action-notifications .success {
+      display: inline-block; }
+    .profile-summary-wrapper .action-notifications .ynicon-icon-mod {
+      font-size: 17px;
+      margin-top: -2px;
+      margin-right: 5px; }
+  .profile-summary-wrapper .user-bio, .profile-summary-wrapper .action-notifications {
+    margin-top: 6px;
+    margin-bottom: 0;
+    max-height: 90px;
+    overflow: hidden;
+    font-size: 13px;
+    clear: both;
+    position: relative; }
+    .profile-summary-wrapper .user-bio .emoji, .profile-summary-wrapper .action-notifications .emoji {
+      margin-top: -2px;
+      width: 15px; }
+  .profile-summary-wrapper .user-bio .more-info {
+    padding-left: 1px; }
+  .profile-summary-wrapper .user-bio .join-date {
+    font-size: 12px;
+    color: #999999; }
+  .profile-summary-wrapper .line-clamp::after {
+    width: 10%; }
+  .profile-summary-wrapper .center .btn:first-child {
+    margin-left: 0 !important; }
+  .profile-summary-wrapper .social-actions {
+    width: 100%;
+    margin-left: -5px;
+    padding-top: 5px; }
+    .profile-summary-wrapper .social-actions .btn {
+      margin-right: 5px;
+      color: #999; }
+      .profile-summary-wrapper .social-actions .btn:hover {
+        color: #ccc; }
+      .profile-summary-wrapper .social-actions .btn.social-google {
+        margin-right: 0; }
+    .profile-summary-wrapper .social-actions .ynicon {
+      font-size: 20px; }
+  .profile-summary-wrapper .actions {
+    border-top: 1px solid #e7e7e7;
+    width: 100%;
+    text-align: center;
+    height: 42px;
+    padding-top: 7px; }
+    .profile-summary-wrapper .actions .btn {
+      height: 26px;
+      min-width: 90px;
+      margin-left: 10px;
+      font-size: 13px; }
+    .profile-summary-wrapper .actions .error {
+      opacity: 0.65;
+      cursor: not-allowed; }
+    .profile-summary-wrapper .actions .full-profile {
+      line-height: 27px;
+      color: #999999;
+      cursor: pointer;
+      font-size: 13px;
+      text-decoration: none;
+      padding-left: 10px; }
+      .profile-summary-wrapper .actions .full-profile:hover {
+        color: #cccccc; }
+  .profile-summary-wrapper .btn.btn-subscribed {
+    padding-right: 2px; }
+  .profile-summary-wrapper .flagging-menu {
+    position: relative;
+    padding: 3px 15px 3px 0;
+    color: #666;
+    cursor: pointer; }
+    .profile-summary-wrapper .flagging-menu .ynicon-flag {
+      color: #d1021c; }
+    .profile-summary-wrapper .flagging-menu li a {
+      width: 100%;
+      display: block;
+      padding-left: 15px;
+      color: #333;
+      text-decoration: none; }
+    .profile-summary-wrapper .flagging-menu .mini-scroll {
+      max-height: 200px; }
+    .profile-summary-wrapper .flagging-menu .dropdown-menu {
+      margin-top: 5px; }

@@ -1,0 +1,779 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" ng-app="docsApp"  lang="en" ng-controller="DocsController"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" ng-app="docsApp"  lang="en" ng-controller="DocsController"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" ng-app="docsApp"  lang="en" ng-controller="DocsController"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app="docsApp"  lang="en" ng-controller="DocsController"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="Description"
+        content="AngularJS is what HTML would have been, had it been designed for building web-apps.
+                 Declarative templates with data-binding, MVC, dependency injection and great
+                 testability story all implemented with pure client-side JavaScript!">
+  <meta name="fragment" content="!">
+  <title ng-bind-template="younow: {{partialTitle}}">Docs</title>
+  <script type="text/javascript">
+    // dynamically add base tag as well as css and javascript files.
+    // we can't add css/js the usual way, because some browsers (FF) eagerly prefetch resources
+    // before the base attribute is added, causing 404 and terribly slow loading of the docs app.
+    (function() {
+      var indexFile = (location.pathname.match(/\/(index[^\.]*\.html)/) || ['', ''])[1],
+          origin, baseUrl, rUrl = /(\/?#!\/.*|\/(core)\/?(\?.*)*|\/index[^\.]*\.html.*)$/,
+          headEl = document.getElementsByTagName('head')[0],
+          sync = true;
+
+      if (location.href.slice(0, 7) == 'file://') {
+        baseUrl = location.href.replace(rUrl, '/' + indexFile);
+      } else {
+        origin = location.origin || (window.location.protocol + "//" + window.location.hostname +
+                                    (window.location.port ? ':' + window.location.port: ''));
+        baseUrl = origin + location.href.substr(origin.length).replace(rUrl, '/' + indexFile);
+      }
+
+      addTag('base', {href: baseUrl});
+      addTag('link', {rel: 'stylesheet', href: 'css/bootstrap.min.css', type: 'text/css'});
+      addTag('link', {rel: 'stylesheet', href: 'css/font-awesome.css', type: 'text/css'});
+      addTag('link', {rel: 'stylesheet', href: 'css/prettify.css', type: 'text/css'});
+      addTag('link', {rel: 'stylesheet', href: 'css/docs.css', type: 'text/css'});
+      addTag('link', {rel: 'stylesheet', href: 'css/animations.css', type: 'text/css'});
+
+      
+
+      addTag('script', {src: 'js/google-code-prettify.js'}, sync);
+      addTag('script', {src: 'js/marked.js'}, sync);
+
+      
+        addTag('script', {src: 'js/angular.min.js'}, sync);
+      
+      
+      addTag('script', {src: 'js/angular-bootstrap.js'}, sync);
+      addTag('script', {src: 'js/angular-bootstrap-prettify.js'}, sync);
+      addTag('script', {src: 'js/docs-setup.js'}, sync);
+      addTag('script', {src: 'js/docs.js'}, sync);
+      
+      function addTag(name, attributes, sync) {
+        var el = document.createElement(name),
+            attrName;
+
+        for (attrName in attributes) {
+          el.setAttribute(attrName, attributes[attrName]);
+        }
+
+        sync ? document.write(outerHTML(el)) : headEl.appendChild(el);
+      }
+
+      function outerHTML(node){
+        // if IE, Chrome take the internal method otherwise build one
+        return node.outerHTML || (
+            function(n){
+                var div = document.createElement('div'), h;
+                div.appendChild(n);
+                h = div.innerHTML;
+                div = null;
+                return h;
+            })(node);
+      }
+    })();
+
+  </script>
+</head>
+
+<body><script type="text/ng-template" id="partials/core/AbCore.html"><a href="https://github.com/younow/website/edit/master/src/core/services/ab/ab-core.js" class="improve-docs"><i class="icon-edit"> </i>Improve this doc</a><h1><code ng:non-bindable="">AbCore</code>
+<div><span class="hint"></span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="abcore-page"><p>This is the base logic for the ab service: a front end service that encapsulates the experiments and their variations in one easy to read and maintain location.</p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/ab/ab-core.js#L73" class="view-source icon-eye-open"> </a><h3 id="methods_base">Base(options, app, app, experiments, config, captureCallback)</h3>
+<div class="base"><div class="abcore-base-page"><p>The Base method of the ApiCore is the standard way we initialize services. It returns an object which should then extend the functionality of the
+app&#39;s Api (utility) service. The object has a bounty of useful reusable helper functions as documented below. Remember to extend this core object onto the apps custom one.</p>
+</div><h5 id="methods_base_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>options</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="abcore-base-page"><p>An object of options that can be passed into the app. They currently consist of the following:</p>
+</div></td></tr><tr><td>app</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="abcore-base-page"><p>mobile or desktop, used to change the directory of the templates.</p>
+</div></td></tr><tr><td>app</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="abcore-base-page"><p>version, taken from the config versioning system.</p>
+</div></td></tr><tr><td>experiments</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="abcore-base-page"><p>An object consisting of the experiments defined in the app currently.</p>
+</div></td></tr><tr><td>config</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="abcore-base-page"><p>The app&#39;s config object.</p>
+</div></td></tr><tr><td>captureCallback</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="abcore-base-page"><p>The app&#39;s trackingPixel.capture function.</p>
+</div></td></tr></tbody></table><h4 id="methods_base_example">Example</h4>
+<div class="example"><div class="abcore-base-page"><pre><code>var core = new AbCore.Base({
+app: &#39;desktop&#39;,
+config: config,
+experiments: experiments,
+captureCallback: trackingPixel.capture
+});
+
+var ab = angular.extend(core, {});
+</code></pre></div></div>
+</div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/ab/ab-core.js#L119" class="view-source icon-eye-open"> </a><h3 id="methods_variant">variant(Id)</h3>
+<div class="variant"><div class="abcore-variant-page"><p>This method is used to determine which variant of the experiment to give the user. Below are a list of the steps that it goes through before deciding the users fate:</p>
+<ol>
+<li>Is there an override in the URL?</li>
+<li>Is it coming from the backend?</li>
+<li>Is it being overridden?</li>
+<li>Is it set in localstorage (local)?</li>
+<li>Does this device qualify?</li>
+<li>Should this device participate?</li>
+<li>Still not set? &gt; roll the dice!</li>
+</ol>
+<p>If you&#39;d like to override this service and force a variant use a search query like this: ?ab_ID_OF_EXPERIMENT=VARIANT_LABEL (e.g.: ?ab_invite=a)</p>
+</div><h5 id="methods_variant_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>Id</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="abcore-variant-page"><p>of the experiment which maps to a list of its variants.</p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+</div>
+</script><script type="text/ng-template" id="partials/core/ApiCore.html"><a href="https://github.com/younow/website/edit/master/src/core/services/utils/utils-core.js" class="improve-docs"><i class="icon-edit"> </i>Improve this doc</a><h1><code ng:non-bindable="">ApiCore</code>
+<div><span class="hint"></span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="apicore-page"><p>The ApiCore is part of a set of base services that our apps (mobile &amp; desktop currently)
+consume to extend their own versions of the Api service.</p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L33" class="view-source icon-eye-open"> </a><h3 id="methods_base">Base(config)</h3>
+<div class="base"><div class="apicore-base-page"><p>The Base method of the ApiCore is the standard way we initialize services. It returns an object which should then extend the functionality of the
+app&#39;s Api (utility) service. The object has a bounty of useful reusable helper functions as documented below. Remember to extend this core object onto the apps custom one.</p>
+</div><h5 id="methods_base_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>config</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="apicore-base-page"><p>Requires a config to be passed, if one is not passed to this constructor it will fail to be instantiated.</p>
+</div></td></tr></tbody></table><h4 id="methods_base_example">Example</h4>
+<div class="example"><div class="apicore-base-page"><pre><code>var apiCore = new ApiCore.Base(config);
+var Api = angular.extend(apiCore, {});
+</code></pre></div></div>
+</div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L622" class="view-source icon-eye-open"> </a><h3 id="methods_arraytoobject">ArrayToObject(array)</h3>
+<div class="arraytoobject"><div class="apicore-base-arraytoobject-page"><p>Simple function to convert an array into an object. The object&#39;s keys are set as the index corresponding to the items position in the array.</p>
+</div><h5 id="methods_arraytoobject_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>array</td><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="apicore-base-arraytoobject-page"><p>The array to convert into an object.</p>
+</div></td></tr></tbody></table><h5 id="methods_arraytoobject_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="apicore-base-arraytoobject-page"><p>The object that was converted from the Array, stored by index and array value. {0: &#39;first value&#39;}</p>
+</div></td></tr></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L642" class="view-source icon-eye-open"> </a><h3 id="methods_addtostack">addToStack(data, stackName)</h3>
+<div class="addtostack"><div class="apicore-base-addtostack-page"><p>Adds extra data for bugsnag tracking for what the user was doing (making API requests or clicking on certain elements).</p>
+</div><h5 id="methods_addtostack_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="apicore-base-addtostack-page"><p>The data to add to the stack</p>
+</div></td></tr><tr><td>stackName</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-addtostack-page"><p>The name of the stack to put this data into. Currently only the lastClickStack and the lastApiStack exist. Both are stored on the window object.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L805" class="view-source icon-eye-open"> </a><h3 id="methods_buildpixeltracking">buildPixelTracking(params)</h3>
+<div class="buildpixeltracking"><h5 id="methods_buildpixeltracking_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>params</td><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="apicore-base-buildpixeltracking-page"><p>An array that holds all of the params for the tracking pixel url.</p>
+</div></td></tr></tbody></table><h5 id="methods_buildpixeltracking_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-buildpixeltracking-page"><p>A fully built url the includes all of the params in the right positions.</p>
+</div></td></tr></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L381" class="view-source icon-eye-open"> </a><h3 id="methods_cleanlocation">cleanLocation(data, twopart)</h3>
+<div class="cleanlocation"><div class="apicore-base-cleanlocation-page"><p>Standard way of finding out if a user wants to use their firstname or their profile name.</p>
+</div><h5 id="methods_cleanlocation_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="apicore-base-cleanlocation-page"><p>Location object that holds city, state or country information.</p>
+</div></td></tr><tr><td>twopart</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="apicore-base-cleanlocation-page"><p>Only state and country will be shown.</p>
+</div></td></tr></tbody></table><h5 id="methods_cleanlocation_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-cleanlocation-page"><p>The user&#39;s location. (NY, US)</p>
+</div></td></tr></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L410" class="view-source icon-eye-open"> </a><h3 id="methods_findlinks">findLinks(text)</h3>
+<div class="findlinks"><div class="apicore-base-findlinks-page"><p>Helper function that seeks out links and returns them.</p>
+</div><h5 id="methods_findlinks_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>text</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-findlinks-page"><p>Text to search through.</p>
+</div></td></tr></tbody></table><h5 id="methods_findlinks_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="apicore-base-findlinks-page"><p>A set of links captured by the method.</p>
+</div></td></tr></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L365" class="view-source icon-eye-open"> </a><h3 id="methods_friendlyname">friendlyName(user)</h3>
+<div class="friendlyname"><div class="apicore-base-friendlyname-page"><p>Standard way of finding out if a user wants to use their firstname or their profile name.</p>
+</div><h5 id="methods_friendlyname_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>user</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="apicore-base-friendlyname-page"><p>Helper function to check the users preference</p>
+</div></td></tr></tbody></table><h5 id="methods_friendlyname_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-friendlyname-page"><p>The user&#39;s friendly name (profile string or first name).</p>
+</div></td></tr></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L339" class="view-source icon-eye-open"> </a><h3 id="methods_fullname">fullName(user)</h3>
+<div class="fullname"><div class="apicore-base-fullname-page"><p>Standard way of finding out a user&#39;s preferred display name.</p>
+</div><h5 id="methods_fullname_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>user</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="apicore-base-fullname-page"><p>The user that holds information such as: profileUrlString, username, lastname and firstname.</p>
+</div></td></tr></tbody></table><h5 id="methods_fullname_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-fullname-page"><p>The user&#39;s full name.</p>
+</div></td></tr></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L662" class="view-source icon-eye-open"> </a><h3 id="methods_generatetrackingid">generateTrackingId()</h3>
+<div class="generatetrackingid"><div class="apicore-base-generatetrackingid-page"><p>Randomly generates a 10 character alphanumeric string.</p>
+</div><h5 id="methods_generatetrackingid_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-generatetrackingid-page"><p>text Returns an alphanumeric string that can be used as a tracking Id.</p>
+</div></td></tr></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L128" class="view-source icon-eye-open"> </a><h3 id="methods_get">get(method, data, usecdn, secured)</h3>
+<div class="get"><div class="apicore-base-get-page"><p>This is a wrapper around the $http.get service offered by angular. It gives us some control in changing our app wide get requests.</p>
+</div><h5 id="methods_get_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>method</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-get-page"><p>Api endpoint starting after /php/api/ (e.g.: &#39;younow/user&#39;)</p>
+</div></td></tr><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="apicore-base-get-page"><p>Set of params for the get request, corresponds to the backend API.</p>
+</div></td></tr><tr><td>usecdn</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="apicore-base-get-page"><p>Turns the cdn on/off. Defaults to off.</p>
+</div></td></tr><tr><td>secured</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="apicore-base-get-page"><p>Turns on https. Deprecated since migrating to https.</p>
+</div></td></tr></tbody></table><h5 id="methods_get_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="apicore-base-get-page"><p>Returns a promise object that is standard to the $http service, contains the API response.</p>
+</div></td></tr></table><h4 id="methods_get_example">Example</h4>
+<div class="example"><div class="apicore-base-get-page"><pre><code>var getRequest = Api.get(&#39;younow/user&#39;, {tdi: 23x13t}, true);
+getRequest.then(function(response) {
+console.log(response);
+});
+</code></pre></div></div>
+</div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L743" class="view-source icon-eye-open"> </a><h3 id="methods_getlinkterm">getLinkTerm(requestUri, search, linkType)</h3>
+<div class="getlinkterm"><div class="apicore-base-getlinkterm-page"><p>Uses the linktype, requestUri and search param to retrieve a link term.</p>
+</div><h5 id="methods_getlinkterm_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>requestUri</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-getlinkterm-page"><p>The request uri of the desired page or the current page.</p>
+</div></td></tr><tr><td>search</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-getlinkterm-page"><p>Search parameters in the request URI.</p>
+</div></td></tr><tr><td>linkType</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-getlinkterm-page"><p>Search parameters in the request URI.</p>
+</div></td></tr></tbody></table><h5 id="methods_getlinkterm_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-getlinkterm-page"><p>The link term</p>
+</div></td></tr></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L791" class="view-source icon-eye-open"> </a><h3 id="methods_getlinkterm">getLinkTerm()</h3>
+<div class="getlinkterm"><h5 id="methods_getlinkterm_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-getlinkterm-page"><p>The referrer extracted from the path.</p>
+</div></td></tr></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L685" class="view-source icon-eye-open"> </a><h3 id="methods_getlinktype">getLinkType(requestUri, search)</h3>
+<div class="getlinktype"><div class="apicore-base-getlinktype-page"><p>Runs through the request URI and the search query to figure out the type of page this user would see when landing on the app.</p>
+</div><h5 id="methods_getlinktype_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>requestUri</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-getlinktype-page"><p>The request uri of the desired page or the current page.</p>
+</div></td></tr><tr><td>search</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-getlinktype-page"><p>Search parameters in the request URI.</p>
+</div></td></tr></tbody></table><h5 id="methods_getlinktype_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-getlinktype-page"><p>The type of page the user would be landing on (or the type of link rather).</p>
+</div></td></tr></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L766" class="view-source icon-eye-open"> </a><h3 id="methods_getreferrer">getReferrer()</h3>
+<div class="getreferrer"><h5 id="methods_getreferrer_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-getreferrer-page"><p>Returns the social media referrer by parsing the document.referrer.</p>
+</div></td></tr></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L510" class="view-source icon-eye-open"> </a><h3 id="methods_goto">goto(The)</h3>
+<div class="goto"><div class="apicore-base-goto-page"><p>Uses the $location service internally to send the user to the specified location.</p>
+</div><h5 id="methods_goto_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>The</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-goto-page"><p>location to take the user (e.g.: &#39;www.younow.com&#39;).</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L861" class="view-source icon-eye-open"> </a><h3 id="methods_ismedge">isMEdge()</h3>
+<div class="ismedge"><h5 id="methods_ismedge_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="apicore-base-ismedge-page"><p>Checks if user is on microsoft edge.</p>
+</div></td></tr></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L441" class="view-source icon-eye-open"> </a><h3 id="methods_linkify">linkify(text)</h3>
+<div class="linkify"><div class="apicore-base-linkify-page"><p>Looks through text to find links and turn them into html a tags. Returns the argument is invalid params.</p>
+</div><h5 id="methods_linkify_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>text</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="apicore-base-linkify-page"><p>Text to sift through and linkify.</p>
+</div></td></tr></tbody></table><h5 id="methods_linkify_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-linkify-page"><p>Stringified html that replaces the texts link with an a tag.</p>
+</div></td></tr></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L849" class="view-source icon-eye-open"> </a><h3 id="methods_pad">pad(n, width, z)</h3>
+<div class="pad"><div class="apicore-base-pad-page"><p>??? Not sure what this does but it looks like it returns a padding depending on some variables.</p>
+</div><h5 id="methods_pad_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>n</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-pad-page"><p>The ???</p>
+</div></td></tr><tr><td>width</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-pad-page"><p>width of the element.</p>
+</div></td></tr><tr><td>z</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-pad-page"><p>Z-index</p>
+</div></td></tr></tbody></table><h5 id="methods_pad_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-pad-page"><p>The width</p>
+</div></td></tr></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L227" class="view-source icon-eye-open"> </a><h3 id="methods_poll">poll(callback, id, delay, defaultDelay)</h3>
+<div class="poll"><div class="apicore-base-poll-page"><p>This is a helper function to make Api requests on an interval basis. It also indexes every ongoing poll in a very handy Api.polls object.</p>
+</div><h5 id="methods_poll_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>callback</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="apicore-base-poll-page"><p>A callback function for the poll to execute.</p>
+</div></td></tr><tr><td>id</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-poll-page"><p>The string to index the poll in Api.polls (e.g.: Api.polls.testPoll)</p>
+</div></td></tr><tr><td>delay</td><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="apicore-base-poll-page"><p>The delay in seconds before the next interval.</p>
+</div></td></tr><tr><td>defaultDelay</td><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="apicore-base-poll-page"><p>In case the next interval time was changed to an invalid number.</p>
+</div></td></tr></tbody></table><h4 id="methods_poll_example">Example</h4>
+<div class="example"><div class="apicore-base-poll-page"><pre><code>Api.poll(function() {
+//make the API request in here and do other fancy things!
+}, &#39;testPoll&#39;, 30);
+</code></pre></div></div>
+</div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L180" class="view-source icon-eye-open"> </a><h3 id="methods_post">post(method, data, secured)</h3>
+<div class="post"><div class="apicore-base-post-page"><p>This is a wrapper around the $http.post service offered by angular. It gives us some control in changing our app wide get requests.</p>
+</div><h5 id="methods_post_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>method</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-post-page"><p>Api endpoint starting after /php/api/ (e.g.: &#39;younow/user&#39;)</p>
+</div></td></tr><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="apicore-base-post-page"><p>Set of params for the get request, corresponds to the backend API.</p>
+</div></td></tr><tr><td>secured</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="apicore-base-post-page"><p>Turns on https. Deprecated since migrating to https.</p>
+</div></td></tr></tbody></table><h5 id="methods_post_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="apicore-base-post-page"><p>Returns a promise object that is standard to the $http service, contains the API response.</p>
+</div></td></tr></table><h4 id="methods_post_example">Example</h4>
+<div class="example"><div class="apicore-base-post-page"><pre><code>var postRequest = Api.post(&#39;broadcast/add&#39;, {channelId: 75522});
+postRequest.then(function(response) {
+console.log(response);
+});
+</code></pre></div></div>
+</div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L495" class="view-source icon-eye-open"> </a><h3 id="methods_preparedescription">prepareDescription(User)</h3>
+<div class="preparedescription"><div class="apicore-base-preparedescription-page"><p>Prepares the description by sanitizing it and finding if there are any links in the description to linkify. It also checks if there is no description.
+In that case it sets it as &quot;This profiles does not have a description&quot;.</p>
+</div><h5 id="methods_preparedescription_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>User</td><td><a href="" class="label type-hint type-hint-text">text</a></td><td><div class="apicore-base-preparedescription-page"><p>description to prepare.</p>
+</div></td></tr></tbody></table><h5 id="methods_preparedescription_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-text">text</a></td><td><div class="apicore-base-preparedescription-page"><p>The description wrapped in trustedHtml object (An object that can be passed to $sce.getTrustedHtml(value) to obtain the original value).</p>
+</div></td></tr></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L297" class="view-source icon-eye-open"> </a><h3 id="methods_serialize">serialize(obj)</h3>
+<div class="serialize"><div class="apicore-base-serialize-page"><p>Need to serialize data, because AngularJS POSTs json by default
+<a href="http://victorblog.com/2012/12/20/make-angularjs-http-service-behave-like-jquery-ajax/">http://victorblog.com/2012/12/20/make-angularjs-http-service-behave-like-jquery-ajax/</a></p>
+</div><h5 id="methods_serialize_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>obj</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="apicore-base-serialize-page"><p>An object to serialize before sending it in a post request, used internally in the Api.post.</p>
+</div></td></tr></tbody></table><h5 id="methods_serialize_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="apicore-base-serialize-page"><p>An object that can be passed to $sce.getTrustedResourceUrl(value) to obtain the original value.</p>
+</div></td></tr></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L47" class="view-source icon-eye-open"> </a><h3 id="methods_sortobject">sortObject(obj)</h3>
+<div class="sortobject"><div class="apicore-base-sortobject-page"><p>This is a formatter function that takes an object and sorts it alphabetically based on its keys</p>
+</div><h5 id="methods_sortobject_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>obj</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="apicore-base-sortobject-page"><p>Takes an object to sort.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L86" class="view-source icon-eye-open"> </a><h3 id="methods_splitter">splitter(options)</h3>
+<div class="splitter"><div class="apicore-base-splitter-page"><p>This helper function gives us a way to choose between one or more options based on a percent chance. It will return the type label of the option.</p>
+</div><h5 id="methods_splitter_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>options</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="apicore-base-splitter-page"><p>Takes object of multiple options. The keys correspond to the percent chance that they will be chosen while the value of said keys are the label.</p>
+</div></td></tr></tbody></table><h5 id="methods_splitter_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-splitter-page"><p>The label of the winning option.</p>
+</div></td></tr></table><h4 id="methods_splitter_example">Example</h4>
+<div class="example"><div class="apicore-base-splitter-page"><pre><code>Api..splitter({
+      50: &#39;control&#39;,
+      100: &#39;variation&#39;
+  });
+</code></pre></div></div>
+</div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L533" class="view-source icon-eye-open"> </a><h3 id="methods_squashednumber">squashedNumber(num, size)</h3>
+<div class="squashednumber"><div class="apicore-base-squashednumber-page"><p>With a set size and a number, it truncates the number to a shortened version. (16000 becomes 16k).</p>
+</div><h5 id="methods_squashednumber_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>num</td><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="apicore-base-squashednumber-page"><p>The number to squash.</p>
+</div></td></tr><tr><td>size</td><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="apicore-base-squashednumber-page"><p>The number of digits allowed.</p>
+</div></td></tr></tbody></table><h5 id="methods_squashednumber_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="apicore-base-squashednumber-page"><p>The number that was squashed or truncated.</p>
+</div></td></tr></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L562" class="view-source icon-eye-open"> </a><h3 id="methods_store">store(key, value)</h3>
+<div class="store"><div class="apicore-base-store-page"><p>Helper function to access localStorage in a crossbrowser way. Simple interface and preserves the types stored.
+Learn more here: <a href="https://gist.github.com/Fluidbyte/4718380">https://gist.github.com/Fluidbyte/4718380</a></p>
+</div><h5 id="methods_store_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>key</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-store-page"><p>The key to access the localStorage item.</p>
+</div></td></tr><tr><td>value</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-store-page"><p>A value to override the localStorage item or create a new one, note that this does not have to be a string can be any type.</p>
+</div></td></tr></tbody></table><h5 id="methods_store_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-store-page"><p>This does not always return a string. It will return null if nothing is found and it will preserve type (boolean, string, object, number).</p>
+</div></td></tr></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L476" class="view-source icon-eye-open"> </a><h3 id="methods_striphtml">stripHTML(text)</h3>
+<div class="striphtml"><div class="apicore-base-striphtml-page"><p>Removes all HTML from a string.</p>
+</div><h5 id="methods_striphtml_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>text</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-striphtml-page"><p>The text to search through.</p>
+</div></td></tr></tbody></table><h5 id="methods_striphtml_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-striphtml-page"><p>The text without html.</p>
+</div></td></tr></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L830" class="view-source icon-eye-open"> </a><h3 id="methods_trackerror">trackError(message)</h3>
+<div class="trackerror"><div class="apicore-base-trackerror-page"><p>Sends custom error messages to bugsnag, can be invoked whenever. This doesn&#39;t necessariliy have to wait for an error to occur.</p>
+</div><h5 id="methods_trackerror_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>message</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-trackerror-page"><p>Message to send bugsnag.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L262" class="view-source icon-eye-open"> </a><h3 id="methods_trustedsrc">trustedSrc(src)</h3>
+<div class="trustedsrc"><div class="apicore-base-trustedsrc-page"><p>Sanitizes unsafe source urls for later use in html templates by directives.</p>
+</div><h5 id="methods_trustedsrc_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>src</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-trustedsrc-page"><p>A string representing a resource (js, css, image, video) that will be used in an ng-src or other angular related directive.</p>
+</div></td></tr></tbody></table><h5 id="methods_trustedsrc_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="apicore-base-trustedsrc-page"><p>An object that can be passed to $sce.getTrustedResourceUrl(value) to obtain the original value.</p>
+</div></td></tr></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/utils/utils-core.js#L277" class="view-source icon-eye-open"> </a><h3 id="methods_trustedsrc">trustedSrc(text)</h3>
+<div class="trustedsrc"><div class="apicore-base-trustedsrc-page"><p>Sanitizes unsafe html to be used in directives and templates. If the argument is missing the function returns the argument with no changes.</p>
+</div><h5 id="methods_trustedsrc_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>text</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="apicore-base-trustedsrc-page"><p>Html string that will be used in a directive.</p>
+</div></td></tr></tbody></table><h5 id="methods_trustedsrc_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="apicore-base-trustedsrc-page"><p>An object that can be passed to $sce.getTrustedResourceUrl(value) to obtain the original value.</p>
+</div></td></tr></table></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_linksniffer">linksniffer</h3>
+<div class="linksniffer"><div class="apicore-base-linksniffer-page"><p>A regex that searchs and captures links.</p>
+</div></div>
+</li>
+</ul>
+</div>
+</div>
+</script><script type="text/ng-template" id="partials/core/Modal Directives.html"><a href="https://github.com/younow/website/edit/master/src/core/directives/modals.js" class="improve-docs"><i class="icon-edit"> </i>Improve this doc</a><h1><code ng:non-bindable="">Modal Directives</code>
+<div><span class="hint"></span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="modal-directives-page"><p>The Modal Directives are part of a set of base directives that our app uses for modals.</p>
+</div></div>
+</div>
+</script><script type="text/ng-template" id="partials/core/Scrolling Directives.html"><a href="https://github.com/younow/website/edit/master/src/core/directives/scroll.js" class="improve-docs"><i class="icon-edit"> </i>Improve this doc</a><h1><code ng:non-bindable="">Scrolling Directives</code>
+<div><span class="hint"></span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="scrolling-directives-page"><p>The Scrolling Directives are part of a set of base directives that our app uses.</p>
+</div></div>
+</div>
+</script><script type="text/ng-template" id="partials/core/TrackingPixelCore.html"><a href="https://github.com/younow/website/edit/master/src/core/services/tracking/tracking-pixel-core.js" class="improve-docs"><i class="icon-edit"> </i>Improve this doc</a><h1><code ng:non-bindable="">TrackingPixelCore</code>
+<div><span class="hint"></span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="trackingpixelcore-page"><p>The TrackingPixelCore is part of a set of base services that our apps (mobile &amp; desktop currently)
+consume to extend their own versions of the Api service.</p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/tracking/tracking-pixel-core.js#L102" class="view-source icon-eye-open"> </a><h3 id="methods_base">Base(options, paramsMap, paramTypes, config)</h3>
+<div class="base"><div class="trackingpixelcore-base-page"><p>The Base method of the TrackingPixelCore is the standard way we initialize services. It returns an object which should then extend the functionality of the
+app&#39;s TrackingPixel (tracking) service.</p>
+<p>Keep in mind that a map of parameters and a map of param types has to be retrieved from the core&#39;s local variables
+in order for the TrackingPixelCore to be fully integrated into the app.</p>
+</div><h5 id="methods_base_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>options</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="trackingpixelcore-base-page"><p>An object of options that can be passed into the app. They currently consist of the following:</p>
+</div></td></tr><tr><td>paramsMap</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="trackingpixelcore-base-page"><p>An optional object that overrides the default params map within the tracking pixel. (used for building the tracking pixel url)</p>
+</div></td></tr><tr><td>paramTypes</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="trackingpixelcore-base-page"><p>An optional object that overrides the default param types within the tracking pixel. (used for type checking)</p>
+</div></td></tr><tr><td>config</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="trackingpixelcore-base-page"><p>The app&#39;s config object.</p>
+</div></td></tr></tbody></table><h4 id="methods_base_example">Example</h4>
+<div class="example"><div class="trackingpixelcore-base-page"><pre><code>var trackingPixelCore = new TrackingPixelCore.Base({
+config: config
+});
+var trackingPixel = angular.extend(trackingPixelCore, {});
+var paramsMap = trackingPixel._getLocalVar(&#39;paramsMap&#39;);
+var paramTypes = trackingPixel._getLocalVar(&#39;paramTypes&#39;);
+</code></pre></div></div>
+</div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/tracking/tracking-pixel-core.js#L174" class="view-source icon-eye-open"> </a><h3 id="methods_capturehelper">captureHelper(params)</h3>
+<div class="capturehelper"><div class="trackingpixelcore-capturehelper-page"><p>A helper function that generates a tracking pixel url and sends a tracking pixel request based on a set of params passed in.</p>
+</div><h5 id="methods_capturehelper_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>params</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="trackingpixelcore-capturehelper-page"><p>A set of params that make up the tracking pixel url.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/tracking/tracking-pixel-core.js#L144" class="view-source icon-eye-open"> </a><h3 id="methods_checktrpxsession">checkTrpxSession(paramsMap)</h3>
+<div class="checktrpxsession"><div class="trackingpixelcore-checktrpxsession-page"><p>Increments or decrements the countSessions localStorage variable that we use to track the amount of sessions a user has had.
+It also creates a trpxId if there isn&#39;t one available or if it has expired.</p>
+</div><h5 id="methods_checktrpxsession_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>paramsMap</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="trackingpixelcore-checktrpxsession-page"><p>An optional object that overrides the default params map within the tracking pixel. (used for building the tracking pixel url)</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/tracking/tracking-pixel-core.js#L200" class="view-source icon-eye-open"> </a><h3 id="methods_trackarrivalhelper">trackArrivalHelper(track)</h3>
+<div class="trackarrivalhelper"><div class="trackingpixelcore-trackarrivalhelper-page"><p>A helper function that generates a tracking pixel url and sends a tracking pixel request based on a set of params passed in when the user lands.
+Note that it generates and finds a linkType, referrer, linkTerm and a referrerPath.</p>
+</div><h5 id="methods_trackarrivalhelper_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>track</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="trackingpixelcore-trackarrivalhelper-page"><p>An object defining the params to be tracked when the user lands/arrives.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/tracking/tracking-pixel-core.js#L231" class="view-source icon-eye-open"> </a><h3 id="methods_trackclick">trackClick(action, params)</h3>
+<div class="trackclick"><div class="trackingpixelcore-trackclick-page"><p>A helper function that generates a tracking pixel url and sends a tracking pixel request based on a set of params passed in when the user lands.
+Note that it generates and finds a linkType, referrer, linkTerm and a referrerPath.</p>
+</div><h5 id="methods_trackclick_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>action</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="trackingpixelcore-trackclick-page"><p>The event label to be sent to redshift (as a parameter in the tracking pixel url).</p>
+</div></td></tr><tr><td>params</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="trackingpixelcore-trackclick-page"><p>An object defining the params to be tracked.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><a href="https://github.com/younow/website/blob/ba905a4/src/core/services/tracking/tracking-pixel-core.js#L259" class="view-source icon-eye-open"> </a><h3 id="methods_trackclick">trackClick(varName)</h3>
+<div class="trackclick"><div class="trackingpixelcore-trackclick-page"><p>Return a local variable from within the core constructor. Recommended use is to initialize the local variables for the apps custom trackingPixel service.
+Currently the local variables are defined below:</p>
+<p>_paramsMap :  a list of param labels and their corresponding position in the tracking pixel url.
+_paramTypes : a list of param labels and their corresponding types (string, number, boolean).
+_localStorageDeviceId : the device id stored in the browser&#39;s localStorage.</p>
+<p>This should be used sparingly as we want to reduce the amount of references we make to the core constructor.</p>
+</div><h5 id="methods_trackclick_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>varName</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="trackingpixelcore-trackclick-page"><p>The local variable to return.</p>
+</div></td></tr></tbody></table><h5 id="methods_trackclick_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="trackingpixelcore-trackclick-page"><p>Two of the possible local variables are objects but this can also return a string or any other local variables from within the core.</p>
+</div></td></tr></table></div>
+</li>
+</ul>
+</div>
+</div>
+</script><script type="text/ng-template" id="partials/core/Utility Directives.html"><a href="https://github.com/younow/website/edit/master/src/core/directives/utilities.js" class="improve-docs"><i class="icon-edit"> </i>Improve this doc</a><h1><code ng:non-bindable="">Utility Directives</code>
+<div><span class="hint"></span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="utility-directives-page"><p>The Utility Directives are flow improvers. They take care of many
+desired default behaviors on click, enter, change or submit.</p>
+</div></div>
+</div>
+</script><script type="text/ng-template" id="partials/core/ab.html"><a href="https://github.com/younow/website/edit/master/src/core/services/ab/ab-core.js" class="improve-docs"><i class="icon-edit"> </i>Improve this doc</a><h1><code ng:non-bindable="">ab</code>
+<div><span class="hint"></span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="ab-page"><p>Loads templates on the fly depending on the ab variation (used in conjunction with the ab service).</p>
+</div></div>
+<h2 id="dependencies">Dependencies</h2>
+<ul class="dependencies"><li><code ng:non-bindable=""><a href="#/core/ab">ab</a></code>
+</li>
+</ul>
+<h2 id="usage">Usage</h2>
+<div class="usage">as element:<pre class="prettyprint linenums">&lt;ab&gt;
+&lt;/ab&gt;</pre>
+</div>
+</div>
+</script><script type="text/ng-template" id="partials/core/cameraValid.html"><a href="https://github.com/younow/website/edit/master/src/core/directives/utilities.js" class="improve-docs"><i class="icon-edit"> </i>Improve this doc</a><h1><code ng:non-bindable="">cameraValid</code>
+<div><span class="hint"></span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="cameravalid-page"><p>cameraValid checks for a functioning camera stream</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as attribute<pre class="prettyprint linenums">&lt;ANY camera-valid&gt;
+   ...
+&lt;/ANY&gt;</pre>
+</div>
+</div>
+</script><script type="text/ng-template" id="partials/core/copyOnClick.html"><a href="https://github.com/younow/website/edit/master/src/core/directives/utilities.js" class="improve-docs"><i class="icon-edit"> </i>Improve this doc</a><h1><code ng:non-bindable="">copyOnClick</code>
+<div><span class="hint"></span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="copyonclick-page"><p>copyOnClick copies a selection to your clipboard on click</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as attribute<pre class="prettyprint linenums">&lt;ANY copy-on-click&gt;
+   ...
+&lt;/ANY&gt;</pre>
+</div>
+</div>
+</script><script type="text/ng-template" id="partials/core/dynamicAlert.html"><a href="https://github.com/younow/website/edit/master/src/core/directives/utilities.js" class="improve-docs"><i class="icon-edit"> </i>Improve this doc</a><h1><code ng:non-bindable="">dynamicAlert</code>
+<div><span class="hint"></span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="dynamicalert-page"><p>dynamicAlert passes the browser focus to a given element B on click of element A</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as attribute<pre class="prettyprint linenums">&lt;ANY dynamic-alert&gt;
+   ...
+&lt;/ANY&gt;</pre>
+</div>
+</div>
+</script><script type="text/ng-template" id="partials/core/infiniteScroll.html"><a href="https://github.com/younow/website/edit/master/src/core/directives/scroll.js" class="improve-docs"><i class="icon-edit"> </i>Improve this doc</a><h1><code ng:non-bindable="">infiniteScroll</code>
+<div><span class="hint"></span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="infinitescroll-page"><p>infiniteScroll dynamically appends scrollable content to the end of a given
+section once the user nears the end of existing content</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as attribute<pre class="prettyprint linenums">&lt;ANY infinite-scroll&gt;
+   ...
+&lt;/ANY&gt;</pre>
+</div>
+</div>
+</script><script type="text/ng-template" id="partials/core/onlyScroll.html"><a href="https://github.com/younow/website/edit/master/src/core/directives/scroll.js" class="improve-docs"><i class="icon-edit"> </i>Improve this doc</a><h1><code ng:non-bindable="">onlyScroll</code>
+<div><span class="hint"></span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="onlyscroll-page"><p>onlyScroll prevents mouse scrolling when used as an attribute of an HTML 
+element. If a user&#39;s tries to mousewheel while &quot;on&quot; an element with only-scroll,
+it will not work.</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as attribute<pre class="prettyprint linenums">&lt;ANY only-scroll&gt;
+   ...
+&lt;/ANY&gt;</pre>
+</div>
+</div>
+</script><script type="text/ng-template" id="partials/core/passFocusTo.html"><a href="https://github.com/younow/website/edit/master/src/core/directives/utilities.js" class="improve-docs"><i class="icon-edit"> </i>Improve this doc</a><h1><code ng:non-bindable="">passFocusTo</code>
+<div><span class="hint"></span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="passfocusto-page"><p>passFocusTo passes the browser focus to a given element B with an ID on click of element A</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as attribute<pre class="prettyprint linenums">&lt;ANY pass-focus-to&gt;
+   ...
+&lt;/ANY&gt;</pre>
+</div>
+</div>
+</script><script type="text/ng-template" id="partials/core/preventDefault.html"><a href="https://github.com/younow/website/edit/master/src/core/directives/utilities.js" class="improve-docs"><i class="icon-edit"> </i>Improve this doc</a><h1><code ng:non-bindable="">preventDefault</code>
+<div><span class="hint"></span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="preventdefault-page"><p>preventDefault checks for ng-click, an empty href, or an href set to &#39;#&#39;.
+If those condidtions are found it prevents default behavior on click/double click.</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as attribute<pre class="prettyprint linenums">&lt;ANY prevent-default&gt;
+   ...
+&lt;/ANY&gt;</pre>
+</div>
+</div>
+</script><script type="text/ng-template" id="partials/core/toggleD.html"><a href="https://github.com/younow/website/edit/master/src/core/directives/utilities.js" class="improve-docs"><i class="icon-edit"> </i>Improve this doc</a><h1><code ng:non-bindable="">toggleD</code>
+<div><span class="hint"></span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="toggled-page"><p>toggleD adds a class to the element on hover after a delay of 1 second</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as attribute<pre class="prettyprint linenums">&lt;ANY toggle-d&gt;
+   ...
+&lt;/ANY&gt;</pre>
+</div>
+</div>
+</script><script type="text/ng-template" id="partials/core/windowClass.html"><a href="https://github.com/younow/website/edit/master/src/core/directives/modals.js" class="improve-docs"><i class="icon-edit"> </i>Improve this doc</a><h1><code ng:non-bindable="">windowClass</code>
+<div><span class="hint"></span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="windowclass-page"><p>windowClass toggles a class on timeout</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as attribute<pre class="prettyprint linenums">&lt;ANY window-class&gt;
+   ...
+&lt;/ANY&gt;</pre>
+</div>
+</div>
+</script><script type="text/ng-template" id="partials/core/ynEnter.html"><a href="https://github.com/younow/website/edit/master/src/core/directives/utilities.js" class="improve-docs"><i class="icon-edit"> </i>Improve this doc</a><h1><code ng:non-bindable="">ynEnter</code>
+<div><span class="hint"></span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="ynenter-page"><p>ynEnter works like an ng-click. It fires a function on enter.</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as attribute<pre class="prettyprint linenums">&lt;ANY yn-enter&gt;
+   ...
+&lt;/ANY&gt;</pre>
+</div>
+</div>
+</script><script type="text/ng-template" id="partials/core/ynModalDraggable.html"><a href="https://github.com/younow/website/edit/master/src/core/directives/modals.js" class="improve-docs"><i class="icon-edit"> </i>Improve this doc</a><h1><code ng:non-bindable="">ynModalDraggable</code>
+<div><span class="hint"></span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="ynmodaldraggable-page"><p>ynModalDraggable allows users to drag a modal to another part of the browser window.</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as attribute<pre class="prettyprint linenums">&lt;ANY yn-modal-draggable&gt;
+   ...
+&lt;/ANY&gt;</pre>
+</div>
+</div>
+</script><script type="text/ng-template" id="partials/core/ynOnChange.html"><a href="https://github.com/younow/website/edit/master/src/core/directives/utilities.js" class="improve-docs"><i class="icon-edit"> </i>Improve this doc</a><h1><code ng:non-bindable="">ynOnChange</code>
+<div><span class="hint"></span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="ynonchange-page"><p>ynOnChange triggers a function on a change event</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as attribute<pre class="prettyprint linenums">&lt;ANY yn-on-change&gt;
+   ...
+&lt;/ANY&gt;</pre>
+</div>
+</div>
+</script><script>(function () {
+      var scripts = document.getElementsByTagName("script");
+      for (var i=0;i<scripts.length;i++) {
+        if (scripts[i].type==='text/ng-template') {
+          scripts[i].innerHTML = scripts[i].innerHTML.replace(/<___\/script___>/g, '</' + 'script>');
+        }
+      }
+    }())</script>
+  <header class="header">
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          
+          
+            <a  href="/"  class="brand">younow</a>
+          
+          <ul class="nav">
+            <li ng-repeat="(url, name) in sections" ng-class="{active: isActivePath(url)}">
+              <a ng-href="{{url}}"><i class="icon-book icon-white"></i> {{name}}</a>
+            </li>
+          </ul>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div role="main" class="container">
+    <div class="row clear-navbar"></div>
+
+    <div class="row">
+      <div class="span12">
+        <!--[if lt IE 7]>
+        <p class="alert alert-error">Your browser is <em>ancient!</em>
+          <a href="http://browsehappy.com/">Upgrade to a different browser</a> or
+          <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
+          experience this site.
+        </p>
+        <![endif]-->
+
+        <!--[if lt IE 9]>
+        <div class="alert">
+          You are using an old version of Internet Explorer.
+          For better and safer browsing experience please <a href="http://www.microsoft.com/IE9">upgrade IE</a>
+          or install <a href="http://google.com/chrome">Google Chrome browser</a>.
+        </div>
+        <![endif]-->
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="span3">
+        <form class="form-search" ng-submit="submitForm()">
+          
+          <div class="dropdown search"
+               ng-class="{open: focused && bestMatch.rank > 0 && bestMatch.page != currentPage}">
+            <input type="text" ng-model="search" placeholder="search the docs"
+                   tabindex="1" accesskey="s" class="search-query" focused="focused">
+            <ul class="dropdown-menu">
+              <li>
+                <a href="{{bestMatch.page.url}}">{{bestMatch.page.shortName}}</a>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="spacer"></div>
+
+          <ul class="nav nav-list well" ng-show="pages.length">
+            <li ng-repeat="page in pages track by page.url" ng-class="navClass(page)" class="api-list-item expand">
+              <a href="{{page.url}}" tabindex="2">{{page.shortName}}</a>
+            </li>
+          </ul>
+
+          <ul class="nav nav-list well" ng-repeat="module in modules track by module.url" class="api-list-item">
+            <li class="nav-header module">
+              <a class="guide">module</a>
+              <a class="code" href="{{module.url}}" title="{{module.name}}">{{module.name}}</a>
+            </li>
+
+            <li ng-repeat="page in module.others track by page.url" ng-class="navClass(page)" class="api-list-item expand">
+              <a href="{{page.url}}" tabindex="2">{{page.shortName}}</a>
+            </li>
+
+            <li class="nav-header section" ng-show="module.directives.length">
+              <a class="guide">directive</a>
+            </li>
+            <li ng-repeat="page in module.directives track by page.url" ng-class="navClass(page)" class="api-list-item expand">
+              <a href="{{page.url}}" tabindex="2">{{page.shortName}}</a>
+            </li>
+
+            <li class="nav-header section" ng-show="module.controllers.length">
+              <a class="guide">controller</a>
+            </li>
+            <li ng-repeat="page in module.controllers track by page.url" ng-class="navClass(page)" class="api-list-item expand">
+              <a href="{{page.url}}" tabindex="2">{{page.shortName}}</a>
+            </li>
+
+            <li class="nav-header section" ng-show="module.filters.length">
+              <a class="guide">filter</a>
+            </li>
+            <li ng-repeat="page in module.filters track by page.url" ng-class="navClass(page)" class="api-list-item expand">
+              <a href="{{page.url}}" tabindex="2">{{page.shortName}}</a>
+            </li>
+
+            <li class="nav-header section" ng-show="module.services.length">
+              <a class="guide">service</a>
+            </li>
+            <li ng-repeat="service in module.services track by  (service.instance.url || service.provider.url)" ng-class="navClass(service.instance, service.provider)" class="api-list-item expand">
+              <a ng-show="service.provider" class="pull-right" href="{{service.provider.url}}" tabindex="2"><i class="icon-cog"></i></a>
+              <a href="{{service.instance ? service.instance.url : service.provider.url}}" tabindex="2">{{service.name}}</a>
+            </li>
+
+            <li class="nav-header section" ng-show="module.types.length">
+              <a class="guide">Types</a>
+            </li>
+            <li ng-repeat="page in module.types track by page.url" ng-class="navClass(page)" class="api-list-item expand">
+              <a href="{{page.url}}" tabindex="2">{{page.shortName}}</a>
+            </li>
+
+            <li class="nav-header section" ng-show="module.globals.length">
+              <a class="global guide">global APIs</a>
+              &nbsp;
+            </li>
+            <li ng-repeat="page in module.globals track by page.url" ng-class="navClass(page)" class="api-list-item expand">
+              <a href="{{page.url}}" tabindex="2">{{page.id}}</a>
+            </li>
+
+          </ul>
+
+        </form>
+      </div>
+      <div class="span9">
+
+        <ul class="breadcrumb">
+          <li ng-repeat="crumb in breadcrumb">
+            <span ng-hide="crumb.url">{{crumb.name}}</span>
+            <a ng-show="crumb.url" href="{{crumb.url}}">{{crumb.name}}</a>
+            <span ng-show="crumb.url" class="divider">/</span>
+          </li>
+        </ul>
+
+        <div id="loading" ng-show="loading">Loading...</div>
+
+        <div ng-hide="loading" ng-include src="currentPage.partialUrl" onload="afterPartialLoaded()" autoscroll class="content slide-reveal"></div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

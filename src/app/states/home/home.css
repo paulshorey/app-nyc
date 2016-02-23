@@ -1,0 +1,798 @@
+.home-container {
+  min-width: 995px; }
+  .home-container .homeSection {
+    padding: 40px 0 30px 0;
+    background: #fff; }
+    .home-container .homeSection .cta-btn-container {
+      width: 100%;
+      text-align: center; }
+    .home-container .homeSection .cta-btn {
+      padding-left: 12px;
+      padding-right: 12px;
+      margin: 40px auto 0 auto;
+      display: inline-block;
+      min-width: 140px;
+      font-size: 20px;
+      border: 0px;
+      margin-bottom: 20px;
+      height: 45px;
+      line-height: 34px;
+      color: #fff; }
+    .home-container .homeSection h2 {
+      text-align: center;
+      margin: 0 0 30px 0;
+      font-weight: lighter; }
+  .home-container .homeSection:nth-child(odd) {
+    background-color: #f8f8f8; }
+  .home-container .homeSection.newFooter {
+    padding: 28px 0 22px; }
+  .home-container h2 {
+    text-align: center;
+    margin: 0 0 40px 0;
+    font-weight: lighter; }
+  .home-container .inner-container {
+    width: 760px;
+    margin: 0 auto; }
+  .home-container .search-container {
+    position: relative;
+    height: 440px;
+    z-index: 10;
+    padding: 0;
+    /* placeholder text styling */ }
+    .home-container .search-container .logo-image {
+      color: #fff;
+      height: 52px;
+      width: auto;
+      transform: rotate(0deg);
+      /* actually this helps */ }
+    .home-container .search-container .search-top {
+      z-index: 10;
+      position: relative;
+      height: 87px;
+      padding: 15px;
+      line-height: 52px;
+      line-height: 30px;
+      margin-right: 10px; }
+    .home-container .search-container .search-cta > .btn, .home-container .search-container .search-cta a {
+      margin-left: 20px;
+      font-size: 17px; }
+    .home-container .search-container .search-cta .btn-outline {
+      min-width: 100px; }
+    .home-container .search-container .search-cta .btn-primary {
+      min-width: 128px; }
+    .home-container .search-container .search-cta a {
+      color: #fff; }
+      .home-container .search-container .search-cta a:hover {
+        text-decoration: none; }
+    .home-container .search-container ::-webkit-input-placeholder {
+      /* WebKit browsers */
+      color: white; }
+    .home-container .search-container :-moz-placeholder {
+      /* Mozilla Firefox 4 to 18 */
+      color: white;
+      opacity: 1; }
+    .home-container .search-container ::-moz-placeholder {
+      /* Mozilla Firefox 19+ */
+      color: white;
+      opacity: 1; }
+    .home-container .search-container :-ms-input-placeholder {
+      /* Internet Explorer 10+ */
+      color: white; }
+    .home-container .search-container .home-video-container {
+      overflow: hidden;
+      height: 440px;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      background-color: #000; }
+    .home-container .search-container .home-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 0;
+      height: auto;
+      opacity: 0.7;
+      margin-top: -130px; }
+    .home-container .search-container h1 {
+      margin-top: 100px;
+      color: #fff; }
+    .home-container .search-container h4 {
+      color: #fff;
+      line-height: 20px;
+      padding: 0 270px;
+      line-height: 23px;
+      max-width: 1326px;
+      margin: 0 auto; }
+    .home-container .search-container h1, .home-container .search-container h4 {
+      position: relative;
+      text-align: center; }
+    .home-container .search-container .search-box {
+      width: 500px;
+      height: 50px;
+      margin: 0 auto;
+      float: none !important;
+      margin-top: 20px; }
+      .home-container .search-container .search-box .btn-primary {
+        border-color: #61c13e; }
+      .home-container .search-container .search-box .search-field {
+        height: 50px;
+        background-color: rgba(255, 255, 255, 0.5);
+        padding: 1px 100px 1px 63px;
+        color: #fff;
+        font-size: 20px;
+        border-radius: 4px; }
+      .home-container .search-container .search-box .ynicon-search {
+        line-height: 40px;
+        left: 15px;
+        width: 23px;
+        color: white; }
+      .home-container .search-container .search-box .dropdown-menu {
+        width: 100% !important;
+        left: 0px !important;
+        margin-top: 0px !important;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px; }
+        .home-container .search-container .search-box .dropdown-menu .searchResult-more, .home-container .search-container .search-box .dropdown-menu li:last-child.active {
+          border-bottom-right-radius: 4px !important;
+          border-bottom-left-radius: 4px !important; }
+  .home-container .explore-container {
+    background-color: #fff;
+    text-align: justify; }
+    .home-container .explore-container .inner-container {
+      max-height: 140px;
+      overflow: hidden; }
+    .home-container .explore-container .tag {
+      border: 1px solid transparent;
+      border-radius: 20px;
+      margin: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 6px 10px;
+      background-color: #3f7dd8;
+      color: #fff;
+      text-decoration: none;
+      line-height: 45px;
+      white-space: pre; }
+      .home-container .explore-container .tag:hover {
+        background: #5899f9; }
+  .home-container .join-container .join-content {
+    text-align: center;
+    margin: 0 auto 5px; }
+  .home-container .join-container h2 {
+    margin: 0; }
+  .home-container .join-container .cta-btn {
+    margin: 20px 0 0; }
+  .home-container .trending-bc-container .trending-bcers {
+    margin: 0 auto;
+    width: 755px;
+    height: 470px; }
+  .home-container .trending-bc-container .trending-bcer {
+    margin: 0 10px 45px 10px;
+    display: inline-block; }
+    .home-container .trending-bc-container .trending-bcer .trending-desc {
+      display: inline-block;
+      font-size: 14px;
+      text-decoration: none; }
+      .home-container .trending-bc-container .trending-bcer .trending-desc > * {
+        color: #999;
+        display: inline-block;
+        overflow: hidden; }
+      .home-container .trending-bc-container .trending-bcer .trending-desc:hover {
+        text-decoration: none; }
+      .home-container .trending-bc-container .trending-bcer .trending-desc .short-text {
+        max-width: 100px; }
+  .home-container .trending-bc-container .trending-tag {
+    font-size: 20px;
+    margin-top: 15px;
+    display: block;
+    color: #333;
+    text-decoration: none;
+    max-width: 140px; }
+  .home-container .trending-bc-container .thumb {
+    width: 168px;
+    height: 126px;
+    position: relative;
+    background-size: cover !important; }
+    .home-container .trending-bc-container .thumb span {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      color: #fff;
+      font-size: 20px;
+      padding-left: 10px;
+      z-index: 20; }
+  .home-container .mobile-container {
+    background-color: #fff;
+    padding-bottom: 0; }
+
+/*
+	EXP header
+*/
+#old_navbar {
+  display: none;
+  background: #ffffff; }
+  #old_navbar a {
+    color: #61c13e !important; }
+  #old_navbar .btn-primary {
+    margin-left: 15px; }
+  #old_navbar .explore_text {
+    display: none; }
+  #old_navbar .search-box input {
+    background: #f2f0f1; }
+  #old_navbar .search-box i {
+    color: #fff; }
+
+.scrolled #old_navbar {
+  display: block; }
+
+/*
+	EXP
+*/
+.home-container.expX .home-video-container {
+  overflow: hidden;
+  height: 500px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  background-color: #000; }
+.home-container.expX .home-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+  height: auto;
+  opacity: 0.7;
+  margin-top: -130px; }
+.home-container.expX .experiment_app {
+  text-align: center;
+  font-size: 16px; }
+  .home-container.expX .experiment_app span {
+    color: #999; }
+  .home-container.expX .experiment_app a {
+    padding-left: 12px;
+    text-decoration: none !important; }
+.home-container.expX #old_navbar {
+  /* placeholder text styling */ }
+  .home-container.expX #old_navbar yn-search-bar {
+    position: relative;
+    display: block;
+    margin: inherit;
+    width: inherit; }
+  .home-container.expX #old_navbar ::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #ccc; }
+  .home-container.expX #old_navbar :-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #ccc;
+    opacity: 1; }
+  .home-container.expX #old_navbar ::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #ccc;
+    opacity: 1; }
+  .home-container.expX #old_navbar :-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: #ccc; }
+  .home-container.expX #old_navbar .search-box .btn-primary {
+    border-color: #ccc; }
+  .home-container.expX #old_navbar .search-box .search-field {
+    border: solid 1px #ccc;
+    background: none; }
+  .home-container.expX #old_navbar .search-box .ynicon-search {
+    color: #ccc; }
+  .home-container.expX #old_navbar .search-box .dropdown-menu {
+    margin-top: -2px !important; }
+
+/*
+	EXP B
+*/
+.home-container.expB {
+  /*
+		bottom
+	*/
+  /*
+		old navbar
+	*/
+  /*
+		new navbar
+	*/
+  /* placeholder text styling */
+  /*
+		top
+	*/
+  /*
+		LEFT / RIGHT
+	*/ }
+  .home-container.expB .darkFooter {
+    background: #f2f2f2; }
+  .home-container.expB .experiment_connect {
+    text-align: center;
+    font-size: 16px;
+    padding: 60px 0;
+    color: #999; }
+    .home-container.expB .experiment_connect .moreOptions {
+      color: #cccccc; }
+      .home-container.expB .experiment_connect .moreOptions .moreOptionsClick {
+        color: #cccccc; }
+    .home-container.expB .experiment_connect .homeButtons {
+      margin: 20px auto 30px; }
+      .home-container.expB .experiment_connect .homeButtons .moreOptionsClick {
+        color: #cccccc; }
+        .home-container.expB .experiment_connect .homeButtons .moreOptionsClick:hover {
+          color: #999; }
+    .home-container.expB .experiment_connect .experiment_terms {
+      text-align: center;
+      color: #cccccc; }
+      .home-container.expB .experiment_connect .experiment_terms a {
+        text-decoration: underline;
+        color: #cccccc; }
+        .home-container.expB .experiment_connect .experiment_terms a:hover {
+          color: #999; }
+    .home-container.expB .experiment_connect .experiment_connect_title {
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto; }
+  .home-container.expB .navbar .explore-text {
+    display: none; }
+  .home-container.expB .logo-image {
+    color: #fff;
+    height: 52px;
+    width: auto;
+    transform: rotate(0deg);
+    /* actually this helps */ }
+  .home-container.expB .search-top {
+    z-index: 10;
+    position: relative;
+    height: 87px;
+    padding: 10px 15px;
+    line-height: 52px;
+    line-height: 30px;
+    margin-right: 10px;
+    min-width: 100%; }
+  .home-container.expB yn-search-bar {
+    position: relative;
+    display: block;
+    margin: -50px auto 0 auto;
+    width: 250px; }
+  .home-container.expB .search-cta > .btn, .home-container.expB .search-cta a {
+    margin-left: 20px;
+    font-size: 17px; }
+  .home-container.expB .search-cta .btn-outline {
+    min-width: 100px; }
+  .home-container.expB .search-cta .btn-primary {
+    min-width: 128px; }
+  .home-container.expB .search-cta a {
+    color: #fff; }
+    .home-container.expB .search-cta a:hover {
+      text-decoration: none; }
+  .home-container.expB ::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: white; }
+  .home-container.expB :-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: white;
+    opacity: 1; }
+  .home-container.expB ::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: white;
+    opacity: 1; }
+  .home-container.expB :-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: white; }
+  .home-container.expB .search-box .btn-primary {
+    border-color: #fff; }
+  .home-container.expB .search-box .search-field {
+    border: solid 1px #fff;
+    background: none; }
+  .home-container.expB .search-box .ynicon-search {
+    color: #fff; }
+  .home-container.expB .search-box .dropdown-menu {
+    margin-top: -2px !important; }
+  .home-container.expB .top-container {
+    position: relative;
+    min-height: 500px;
+    z-index: 10;
+    padding: 0;
+    background-color: #999;
+    background-size: cover;
+    background-position: center;
+    repeat: no-repeat;
+    overflow: hidden; }
+  .home-container.expB .homeTitle {
+    margin-top: 60px;
+    margin-bottom: 50px;
+    color: #fff;
+    text-align: center;
+    position: relative; }
+  .home-container.expB .homeSubtitle {
+    margin-bottom: 25px;
+    color: #fff;
+    line-height: 20px;
+    padding: 0 270px;
+    line-height: 23px;
+    max-width: 1326px;
+    margin: 0 auto;
+    position: relative;
+    text-align: center; }
+  .home-container.expB .homeButtons {
+    margin: 33px auto 50px;
+    text-align: center; }
+    .home-container.expB .homeButtons .btn {
+      line-height: 18px;
+      padding-left: 18px;
+      padding-right: 18px;
+      width: 220px;
+      margin: 0 2px; }
+  .home-container.expB .moreOptions {
+    margin-top: 12px; }
+    .home-container.expB .moreOptions .moreOptionsClick {
+      color: #dedede;
+      cursor: pointer; }
+  .home-container.expB .topTermsLine {
+    position: absolute;
+    bottom: 18px;
+    width: 100%;
+    color: #dedede;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center; }
+    .home-container.expB .topTermsLine a {
+      color: #fff; }
+  .home-container.expB .trending_things {
+    position: relative;
+    display: table;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto 45px;
+    word-break: break-word; }
+    .home-container.expB .trending_things > div {
+      display: table-cell;
+      padding: 0 10px; }
+      .home-container.expB .trending_things > div .trending_title {
+        text-align: left;
+        font-size: 16px;
+        font-weight: bold;
+        margin: 0 0 20px; }
+    .home-container.expB .trending_things .trending_topics {
+      width: 200px; }
+      .home-container.expB .trending_things .trending_topics .tags_items {
+        margin-top: -6px; }
+        .home-container.expB .trending_things .trending_topics .tags_items .tags_tag {
+          display: block;
+          line-height: 24px; }
+      .home-container.expB .trending_things .trending_topics .trending_more {
+        display: inline-block;
+        color: #61c13e;
+        margin: 30px 0 0; }
+    .home-container.expB .trending_things .trending_broadcasters .trending_items {
+      margin: 22px -3% 0 0; }
+      .home-container.expB .trending_things .trending_broadcasters .trending_items .trending_item {
+        float: left;
+        width: 30%;
+        margin: 0 3% 30px 0; }
+        .home-container.expB .trending_things .trending_broadcasters .trending_items .trending_item .trending_square {
+          height: 0;
+          width: 100%;
+          padding-top: calc(100% - 10px); }
+          .home-container.expB .trending_things .trending_broadcasters .trending_items .trending_item .trending_square .trending_content {
+            position: relative;
+            margin-top: calc(-100% + 10px); }
+            .home-container.expB .trending_things .trending_broadcasters .trending_items .trending_item .trending_square .trending_content .thumb_viewers {
+              position: absolute;
+              bottom: 10px;
+              left: 15px;
+              color: #fff;
+              font-weight: bold;
+              text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+              white-space: nowrap; }
+            .home-container.expB .trending_things .trending_broadcasters .trending_items .trending_item .trending_square .trending_content .trending_image {
+              position: relative;
+              height: 0;
+              padding-top: 75%; }
+              .home-container.expB .trending_things .trending_broadcasters .trending_items .trending_item .trending_square .trending_content .trending_image .thumb-image-img {
+                width: 100%; }
+            .home-container.expB .trending_things .trending_broadcasters .trending_items .trending_item .trending_square .trending_content .trending_info {
+              position: relative;
+              display: table;
+              width: calc(100% + 1px);
+              background: #fff;
+              padding: 5px 5px 10px; }
+              .home-container.expB .trending_things .trending_broadcasters .trending_items .trending_item .trending_square .trending_content .trending_info > * {
+                display: table-cell !important;
+                padding-right: 10px; }
+              .home-container.expB .trending_things .trending_broadcasters .trending_items .trending_item .trending_square .trending_content .trending_info .trending_thumb {
+                width: 1px;
+                padding-top: 3px; }
+              .home-container.expB .trending_things .trending_broadcasters .trending_items .trending_item .trending_square .trending_content .trending_info .trending_description .trend_left {
+                display: block;
+                font-weight: bold; }
+              .home-container.expB .trending_things .trending_broadcasters .trending_items .trending_item .trending_square .trending_content .trending_info .trending_description .trend_right {
+                position: absolute;
+                right: 6px; }
+              .home-container.expB .trending_things .trending_broadcasters .trending_items .trending_item .trending_square .trending_content .trending_info .trending_description .trend_bottom {
+                display: block;
+                clear: both; }
+            .home-container.expB .trending_things .trending_broadcasters .trending_items .trending_item .trending_square .trending_content .trending_tags {
+              display: block;
+              clear: both; }
+        .home-container.expB .trending_things .trending_broadcasters .trending_items .trending_item .trending_square.ad_square {
+          background: #3f7dd8;
+          color: #fff;
+          text-align: center;
+          cursor: pointer; }
+          .home-container.expB .trending_things .trending_broadcasters .trending_items .trending_item .trending_square.ad_square .trending_content {
+            margin-top: -73%; }
+            .home-container.expB .trending_things .trending_broadcasters .trending_items .trending_item .trending_square.ad_square .trending_content .title {
+              font-size: 22px; }
+            .home-container.expB .trending_things .trending_broadcasters .trending_items .trending_item .trending_square.ad_square .trending_content .button {
+              display: inline-block;
+              font-size: 18px;
+              padding: 6px 0;
+              width: 70%;
+              border: solid 2px #fff;
+              border-radius: 6px;
+              margin: 30px auto;
+              min-width: 100px; }
+  .home-container.expB .more-link-container {
+    text-align: center; }
+    .home-container.expB .more-link-container .more-link {
+      color: #61c13e;
+      font-size: 14px;
+      margin: 20px 0 0;
+      display: block; }
+
+/*
+	EXP C
+*/
+.home-container.expC {
+  /*
+		bottom
+	*/
+  /*
+		old navbar
+	*/
+  /*
+		new navbar
+	*/
+  /*
+		top
+	*/
+  /*
+		LEFT / RIGHT
+	*/ }
+  .home-container.expC .darkFooter {
+    background: #f2f2f2; }
+  .home-container.expC .experiment_connect {
+    text-align: center;
+    font-size: 16px;
+    padding: 60px 0;
+    color: #999; }
+    .home-container.expC .experiment_connect .moreOptions {
+      color: #cccccc; }
+      .home-container.expC .experiment_connect .moreOptions .moreOptionsClick {
+        color: #cccccc; }
+    .home-container.expC .experiment_connect .homeButtons {
+      margin: 20px auto 30px;
+      text-align: center; }
+      .home-container.expC .experiment_connect .homeButtons .bigButt {
+        background: #61c13e;
+        color: #fff;
+        font-size: 16px;
+        padding: 11px;
+        border-radius: 6px;
+        display: inline-block; }
+    .home-container.expC .experiment_connect .experiment_terms {
+      text-align: center;
+      color: #cccccc; }
+      .home-container.expC .experiment_connect .experiment_terms a {
+        text-decoration: underline;
+        color: #cccccc; }
+        .home-container.expC .experiment_connect .experiment_terms a:hover {
+          color: #999; }
+    .home-container.expC .experiment_connect .experiment_connect_title {
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto; }
+  .home-container.expC .navbar .explore-text {
+    display: none; }
+  .home-container.expC .logo-image {
+    color: #fff;
+    height: 52px;
+    width: auto;
+    transform: rotate(0deg);
+    /* actually this helps */ }
+  .home-container.expC .search-top {
+    z-index: 10;
+    position: relative;
+    height: 87px;
+    padding: 10px 15px;
+    line-height: 52px;
+    line-height: 30px;
+    margin-right: 10px;
+    min-width: 100%; }
+  .home-container.expC .search-cta > .btn, .home-container.expC .search-cta a {
+    margin-left: 20px;
+    font-size: 17px; }
+  .home-container.expC .search-cta .btn-outline {
+    min-width: 100px; }
+  .home-container.expC .search-cta .btn-primary {
+    min-width: 128px; }
+  .home-container.expC .search-cta a {
+    color: #fff; }
+    .home-container.expC .search-cta a:hover {
+      text-decoration: none; }
+  .home-container.expC .top-container {
+    position: relative;
+    z-index: 10;
+    padding: 0;
+    background-color: #999;
+    background-size: cover;
+    background-position: center;
+    repeat: no-repeat;
+    overflow: hidden;
+    height: 475px; }
+    .home-container.expC .top-container .home-video-container {
+      height: 475px; }
+      .home-container.expC .top-container .home-video-container .home-video {
+        height: 475px;
+        position: relative;
+        object-fit: cover;
+        margin-top: 0; }
+    .home-container.expC .top-container .home-video-lighten {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2); }
+  .home-container.expC .homeTitle {
+    margin-top: 40px;
+    margin-bottom: 50px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 0 5px #000; }
+  .home-container.expC .homeSubtitle {
+    margin-bottom: 25px;
+    color: #fff;
+    padding: 0 0 20px;
+    max-width: 800px;
+    line-height: 23px;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    text-shadow: 0 0 5px #000;
+    font-size: 22px;
+    line-height: 28px; }
+  .home-container.expC .homeButtons {
+    margin: 33px auto 50px;
+    text-align: center; }
+    .home-container.expC .homeButtons .btn {
+      line-height: 18px;
+      padding-left: 18px;
+      padding-right: 18px;
+      width: 220px;
+      margin: 0 2px; }
+  .home-container.expC .moreOptions {
+    margin-top: 12px; }
+    .home-container.expC .moreOptions .moreOptionsClick {
+      color: #dedede;
+      cursor: pointer; }
+  .home-container.expC .topTermsLine {
+    position: absolute;
+    bottom: 18px;
+    width: 100%;
+    color: #dedede;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center; }
+    .home-container.expC .topTermsLine a {
+      color: #fff; }
+  .home-container.expC .trending_things {
+    position: relative;
+    display: table;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto 45px;
+    word-break: break-word; }
+    .home-container.expC .trending_things > div {
+      display: table-cell;
+      padding: 0 10px; }
+      .home-container.expC .trending_things > div .trending_title {
+        text-align: left;
+        font-size: 16px;
+        font-weight: bold;
+        margin: 0 0 20px; }
+    .home-container.expC .trending_things .trending_topics {
+      width: 200px; }
+      .home-container.expC .trending_things .trending_topics .tags_items {
+        margin-top: -6px; }
+        .home-container.expC .trending_things .trending_topics .tags_items .tags_tag {
+          display: block;
+          line-height: 24px; }
+      .home-container.expC .trending_things .trending_topics .trending_more {
+        display: inline-block;
+        color: #61c13e;
+        margin: 30px 0 0; }
+    .home-container.expC .trending_things .trending_broadcasters .trending_items {
+      margin: 22px -3% 0 0; }
+      .home-container.expC .trending_things .trending_broadcasters .trending_items .trending_item {
+        float: left;
+        width: 30%;
+        margin: 0 3% 30px 0; }
+        .home-container.expC .trending_things .trending_broadcasters .trending_items .trending_item .trending_square {
+          height: 0;
+          width: 100%;
+          padding-top: calc(100% - 10px); }
+          .home-container.expC .trending_things .trending_broadcasters .trending_items .trending_item .trending_square .trending_content {
+            position: relative;
+            margin-top: calc(-100% + 10px); }
+            .home-container.expC .trending_things .trending_broadcasters .trending_items .trending_item .trending_square .trending_content .thumb_viewers {
+              position: absolute;
+              bottom: 10px;
+              left: 15px;
+              color: #fff;
+              font-weight: bold;
+              text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+              white-space: nowrap; }
+            .home-container.expC .trending_things .trending_broadcasters .trending_items .trending_item .trending_square .trending_content .trending_image {
+              position: relative;
+              height: 0;
+              padding-top: 75%; }
+              .home-container.expC .trending_things .trending_broadcasters .trending_items .trending_item .trending_square .trending_content .trending_image .thumb-image-img {
+                width: 100%; }
+            .home-container.expC .trending_things .trending_broadcasters .trending_items .trending_item .trending_square .trending_content .trending_info {
+              position: relative;
+              display: table;
+              width: calc(100% + 1px);
+              background: #fff;
+              padding: 5px 5px 10px; }
+              .home-container.expC .trending_things .trending_broadcasters .trending_items .trending_item .trending_square .trending_content .trending_info > * {
+                display: table-cell !important;
+                padding-right: 10px; }
+              .home-container.expC .trending_things .trending_broadcasters .trending_items .trending_item .trending_square .trending_content .trending_info .trending_thumb {
+                width: 1px;
+                padding-top: 3px; }
+              .home-container.expC .trending_things .trending_broadcasters .trending_items .trending_item .trending_square .trending_content .trending_info .trending_description .trend_left {
+                display: block;
+                font-weight: bold; }
+              .home-container.expC .trending_things .trending_broadcasters .trending_items .trending_item .trending_square .trending_content .trending_info .trending_description .trend_right {
+                position: absolute;
+                right: 6px; }
+              .home-container.expC .trending_things .trending_broadcasters .trending_items .trending_item .trending_square .trending_content .trending_info .trending_description .trend_bottom {
+                display: block;
+                clear: both; }
+            .home-container.expC .trending_things .trending_broadcasters .trending_items .trending_item .trending_square .trending_content .trending_tags {
+              display: block;
+              clear: both; }
+        .home-container.expC .trending_things .trending_broadcasters .trending_items .trending_item .trending_square.ad_square {
+          background: #3f7dd8;
+          color: #fff;
+          text-align: center;
+          cursor: pointer; }
+          .home-container.expC .trending_things .trending_broadcasters .trending_items .trending_item .trending_square.ad_square .trending_content {
+            margin-top: -73%; }
+            .home-container.expC .trending_things .trending_broadcasters .trending_items .trending_item .trending_square.ad_square .trending_content .title {
+              font-size: 22px; }
+            .home-container.expC .trending_things .trending_broadcasters .trending_items .trending_item .trending_square.ad_square .trending_content .button {
+              display: inline-block;
+              font-size: 18px;
+              padding: 6px 0;
+              width: 70%;
+              border: solid 2px #fff;
+              border-radius: 6px;
+              margin: 30px auto;
+              min-width: 100px; }
+  .home-container.expC .more-link-container {
+    text-align: center; }
+    .home-container.expC .more-link-container .more-link {
+      color: #61c13e;
+      font-size: 14px;
+      margin: 20px 0 0;
+      display: block; }
+
+/* IE 10+ */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .top-container .home-video-container video {
+    height: auto !important; }
+ }

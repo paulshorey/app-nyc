@@ -1,0 +1,78 @@
+.social-login-modal {
+  width: 400px;
+  margin-top: 7%;
+  margin-top: calc(50vh - 154px); }
+  .social-login-modal .modal-body {
+    box-sizing: border-box;
+    text-align: center; }
+    .social-login-modal .modal-body .instructions {
+      margin: 20px 0; }
+      .social-login-modal .modal-body .instructions > div {
+        text-align: center;
+        margin-bottom: 5px; }
+      .social-login-modal .modal-body .instructions span.heading {
+        font-size: 28px; }
+      .social-login-modal .modal-body .instructions span.subheading {
+        font-size: 16px; }
+    .social-login-modal .modal-body .networks {
+      display: table; }
+      .social-login-modal .modal-body .networks .row {
+        display: table-row; }
+        .social-login-modal .modal-body .networks .row .cell {
+          display: table-cell;
+          padding: 2px 0; }
+    .social-login-modal .modal-body .networks .network button {
+      min-width: 220px;
+      padding-left: 20px;
+      padding-right: 25px;
+      width: 100%;
+      margin-bottom: 8px;
+      text-shadow: none;
+      box-shadow: none;
+      -webkit-font-smoothing: antialiased;
+      padding-top: 5px;
+      color: #ffffff;
+      height: 38px;
+      vertical-align: middle;
+      line-height: normal;
+      text-align: left;
+      white-space: nowrap;
+      position: relative; }
+      .social-login-modal .modal-body .networks .network button span {
+        font-size: 17px;
+        color: #ffffff; }
+      .social-login-modal .modal-body .networks .network button .loader-light {
+        margin: -9px 75px 10px; }
+      .social-login-modal .modal-body .networks .network button .ynicon {
+        font-size: 22px;
+        left: 15px; }
+    .social-login-modal .modal-body .networks .vertical-divider {
+      display: inline;
+      padding: 0 10px; }
+    .social-login-modal .modal-body .networks .show-more-options {
+      text-align: center;
+      font-size: 16px;
+      font-weight: normal;
+      color: #999;
+      line-height: 16px;
+      display: block;
+      margin: 13px auto 0;
+      cursor: pointer;
+      padding: 6px 0 2px; }
+    .social-login-modal .modal-body .misc {
+      margin-top: 3px;
+      text-align: center; }
+      .social-login-modal .modal-body .misc span {
+        font-size: 12px; }
+    .social-login-modal .modal-body .terms-copy {
+      color: #999999;
+      display: block;
+      font-size: 12px;
+      text-align: center;
+      margin: 10px 0;
+      line-height: 16px; }
+      .social-login-modal .modal-body .terms-copy > * {
+        display: inline; }
+      .social-login-modal .modal-body .terms-copy a {
+        color: #999999;
+        font-weight: bold; }

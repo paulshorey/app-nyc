@@ -1,0 +1,20 @@
+<div class="thin_banner" ng-if="vm.config.yozio.showOpenBanner" ng-click="vm.trackClick('OpenTheApp', vm.config.yozio.yozioLink)">
+	
+	<div class="banner-logo">
+		<img class="banner-logo" ng-src="{{::vm.config.settings.ServerCDNBaseUrl}}{{::vm.config.mobileImageUrls.assets}}/images/logo/skewed_white.svg" />
+	</div>
+
+	<div class="banner-text">
+		<div class="text-top">
+			YouNow: Live Stream Video Chat
+		</div>
+		<div class="text-sub">
+			Open in the YouNow app
+		</div>
+	</div>
+
+	<div class="banner-button">
+		OPEN
+	</div>
+
+</div>

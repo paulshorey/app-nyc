@@ -1,0 +1,81 @@
+.activity-panel.activity-panel-module,
+[activity-panel].activity-panel-module {
+	margin:0;
+}
+
+.activity-panel,
+[activity-panel] {
+	margin:5px 0;
+	display: block;
+
+	.friends-list {
+		max-height: 220px;
+	}
+
+	.no-friends-msg {
+		color: #999999;
+		font-size: 13px;
+		display: block;
+	}
+
+	.profile-img {
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		margin-right: 10px;
+		display: inline-block;
+		position: relative;
+		margin-top: 1px;
+		.thumb-image {
+			border-radius:50%;
+			overflow:hidden;
+		}
+	}
+
+	.activity {
+		padding: 1px 0px;
+		clear: both;
+		height: 46px;
+		position: relative;
+		display:block;
+	}
+
+	.activity:hover {
+		cursor: pointer;
+		background-color: #e4e4e4;
+	}
+
+	.status {
+		display: inline-block;
+		max-width: 80px;
+		font-size: 12px;
+		position: absolute;
+		top: 5px;
+
+		span {
+			color: #666666;
+			width: 95px;
+			display: block;
+		}
+
+		.name {
+			max-width: 110px;
+		}
+
+		.current-activity  {
+			 color: #999999;
+		}
+
+		.current-activity:nth-child(2) {
+			margin-top: -3px;
+		}
+	}
+
+	.bars-text {
+		color:#777;
+		i {
+			
+		}
+	}
+
+}

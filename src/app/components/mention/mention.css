@@ -1,0 +1,89 @@
+.scrollable-menu {
+  height: auto;
+  max-height: 300px;
+  overflow: auto; }
+
+.menu-highlighted {
+  font-weight: bold; }
+
+.user-search .list-group-item {
+  color: #aaa; }
+
+.user-search .list-group-item.active {
+  color: #ccc;
+  background-color: #428bca;
+  border-color: #428bca; }
+
+.user-search .list-group-item.active .text-muted {
+  color: #ccc; }
+
+.user-search .list-group-item.active .text-primary {
+  color: #fff; }
+
+.user-search .list-group-item {
+  padding: 5px; }
+
+.user-search .circle-thumb {
+  display: inline-block;
+  width: 30px;
+  height: 30px; }
+
+.user-search {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  background-clip: padding-box;
+  outline: 0; }
+
+.list-group {
+  margin-bottom: 20px;
+  padding-left: 0;
+  width: 400px; }
+
+.list-group-item:first-child {
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px; }
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+.list-group-item:last-child {
+  margin-bottom: 0;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px; }
+
+.mention-highlight {
+  background: #d6ecfe; }
+
+mentio-menu[mentio-for="'commentInput'"] {
+  z-index: 2000 !important;
+  margin: -13px auto 0 auto;
+  width: 100%;
+  left: 0 !important; }
+  mentio-menu[mentio-for="'commentInput'"] .dropup {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px; }
+  mentio-menu[mentio-for="'commentInput'"] .list-group {
+    padding: 0;
+    left: 788px; }
+  mentio-menu[mentio-for="'commentInput'"] .dropdown-menu {
+    display: block;
+    border: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: none; }
+    mentio-menu[mentio-for="'commentInput'"] .dropdown-menu li {
+      cursor: pointer; }
+    mentio-menu[mentio-for="'commentInput'"] .dropdown-menu li:last-child {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0; }

@@ -1,0 +1,28 @@
+[reconnect_title]
+[smartling]	Continuer ta diffusion ?
+[manually]	Continuez votre diffusion ?
+
+[reconnect_message]
+[smartling]	Tes {{value}} utilisateurs t'attendent !
+[manually]	Votre {{value}} téléspectateurs attendent pour vous!
+
+[golive_tag_title]
+[smartling]	Tague ta diffusion
+[manually]	Tag votre émission
+
+[golive_tag_text]
+[smartling]	Ajouter un tag permet aux utilisateurs de te découvrir.
+[manually]	Ajout d' une étiquette aide les gens à vous faire découvrir .
+
+[golive_share_text]
+[smartling]	Demande à tes amis de venir regarder et de donner leur soutien
+[manually]	Faites savoir à vos amis de venir montre et le soutien
+
+[golive_share_input]
+[smartling]	Que se passe-t-il ?
+[manually]	Ce qui se passe?
+
+[golive_go]
+[smartling]	Démarrer la diffusion
+[manually]	GO LIVE
+

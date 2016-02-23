@@ -1,0 +1,449 @@
+@font-face {
+    font-family: homepage_bold;
+    src: url(/images/about/fonts/helveticabold.ttf);
+}
+@font-face {
+    font-family: homepage_light;
+    src: url(/images/about/fonts/helveticalight.ttf);
+}
+
+#page_home {
+	font-smoothing: antialiased;
+	text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: 100%;
+
+
+	/*
+		LAYOUT
+		should be fixed, content should be relative
+	*/
+	.container,
+	.content {
+		margin:0 auto;
+		max-width:960px;
+		width: auto;
+		@media only screen and (max-width: 1200px) {
+			max-width:810px;
+		}
+		@media only screen and (max-width: 900px) {
+			max-width:700px;
+		}
+		@media only screen and (max-width: 800px) {
+			max-width:660px;
+		}
+		@media only screen and (max-width: 700px) {
+			max-width:500px;
+		}
+		@media only screen and (max-width: 530px) {
+			max-width:500px;
+			padding-left:15px !important;
+			padding-right:15px !important;
+		}
+	}
+
+
+	/*
+		STYLES
+	*/
+	background:#ffffff;
+	color: #5A5A5A;
+	* {
+		z-index:1;
+	}
+	section {
+		font-size:16px;
+	}
+	h2 {
+		font-size: 200%;
+		font-weight: 900;
+		color: #333333;
+		margin-bottom:10px;
+		font-family: homepage_bold, "Segoe UI", Helvetica, sans-serif;
+		letter-spacing: 0.5px;
+	}
+
+
+	/*
+		HEADER
+		should be fixed, content should be relative
+	*/
+	header {
+		position:absolute;
+		width:100%;
+		z-index:10;
+		.logo {
+			display:inline-block;
+			width:129px;
+			height:56px;
+			img {
+				height:100%;
+				width:auto;
+				transform: rotate(-0.5deg);
+			}
+		}
+	}
+
+
+	/*   section
+		INTRO
+		video
+	*/
+	.intro {
+		height:600px;
+		vertical-align: bottom;
+		position: relative;
+		margin-top: 0;
+		width: 100%;
+		@media only screen and (max-width: 700px) {
+			/*height:550px;*/
+		}
+
+		.intro_video,
+		.intro_photo {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			min-width: 100%;
+			min-height: 100%;
+			width: auto;
+			height: auto;
+			z-index: -100;
+			background-size: cover;
+			background-color:none;
+		}
+
+		.intro_photo {
+			background-size: cover;
+			display: block;
+			background-position: center;
+			background-repeat: no-repeat;
+			@media only screen and (min-width: 700px) {
+				display:none;
+			}
+		}
+
+		.intro_content {
+			position:absolute;
+			width:100%;
+			bottom: 10px;
+			.content {
+				text-align:center;
+				color:#fff;
+				.intro_text1 {
+					font-size:280%;
+					font-weight:700;
+				}
+				.intro_text2 {
+					font-size: 120%;
+					line-height: 120%;
+					font-weight: 200;
+					padding: 10px 0;
+				}
+			}
+		}
+	}
+
+
+	/*   section
+		LOGIN BUTTONS
+		also included bottom of page
+	*/
+	.lbuttons {
+		padding:5px 0 0 0;
+		text-align:center;
+
+		.lbuttons_text,
+		.lbuttons_subtext {
+			color:#fff;
+			opacity:0.75;
+			font-family:homepage_light, "Segoe UI", Helvetica, sans-serif;
+			a {
+				color:#fff;
+				font-weight:bold;
+			}
+		}
+		.lbuttons_text {
+			font-size:85%;
+			padding:6px 0 12px;
+		}
+		.lbuttons_subtext,{
+			margin:5px;
+			font-size:70%;
+		}
+
+		.lbuttons_buttons {
+			padding: 0;
+			max-width: 800px;
+			margin: 0 auto;
+			.lbuttons_button {
+				font-size:16px;
+				cursor:pointer;
+				display:inline-block;
+				width: 23.5%;
+				max-width: 200px;
+				margin: 0 0.5% 0 0;
+				height:38px;
+				line-heigth:38px;
+				border-radius:4px;
+				text-decoration:none;
+				color:#fff;
+				:last-child {
+					margin-right:0;
+				}
+				img {
+					height: 100%;
+					width: auto;
+					vertical-align: middle;
+					padding: 3% 0 3% 0;
+				}
+				span {
+					font-weight:bold;
+					vertical-align: middle;
+					color:#fff;
+				}
+			}
+
+		}
+
+		/* android & iphone */
+		.x_apps .lbuttons_button {
+			height: auto;
+			width: 47%;
+			max-width: 270px;
+			margin: 3px 2.5% 12px 0;
+			border-radius: 10px;
+			img {
+				height:auto;
+				width: 100%;
+				vertical-align: middle;
+				padding:0;
+			}
+			@media only screen and (max-width: 500px) {
+				width:67%;
+				margin:0 0 12px;
+			}
+		}
+		.x_apps .lbuttons_button.watchnow {
+			background-color: #61c13e;
+			height: 68px;
+			line-height: 68px;
+			font-size: 150%;
+			font-family: homepage_light,Segoe UI,Helvetica,sans-serif;
+		}
+		.x_apps .lbuttons_button.watchnow:hover {
+			background-color:#72cd50;
+		}
+		.x_dark .lbuttons_button {
+			background-color:#000000;
+		}
+		.x_dark .lbuttons_button:hover {
+			background-color:#333333;
+		}
+
+		/* social */
+		.lbuttons_button.facebook {
+			background-color:#3759BD;
+		}
+		.lbuttons_button.twitter {
+			background-color:#01AFF6;
+		}
+		.lbuttons_button.google {
+			background-color:#D7423E;
+		}
+		.lbuttons_button.instagram {
+			background-color:#35618E;
+		}
+
+
+	}
+
+	/* responsive */
+	.x_small {
+		display:none;
+	}
+	@media only screen and (max-width: 700px) {
+		.x_small {
+			display:block;
+		}
+		.x_large {
+			display:none;
+		}
+	}
+
+
+
+
+	/*   section
+		WITH YOU
+	*/
+	.wy {
+		padding-top: 50px;
+		text-align:center;
+
+		.wy_heading {
+		}
+		.wy_columns {
+			padding-top:10px;
+			font-weight:normal;
+
+			.wy_column {
+				width:30%;
+				margin:0 2% 0 0;
+				display:inline-block;
+				font-weight:normal;
+				vertical-align:top;
+				.image {
+					padding-bottom:10px;
+				}
+				.title {
+					font-size:150%;
+					line-height:120%;
+					font-weight:100;
+					font-family:homepage_light, "Segoe UI", Helvetica, sans-serif;
+					padding-bottom:10px;
+				}
+				.text {
+					font-size: 95%;
+					line-height: 120%;
+					padding: 5px 5px 45px;
+					font-weight: 100;
+					text-align: left;
+				}
+				@media only screen and (max-width: 700px) {
+					width:60%;
+					font-size:120%;
+				}
+			}
+			.wy_column:last-child {
+				margin:0;
+			}
+		}
+	}
+
+
+	/*   section
+		PROMO VIDEO
+	*/
+	.pv {
+			position: relative;
+			background-size: cover;
+			width: 100%;
+			overflow: hidden;
+			height: 50vw;
+		.pv_video {
+			position:absolute;
+			width:100%;
+			height:auto;
+			margin-top:-3vw;
+			::-webkit-media-controls {display: none !important}
+			::-moz-media-controls {display: none !important}
+		}
+		.pv_play {
+			position: absolute;
+			top:50%;
+			left:50%;
+			background-size: cover !important;
+			width: 15%;
+			padding-bottom: 15%;
+			margin: -7.5% 0 0 -7.5%;
+			cursor: pointer;
+		}
+	}
+
+
+	/*   section
+		COMMUNITY REVIEWS
+	*/
+	.cr {
+		background-size: cover;
+		text-align: center;
+		font-family: homepage_light,Segoe UI,Helvetica,sans-serif;
+		.content {
+			padding: 30px 75px 0px;
+			max-width: 833px;
+			.cr_heading {
+			}
+			.cr_reviews {
+				padding:15px 0 25px;
+				.cr_review {
+					font-size: 123%;
+					line-height: 133%;
+				}
+				.cr_signature {
+					padding: 20px 0 35px;
+					text-indent: 5px;
+					* {
+						display:inline-block;
+						vertical-align:middle;
+					}
+				}
+			}
+		}
+		@media only screen and (max-width: 959px) {
+			background-image:url(../../images/about/back_quote2.png);
+		}
+		@media only screen and (max-width: 767px) {
+			background-image:url(../../images/about/back_quote3.png);
+		}
+		@media only screen and (max-width: 480px) {
+			background-image:url(../../images/about/back_quote4.png);
+		}
+
+	}
+
+
+	/*   section
+		GET APP
+	*/
+	.getapp {
+		text-align:center;
+		.content {
+			padding:50px 0;
+			.getapp_image {
+				width:100%;
+				height:auto;
+				padding-right: 10px;
+			}
+		}
+	}
+
+
+	/*   section
+		WATCH NOW BUTTON
+	*/
+	.watchnow {
+		background: #f4f8ef;
+		text-align:center;
+		.content {
+			padding:50px 0;
+		}
+		@media only screen and (max-width: 700px) {
+			display:none;
+		}
+	}
+
+
+	/*   section
+		ABOUT
+	*/
+	.about {
+		text-align:center;
+		a {
+			color: #999;
+			text-decoration:none;
+		}
+		.content {
+			padding:50px 0;
+			.maincontent {
+				margin: 30px 0 0 0;
+				text-align:left;
+				p {
+					margin: 20px 0 20px 1%;
+				}
+			}
+		}
+	}
+
+
+}

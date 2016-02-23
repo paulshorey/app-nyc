@@ -1,0 +1,12 @@
+.crowns-container .user-crowns .ynicon-icon-whale {
+  margin-right: -5px;
+  color: #f2b332; }
+  .crowns-container .user-crowns .ynicon-icon-whale:last-child {
+    margin-right: 0; }
+.crowns-container .user-crowns .ynicon-icon-whale2 {
+  margin-right: -5px;
+  color: #f90102; }
+  .crowns-container .user-crowns .ynicon-icon-whale2:last-child {
+    margin-right: 0; }
+.crowns-container .user-crowns .chat-name {
+  margin-right: 5px; }

@@ -1,0 +1,362 @@
+.buybars-modal, .verifications-modal {
+  width: 520px;
+  margin-top: 5%;
+  transform: initial !important;
+  -moz-transform: initial !important;
+  -webkit-transform: initial !important; }
+  .buybars-modal .is-verified, .buybars-modal .is-not-verified, .verifications-modal .is-verified, .verifications-modal .is-not-verified {
+    display: none; }
+  .buybars-modal.verified .is-verified, .verifications-modal.verified .is-verified {
+    display: block; }
+  .buybars-modal.verified-failed .is-not-verified, .verifications-modal.verified-failed .is-not-verified {
+    display: block; }
+  .buybars-modal .modal-content, .verifications-modal .modal-content {
+    background-color: transparent;
+    border: none;
+    box-shadow: none; }
+  .buybars-modal .modal-body, .verifications-modal .modal-body {
+    padding: 15px 30px;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out;
+    height: 427px;
+    background: #F0EEEF;
+    margin-top: -6px;
+    margin-bottom: -10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 4px; }
+    .buybars-modal .modal-body.large, .verifications-modal .modal-body.large {
+      height: 575px; }
+    .buybars-modal .modal-body.wide, .verifications-modal .modal-body.wide {
+      width: 720px;
+      left: -20%; }
+    .buybars-modal .modal-body.small, .verifications-modal .modal-body.small {
+      height: 300px; }
+  .buybars-modal .overlay, .verifications-modal .overlay {
+    left: 0;
+    top: 0; }
+    .buybars-modal .overlay .loader, .verifications-modal .overlay .loader {
+      margin-top: 40%; }
+  .buybars-modal .panel-one .token-feedback, .verifications-modal .panel-one .token-feedback {
+    display: none; }
+  .buybars-modal .panel-one.loading-payments .content, .verifications-modal .panel-one.loading-payments .content {
+    opacity: 0.5;
+    pointer-events: none; }
+  .buybars-modal .panel-one.loading-payments .token-feedback, .verifications-modal .panel-one.loading-payments .token-feedback {
+    display: block;
+    border-top-color: #2a85d8;
+    position: absolute;
+    left: 40%; }
+  .buybars-modal .panel-two, .buybars-modal .panel-four, .verifications-modal .panel-two, .verifications-modal .panel-four {
+    position: absolute;
+    left: -500px;
+    top: 5px;
+    transition: left 0.4s ease-in-out;
+    background: #f0eeef;
+    width: 518px;
+    height: 428px;
+    padding: 0 30px; }
+    .buybars-modal .panel-two.active, .buybars-modal .panel-four.active, .verifications-modal .panel-two.active, .verifications-modal .panel-four.active {
+      left: 0; }
+    .buybars-modal .panel-two .item:hover, .buybars-modal .panel-four .item:hover, .verifications-modal .panel-two .item:hover, .verifications-modal .panel-four .item:hover {
+      background: transparent;
+      cursor: default; }
+    .buybars-modal .panel-two .btn-transparent, .buybars-modal .panel-four .btn-transparent, .verifications-modal .panel-two .btn-transparent, .verifications-modal .panel-four .btn-transparent {
+      position: absolute;
+      left: 8px;
+      top: 8px;
+      color: #ccc;
+      z-index: 1; }
+      .buybars-modal .panel-two .btn-transparent:hover, .buybars-modal .panel-four .btn-transparent:hover, .verifications-modal .panel-two .btn-transparent:hover, .verifications-modal .panel-four .btn-transparent:hover {
+        color: #999; }
+  .buybars-modal .panel-three, .verifications-modal .panel-three {
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin: 0;
+    background-color: #fff;
+    overflow: hidden;
+    z-index: 10000;
+    width: 101vw;
+    height: 101vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.6s linear; }
+    .buybars-modal .panel-three.active, .verifications-modal .panel-three.active {
+      width: 100vw;
+      height: 100vh;
+      opacity: 1;
+      visibility: visible;
+      transition: all 0.6s linear; }
+    .buybars-modal .panel-three .btn-transparent, .verifications-modal .panel-three .btn-transparent {
+      position: fixed;
+      top: 3vw;
+      right: 6vh;
+      color: #999999;
+      z-index: 100000; }
+    .buybars-modal .panel-three .item:hover, .verifications-modal .panel-three .item:hover {
+      background: transparent;
+      cursor: normal; }
+    .buybars-modal .panel-three .bottom, .verifications-modal .panel-three .bottom {
+      position: absolute;
+      bottom: 0;
+      width: 100%; }
+    .buybars-modal .panel-three .content, .verifications-modal .panel-three .content {
+      position: relative; }
+  .buybars-modal .panel-four, .verifications-modal .panel-four {
+    left: -720px;
+    width: 720px;
+    padding-top: 15px;
+    margin-top: -6px;
+    border-radius: 12px;
+    transition: all 0.4s ease-in-out; }
+    .buybars-modal .panel-four .content, .verifications-modal .panel-four .content {
+      background: transparent;
+      color: #666; }
+    .buybars-modal .panel-four .animate-in .verification-info, .buybars-modal .panel-four .animate-in .desc, .buybars-modal .panel-four .animate-in .btn-confirm.verify-now-btn, .buybars-modal .panel-four .animate-in .verification-form, .verifications-modal .panel-four .animate-in .verification-info, .verifications-modal .panel-four .animate-in .desc, .verifications-modal .panel-four .animate-in .btn-confirm.verify-now-btn, .verifications-modal .panel-four .animate-in .verification-form {
+      opacity: 1; }
+    .buybars-modal .panel-four .heading, .verifications-modal .panel-four .heading {
+      margin: 0 0 20px 0;
+      padding-bottom: 20px;
+      width: 100%;
+      border-bottom: 1px solid #ccc; }
+    .buybars-modal .panel-four .subtitle b, .verifications-modal .panel-four .subtitle b {
+      color: #333; }
+    .buybars-modal .panel-four .subtitle .icon img, .verifications-modal .panel-four .subtitle .icon img {
+      width: 20px; }
+    .buybars-modal .panel-four .verification-image, .verifications-modal .panel-four .verification-image {
+      height: 300px;
+      margin-right: 15px;
+      position: relative; }
+      .buybars-modal .panel-four .verification-image .verification-image-number, .verifications-modal .panel-four .verification-image .verification-image-number {
+        position: absolute;
+        top: 79px;
+        right: 26px;
+        font-weight: bold;
+        font-size: 18px; }
+    .buybars-modal .panel-four .desc, .verifications-modal .panel-four .desc {
+      font-size: 12px;
+      transition: opacity 0.3s linear; }
+      .buybars-modal .panel-four .desc span, .verifications-modal .panel-four .desc span {
+        color: #666; }
+      .buybars-modal .panel-four .desc.verification-sale div:last-child, .verifications-modal .panel-four .desc.verification-sale div:last-child {
+        margin: 15px 0 98px 0; }
+    .buybars-modal .panel-four .verification-info, .verifications-modal .panel-four .verification-info {
+      color: #333;
+      font-weight: bold;
+      width: 400px;
+      height: 40px;
+      margin: 15px 0 0 200px;
+      opacity: 0;
+      transition: opacity 0.3s linear; }
+      .buybars-modal .panel-four .verification-info .verification-info-copy, .verifications-modal .panel-four .verification-info .verification-info-copy {
+        width: 290px;
+        margin-left: 15px; }
+      .buybars-modal .panel-four .verification-info .ynicon-icon-verify, .verifications-modal .panel-four .verification-info .ynicon-icon-verify {
+        font-size: 35px;
+        line-height: 45px; }
+    .buybars-modal .panel-four .failed .verification-failed, .verifications-modal .panel-four .failed .verification-failed {
+      opacity: 1; }
+    .buybars-modal .panel-four .failed input, .verifications-modal .panel-four .failed input {
+      border-color: #cc0033; }
+    .buybars-modal .panel-four .verification-failed, .verifications-modal .panel-four .verification-failed {
+      color: #cc0033;
+      font-size: 13px;
+      margin: 20px 0;
+      opacity: 0;
+      transition: opacity 0.3s linear; }
+    .buybars-modal .panel-four .verification-form, .verifications-modal .panel-four .verification-form {
+      height: 45px;
+      background-color: #fff;
+      border-radius: 4px;
+      width: 280px;
+      transition: opacity 0.3s linear;
+      opacity: 0; }
+      .buybars-modal .panel-four .verification-form form, .verifications-modal .panel-four .verification-form form {
+        text-align: center;
+        margin: 4% auto; }
+        .buybars-modal .panel-four .verification-form form *, .verifications-modal .panel-four .verification-form form * {
+          vertical-align: middle; }
+      .buybars-modal .panel-four .verification-form label, .verifications-modal .panel-four .verification-form label {
+        color: #333;
+        margin-right: 5px;
+        margin-bottom: 0; }
+      .buybars-modal .panel-four .verification-form input, .verifications-modal .panel-four .verification-form input {
+        width: 60px;
+        border: none;
+        border-bottom: 1px solid #2a85d8; }
+        .buybars-modal .panel-four .verification-form input:focus, .buybars-modal .panel-four .verification-form input:active, .verifications-modal .panel-four .verification-form input:focus, .verifications-modal .panel-four .verification-form input:active {
+          outline: 0; }
+    .buybars-modal .panel-four .btn-confirm, .verifications-modal .panel-four .btn-confirm {
+      margin-left: 20px;
+      transition: opacity 0.3s linear; }
+      .buybars-modal .panel-four .btn-confirm.verify-now-btn, .verifications-modal .panel-four .btn-confirm.verify-now-btn {
+        opacity: 0; }
+    .buybars-modal .panel-four .contact-support, .verifications-modal .panel-four .contact-support {
+      position: absolute;
+      bottom: 13px; }
+      .buybars-modal .panel-four .contact-support, .buybars-modal .panel-four .contact-support span, .verifications-modal .panel-four .contact-support, .verifications-modal .panel-four .contact-support span {
+        font-size: 13px; }
+  .buybars-modal .verification-result, .verifications-modal .verification-result {
+    height: 330px;
+    width: 360px;
+    margin: 0 auto;
+    text-align: center; }
+    .buybars-modal .verification-result .heading .is-verified, .verifications-modal .verification-result .heading .is-verified {
+      padding-top: 69px; }
+    .buybars-modal .verification-result .heading div.is-not-verified, .verifications-modal .verification-result .heading div.is-not-verified {
+      font-size: 23px;
+      line-height: normal;
+      padding-top: 15px; }
+    .buybars-modal .verification-result .heading .text-muted, .verifications-modal .verification-result .heading .text-muted {
+      font-size: 13px;
+      line-height: normal;
+      margin-top: 15px; }
+    .buybars-modal .verification-result .verified-result-icon, .verifications-modal .verification-result .verified-result-icon {
+      font-size: 60px; }
+      .buybars-modal .verification-result .verified-result-icon.is-verified, .verifications-modal .verification-result .verified-result-icon.is-verified {
+        margin-bottom: 30px; }
+      .buybars-modal .verification-result .verified-result-icon.is-not-verified, .verifications-modal .verification-result .verified-result-icon.is-not-verified {
+        margin-bottom: 15px; }
+    .buybars-modal .verification-result .btn-confirm, .verifications-modal .verification-result .btn-confirm {
+      width: 130px;
+      margin: 0 auto; }
+  .buybars-modal .panel-four .heading .title, .buybars-modal .verification-result .heading .title, .verifications-modal .panel-four .heading .title, .verifications-modal .verification-result .heading .title {
+    font-weight: lighter;
+    font-size: 27px; }
+  .buybars-modal .panel-four .btn-confirm, .buybars-modal .panel-four .btn-cancel, .buybars-modal .verification-result .btn-confirm, .buybars-modal .verification-result .btn-cancel, .verifications-modal .panel-four .btn-confirm, .verifications-modal .panel-four .btn-cancel, .verifications-modal .verification-result .btn-confirm, .verifications-modal .verification-result .btn-cancel {
+    height: 45px; }
+  .buybars-modal .panel-four .btn-cancel, .buybars-modal .verification-result .btn-cancel, .verifications-modal .panel-four .btn-cancel, .verifications-modal .verification-result .btn-cancel {
+    background-color: #999; }
+    .buybars-modal .panel-four .btn-cancel, .buybars-modal .panel-four .btn-cancel span, .buybars-modal .verification-result .btn-cancel, .buybars-modal .verification-result .btn-cancel span, .verifications-modal .panel-four .btn-cancel, .verifications-modal .panel-four .btn-cancel span, .verifications-modal .verification-result .btn-cancel, .verifications-modal .verification-result .btn-cancel span {
+      color: #fff; }
+  .buybars-modal .heading, .verifications-modal .heading {
+    padding: 5px 0 10px;
+    text-align: center;
+    width: 94%;
+    margin: 0 auto; }
+    .buybars-modal .heading .title, .verifications-modal .heading .title {
+      font-weight: bold;
+      font-size: 22px;
+      color: #333;
+      line-height: 34px; }
+    .buybars-modal .heading .subtitle, .verifications-modal .heading .subtitle {
+      font-size: 13px;
+      color: #666; }
+    .buybars-modal .heading .status, .verifications-modal .heading .status {
+      padding: 5px; }
+      .buybars-modal .heading .status > *, .verifications-modal .heading .status > * {
+        font-weight: bold;
+        font-size: 16px;
+        color: #333; }
+  .buybars-modal .item, .verifications-modal .item {
+    padding: 3px 10px 2px;
+    overflow: hidden;
+    height: 46px;
+    cursor: pointer; }
+    .buybars-modal .item:first-child, .verifications-modal .item:first-child {
+      padding-top: 4px; }
+    .buybars-modal .item:last-child, .verifications-modal .item:last-child {
+      padding-bottom: 9px; }
+    .buybars-modal .item:hover, .buybars-modal .item.active, .verifications-modal .item:hover, .verifications-modal .item.active {
+      background: #F7F7F8; }
+    .buybars-modal .item.popular, .verifications-modal .item.popular {
+      background: #e4f0f7; }
+      .buybars-modal .item.popular .popular-copy, .verifications-modal .item.popular .popular-copy {
+        display: inline;
+        font-size: 75%;
+        color: #6288a4;
+        font-weight: bold; }
+    .buybars-modal .item .icon, .verifications-modal .item .icon {
+      padding: 0;
+      display: inline-block;
+      color: #000; }
+    .buybars-modal .item .name, .verifications-modal .item .name {
+      padding: 4px;
+      display: inline-block;
+      color: #000; }
+    .buybars-modal .item .btn, .verifications-modal .item .btn {
+      margin: 8px 10px 0px 0px;
+      display: inline-block;
+      float: right;
+      background: #2a85d8;
+      border: none; }
+    .buybars-modal .item:hover .btn, .verifications-modal .item:hover .btn {
+      background: #3b91e0; }
+    .buybars-modal .item .btn.active, .verifications-modal .item .btn.active {
+      background: #568b08; }
+    .buybars-modal .item:hover .btn.active, .verifications-modal .item:hover .btn.active {
+      background: #67a40e; }
+    .buybars-modal .item .sub, .verifications-modal .item .sub {
+      font-size: inherit;
+      line-height: inherit;
+      vertical-align: inherit;
+      bottom: inherit;
+      font-weight: normal;
+      color: #999; }
+  .buybars-modal .content, .verifications-modal .content {
+    background: #fff;
+    border-radius: 10px; }
+    .buybars-modal .content #braintree-dropin-iframe, .verifications-modal .content #braintree-dropin-iframe {
+      border: 0;
+      padding-top: 7px;
+      transition: height 0.2s linear;
+      position: relative;
+      z-index: 10000; }
+    .buybars-modal .content #braintree-iframe, .verifications-modal .content #braintree-iframe {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      min-height: 227px;
+      margin: 0 auto;
+      display: block;
+      padding-top: 7px;
+      border: 0;
+      background-color: #fff;
+      z-index: 10000; }
+    .buybars-modal .content #braintree-form, .verifications-modal .content #braintree-form {
+      background-color: #ffffff;
+      padding: 15px;
+      border-radius: 4px; }
+      .buybars-modal .content #braintree-form .btn-confirm, .verifications-modal .content #braintree-form .btn-confirm {
+        display: block;
+        margin: 10px auto;
+        background-color: #009CDE;
+        font-weight: bold;
+        height: 35px;
+        width: 90px;
+        position: relative; }
+        .buybars-modal .content #braintree-form .btn-confirm .spinning-container, .verifications-modal .content #braintree-form .btn-confirm .spinning-container {
+          position: absolute;
+          margin: 0;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          line-height: 35px; }
+          .buybars-modal .content #braintree-form .btn-confirm .spinning-container .spinning-loader, .verifications-modal .content #braintree-form .btn-confirm .spinning-container .spinning-loader {
+            font-size: 2px;
+            display: inline-block;
+            margin: 0;
+            text-align: center;
+            vertical-align: middle; }
+  .buybars-modal .payPal-container, .verifications-modal .payPal-container {
+    background-color: transparent;
+    height: 130px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 130px; }
+    .buybars-modal .payPal-container .btn-confirm, .verifications-modal .payPal-container .btn-confirm {
+      min-width: 200px;
+      height: 40px;
+      font-size: 17px;
+      background-color: #009CDE; }
+  .buybars-modal .bottom, .verifications-modal .bottom {
+    text-align: center; }
+    .buybars-modal .bottom .copy, .verifications-modal .bottom .copy {
+      padding: 15px 0;
+      width: 80%;
+      margin: 0 auto;
+      font-size: 12px;
+      color: #666; }
+      .buybars-modal .bottom .copy a, .verifications-modal .bottom .copy a {
+        color: #333; }

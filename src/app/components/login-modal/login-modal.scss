@@ -1,0 +1,107 @@
+.social-login-modal {
+	width: 400px;
+	margin-top: 7%;
+	margin-top: calc(50vh - 154px);
+    .modal-body {
+        box-sizing: border-box;
+        text-align: center;
+        .instructions {
+            margin: 20px 0;
+            & > div {
+                text-align: center;
+                margin-bottom: 5px;
+            }
+            span {
+                &.heading {
+                    font-size: 28px;
+                }
+                &.subheading {
+                    font-size: 16px;
+                }
+            }
+        }
+        .networks {
+            display: table;
+        	.row {
+                display: table-row;
+        		.cell {
+                	display:table-cell;
+                	padding:2px 0;
+        		}
+        	}
+        }
+        .networks {
+
+            .network {
+
+                button {
+			min-width: 220px;
+			padding-left: 20px;
+			padding-right:25px;
+			width: 100%;
+			margin-bottom: 8px;
+
+                    text-shadow: none;
+                    box-shadow: none;
+                    -webkit-font-smoothing: antialiased;
+                    padding-top: 5px;
+                    color: #ffffff;
+                    height: 38px;
+                    vertical-align: middle;
+                    line-height: normal;
+                    text-align: left;
+                    white-space: nowrap;
+                    position: relative;
+                    span {
+                        font-size: 17px;
+                        color: #ffffff;
+                    }
+                    .loader-light {
+                        margin: -9px 75px 10px;
+                    }
+                    .ynicon {
+                        font-size: 22px;
+                        left: 15px;
+                    }
+                }
+            }
+            .vertical-divider {
+                display: inline;
+                padding: 0 10px;
+            }
+            .show-more-options {
+                text-align: center;
+                font-size: 16px;
+                font-weight: normal;
+                color: #999;
+                line-height: 16px;
+                display: block;
+                margin: 13px auto 0;
+                cursor: pointer;
+                padding:6px 0 2px;
+            }
+        }
+        .misc {
+            margin-top: 3px;
+            text-align: center;
+            span {
+                font-size: 12px;
+            }
+        }
+        .terms-copy {
+            color: #999999;
+            display: block;
+            font-size: 12px;
+            text-align: center;
+            margin: 10px 0;
+            line-height: 16px;
+            > * {
+            	display:inline;
+            }
+            a {
+                color: #999999;
+                font-weight: bold;
+            }
+        }
+    }
+}

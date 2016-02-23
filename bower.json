@@ -1,0 +1,31 @@
+{
+  "name": "younow",
+  "version": "1.67.1",
+  "devDependencies": {
+    "angular": "1.4.7",
+    "angular-bootstrap": "0.12.1",
+    "angular-embedly": "0.0.2",
+    "angular-scroll": "0.7.2",
+    "angular-touch": "~1.4.6",
+    "angular-translate": "2.8.1",
+    "angular-translate-loader-static-files": "2.8.1",
+    "angular-ui-router": "0.2.13",
+    "angular-upload": "1.0.11",
+    "angular-zeroclipboard": "~0.4.0",
+    "intl-tel-input": "~6.0.4",
+    "jquery": "~2.1.4",
+    "ment.io": "0.9.15",
+    "webrtc-adapter": "0.2.8",
+    "angular-mocks": "~1.4.7",
+    "ngReact": "~0.2.0"
+  },
+  "dependencies": {
+    "ua-parser-js": "~0.7.7"
+  },
+  "resolutions": {
+    "angular": "1.4.7",
+    "angular-translate": "~2.8.1",
+    "angular-scroll": "~0.7.3",
+    "angular-mocks": "~1.4.7"
+  }
+}

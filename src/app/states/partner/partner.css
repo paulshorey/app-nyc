@@ -1,0 +1,464 @@
+.partnersContent {
+  width: auto !important;
+  margin: 70px auto 20px;
+  padding: 24px;
+  background: #fff;
+  max-width: 1155px; }
+
+.partner, .notpartner {
+  min-height: calc(100vh - 140px); }
+  .partner input, .partner textarea, .partner checkbox, .notpartner input, .notpartner textarea, .notpartner checkbox {
+    outline: none !important;
+    box-shadow: none; }
+    .partner input:focus, .partner textarea:focus, .partner checkbox:focus, .notpartner input:focus, .notpartner textarea:focus, .notpartner checkbox:focus {
+      background: none !important; }
+  .partner form.submitted .ng-invalid, .notpartner form.submitted .ng-invalid {
+    background: rgba(255, 16, 16, 0.138); }
+  .partner input.ng-dirty.ng-invalid, .partner textarea.ng-dirty.ng-invalid, .notpartner input.ng-dirty.ng-invalid, .notpartner textarea.ng-dirty.ng-invalid {
+    background: rgba(255, 16, 16, 0.138); }
+  .partner input.ng-dirty:focus, .partner textarea.ng-dirty:focus, .notpartner input.ng-dirty:focus, .notpartner textarea.ng-dirty:focus {
+    background: none; }
+  .partner .message, .notpartner .message {
+    display: block;
+    border-radius: 4px;
+    font-size: 12px;
+    padding: 5px;
+    margin: 5px 0; }
+    .partner .message.error, .notpartner .message.error {
+      color: solid 1px rgba(255, 16, 16, 0.3);
+      border: solid 1px rgba(255, 16, 16, 0.3);
+      background: rgba(255, 16, 16, 0.1); }
+    .partner .message.success, .notpartner .message.success {
+      color: solid 1px rgba(16, 255, 16, 0.3);
+      border: solid 1px rgba(16, 255, 16, 0.3);
+      background: rgba(16, 255, 16, 0.1); }
+  .partner .apply, .notpartner .apply {
+    padding: 20px 0;
+    text-align: center; }
+  .partner button.btn, .partner a.btn, .notpartner button.btn, .notpartner a.btn {
+    border: none;
+    background: #3758bd;
+    padding: 16px 50px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    box-shadow: rgba(255, 255, 255, 0.4) 0 0px 0, inset rgba(255, 255, 255, 0.4) 0 0px 0;
+    text-shadow: #3758bd 0 1px 0;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 300;
+    font-family: arial;
+    text-decoration: none;
+    vertical-align: middle; }
+  .partner button.btn:hover, .partner a.btn:hover, .notpartner button.btn:hover, .notpartner a.btn:hover {
+    border: 0px solid #0a3c59;
+    text-shadow: #4b72e5 0 1px 0;
+    background: #4b72e5;
+    color: #fff; }
+  .partner button.btn:active, .partner a.btn:active, .notpartner button.btn:active, .notpartner a.btn:active {
+    text-shadow: #3758bd 0 1px 0;
+    border: 0px solid #0a3c59;
+    background: #3758bd;
+    color: #fff; }
+
+.notpartner {
+  color: #666;
+  background: #fff;
+  font-size: 16px;
+  line-height: 22px; }
+  .notpartner a {
+    color: inherit;
+    text-decoration: underline; }
+  .notpartner a:hover {
+    color: #333; }
+  .notpartner h9 {
+    font-size: 26px;
+    line-height: 54px;
+    margin-bottom: 12px;
+    font-weight: normal; }
+  .notpartner .columns {
+    position: relative;
+    text-align: center; }
+    .notpartner .columns .column {
+      display: inline-block; }
+    .notpartner .columns .column3 {
+      width: 32%; }
+  .notpartner p {
+    margin: 10px 0; }
+  .notpartner .container {
+    max-width: 960px; }
+  .notpartner .orange {
+    color: #fbab32; }
+  .notpartner .intro {
+    background: url(/images/partners/yourbg2.jpg) no-repeat center fixed;
+    background-size: cover;
+    background-color: #1d1d1d; }
+    .notpartner .intro .container {
+      background: url(/images/partners/main_phone4.png) no-repeat right bottom;
+      background-size: auto 100%;
+      height: 380px;
+      padding: 0 15px; }
+    .notpartner .intro h1 {
+      font-size: 38px;
+      padding-top: 60px;
+      line-height: 46px;
+      text-shadow: 0 1px #414141;
+      color: #fbab32; }
+    .notpartner .intro .info {
+      color: #fff; }
+    .notpartner .intro .btn {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      margin-top: 12px; }
+  .notpartner .features .container {
+    padding: 33px 0 44px;
+    border-bottom: solid 1px #e0e0e0; }
+  .notpartner .features .columns {
+    padding: 15px 0; }
+  .notpartner .features img {
+    height: 160px;
+    width: auto; }
+  .notpartner .features h5 {
+    display: block;
+    font-size: inherit;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 7px 0 0 0;
+    color: #000; }
+  .notpartner .features p {
+    margin: 10px;
+    font-size: 14px;
+    line-height: 18px; }
+  .notpartner .tour .container {
+    border-bottom: solid 1px #e0e0e0; }
+  .notpartner .tour .info {
+    padding: 50px 0; }
+  .notpartner .tour ul {
+    margin: 18px 0; }
+  .notpartner .tour ul.list-features {
+    list-style-type: disc; }
+  .notpartner .tour ul.list-features li {
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 0px;
+    margin-left: 18px; }
+  .notpartner .tour-easy .container {
+    background: url(/images/partners/how_phone2.png) no-repeat right bottom;
+    background-size: auto 88%;
+    padding: 0 15px;
+    height: 333px; }
+  .notpartner .apply {
+    padding: 50px 0 100px; }
+
+.partner {
+  color: #666;
+  background: #fff; }
+  .partner a {
+    color: inherit;
+    text-decoration: underline; }
+  .partner a:hover {
+    color: #333; }
+  .partner .container {
+    position: relative;
+    width: auto;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0; }
+  .partner .column {
+    display: inline-block;
+    margin: 0;
+    padding: 0; }
+  .partner hr {
+    background: #e0e0e0;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clear: both;
+    margin: 0;
+    border: none; }
+  .partner h9 {
+    font-size: 26px;
+    line-height: 54px;
+    margin-bottom: 12px;
+    font-weight: normal; }
+  .partner h7 {
+    font-size: 21px;
+    line-height: 50px;
+    margin-bottom: 14px;
+    font-weight: normal;
+    color: #666; }
+  .partner ul {
+    list-style-type: disc;
+    padding: 15px; }
+  .partner .columns {
+    position: relative;
+    overflow: hidden;
+    overflow: auto; }
+    .partner .columns .column {
+      display: inline-block;
+      padding: 0;
+      margin: 0; }
+    .partner .columns .column2 {
+      vertical-align: top;
+      width: 47%;
+      margin-right: 2.5%; }
+
+#partner1 {
+  text-align: center; }
+  #partner1 .userearningswelcome {
+    margin-top: 45px; }
+    #partner1 .userearningswelcome .userearningstitlecongrats {
+      margin-top: 5px;
+      margin-left: 6px;
+      padding-bottom: 0px;
+      color: #333;
+      line-height: 30px;
+      font-size: 30px; }
+    #partner1 .userearningswelcome .userearningsowenumnothumb {
+      color: #fbaa34;
+      font-size: 96px;
+      line-height: 102px; }
+  #partner1 .body {
+    padding: 20px 0; }
+  #partner1 .apply {
+    padding: 40px 0; }
+
+#partner2 .intro {
+  background: url(/images/partners/yourbg2.jpg) no-repeat center fixed;
+  background-size: cover;
+  background-color: #1d1d1d; }
+  #partner2 .intro .container {
+    background: url(/images/partners/main_phone4.png) no-repeat right bottom;
+    background-size: auto 100%;
+    height: 380px;
+    padding: 0 15px; }
+    #partner2 .intro .container > * {
+      width: 50%; }
+  #partner2 .intro .info {
+    color: #fff;
+    padding: 50px 0; }
+    #partner2 .intro .info h1 {
+      font-size: 38px;
+      padding-top: 15px;
+      line-height: 46px;
+      text-shadow: 0 1px #414141;
+      color: #fbab32; }
+    #partner2 .intro .info .text {
+      font-size: 125%;
+      line-height: 125%;
+      padding: 5px 0; }
+  #partner2 .intro .btn {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-top: 12px; }
+#partner2 .body {
+  padding: 30px 15px; }
+#partner2 .columns {
+  border-top: solid 1px #e0e0e0;
+  border-bottom: solid 1px #e0e0e0;
+  padding: 10px 0px; }
+  #partner2 .columns .column {
+    padding: 10px 0; }
+
+#partner3 .thankyou .container {
+  padding: 125px 30px;
+  max-width: 650px; }
+#partner3 .thankyou .title {
+  display: block;
+  border-bottom: solid 1px #e0e0e0; }
+
+#partner6 .container, #partner7 .container {
+  padding: 30px 0;
+  max-width: 650px; }
+#partner6 .title, #partner7 .title {
+  display: block;
+  border-bottom: solid 1px #e0e0e0; }
+#partner6 .apply, #partner7 .apply {
+  padding: 5px 0 45px; }
+
+#partnerApply .container {
+  padding: 30px 0;
+  max-width: 600px; }
+  #partnerApply .container p {
+    margin: 15px 0; }
+  #partnerApply .container .input-row {
+    margin: 15px 0; }
+    #partnerApply .container .input-row input, #partnerApply .container .input-row textarea {
+      width: 100%;
+      border: solid 1px #ccc;
+      glow: none; }
+#partnerApply .title {
+  display: block;
+  border-bottom: solid 1px #e0e0e0; }
+#partnerApply .apply {
+  padding: 0 0 45px; }
+
+#partnersEarnings {
+  color: #666;
+  background: #fff;
+  min-height: calc(100vh - 140px); }
+  #partnersEarnings a {
+    color: inherit;
+    text-decoration: underline; }
+  #partnersEarnings a:hover {
+    color: #333; }
+  #partnersEarnings .iframe-container {
+    text-align: center; }
+    #partnersEarnings .iframe-container iframe {
+      border: 0; }
+  #partnersEarnings .container {
+    padding: 45px 0 60px;
+    max-width: 620px; }
+  #partnersEarnings .userearnings {
+    margin-bottom: 12px; }
+  #partnersEarnings .userearningsowenothumb {
+    color: #fff;
+    text-align: center;
+    font-size: 32px; }
+  #partnersEarnings .userearningstitle {
+    color: #333; }
+  #partnersEarnings .caption {
+    color: grey;
+    font-size: 15px;
+    width: 80%;
+    margin: auto;
+    margin-top: 5px; }
+  #partnersEarnings .userearningsowenumnothumb {
+    color: #fbaa34;
+    font-size: 96px;
+    line-height: 102px; }
+  #partnersEarnings .earningsrows {
+    padding: 6px 0 24px; }
+    #partnersEarnings .earningsrows .earningsrow {
+      position: relative;
+      overflow: hidden;
+      overflow: auto;
+      padding: 12px 10px 8px;
+      border-top: solid 1px #e0e0e0; }
+      #partnersEarnings .earningsrows .earningsrow:last-child {
+        border-bottom: solid 1px #e0e0e0; }
+      #partnersEarnings .earningsrows .earningsrow .earningsstattitle {
+        float: left;
+        font-size: 21px;
+        line-height: 39px;
+        color: #999; }
+      #partnersEarnings .earningsrows .earningsrow .earningsstat {
+        float: right;
+        font-size: 26px;
+        line-height: 39px;
+        color: #424242; }
+  #partnersEarnings .bottom {
+    color: #999;
+    font-size: 12px;
+    text-align: center; }
+    #partnersEarnings .bottom span {
+      color: #999; }
+    #partnersEarnings .bottom p {
+      margin-left: 0 0 18px; }
+    #partnersEarnings .bottom .faq-link {
+      font-size: 19px;
+      color: #fbaa34; }
+
+#partnersFaq {
+  background: #fff; }
+  #partnersFaq table {
+    display: none; }
+  #partnersFaq .container {
+    width: 100%; }
+  #partnersFaq article ul, #partnersFaq article li, #partnersFaq article ol {
+    margin: 0;
+    padding: 0; }
+  #partnersFaq article li {
+    font-size: 1.15rem;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 100; }
+    #partnersFaq article li a {
+      color: #333; }
+      #partnersFaq article li a * {
+        font-weight: normal;
+        text-decoration: underline; }
+    #partnersFaq article li a[name] {
+      display: block;
+      position: relative;
+      top: -85px;
+      visibility: hidden; }
+  #partnersFaq article li li {
+    font-size: 1rem;
+    margin: 6px 0 10px 4px; }
+  #partnersFaq article li li p {
+    font-size: 1rem;
+    margin: 0 0 5px 0; }
+  #partnersFaq article > ol {
+    padding-left: 18px;
+    margin-left: 0; }
+  #partnersFaq article > ol > li {
+    margin: 5px 0;
+    padding: 0;
+    list-style-type: none;
+    cursor: pointer; }
+    #partnersFaq article > ol > li p {
+      display: inline-block;
+      padding-left: 6px; }
+    #partnersFaq article > ol > li i {
+      font-size: 16px;
+      transition: transform 0.5s;
+      display: inline-block; }
+  #partnersFaq article > ol > li.selected {
+    list-style-type: none; }
+    #partnersFaq article > ol > li.selected i {
+      transform: rotate(180deg); }
+  #partnersFaq article > ol li ul, #partnersFaq article > ol li ol {
+    margin-left: 24px;
+    height: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: height 1s ease-in 0.5s, max-height 1s ease-in 0.5s;
+    cursor: default; }
+    #partnersFaq article > ol li ul li p, #partnersFaq article > ol li ol li p {
+      display: block;
+      padding-left: 0; }
+    #partnersFaq article > ol li ul li i, #partnersFaq article > ol li ol li i {
+      display: none; }
+  #partnersFaq article > ol > li.selected > ul, #partnersFaq article > ol > li.selected > ol {
+    height: auto;
+    max-height: 1000px;
+    transition: height 1.5s ease-in 0s, max-height 1.5s ease-in 0s; }
+  #partnersFaq article > ol > li > p {
+    font-weight: normal;
+    color: #333; }
+  #partnersFaq article > ol > li.selected > p {
+    font-weight: bold; }
+  #partnersFaq hr {
+    margin: 30px 0;
+    padding: 0; }
+  #partnersFaq p {
+    font-size: 1rem;
+    margin: 0; }
+  #partnersFaq iframe {
+    display: block;
+    margin: 0 auto 18px; }
+  #partnersFaq h2, #partnersFaq .h2 {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin: 0 0 15px 0;
+    text-align: center; }
+  #partnersFaq h3, #partnersFaq .h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 15px 0 10px 0; }
+  #partnersFaq h4, #partnersFaq .h4 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 20px 0 15px 0; }
+  #partnersFaq #user-content-jobsColumns {
+    overflow: auto; }
+    #partnersFaq #user-content-jobsColumns > div {
+      float: left;
+      width: 49%;
+      vertical-align: top; }
+    #partnersFaq #user-content-jobsColumns p:first-child {
+      display: none; }
+    #partnersFaq #user-content-jobsColumns h4:nth-child(0), #partnersFaq #user-content-jobsColumns h4:nth-child(1), #partnersFaq #user-content-jobsColumns h4:nth-child(2) {
+      margin-top: 0; }

@@ -1,0 +1,40 @@
+[chat_subscribers_only]
+[smartling]	Чат в режиме "Только для подписчиков": Написать в чат…
+[manually]	Только для подписчиков: Написать в чат…
+
+[settings_enable_tips]
+[smartling]	Включить советы
+[manually]	Включить чаевые
+
+[settings_enable_tips_info]
+[smartling]	Отключение советов удалит подарок Tip Jar из вашей трансляции
+[manually]	Отключение чаевых удалит подарок Tip Jar из вашей трансляции
+
+[dashboard_mod_title]
+[smartling]	Пожаловаться на пользователя
+[manually]	Пожаловаться
+
+[_share]
+[smartling]	Поделиться
+[manually]	Продвигать
+
+[_live]
+[smartling]	Живая трансляция
+[manually]	В эфире
+
+[header_signup]
+[smartling]	Зарегистрироваться
+[manually]	Регистр
+
+[profile_biggest_fans_last_thirty_days]
+[smartling]	Самые активные поклонники за последние 30 дней
+[manually]	Самые активные поклонники <!--за последние 30 дней-->
+
+[profile_report_user]
+[smartling]	Пожаловаться на пользователя
+[manually]	Пожаловаться
+
+[welcome_text]
+[smartling]	Смотрите и общайтесь в реальном времени с {{value}} или познакомьтесь с другими замечательными стримерами, транслирующими на YouNow!
+[manually]	Смотрите и общайтесь с {{value}} или познакомьтесь с другими замечательными стримерами, транслирующими на YouNow!
+

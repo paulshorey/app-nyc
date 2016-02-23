@@ -1,0 +1,229 @@
+#hotscore_experiment {
+  position: absolute;
+  width: 593px;
+  left: 14px;
+  top: 38px;
+  z-index: 1010000;
+  height: 404px;
+  /* 400px +44px to make full */
+  opacity: 0;
+  visibility: visible;
+  overflow: hidden; }
+  #hotscore_experiment .hotscore_time {
+    position: absolute;
+    height: 100%;
+    width: 1px;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.5); }
+    #hotscore_experiment .hotscore_time > div {
+      position: absolute;
+      bottom: -1px;
+      left: 6px;
+      color: #fff;
+      text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+      font-size: 13px; }
+  #hotscore_experiment .hotscore_time.hotscore_offsetX {
+    height: 384px; }
+  #hotscore_experiment .hotscore_time.hotscore_positionX {
+    height: 402px;
+    background-color: rgba(20, 200, 20, 0.5);
+    color: rgba(20, 200, 20, 0.5); }
+    #hotscore_experiment .hotscore_time.hotscore_positionX > div {
+      color: rgba(80, 255, 80, 0.6); }
+  #hotscore_experiment > img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -40px;
+    left: 0; }
+  #hotscore_experiment .hotscore_canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0; }
+
+#hotscore_experiment:hover {
+  opacity: 1; }
+
+.media-player-modal {
+  margin-top: 6.66%; }
+  .media-player-modal .modal-content {
+    border-top-right-radius: 4px;
+    overflow-y: visible;
+    background-color: #000;
+    padding-top: 0;
+    height: 566px;
+    width: 623px; }
+    .media-player-modal .modal-content .modal-heading {
+      padding: 0 0 6px 0;
+      font-size: 15px;
+      line-height: 17px;
+      font-size: 13px; }
+      .media-player-modal .modal-content .modal-heading .profile {
+        font-weight: bold;
+        color: #999; }
+      .media-player-modal .modal-content .modal-heading .title {
+        font-weight: bold;
+        color: #fff; }
+    .media-player-modal .modal-content .modal-info {
+      height: 22px;
+      padding: 6px 0 0; }
+      .media-player-modal .modal-content .modal-info span {
+        padding: 0 9px 0 0;
+        color: rgba(255, 255, 255, 0.8);
+        display: inline-block; }
+      .media-player-modal .modal-content .modal-info .pull-right {
+        margin-right: -6px; }
+        .media-player-modal .modal-content .modal-info .pull-right a {
+          color: rgba(255, 255, 255, 0.8);
+          padding: 0;
+          display: inline-block;
+          font-size: 130%;
+          line-height: 100%; }
+          .media-player-modal .modal-content .modal-info .pull-right a:hover, .media-player-modal .modal-content .modal-info .pull-right a:focus, .media-player-modal .modal-content .modal-info .pull-right a:visited {
+            text-decoration: none; }
+    .media-player-modal .modal-content .modal-share {
+      margin-top: 9px;
+      width: 100%; }
+      .media-player-modal .modal-content .modal-share input[type=text], .media-player-modal .modal-content .modal-share > * {
+        display: inline-block;
+        vertical-align: middle;
+        height: 32px;
+        line-height: 32px; }
+      .media-player-modal .modal-content .modal-share input[type=checkbox] {
+        margin: 0; }
+      .media-player-modal .modal-content .modal-share .share-at {
+        margin: 0 5px;
+        color: #efefef; }
+        .media-player-modal .modal-content .modal-share .share-at.selected {
+          color: #fff; }
+      .media-player-modal .modal-content .modal-share .share-buttons {
+        position: absolute;
+        right: 15px; }
+        .media-player-modal .modal-content .modal-share .share-buttons img {
+          cursor: pointer;
+          width: 32px;
+          height: 32px;
+          margin: 0 0px 0 5px; }
+      .media-player-modal .modal-content .modal-share .share-input, .media-player-modal .modal-content .modal-share .share-output {
+        padding: 0 6px;
+        border: none;
+        border-radius: 2px;
+        margin-top: 1px;
+        background: #efefef;
+        color: #444; }
+      .media-player-modal .modal-content .modal-share .share-output {
+        width: calc(100% - 262px);
+        position: absolute;
+        right: 97px; }
+      .media-player-modal .modal-content .modal-share .share-input {
+        width: 60px; }
+  .media-player-modal button.close {
+    top: 10px;
+    opacity: 0.5; }
+    .media-player-modal button.close .ynicon-close {
+      font-size: 16px !important;
+      color: #ffffff !important; }
+
+.media-player-modal-exp {
+  width: 700px;
+  margin-top: 6.66%; }
+  .media-player-modal-exp .modal-content {
+    width: 700px;
+    height: 625px; }
+    .media-player-modal-exp .modal-content .modal-body {
+      padding: 16px 55px; }
+  .media-player-modal-exp .modal-content {
+    border-top-right-radius: 4px;
+    overflow-y: visible;
+    background-color: #fff;
+    padding-top: 0; }
+    .media-player-modal-exp .modal-content .experiment-login {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      z-index: 1000000000; }
+    .media-player-modal-exp .modal-content .modal-heading {
+      padding: 10px 0 15px 0;
+      line-height: 28px;
+      font-size: 18px;
+      text-align: center;
+      color: #3ea91b;
+      margin: 0 -20px;
+      display: block;
+      width: calc(100% + 50px); }
+      .media-player-modal-exp .modal-content .modal-heading .profile {
+        font-weight: bold;
+        color: #999; }
+      .media-player-modal-exp .modal-content .modal-heading .title {
+        font-weight: bold;
+        color: #fff; }
+    .media-player-modal-exp .modal-content .modal-info {
+      height: auto;
+      padding: 17px 0 0; }
+      .media-player-modal-exp .modal-content .modal-info span {
+        padding: 0 9px 0 0;
+        color: rgba(0, 0, 0, 0.8);
+        display: inline-block; }
+      .media-player-modal-exp .modal-content .modal-info .pull-right {
+        margin-right: -6px; }
+        .media-player-modal-exp .modal-content .modal-info .pull-right a {
+          color: rgba(0, 0, 0, 0.8);
+          padding: 0;
+          display: inline-block;
+          font-size: 130%;
+          line-height: 100%; }
+          .media-player-modal-exp .modal-content .modal-info .pull-right a:hover, .media-player-modal-exp .modal-content .modal-info .pull-right a:focus, .media-player-modal-exp .modal-content .modal-info .pull-right a:visited {
+            text-decoration: none; }
+    .media-player-modal-exp .modal-content .modal-share {
+      margin-top: 9px;
+      width: 100%; }
+      .media-player-modal-exp .modal-content .modal-share input[type=text], .media-player-modal-exp .modal-content .modal-share > * {
+        display: inline-block;
+        vertical-align: middle;
+        height: 32px;
+        line-height: 32px; }
+      .media-player-modal-exp .modal-content .modal-share input[type=checkbox] {
+        margin: 0; }
+      .media-player-modal-exp .modal-content .modal-share .share-at {
+        margin: 0 5px;
+        color: #111; }
+        .media-player-modal-exp .modal-content .modal-share .share-at.selected {
+          color: #000; }
+      .media-player-modal-exp .modal-content .modal-share .share-buttons {
+        position: absolute;
+        right: 47px; }
+        .media-player-modal-exp .modal-content .modal-share .share-buttons img {
+          cursor: pointer;
+          width: 32px;
+          height: 32px;
+          margin: 0 0px 0 5px; }
+      .media-player-modal-exp .modal-content .modal-share .share-input, .media-player-modal-exp .modal-content .modal-share .share-output {
+        padding: 0 6px;
+        border: none;
+        border-radius: 2px;
+        margin-top: 1px;
+        background: #efefef;
+        color: #444; }
+      .media-player-modal-exp .modal-content .modal-share .share-output {
+        width: calc(100% - 336px);
+        position: absolute;
+        right: 129px; }
+      .media-player-modal-exp .modal-content .modal-share .share-input {
+        width: 60px; }
+  .media-player-modal-exp button.close {
+    top: 10px;
+    opacity: 0.5; }
+    .media-player-modal-exp button.close .ynicon-close {
+      font-size: 16px !important;
+      color: #666 !important; }
+
+.media-player-modal-exp {
+  margin-top: 50vh; }
+  .media-player-modal-exp .modal-content {
+    margin-top: -313px; }

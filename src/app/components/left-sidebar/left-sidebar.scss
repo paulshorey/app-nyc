@@ -1,0 +1,144 @@
+#leftsidebar {
+  width: 147px;
+  padding-right: 0;
+  margin-left: 10px;
+  position: relative;
+  font-size: 14px;
+
+  .panel-title {
+
+    &, span {
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 18px;
+      margin-bottom: 5px;
+      color: #333333;
+      cursor: pointer;
+    }
+    span {
+    	display:inline;
+    }
+  }
+
+  .mobile-title {
+    cursor: default !important;
+  }
+
+  .mobile-link {
+    margin-top: 5px;
+    display: block;
+  }
+
+  .arrow {
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .ynicon-carrot-dwn,
+  .ynicon-carrot-rgt {
+    color: #b0afaf;
+    font-size: 12px;
+  }
+
+  .trending-tags-list {
+    max-height: 210px;
+    margin-bottom: 20px;
+
+    a {
+      line-height: 13px;
+      height: 21px;
+      vertical-align: middle;
+      cursor: pointer;
+      display:block;
+      &:hover {
+        background-color: #E4E4E4;
+      }
+    }
+
+
+  }
+
+  .trending-users {
+    max-height: 150px;
+    padding-right: 4px;
+
+    &:hover {
+        overflow-y: auto;
+    }
+
+    a {
+      line-height: 15px;
+      cursor: pointer;
+      display: block;
+      margin-right: -5px;
+      padding-right: 5px;
+      display:block;
+      &:hover {
+        background-color: #E4E4E4;
+      }
+
+      span {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: inline-block;
+        white-space: nowrap;
+        margin-top: 3px;
+        max-width: 99px;
+      }
+      span:last-child {
+        float: right;
+      }
+    }
+  }
+
+  .trending-tag, .trending-user, .viewerCount {
+    font-size: 13px;
+    color: #666666;
+  }
+
+  .trending-tag {
+    margin-top: 5px;
+    display: inline-block;
+  }
+
+  .trending-people-more{
+    cursor: pointer;
+    color: #999999;
+    font-size: 13px;
+    padding: 5px 0;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .scroll-pane {
+    height: auto;
+    width: 100%;
+    overflow: auto;
+  }
+
+  .editorial-promo {
+    width: 100%;
+    height: 0px;
+    overflow:hidden;
+    transition: height .6s ease-in-out;
+    &.open {
+      height: 0px;
+    }
+  }
+
+  .left-panel {
+  	margin:0 0 15px 0;
+  }
+
+  .panel-body {
+    padding: 0px;
+  }
+
+}
+
+#get-app-subtext {
+  font-size:12px !important;
+  color: #999;
+}

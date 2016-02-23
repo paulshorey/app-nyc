@@ -1,0 +1,64 @@
+[header_signup]
+[smartling]	Anmelden
+[manually]	Registrieren
+
+[profile_younower_since]
+[smartling]	YouNow-User seit {{date}}
+[manually]	YouNow user seit {{date}}
+
+[explore_topbroadcasters]
+[smartling]	Top-Broadcaster
+[manually]	Führende Sendeanstalten
+
+[settings_nickname]
+[smartling]	Nickname
+[manually]	Beiname
+
+[settings_nickname_tooltip]
+[smartling]	Wenn du diese Option auswählst, wird dein echter Name durch deinen Nickname ersetzt
+[manually]	Wenn du diese Option auswählst, wird dein echter Name durch deinen Beiname ersetzt
+
+[buybarsmodal_paypal]
+[smartling]	Weiter zu PayPal
+[manually]	Fahren Sie mit PayPal
+
+[reconnect_title]
+[smartling]	Deinen Broadcast fortsetzen?
+[manually]	Weiter Ihre Sendung ?
+
+[reconnect_message]
+[smartling]	Deine {{value}} Zuschauer warten auf dich!
+[manually]	Ihre {{value}} Zuschauer warten auf Sie !
+
+[reconnect_no]
+[smartling]	Nein danke
+[manually]	Nein Danke
+
+[golive_tag_title]
+[smartling]	Versehe deinen Broadcast mit Tags
+[manually]	Kennzeichnen Sie Ihre Sendung
+
+[golive_tag_text]
+[smartling]	Indem du deine Broadcasts mit Tags versiehst, hilfst du Leuten, dich zu entdecken.
+[manually]	Hinzufügen eines Tag hilft den Menschen zu entdecken Sie .
+
+[golive_tag_input]
+[smartling]	Einen Tag suchen
+[manually]	Suchen Sie nach einem Tag
+
+[golive_share_title]
+[smartling]	Teilen
+[manually]	Aktie
+
+[golive_share_text]
+[smartling]	Bitte deine Freunde, sich deine Broadcasts anzusehen und dich zu unterstützen
+[manually]	Lassen Sie Ihre Freunde zu sehen und Unterstützung kommen
+
+[golive_share_input]
+[smartling]	Was gibt's Neues?
+[manually]	Was ist los?
+
+[golive_go]
+[smartling]	Live gehen
+[manually]	Geh Leben
+

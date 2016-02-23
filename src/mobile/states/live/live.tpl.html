@@ -1,0 +1,69 @@
+<div class="mobile-nonlive mobile-live">
+
+	<div class="table-row row-video">
+		<div class="nonlive-video" ng-style="{'background-image': 'url('+ vm.broadcasterService.broadcasts[0].media.broadcast.broadcastThumbnail +')'}">
+			<div class="video-play" ng-click="vm.trackClick(vm.gaAction, vm.config.yozio.yozioLink)">
+				<i class="video-playbutton ynicon ynicon-icon-play2"></i>
+			</div>
+			<div class="video-logo" ng-click="vm.trackClick(vm.gaAction, vm.config.yozio.yozioLink)"><img class="logo-image" ng-src="https://growth.younow.com/angularjsapp/src/assets/images/logo/skewed_white.svg" alt="Live Stream Video Chat" src="https://growth.younow.com/angularjsapp/src/assets/images/logo/skewed_white.svg" /></div>
+			<div class="video-openinapp" ng-click="vm.trackClick(vm.gaAction, vm.config.yozio.yozioLink)">Open in App</div>
+			<div class="video-live" ng-class="{'isLive':vm.broadcasterService.broadcast.isLive}" ng-click="vm.trackClick(vm.gaAction, vm.config.yozio.yozioLink)"><span class="live-bullet"></span> Live Now</div>
+		</div>
+	</div>
+
+	<div class="table-row row-header">
+		<div class="nonlive-header">
+			<div class="header-thumb">
+				<a
+				class="thumb circle-thumb pull-left"
+				ng-style="{ background: 'url('+vm.thumb+'), url('+vm.noThumb+') no-repeat', 'background-size': 'cover' }"
+				ng-href="/{{vm.broadcasterService.profile}}" prevent-default
+				ng-click="vm.trackClick(vm.gaAction, vm.config.yozio.yozioLink)">
+					<span class="ynbadge" ng-if="vm.broadcasterService.broadcaster.isSubscribable && !vm.swf.settingUpBroadcast">
+						<img ng-src="{{::vm.config.settings.BadgeBaseUrl}}/{{vm.broadcasterService.broadcaster.userId}}/1/badge@2x.png" />
+					</span>
+				</a>
+			</div>
+			<div class="header-text">
+				<div class="broadcast-info transline-mid">
+					<a
+					class="broadcaster-name ellipsify"
+					ng-href="/{{vm.broadcasterService.broadcaster.profile}}" prevent-default
+					ng-click="vm.trackClick(vm.gaAction, vm.config.yozio.yozioLink)">
+						<i class="ynicon ynicon-level"></i>
+						<span>{{vm.Math.floor(vm.broadcasterService.broadcaster.broadcasterlevel)}} {{vm.broadcasterService.broadcaster.profile}}</span>
+					</a>
+					<div class="broadcaster-description line-clamp">
+						{{vm.broadcasterService.broadcaster.description}}
+					</div>
+					<div class="broadcaster-description line-clamp">
+						<a
+						ng-if="!vm.broadcasterService.broadcaster.isSubscribable || !vm.session.fanStatus[vm.broadcasterService.broadcaster.broadcasterId]"
+						ng-href="/explore/{{vm.broadcasterService.broadcaster.tags[0]}}" prevent-default
+						ng-click="vm.Api.goto('explore/' + vm.broadcasterService.broadcaster.tags[0])">
+							#{{vm.broadcasterService.broadcast.tag}}
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="table-row row-chat">
+		<div class="live-chat">
+			<div class="chat-container">
+				<div class="chat-comment" ng-repeat="comment in vm.broadcasterService.broadcast.comments">
+					<b class="short-text">{{comment.name}}</b> 
+					{{comment.comment}} 
+					<img class="chat-comment-image" ng-if="(comment.giftId)" ng-src="{{vm.broadcasterService.giftAssetsBaseUrl}}{{comment.gift.SKU}}/web.png">
+				</div>
+				<div class="chat-input">
+					<input type="text" placeholder="Chat with {{vm.broadcasterService.broadcast.viewers}} viewers" />
+					<input type="button" value="Chat" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

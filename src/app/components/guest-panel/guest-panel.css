@@ -1,0 +1,249 @@
+#guestpanel {
+  height: 544px;
+  width: 400px;
+  display: block;
+  position: relative;
+  overflow: hidden; }
+  #guestpanel .crowns-container {
+    margin-right: 5px; }
+  #guestpanel .mini-scroll::-webkit-scrollbar {
+    width: 9px; }
+  #guestpanel .guest-nav {
+    padding: 0px 20px !important;
+    border-bottom: 1px solid #e7e7e7;
+    height: 31px;
+    vertical-align: middle;
+    line-height: 31px;
+    display: table;
+    width: 100%; }
+    #guestpanel .guest-nav > * {
+      vertical-align: middle;
+      display: table-cell; }
+    #guestpanel .guest-nav .guest-total {
+      width: 40%; }
+    #guestpanel .guest-nav .btn-group {
+      width: 60%; }
+      #guestpanel .guest-nav .btn-group .btn {
+        font-size: 13px; }
+        #guestpanel .guest-nav .btn-group .btn .text-muted {
+          color: #999999; }
+        #guestpanel .guest-nav .btn-group .btn .ynicon-carrot-dwn {
+          font-size: 8px; }
+      #guestpanel .guest-nav .btn-group .dropdown-menu {
+        padding: 0;
+        margin: 0;
+        right: -20px; }
+        #guestpanel .guest-nav .btn-group .dropdown-menu.level-active .level a {
+          background-color: #61c13e;
+          color: #fff !important; }
+        #guestpanel .guest-nav .btn-group .dropdown-menu.level-active .level .ynicon-carrot-up {
+          color: #61c13e; }
+        #guestpanel .guest-nav .btn-group .dropdown-menu.waitingtime-active.asc .waiting-longest a {
+          background-color: #61c13e;
+          color: #fff !important; }
+        #guestpanel .guest-nav .btn-group .dropdown-menu.waitingtime-active.desc .waiting-shortest a {
+          background-color: #61c13e;
+          color: #fff !important; }
+        #guestpanel .guest-nav .btn-group .dropdown-menu.alphabetical-active .alphabetical a {
+          background-color: #61c13e;
+          color: #fff !important; }
+        #guestpanel .guest-nav .btn-group .dropdown-menu li:hover .ynicon-carrot-up {
+          color: #efefef; }
+        #guestpanel .guest-nav .btn-group .dropdown-menu li:hover a {
+          background-color: #efefef; }
+        #guestpanel .guest-nav .btn-group .dropdown-menu .active a {
+          background-color: #61c13e;
+          color: #fff !important; }
+        #guestpanel .guest-nav .btn-group .dropdown-menu .active .ynicon-carrot-up {
+          color: #61c13e; }
+        #guestpanel .guest-nav .btn-group .dropdown-menu a:hover {
+          background-color: inherit; }
+  #guestpanel .guest-list-empty {
+    text-align: center;
+    color: #ccc;
+    padding-top: 35px !important;
+    font-size: 13px; }
+    #guestpanel .guest-list-empty i {
+      color: #e7e7e7;
+      font-size: 50px;
+      margin-bottom: 20px;
+      display: inline-block; }
+  #guestpanel .guest-list {
+    padding: 0 !important;
+    overflow: hidden;
+    overflow-y: auto;
+    max-height: 512px; }
+    #guestpanel .guest-list.frozen {
+      overflow: visible; }
+  #guestpanel .guest-optin {
+    position: static !important;
+    background-color: #eff9eb;
+    border: none; }
+  #guestpanel .guest-guest-list .guest-optin {
+    display: none; }
+  #guestpanel .broadcaster-guest-list .guest-optin {
+    display: none; }
+  #guestpanel .broadcaster-guest-list .guest:hover {
+    background-color: #eff9eb;
+    border-bottom: none; }
+    #guestpanel .broadcaster-guest-list .guest:hover .line-clamp:after {
+      display: none; }
+    #guestpanel .broadcaster-guest-list .guest:hover .description, #guestpanel .broadcaster-guest-list .guest:hover .guest-location {
+      opacity: 0; }
+    #guestpanel .broadcaster-guest-list .guest:hover .btn-primary {
+      display: block;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.5s linear, visibility 0s linear 0s; }
+  #guestpanel .guest:last-child {
+    border: none; }
+  #guestpanel .guest {
+    padding: 8px 0px 8px 20px;
+    border-bottom: 1px solid #e7e7e7;
+    display: table;
+    width: 100%;
+    position: relative; }
+    #guestpanel .guest > * {
+      display: inline-block; }
+    #guestpanel .guest .btn-primary {
+      position: absolute;
+      display: block;
+      bottom: 20px;
+      visibility: hidden;
+      opacity: 0; }
+    #guestpanel .guest .thumbnail-placeholder, #guestpanel .guest .thumbnail-image {
+      width: 112px;
+      height: 84px;
+      color: #fff;
+      font-size: 36px;
+      vertical-align: middle;
+      line-height: 84px;
+      text-align: center; }
+    #guestpanel .guest .thumbnail-placeholder {
+      background-color: #61c13e; }
+    #guestpanel .guest .thumb {
+      width: 112px;
+      height: 84px; }
+    #guestpanel .guest .summary-placeholder {
+      position: relative; }
+      #guestpanel .guest .summary-placeholder .btn, #guestpanel .guest .summary-placeholder b {
+        transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+        position: absolute; }
+      #guestpanel .guest .summary-placeholder .btn {
+        visibility: hidden;
+        opacity: 0;
+        top: 35%; }
+      #guestpanel .guest .summary-placeholder b {
+        visibility: visible;
+        opacity: 1;
+        top: 40%; }
+      #guestpanel .guest .summary-placeholder.in-list:hover .btn {
+        visibility: visible;
+        opacity: 1;
+        transition-delay: 0s; }
+      #guestpanel .guest .summary-placeholder.in-list:hover b {
+        visibility: hidden;
+        opacity: 0; }
+    #guestpanel .guest .guest-name {
+      color: #333;
+      max-width: 220px; }
+    #guestpanel .guest .guest-location, #guestpanel .guest .guest-bars {
+      color: #999999; }
+    #guestpanel .guest .guest-location {
+      padding-bottom: 4px;
+      padding-top: 4px; }
+    #guestpanel .guest .guest-bars i {
+      color: #f9a62e; }
+    #guestpanel .guest .guest-location, #guestpanel .guest .summary .description {
+      transition: opacity 0.5s linear, visibility 0s linear 0s; }
+    #guestpanel .guest .summary, #guestpanel .guest .summary-placeholder {
+      display: table-cell;
+      vertical-align: middle;
+      padding-left: 15px;
+      width: 100%; }
+      #guestpanel .guest .summary > *, #guestpanel .guest .summary-placeholder > * {
+        font-size: 14px; }
+      #guestpanel .guest .summary .line-clamp, #guestpanel .guest .summary-placeholder .line-clamp {
+        position: relative; }
+        #guestpanel .guest .summary .line-clamp:after, #guestpanel .guest .summary-placeholder .line-clamp:after {
+          width: 16%; }
+      #guestpanel .guest .summary .description, #guestpanel .guest .summary-placeholder .description {
+        word-break: break-word;
+        color: #999;
+        overflow: hidden;
+        max-height: 38px; }
+  #guestpanel .preview-image {
+    position: absolute;
+    left: 40px;
+    z-index: 1000;
+    bottom: 130px;
+    height: 240px;
+    width: 320px;
+    transition: all 1s linear; }
+    #guestpanel .preview-image.in-list {
+      width: 112px;
+      height: 84px;
+      bottom: 420px;
+      left: 20px; }
+  #guestpanel .guest-preview {
+    position: absolute;
+    top: 0;
+    width: 400px;
+    height: 544px;
+    background-color: #fff;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    right: -400px;
+    transition: right 0.5s linear; }
+    #guestpanel .guest-preview.active {
+      right: 0; }
+    #guestpanel .guest-preview .go-back {
+      margin-top: 15px;
+      display: block;
+      color: #999999; }
+      #guestpanel .guest-preview .go-back:hover {
+        color: #e3e3e3; }
+    #guestpanel .guest-preview .preview-title {
+      margin: 50px 0 50px 0;
+      font-size: 20px;
+      text-align: center; }
+      #guestpanel .guest-preview .preview-title .short-text {
+        display: inline-block;
+        max-width: 214px;
+        vertical-align: bottom; }
+    #guestpanel .guest-preview .preview-video-container #preview-video {
+      width: 320px;
+      height: 240px;
+      background-color: #000;
+      margin: 0 auto 40px auto;
+      display: block; }
+    #guestpanel .guest-preview .preview-video-container .counter {
+      position: absolute;
+      left: 40px;
+      font-size: 60px;
+      color: #fff;
+      font-weight: bold;
+      height: 240px;
+      width: 320px;
+      text-align: center;
+      line-height: 230px;
+      text-shadow: 0px 0px 30px #000000; }
+    #guestpanel .guest-preview .preview-control {
+      width: 50px;
+      height: 50px;
+      font-size: 25px;
+      border-radius: 50%; }
+    #guestpanel .guest-preview .btn-confirm {
+      margin: 0 auto;
+      display: block; }
+    #guestpanel .guest-preview .retry-buttons {
+      text-align: center; }
+      #guestpanel .guest-preview .retry-buttons .preview-control:first-child {
+        margin-right: 25px; }
+      #guestpanel .guest-preview .retry-buttons .preview-control {
+        font-size: 38px;
+        padding: 0;
+        border: none; }
+      #guestpanel .guest-preview .retry-buttons .btn-cancel {
+        background-color: #ccc;
+        color: #fff; }

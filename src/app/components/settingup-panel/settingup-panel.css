@@ -1,0 +1,148 @@
+#settinguppanel {
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 4px;
+  position: absolute;
+  top: 0; }
+  #settinguppanel .golive_buttons {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    width: 100%; }
+    #settinguppanel .golive_buttons .btn {
+      margin: 0 auto; }
+  #settinguppanel .ynicon-icon-check {
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    color: #568b08;
+    opacity: 0;
+    transition: opacity 0.5s linear; }
+    #settinguppanel .ynicon-icon-check.active {
+      opacity: 1; }
+  #settinguppanel .heading {
+    margin-top: 20px; }
+  #settinguppanel .sub-title {
+    margin-bottom: 10px;
+    padding-left: 0 !important; }
+  #settinguppanel .tag-input {
+    box-shadow: none;
+    padding: 0 12px 0 22px; }
+  #settinguppanel .hash-label {
+    position: absolute;
+    line-height: 36px;
+    margin-left: 14px;
+    opacity: 0;
+    transition: opacity 0.5s linear; }
+    #settinguppanel .hash-label.active {
+      opacity: 1; }
+  #settinguppanel .typeahead-container {
+    padding: 0 0 200px 0 !important;
+    position: relative; }
+    #settinguppanel .typeahead-container.open .dropdown-menu {
+      opacity: 1; }
+    #settinguppanel .typeahead-container .dropdown-menu {
+      margin-top: 0 !important;
+      width: 100% !important;
+      max-height: 203px;
+      box-shadow: none;
+      background-color: #fff;
+      border: none;
+      color: #666;
+      padding: 10px 0 !important;
+      top: 34px;
+      overflow: hidden;
+      opacity: 0;
+      transition: opacity 0.5s linear; }
+      #settinguppanel .typeahead-container .dropdown-menu:hover {
+        overflow-y: auto;
+        overflow-y: overlay; }
+      #settinguppanel .typeahead-container .dropdown-menu::-webkit-scrollbar {
+        width: 6px; }
+      #settinguppanel .typeahead-container .dropdown-menu::-webkit-scrollbar-thumb {
+        background: #cdcccc; }
+      #settinguppanel .typeahead-container .dropdown-menu .active .tag {
+        background-color: #3b91e0; }
+    #settinguppanel .typeahead-container .divider {
+      width: 100%;
+      margin: 0;
+      background-color: #fff;
+      padding-top: 6px;
+      border-bottom: 1px dashed #6c99da;
+      display: inline-block; }
+  #settinguppanel .tag {
+    background-color: #2a85d8;
+    color: #fff; }
+    #settinguppanel .tag:hover {
+      background-color: #3b91e0; }
+  #settinguppanel .ep-tag {
+    color: #568b08;
+    background-color: #e5f2d2; }
+    #settinguppanel .ep-tag .ynicon-level {
+      margin-right: -5px; }
+    #settinguppanel .ep-tag:hover {
+      background-color: #D2F1A5; }
+  #settinguppanel .tag, #settinguppanel .ep-tag {
+    border: 1px solid transparent;
+    border-radius: 12px;
+    margin: 5px 5px 0 0;
+    cursor: pointer;
+    font-size: 13px;
+    display: block;
+    padding: 3px 8px; }
+  #settinguppanel .typeahead-defaults {
+    color: #666;
+    padding: 10px 0 !important;
+    border-top: none;
+    max-height: 201px;
+    opacity: 0;
+    transition: opacity 0.5s linear;
+    overflow-y: auto;
+    transform: translateZ(0); }
+    #settinguppanel .typeahead-defaults.active {
+      opacity: 1; }
+  #settinguppanel .snapshot {
+    width: 100px;
+    height: 75px;
+    background-color: #ccc;
+    text-align: center;
+    padding: 0 !important;
+    position: relative; }
+    #settinguppanel .snapshot .btn-transparent {
+      top: 30%;
+      left: 30%;
+      position: absolute;
+      opacity: 0.7; }
+      #settinguppanel .snapshot .btn-transparent:hover {
+        opacity: 1; }
+    #settinguppanel .snapshot .ynicon-camera {
+      font-size: 26px;
+      color: #fff; }
+    #settinguppanel .snapshot img {
+      width: 100%; }
+  #settinguppanel .snapshot-description {
+    padding-right: 0 !important;
+    width: 260px; }
+    #settinguppanel .snapshot-description input {
+      box-shadow: none; }
+    #settinguppanel .snapshot-description .btn-transparent {
+      font-size: 20px;
+      margin-top: 15px;
+      margin-left: 5px;
+      width: 26px; }
+    #settinguppanel .snapshot-description .ynicon-icon-share-tw, #settinguppanel .snapshot-description .ynicon-social-tm, #settinguppanel .snapshot-description .ynicon-icon-share-fb, #settinguppanel .snapshot-description .ynicon-icon-share-yt {
+      color: #ccc; }
+    #settinguppanel .snapshot-description .ynicon-icon-share-tw-on {
+      color: #01aff6; }
+    #settinguppanel .snapshot-description .ynicon-icon-share-fb-on {
+      color: #3759bd; }
+    #settinguppanel .snapshot-description .ynicon-icon-share-tm-on {
+      color: #36465d; }
+  #settinguppanel .btn-primary {
+    min-width: 170px;
+    font-size: 18px;
+    margin: 130px auto 0 auto;
+    display: block; }
+    #settinguppanel .btn-primary:focus {
+      box-shadow: 0px 0px 1px 1px #6AAA0B !important; }

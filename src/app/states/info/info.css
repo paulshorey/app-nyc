@@ -1,0 +1,92 @@
+#docs.info-page {
+  max-width: 960px;
+  margin: 70px auto 20px auto;
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  opacity: 0; }
+  #docs.info-page.ready {
+    opacity: 1; }
+  #docs.info-page ul {
+    list-style-type: disc;
+    margin: 0 0 10px 25px; }
+  #docs.info-page table:first-child {
+    display: none; }
+  #docs.info-page a {
+    color: #999; }
+  #docs.info-page h3 a {
+    color: #000;
+    font-size: 15px;
+    font-weight: 700; }
+  #docs.info-page #doc-header {
+    width: auto;
+    height: 50px;
+    padding: 160px 55px 60px;
+    background-image: url(/angularjsapp/src/assets/images/docs/header_trustsafety_2x.jpg);
+    background-position: center;
+    background-size: cover;
+    color: #fff;
+    font-size: 32px;
+    margin-bottom: 30px;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+    font-weight: bold; }
+  #docs.info-page #doc-sidebar {
+    float: left;
+    width: 250px;
+    padding: 15px 20px 0 55px;
+    color: #666666;
+    font-size: 14px; }
+  #docs.info-page #doc-content {
+    float: left;
+    max-width: 660px;
+    padding: 23px 20px 50px; }
+    #docs.info-page #doc-content h2 {
+      font-size: 22px;
+      margin: 30px 0 10px;
+      font-weight: bold; }
+      #docs.info-page #doc-content h2:nth-child(2) {
+        margin-top: -7px; }
+    #docs.info-page #doc-content h3 {
+      font-size: 15px;
+      font-weight: bold;
+      margin: 20px 0 1px; }
+  #docs.info-page .doc-section {
+    margin-bottom: 10px; }
+    #docs.info-page .doc-section:hover {
+      text-decoration: underline;
+      cursor: pointer; }
+  #docs.info-page.rtl {
+    word-wrap: break-word;
+    direction: rtl; }
+    #docs.info-page.rtl #doc-sidebar, #docs.info-page.rtl #doc-content {
+      float: right;
+      font-size: 18px; }
+    #docs.info-page.rtl ul {
+      margin: 0 25px 10px 0; }
+
+@media screen and (max-width: 960px) {
+  #docs {
+    margin-top: 50px;
+    margin-bottom: 0;
+    border-radius: 0; }
+ }
+
+@media screen and (max-width: 680px) {
+  #docs {
+    margin-top: 50px;
+    margin-bottom: 0;
+    border-radius: 0;
+    width: auto; }
+
+  #docs #doc-header {
+    margin-bottom: 10px;
+    padding-left: 20px; }
+
+  #docs #doc-sidebar {
+    display: none; }
+
+  #docs #doc-content {
+    width: auto; }
+ }

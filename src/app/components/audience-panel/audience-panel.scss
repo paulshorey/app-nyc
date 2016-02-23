@@ -1,0 +1,167 @@
+#audiencepanel {
+
+	div.audience-summary {
+		padding: 6px 20px !important;
+		border-bottom: 1px solid #e7e7e7;
+		font-size: 13px;
+		text-align: left;
+
+		.ynicon-refresh {
+			color: #cccccc;
+			font-size: 19px;
+		}
+
+		.btn-reset {
+			margin-top: -2px;
+		}
+
+		.summary-number {
+			font-weight: bold;
+		}
+	}
+
+	.audience-summary.refresh {
+		background-color: #f6f6f6;
+		color: #999999;
+
+		.summary-number {
+			color: #999999;
+		}
+	}
+
+	.audience:hover {
+		overflow: auto;
+	}
+
+	.audience {
+		height: 509px;
+		width: 100%;
+		overflow-x: hidden;
+		overflow-y: hidden;
+	}
+
+	.viewer {
+		display: inline-block;
+		width: 100%;
+		height: 50px;
+		overflow: hidden;
+
+		.circle-thumb {
+			width: 40px;
+			height: 40px;
+			position: relative;
+			cursor: pointer;
+			margin-top: 7px;
+		}
+
+		.special-message {
+			color: #61c13e;
+		}
+
+		.viewer-name {
+			color: #333333;
+			font-weight: bold;
+
+			max-width: 290px;
+			display: inline-block;
+			vertical-align: bottom;
+		}
+
+		.viewer-name:hover {
+			color: #666666;
+			cursor: pointer;
+		}
+
+		.viewer-information {
+			margin: 7px 0;
+
+			.titles {
+				display:inline-block;
+				margin-left: 6px;
+			}
+			.infos {
+				display:inline-block;
+				width: calc(100% - 70px);
+				padding-left: 9px;
+			}
+
+		}
+
+		// disable (restart)
+		.info {
+			display:block;
+			font-size: 13px;
+			height: 0;
+			opacity: 0;
+			transition: height 0.3s, opacity 0.70s ease-in-out;
+		}
+
+		// enable (cycle)
+		.subscriber-active {
+			.subscriber {
+				height: 20px;
+				opacity: 1;
+			}
+		}
+
+		.fanRank-active {
+			.fanRank {
+				height: 20px;
+				opacity: 1;
+			}
+		}
+
+		.isFan-active {
+			.isFan {
+				height: 20px;
+				opacity: 1;
+			}
+		}
+
+		.birthday-active {
+			.birthday {
+				height: 20px;
+				opacity: 1;
+			}
+		}
+
+		.gifts-active {
+			.gifts {
+				height: 20px;
+				opacity: 1;
+			}
+		}
+
+		.viewersRs-active {
+			.viewersRs {
+				height: 20px;
+				opacity: 1;
+			}
+		}
+
+		.location-active {
+			.location {
+				height: 20px;
+				opacity: 1;
+			}
+		}
+
+		.fans-active {
+			.fans {
+				height: 20px;
+				opacity: 1;
+			}
+		}
+
+		.viewer-message {
+			color: #999999;
+		}
+
+		.viewer-location {
+
+			span {
+				color: #999999;
+			}
+		}
+	}
+}

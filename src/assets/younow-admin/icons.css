@@ -1,0 +1,142 @@
+@font-face {
+  font-family: 'younow-adminqud6y49hacgwg66r';
+  src: url('/angularjsapp/src/assets/younow-admin/fonts/younow-adminqud6y49hacgwg66r.eot?jbxv0j');
+  src: url('/angularjsapp/src/assets/younow-admin/fonts/younow-adminqud6y49hacgwg66r.eot?jbxv0j#iefix') format('embedded-opentype'), url('/angularjsapp/src/assets/younow-admin/fonts/younow-adminqud6y49hacgwg66r.woff2?jbxv0j') format('woff2'), url('/angularjsapp/src/assets/younow-admin/fonts/younow-adminqud6y49hacgwg66r.ttf?jbxv0j') format('truetype'), url('/angularjsapp/src/assets/younow-admin/fonts/younow-adminqud6y49hacgwg66r.woff?jbxv0j') format('woff'), url('/angularjsapp/src/assets/younow-admin/fonts/younow-adminqud6y49hacgwg66r.svg?jbxv0j#younow-admin') format('svg');
+  font-weight: normal;
+  font-style: normal; }
+
+[class^="yn"], [class*=" yn"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'younow-adminqud6y49hacgwg66r' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.ynyounow-a-minus:before {
+  content: "\e926"; }
+
+.ynyounow-a-plus:before {
+  content: "\e927"; }
+
+.ynyounow-a-bar:before {
+  content: "\e925"; }
+
+.ynicon_delete:before {
+  content: "\e923"; }
+
+.ynicon_move:before {
+  content: "\e924"; }
+
+.ynicon_trash:before {
+  content: "\1f340"; }
+
+.ynicon_exclamation:before {
+  content: "\e91f"; }
+
+.ynicon_nudity:before {
+  content: "\e920"; }
+
+.ynicon_spam:before {
+  content: "\e921"; }
+
+.ynicon_underage:before {
+  content: "\e922"; }
+
+.ynicon_chat:before {
+  content: "\e910"; }
+
+.ynicon_check:before {
+  content: "\e911"; }
+
+.ynicon_close:before {
+  content: "\e912"; }
+
+.ynicon_compose:before {
+  content: "\e913"; }
+
+.ynicon_flag:before {
+  content: "\e914"; }
+
+.ynicon_languages:before {
+  content: "\e915"; }
+
+.ynicon_level:before {
+  content: "\e916"; }
+
+.ynicon_profile:before {
+  content: "\e917"; }
+
+.ynyounow-a-chat:before {
+  content: "\e918"; }
+
+.ynyounow-a-send:before {
+  content: "\e919"; }
+
+.ynyounow-a-settings:before {
+  content: "\e91a"; }
+
+.ynyounow-a-download:before {
+  content: "\e91b"; }
+
+.ynyounow-a-email:before {
+  content: "\e91c"; }
+
+.ynyounow-a-time:before {
+  content: "\e91d"; }
+
+.ynyounow-a-caret-up-down:before {
+  content: "\e91e"; }
+
+.ynyounow-a-search:before {
+  content: "\e90f"; }
+
+.ynyounow-a-caret-down:before {
+  content: "\e907"; }
+
+.ynyounow-a-caret-right:before {
+  content: "\e908"; }
+
+.ynyounow-a-caret-left:before {
+  content: "\e909"; }
+
+.ynyounow-a-caret-up:before {
+  content: "\e90a"; }
+
+.ynyounow-a-back:before {
+  content: "\e90b"; }
+
+.ynyounow-a-next:before {
+  content: "\e90c"; }
+
+.ynyounow-a-person:before {
+  content: "\e90d"; }
+
+.ynyounow-a-shift-tracker:before {
+  content: "\e90e"; }
+
+.ynyounow-a-logo:before {
+  content: "\e900"; }
+
+.ynyounow-a-content:before {
+  content: "\e901"; }
+
+.ynyounow-a-dashboard:before {
+  content: "\e902"; }
+
+.ynyounow-a-moderation:before {
+  content: "\e903"; }
+
+.ynyounow-a-partner-management:before {
+  content: "\e904"; }
+
+.ynyounow-a-activity:before {
+  content: "\e905"; }
+
+.ynyounow-a-user-management:before {
+  content: "\e906"; }

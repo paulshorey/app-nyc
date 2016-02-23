@@ -1,0 +1,290 @@
+.settings-page {
+  width: 800px;
+  min-height: 200px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 4px;
+  margin-bottom: 10px; }
+  .settings-page .form-horizontal .radio, .settings-page .form-horizontal .checkbox, .settings-page .form-horizontal .radio-inline, .settings-page .form-horizontal .checkbox-inline {
+    padding-top: initial; }
+  .settings-page .form-control {
+    height: 30px;
+    margin-top: -5px; }
+  .settings-page select {
+    -moz-appearance: none; }
+  .settings-page .settings-for {
+    padding: 20px 28px; }
+  .settings-page .navigation {
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-bottom: 1px solid #e7e7e7; }
+    .settings-page .navigation .tab-header {
+      margin-right: 35px;
+      font-size: 15px;
+      color: #999999;
+      display: inline-block;
+      height: 50px;
+      cursor: pointer;
+      letter-spacing: 0.5px; }
+      .settings-page .navigation .tab-header:hover, .settings-page .navigation .tab-header.active {
+        border-bottom: 3px solid #61c13e;
+        color: #61c13e;
+        text-shadow: 0 0 0 #61c13e; }
+  .settings-page .navigation {
+    display: table;
+    width: 100%;
+    margin: 0; }
+    .settings-page .navigation .tab-header {
+      display: table-cell;
+      margin: 0; }
+  .settings-page .info-page, .settings-page .notifications-page, .settings-page .connected-accounts-page, .settings-page .privacy-page, .settings-page .subscriptions-page {
+    padding: 25px 30px 15px 30px; }
+  .settings-page .info-page .control-label {
+    width: 160px; }
+  .settings-page .control-group {
+    margin-bottom: 25px; }
+    .settings-page .control-group .control-label {
+      padding-top: 0; }
+    .settings-page .control-group .controls {
+      display: inline-block;
+      margin-left: 20px;
+      max-width: 65%; }
+      .settings-page .control-group .controls .form-control {
+        width: 200px;
+        margin-bottom: 5px; }
+      .settings-page .control-group .controls .checkbox {
+        margin-left: 20px; }
+    .settings-page .control-group .checkbox {
+      clear: both; }
+  .settings-page .control-group.control-nickname .checkbox {
+    padding-top: 7px; }
+  .settings-page .edit-field, .settings-page .edit-actions {
+    display: none; }
+  .settings-page .edit-mode .edit-hide {
+    display: none; }
+  .settings-page .edit-mode .edit-field, .settings-page .edit-mode .edit-actions {
+    display: block; }
+  .settings-page .edit-actions {
+    text-align: center; }
+    .settings-page .edit-actions .btn {
+      width: 100px; }
+    .settings-page .edit-actions .btn:first-child {
+      margin-right: 15px; }
+  .settings-page .notifications-page .parent-fieldset {
+    position: relative; }
+    .settings-page .notifications-page .parent-fieldset legend {
+      margin-left: 0;
+      margin-bottom: 55px;
+      line-height: 40px; }
+    .settings-page .notifications-page .parent-fieldset .icons {
+      position: absolute;
+      top: 0px;
+      width: 100%; }
+      .settings-page .notifications-page .parent-fieldset .icons img {
+        margin-left: 50px; }
+      .settings-page .notifications-page .parent-fieldset .icons .email {
+        margin-right: 5px; }
+    .settings-page .notifications-page .parent-fieldset .icons-legend {
+      position: absolute;
+      top: 50px;
+      width: 100%;
+      right: -31px; }
+      .settings-page .notifications-page .parent-fieldset .icons-legend span {
+        color: #999;
+        font-size: 13px;
+        margin: 0;
+        width: 86px;
+        padding: 0 3px;
+        text-align: center; }
+    .settings-page .notifications-page .parent-fieldset .form-group {
+      margin-left: 0;
+      margin-bottom: 40px; }
+    .settings-page .notifications-page .parent-fieldset .controls {
+      margin-top: -20px; }
+    .settings-page .notifications-page .parent-fieldset input[type='checkbox'] {
+      position: absolute; }
+      .settings-page .notifications-page .parent-fieldset input[type='checkbox'].email {
+        right: 176px; }
+      .settings-page .notifications-page .parent-fieldset input[type='checkbox'].inapp {
+        right: 94px; }
+      .settings-page .notifications-page .parent-fieldset input[type='checkbox'].push {
+        right: 12px; }
+    .settings-page .notifications-page .parent-fieldset .push-settings {
+      margin-bottom: 25px; }
+      .settings-page .notifications-page .parent-fieldset .push-settings legend {
+        margin-bottom: 25px; }
+      .settings-page .notifications-page .parent-fieldset .push-settings input {
+        position: relative; }
+  .settings-page .connected-accounts-page .form-horizontal {
+    width: 94%;
+    margin: 0 auto; }
+  .settings-page .connected-accounts-page .extra-fb .control-group:first-child {
+    padding-top: 0 !important; }
+  .settings-page .connected-accounts-page .extra-fb .controls {
+    margin-left: 0 !important;
+    width: 350px; }
+  .settings-page .connected-accounts-page .extra-fb .disconnect {
+    margin: 0;
+    vertical-align: middle;
+    height: 22px;
+    display: inline-block;
+    margin-left: 10px; }
+  .settings-page .connected-accounts-page .fb-pages select {
+    margin-top: -5px; }
+  .settings-page .connected-accounts-page .identity, .settings-page .connected-accounts-page .disconnect {
+    font-size: 15px;
+    color: #999999;
+    margin-top: 7px; }
+  .settings-page .connected-accounts-page .connect {
+    text-align: center;
+    margin-top: 10px; }
+  .settings-page .connected-accounts-page .disconnect {
+    margin-left: 3px; }
+    .settings-page .connected-accounts-page .disconnect, .settings-page .connected-accounts-page .disconnect a {
+      color: #999999; }
+    .settings-page .connected-accounts-page .disconnect a {
+      text-decoration: underline; }
+  .settings-page .connected-accounts-page .fb-logo.connected {
+    background-color: #3E559D; }
+  .settings-page .connected-accounts-page .twitter-logo.connected {
+    background-color: #05B4D1; }
+  .settings-page .connected-accounts-page .twitter-connected input[type='checkbox'], .settings-page .connected-accounts-page .tumblr-connected input[type='checkbox'], .settings-page .connected-accounts-page .facebook-connected input[type='checkbox'] {
+    margin-left: 45px;
+    margin-right: 10px;
+    position: static; }
+  .settings-page .connected-accounts-page .google-logo.connected {
+    background-color: #FB4553; }
+  .settings-page .connected-accounts-page .instagram-logo.connected {
+    background-color: #2e70a3; }
+  .settings-page .connected-accounts-page .youtube-logo.connected {
+    background-color: #C8312C; }
+  .settings-page .connected-accounts-page .tumblr-logo.connected {
+    background-color: #36465d; }
+  .settings-page .connected-accounts-page .logo {
+    background-color: #A8A8A8;
+    border-radius: 50%;
+    color: #ffffff;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 30px; }
+    .settings-page .connected-accounts-page .logo .ynicon {
+      vertical-align: middle; }
+  .settings-page .connected-accounts-page .control-group {
+    margin-left: 45px;
+    margin-right: 45px; }
+    .settings-page .connected-accounts-page .control-group legend {
+      width: 90%;
+      margin-left: 15px;
+      padding-bottom: 5px; }
+  .settings-page .connected-accounts-page .control-label {
+    text-align: left;
+    width: 130px; }
+  .settings-page .connected-accounts-page .instructions {
+    margin-left: 45px; }
+  .settings-page .connected-accounts-page .extra-fb .control-group:last-child {
+    padding-top: 25px; }
+  .settings-page .connected-accounts-page .notice {
+    font-size: 12px;
+    text-align: center;
+    color: #999999; }
+    .settings-page .connected-accounts-page .notice a {
+      color: #333; }
+  .settings-page .connected-accounts-page .edit-actions {
+    margin-top: 10px; }
+  .settings-page .privacy-page .edit-actions {
+    margin-top: 10px; }
+  .settings-page .privacy-page .deactivate .instructions {
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: bold; }
+  .settings-page .privacy-page .deactivate .note {
+    margin-bottom: 10px; }
+  .settings-page .subscriptions-page .sthumbs {
+    text-align: center;
+    padding: 5px; }
+    .settings-page .subscriptions-page .sthumbs .sthumbs_image {
+      height: 70px;
+      margin: 6px auto 18px;
+      padding-right: 12px; }
+    .settings-page .subscriptions-page .sthumbs .thumb {
+      margin: 15px; }
+  .settings-page .subscriptions-page .thumb {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    margin-right: 10px;
+    display: inline-block;
+    position: relative;
+    margin-top: 1px; }
+    .settings-page .subscriptions-page .thumb .ynbadge {
+      color: #76b343;
+      display: block;
+      position: absolute;
+      bottom: -5px;
+      right: -5px;
+      width: 24px;
+      height: 24px; }
+      .settings-page .subscriptions-page .thumb .ynbadge img {
+        height: 100%;
+        width: 100%; }
+  .settings-page .subscriptions-page .stitle {
+    font-size: 24px;
+    text-align: center;
+    font-weight: 100; }
+  .settings-page .subscriptions-page .stext {
+    margin: 40px auto;
+    width: 400px;
+    padding-left: 20px; }
+    .settings-page .subscriptions-page .stext b {
+      display: block; }
+    .settings-page .subscriptions-page .stext ul {
+      margin: 16px 0 16px 16px; }
+      .settings-page .subscriptions-page .stext ul li {
+        list-style-type: disc; }
+  .settings-page .subscriptions-page .subscriptions .sub {
+    display: table;
+    margin: 11px 22px 33px 44px; }
+  .settings-page .subscriptions-page .subscriptions .sleft {
+    display: table-cell;
+    vertical-align: top;
+    padding-top: 3px; }
+  .settings-page .subscriptions-page .subscriptions .sright {
+    display: table-cell;
+    vertical-align: top; }
+    .settings-page .subscriptions-page .subscriptions .sright > span {
+      display: block; }
+    .settings-page .subscriptions-page .subscriptions .sright .spay {
+      padding-left: 33px; }
+    .settings-page .subscriptions-page .subscriptions .sright .pay-profile {
+      font-weight: bold; }
+    .settings-page .subscriptions-page .subscriptions .sright .pay-warn {
+      color: red; }
+  .settings-page .subscriptions-page .btn-confirm {
+    margin-top: 5px; }
+  .settings-page .subscriptions-page .btn-modify {
+    background: #fff;
+    color: #999;
+    border: none;
+    min-wdith: auto;
+    display: inline-block;
+    padding-left: 0;
+    margin-left: 0; }
+  .settings-page .isEmailConfirmed {
+    color: #61c13e;
+    width: auto;
+    padding-left: 15px; }
+  .settings-page .nickname-warning {
+    font-style: italic;
+    font-size: 12px;
+    margin-top: 5px; }
+  .settings-page .youtube-privacy {
+    width: 100px;
+    display: inline-block; }
+  .settings-page .contentid-disclaimer {
+    font-size: 12px;
+    margin-top: 10px;
+    color: #999999;
+    text-align: center; }

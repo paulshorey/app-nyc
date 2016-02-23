@@ -1,0 +1,525 @@
+.content-creator-container {
+  height: 400px; }
+  .content-creator-container, .content-creator-container * {
+    font-family: Lato; }
+  .content-creator-container h1 {
+    font-family: Lato-Bold;
+    color: white;
+    text-transform: uppercase;
+    display: inline-block;
+    position: absolute;
+    top: 231px;
+    left: 50%;
+    margin-left: -375px;
+    font-size: 41px;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.16);
+    line-height: 30px; }
+  .content-creator-container img {
+    position: absolute; }
+    .content-creator-container img.mcn-logo {
+      width: 26%;
+      left: 30px;
+      top: 63px; }
+    .content-creator-container img.younow-logo {
+      left: 42%;
+      width: 18%;
+      top: 45px; }
+  .content-creator-container .get-partnered {
+    cursor: pointer;
+    height: 47px;
+    width: 18%;
+    background: #00D565;
+    color: white;
+    position: fixed;
+    right: 0;
+    top: 53px;
+    z-index: 1;
+    font-family: Lato-Bold; }
+    .content-creator-container .get-partnered .call {
+      width: 80%;
+      display: inline-block; }
+      .content-creator-container .get-partnered .call p {
+        position: relative;
+        text-align: center;
+        font-size: 17px;
+        bottom: 16px;
+        left: 9px;
+        font-family: Lato-Bold; }
+    .content-creator-container .get-partnered .arrow {
+      width: 18%;
+      height: 100%;
+      color: white;
+      background: #00c35a;
+      display: inline-block;
+      position: relative; }
+      .content-creator-container .get-partnered .arrow img {
+        width: 32%;
+        top: 25%;
+        left: 37%; }
+  .content-creator-container .home-video-container {
+    left: 0;
+    top: -95px;
+    position: fixed;
+    z-index: -20;
+    width: 100%; }
+    .content-creator-container .home-video-container .home-video {
+      width: 100%; }
+  .content-creator-container .mobile-banner {
+    display: none; }
+
+.get-partnered-panel {
+  display: none;
+  background: #00c35a; }
+  .get-partnered-panel .call-to-action {
+    font-family: Lato-Bold;
+    font-size: 24px;
+    top: 4px;
+    background: #00d564;
+    margin: 0;
+    height: 39px; }
+    .get-partnered-panel .call-to-action p {
+      position: relative;
+      top: 7px;
+      margin: 0; }
+
+.benefits {
+  background: #efefef;
+  padding-bottom: 25px; }
+  .benefits.white {
+    background: white;
+    padding-top: 90px; }
+  .benefits div {
+    display: inline-block;
+    width: 33%;
+    text-align: center;
+    vertical-align: top; }
+    .benefits div h4 {
+      font-family: Lato-Bold;
+      font-size: 26px;
+      text-transform: uppercase;
+      width: 64%;
+      margin-top: 37px;
+      position: relative;
+      left: 17%; }
+    .benefits div .arrow {
+      display: none; }
+    .benefits div img {
+      margin-bottom: 10px; }
+    .benefits div p {
+      width: 73%;
+      left: 13%;
+      font-size: 18px;
+      position: relative;
+      font-family: Lato; }
+      .benefits div p.author {
+        font-family: Lato-Bold;
+        font-size: 20px; }
+    .benefits div.guest {
+      position: relative; }
+
+.featured-in {
+  background: #00d565;
+  height: 95px;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  font-family: Lato-Bold; }
+  .featured-in p {
+    position: relative;
+    top: 15px;
+    font-size: 44px; }
+
+.logos {
+  margin-bottom: -1px; }
+  .logos div {
+    width: 80%;
+    text-align: center;
+    margin: auto; }
+    .logos div img {
+      margin-left: 25px;
+      margin-right: 25px;
+      margin-top: 40px;
+      margin-bottom: 40px;
+      width: 17%;
+      vertical-align: bottom; }
+
+.how-it-works {
+  background: white; }
+  .how-it-works h2 {
+    color: #414042;
+    text-align: center;
+    font-size: 53px;
+    margin-top: 0px;
+    text-align: center;
+    background: white;
+    padding-top: 70px;
+    padding-bottom: 50px;
+    font-family: Lato-Bold; }
+  .how-it-works .tutorial-vid {
+    width: 80%;
+    margin: 0 auto; }
+    .how-it-works .tutorial-vid iframe {
+      display: block;
+      margin: 0 auto;
+      width: 93%;
+      height: 550px; }
+
+.get-started {
+  text-align: center;
+  background: #efefef;
+  height: 545px; }
+  .get-started h2, .get-started h4, .get-started form, .get-started .interest-btn {
+    margin: 0 auto;
+    text-align: center; }
+  .get-started h2 {
+    padding-top: 60px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    font-size: 44px;
+    font-family: Lato-Bold; }
+  .get-started h4 {
+    font-size: 26px;
+    font-family: Lato; }
+  .get-started form {
+    margin-top: 20px;
+    margin-bottom: 20px; }
+    .get-started form .input-block.name {
+      width: 15%;
+      display: inline-block;
+      margin-right: 5px;
+      margin-left: 5px; }
+    .get-started form .input-block.phone, .get-started form .input-block.email {
+      width: 31%;
+      display: inline-block; }
+    .get-started form .input-block .warning {
+      visibility: hidden;
+      text-align: left;
+      color: red;
+      font-size: 11px;
+      font-family: Lato;
+      margin: 0; }
+    .get-started form .input-block input {
+      font-family: Lato;
+      margin-bottom: 3px;
+      height: 40px;
+      border: none;
+      border-radius: 2px;
+      font-size: 26px;
+      line-height: 30px;
+      width: 100%;
+      padding-left: 5px;
+      font-family: Lato;
+      color: black; }
+    .get-started form.submitted-form .ng-invalid {
+      border: 1px solid red; }
+    .get-started form.submitted-form .ng-invalid + .warning {
+      visibility: visible; }
+  .get-started .interest-btn {
+    cursor: pointer;
+    margin-top: 20px;
+    background: #0094ff;
+    width: 36.5%;
+    margin-top: 16px;
+    display: inline-block;
+    margin: 0 auto;
+    font-family: Lato; }
+    .get-started .interest-btn p {
+      color: white;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      font-size: 23px; }
+    .get-started .interest-btn:hover {
+      background: #47abf4; }
+  .get-started.hidden {
+    display: none; }
+  .get-started.success {
+    background-color: #efefef;
+    display: none;
+    height: 650px; }
+    .get-started.success h2 {
+      font-family: Lato;
+      font-size: 43px;
+      margin-bottom: 4px; }
+    .get-started.success h4 {
+      letter-spacing: 0.5px;
+      margin-bottom: 35px;
+      margin-top: 10px; }
+    .get-started.success .green-btn {
+      cursor: pointer;
+      width: 37%;
+      background: #7CE613;
+      display: inline-block;
+      padding-left: 40px;
+      padding-right: 40px;
+      margin-bottom: 20px; }
+      .get-started.success .green-btn p {
+        display: inline-block;
+        font-family: Lato;
+        color: white;
+        font-size: 27px;
+        margin-bottom: 15px;
+        margin-top: 15px; }
+      .get-started.success .green-btn:hover {
+        background-color: #a5e368; }
+    .get-started.success h1 {
+      font-family: Lato;
+      font-size: 41px; }
+    .get-started.success img {
+      width: 13%;
+      margin: 0;
+      margin-right: 18px;
+      margin-left: 18px;
+      margin-top: 9px; }
+    .get-started.success.visible {
+      display: block; }
+
+@media only screen and (max-width: 1050px) {
+  .content-creator-container .get-partnered .call p {
+    font-size: 14px;
+    left: 4px; }
+  .content-creator-container .get-partnered .arrow {
+    width: 23px;
+    left: 2px;
+    bottom: 0; }
+
+  .benefits div h4 {
+    font-size: 20px; }
+  .benefits div img {
+    width: 80%; }
+
+  .logos div img {
+    width: 16%; }
+
+  .featured-in {
+    font-size: 60px; }
+
+  .get-started form .input-block.name {
+    display: inline;
+    margin-left: 0;
+    margin-right: 0; }
+    .get-started form .input-block.name .warning {
+      left: 34.5%;
+      position: relative; }
+    .get-started form .input-block.name input {
+      width: 54%; }
+  .get-started form .input-block.email, .get-started form .input-block.phone {
+    width: 54%;
+    margin-left: -3px; }
+  .get-started .interest-btn p {
+    font-size: 19px; }
+ }
+
+@media only screen and (max-width: 790px) {
+  .content-creator-container h1 {
+    top: 250px;
+    width: 75%;
+    text-align: center;
+    margin-left: -295px;
+    width: 394px;
+    font-size: 36px; }
+  .content-creator-container img.younow-logo {
+    right: 0;
+    margin-right: 30px;
+    left: 100; }
+  .content-creator-container .get-partnered {
+    display: none; }
+
+  .get-partnered-panel {
+    display: inline-block;
+    width: 100%;
+    height: 68px;
+    color: white;
+    text-align: center;
+    font-size: 20px; }
+    .get-partnered-panel img {
+      width: 6%;
+      bottom: 9px; }
+    .get-partnered-panel.scrolled {
+      position: fixed;
+      z-index: 100;
+      top: 0; }
+
+  .benefits div {
+    display: inline; }
+    .benefits div h4 {
+      font-size: 28px;
+      margin-bottom: 18px; }
+      .benefits div h4.scrolled {
+        margin-top: 92px; }
+    .benefits div img {
+      width: 55%;
+      position: relative;
+      left: 50%;
+      margin-left: -216px; }
+    .benefits div p {
+      left: 14%;
+      font-size: 17px; }
+      .benefits div p.author {
+        margin-bottom: 45px; }
+  .benefits.white img {
+    width: 50%;
+    margin-left: -200px; }
+
+
+
+  .get-started {
+    height: 480px; }
+    .get-started h2 {
+      font-size: 33px; }
+    .get-started h4 {
+      font-size: 19px; }
+    .get-started .interest-btn {
+      font-family: Lato;
+      width: 299px;
+      left: 5px; }
+      .get-started .interest-btn p {
+        font-size: 20px; }
+ }
+
+@media only screen and (max-width: 760px) {
+  .content-creator-container h1 {
+    margin-left: -40%;
+    top: 250px;
+    font-size: 28px;
+    font-family: Lato-Bold;
+    width: 83%; }
+  .content-creator-container img.younow-logo {
+    position: absolute;
+    left: initial;
+    width: 35%; }
+  .content-creator-container img.mcn-logo {
+    width: 41%; }
+  .content-creator-container .home-video-container video {
+    display: none; }
+  .content-creator-container .home-video-container .mobile-banner {
+    display: inline-block;
+    width: 100%;
+    height: 548px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* <------ */
+    background-position: center center; }
+
+  .benefits {
+    padding-top: 1px;
+    padding-bottom: 10px; }
+    .benefits div {
+      width: 100%;
+      display: inline-block; }
+      .benefits div h4 {
+        font-family: Lato-Bold;
+        font-size: 28px;
+        width: 100%;
+        text-align: left;
+        left: 11%;
+        font-size: 27px;
+        line-height: 30px;
+        width: 80%;
+        line-height: 29px; }
+      .benefits div img {
+        position: relative;
+        left: 0;
+        margin-left: 0;
+        width: 40%;
+        display: inline-block; }
+      .benefits div p {
+        width: 37%;
+        display: inline-block;
+        left: 15px;
+        text-align: left;
+        vertical-align: top;
+        font-family: Lato;
+        bottom: 19px; }
+    .benefits.white div {
+      display: none; }
+      .benefits.white div.visible {
+        display: inline-block; }
+      .benefits.white div .arrow {
+        width: 7%;
+        display: inline-block;
+        vertical-align: middle; }
+        .benefits.white div .arrow.left {
+          margin-left: 0;
+          padding-right: 30px; }
+        .benefits.white div .arrow.right {
+          margin-left: 0;
+          padding-left: 30px; }
+      .benefits.white div .headshot {
+        vertical-align: middle;
+        display: inline-block;
+        margin-left: 0; }
+      .benefits.white div p {
+        left: initial;
+        text-align: center;
+        width: 74%;
+        bottom: initial;
+        margin: 0 auto;
+        display: block; }
+        .benefits.white div p.author {
+          margin-top: 15px;
+          font-size: 26px;
+          font-family: Lato-Bold; }
+
+  .how-it-works h2 {
+    font-size: 33px;
+    font-family: Lato-Bold; }
+  .how-it-works .tutorial-vid {
+    width: 80%;
+    margin: 0 auto; }
+    .how-it-works .tutorial-vid iframe {
+      display: block;
+      margin: 0 auto;
+      width: 80%;
+      height: 100%; }
+
+  .logos div {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%; }
+    .logos div img {
+      margin: 20px;
+      width: 26%; }
+
+  .featured-in {
+    background: #1ef214;
+    height: 75px; }
+    .featured-in p {
+      font-size: 28px;
+      padding-top: 3px;
+      font-family: Lato-Bold; }
+
+  .get-started {
+    height: 550px; }
+    .get-started h2 {
+      padding-top: 32px;
+      font-size: 30px;
+      font-family: Lato-Bold;
+      margin-bottom: 10px; }
+    .get-started h4 {
+      width: 80%;
+      font-size: 22px;
+      font-family: Lato;
+      line-height: 24px; }
+    .get-started form {
+      overflow: hidden;
+      display: inline-block; }
+      .get-started form .input-block {
+        width: 74%; }
+        .get-started form .input-block.name input {
+          width: 100%;
+          font-size: 17px; }
+      .get-started form .input-block.email, .get-started form .input-block.phone {
+        width: 100%; }
+        .get-started form .input-block.email input, .get-started form .input-block.phone input {
+          width: 100%;
+          font-size: 17px; }
+    .get-started.success .green-btn {
+      width: 86%; }
+    .get-started.success img {
+      width: 39%;
+      margin-right: 12px;
+      margin-left: 12px; }
+
+  .newFooter {
+    display: none; }
+ }

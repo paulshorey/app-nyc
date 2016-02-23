@@ -1,0 +1,106 @@
+.ep-modal {
+	margin-top: 10%;
+
+	.modal-content {
+		width: 430px;
+		height: 350px;
+	  	margin: 0 auto;
+	}
+
+	.panel-one {
+		z-index: 10;
+	}
+
+	.panel-two {
+		z-index: 20;
+		position: absolute;
+		top: 0;
+		right: 500px;
+		width: 100%;
+		height: 95%;
+		background-color: #fff;
+		border-radius: 4px;
+		transition: right 0.8s ease-in;
+
+		&.active {
+			right: 0;
+		}
+
+		.ep-badge {
+			width: 120px;
+			margin-top: 5px;
+			margin-bottom: 5px;
+		}
+
+		.bottom {
+			padding: 5px;
+			margin-top: 60px;
+		}
+	}
+
+	.modal-body {
+		padding-top: 30px;
+		overflow: hidden;
+	}
+
+	.circle-thumb {
+		width: 70px;
+		height: 70px;
+		margin: 0 auto;
+		z-index: 10;
+	}
+
+	.ep-thumb {
+		width: 120px;
+  		margin: 0 auto;
+  		.ep-badge {
+			margin-top: -5px;
+		}
+	}
+
+	.ep-tag {
+		margin-top: 30px;
+  		text-align: center;
+	}
+
+	.title {
+		font-weight: 300;
+	}
+
+	.sub-title {
+		text-align: center;
+		font-size: 13px;
+		margin-top: -10px;
+		margin-bottom: 10px;
+	}
+
+	.ep-desc {
+		width: 350px;
+  		margin: 0 auto;
+  		font-size: 13px;
+  		text-align: center;
+	}
+
+	.ep-list {
+		list-style-type: disc;
+		width: 330px;
+		margin: 0 auto;
+		font-size: 13px;
+
+		li {
+		  	margin-bottom: 7px;
+		}
+	}
+
+	.bottom {
+		text-align: center;
+		padding: 15px;
+		margin-top: 45px;
+	}
+}
+
+.ep-expired {
+	.bottom {
+		margin-top: 10px;
+	}
+}

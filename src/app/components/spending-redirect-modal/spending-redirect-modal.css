@@ -1,0 +1,14 @@
+.spending-redirect-modal h2 {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px; }
+.spending-redirect-modal p {
+  width: 400px;
+  margin: 0 auto;
+  text-align: center; }
+.spending-redirect-modal .actions {
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 10px; }
+.spending-redirect-modal .btn {
+  font-size: 13px; }

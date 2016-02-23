@@ -1,0 +1,33 @@
+.share-broadcast-ctrl {
+	width: 348px;
+	
+	.share-message {
+  		width: 260px;
+		text-align: center;
+		margin: 0 auto;
+	}
+
+	.btn {
+		height: 26px;
+		width: 110px;
+	}
+
+	.form-control {
+		margin-top: 15px;
+		box-shadow: none;
+		border-color: #e0e0e0;
+		height: 30px;
+		width: 295px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.actions {
+		margin: 25px 0 5px 0;
+		text-align: center;
+
+		.btn:first-child {
+			margin-right: 10px;
+		}
+	}
+}
