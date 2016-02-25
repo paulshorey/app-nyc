@@ -1,5 +1,5 @@
 (function() {
-	angular.module('ynl.states')
+	angular.module('younow.states')
 
 	.config(function($stateProvider) {
 		$stateProvider

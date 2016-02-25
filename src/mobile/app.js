@@ -8,17 +8,17 @@ if (pathname.substring(pathname.length-1, pathname.length) == '/') {
 // angular
 (function() {
 	//Define high level modules
-	angular.module('ynl.states', []);
-	angular.module('ynl.services', []);
-	angular.module('ynl.components', []);
-	angular.module('templates', []);
+	angular.module('younow.states', []);
+	angular.module('younow.services', []);
+	angular.module('younow.directives', []);
 
 	var appDependencies = [
 		'ui.router',
 		'younow.core',
-		'ynl.states',
-		'ynl.services',
-		'ynl.components'
+		
+		'younow.states',
+		'younow.services',
+		'younow.directives'
 	];
 	angular.module('younow', appDependencies)
 
