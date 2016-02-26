@@ -1,7 +1,2 @@
-*.sw*
-*~
-cache/
-dev/
-node_modules/
+node_modules
 .module-cache
-coverage/
