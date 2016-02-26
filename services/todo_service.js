@@ -11,7 +11,7 @@
         var self = this;
         var baseUrl = Backand.getApiUrl() + '/1/objects/';
 
-        var objectName = 'todo';
+        var objectName = 'category';
 
         self.readAll = function () {
             return $http({
