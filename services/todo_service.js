@@ -12,6 +12,11 @@
         var baseUrl = Backand.getApiUrl() + '/1/objects/';
 
         var objectName = 'category';
+        var objects = {
+            'category':{'name':'category'},
+            'scene':{'name':'scene'},
+            'site':{'name':'site'}
+        };
 
         self.readAll = function () {
             return $http({
