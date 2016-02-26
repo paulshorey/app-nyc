@@ -10,19 +10,20 @@
     angular.module('mytodoApp')
         .controller('HeaderCtrl', ['$state', 'AuthService', HeaderCtrl]);
 
-    function HeaderCtrl($state, AuthService) {
-        var self = this;
+        function HeaderCtrl($state, AuthService) {
+            var self = this;
 
-        self.currentUser = AuthService.currentUser;
+            self.currentUser = AuthService.currentUser;
 
-        /**
-         * Logout from Backand
-         */
-        self.logout = function () {
-            AuthService.logout();
-            $state.go('login');
-        };
+            /**
+             * Logout from Backand
+             */
+            self.logout = function () {
+                AuthService.logout();
+                $state.go('login');
+            };
+
+        }
 
     }
-
-})();
+)();

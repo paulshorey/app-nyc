@@ -8,7 +8,25 @@
      * Todo List controller of the todoApp for viewing and adding to do items
      */
     angular.module('mytodoApp')
-        .controller('TodoListCtrl', ['TodoService', TodoListCtrl]);
+        .controller('TodoListCtrl', ['TodoService', 'AuthService', TodoListCtrl]);
+
+    function HeaderCtrl($state, AuthService) {
+        var self = this;
+
+        self.currentUser = AuthService.currentUser;
+
+        /**
+         * Logout from Backand
+         */
+        self.logout = function () {
+            AuthService.logout();
+            $state.go('login');
+        };
+
+    }
+    
+    
+    
 
     function TodoListCtrl(TodoService) {
         var self = this;
