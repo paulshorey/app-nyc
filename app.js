@@ -1,73 +1,37 @@
-'use strict';
+var pro = process;
+pro.inc = {};
+pro.inc.express = require('express');
+pro.inc.express_parser = require('body-parser');
+// modules
+pro.moment = require('moment'); // pro.moment(new Date(2011, 9, 16)).
+pro.moment.now = pro.moment();
+pro.request = require('request');
+pro.fs = require('fs');
+pro.q = require('q');
+pro._ = require('underscore');
+pro.contentful = require('contentful');
+// env
+pro.env.PORT = 1080;
+pro.env.PATH = __dirname;
+// app
+pro.app = pro.inc.express();
+pro.app.use(pro.inc.express_parser.json({
+	limit: '50mb'
+}));
+pro.app.use(pro.inc.express_parser.urlencoded({
+	limit: '50mb',
+	extended: true
+}));
+pro.app.use(pro.inc.express.static('public'));
+// custom
+pro.fun = require("./node_custom/fun.js");
+pro.console = require("./node_custom/console.js").console; // uses pro.app
+pro.response = require("./node_custom/response.js");
+// secret
+pro.secret = require('../secret-nyc/all.js');
 
-angular.module('mytodoApp', [
-    'backand',
-    'ngResource',
-    'ngSanitize',
-    'ui.router',
-    'ui.sortable',
-    'mytodoApp.config.interceptors',
-    'mytodoApp.config.consts'
-])
-    .config(['$stateProvider', '$locationProvider', '$httpProvider', '$urlRouterProvider', 'BackandProvider', 'CONSTS',
-        function ($stateProvider, $locationProvider, $httpProvider, $urlRouterProvider, BackandProvider, CONSTS) {
-            BackandProvider.setAnonymousToken(CONSTS.anonymousToken)
-                .setSignUpToken(CONSTS.signUpToken)
-                .setAppName(CONSTS.appName);
-            
-            $locationProvider.html5Mode(true);
 
-            //By default in the SDK when signup is success it's automatically signin.
-            //In this app we wanted to show all the process so we turned it off.
-            BackandProvider.runSigninAfterSignup(false);
-
-            $httpProvider.interceptors.push('todoHttpInterceptor');
-
-            $urlRouterProvider.otherwise("");
-
-            $stateProvider
-                .state('main', {
-                    url: '',
-                    abstract: true,
-                    templateUrl: 'views/main/header.html',
-                    controller: 'HeaderCtrl as header'
-                })
-                .state('root', {
-                    url: '',
-                    parent: 'main',
-                    templateUrl: 'views/main/todoList.html',
-                    controller: 'TodoListCtrl as todoList'
-                })
-                .state('underscore', {
-                    url: '/',
-                    parent: 'main',
-                    templateUrl: 'views/main/todoList.html',
-                    controller: 'TodoListCtrl as todoList'
-                })
-                
-                .state('admin', {
-                    url: '/admin',
-                    parent: 'main',
-                    templateUrl: 'views/main/todoList.html',
-                    controller: 'TodoListCtrl as todoList'
-                })
-                .state('changePassword', {
-                    url: 'changePassword',
-                    parent: 'main',
-                    templateUrl: 'views/auth/change-password.html',
-                    controller: 'ChangePasswordCtrl as changePassword'
-                })
-                .state('login', {
-                    url: '/login',
-                    templateUrl: 'views/auth/login.html',
-                    controller: 'LoginCtrl as login',
-                    params: {
-                        error: null
-                    }
-                })
-                .state('resetPassword', {
-                    url: '/resetPassword',
-                    templateUrl: 'views/auth/reset-password.html',
-                    controller: 'ResetPasswordCtrl as resetPassword'
-                });
-        }]);
+////////////////////////////////////////////////////////////////////////////////////////////////////
+process.app.listen(pro.env.PORT, function() {
+	process.console.log("Node app is running at localhost: " + pro.env.PORT);
+});
