@@ -22,7 +22,6 @@ pro.app.use(pro.inc.express_parser.urlencoded({
 	limit: '50mb',
 	extended: true
 }));
-pro.app.use(pro.inc.express.static('public'));
 // custom
 pro.fun = require("./node_custom/fun.js");
 pro.console = require("./node_custom/console.js").console; // uses pro.app
@@ -30,6 +29,40 @@ pro.response = require("./node_custom/response.js");
 // secret
 pro.secret = require('../secret-nyc/all.js');
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// SERVE
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// ASSETS
+pro.app.use(pro.inc.express.static('public'));
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// INDEX
+process.app.get('*', function(request, response) {
+	response.sendFile(__dirname+'/public/index.html');
+});
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// RELOAD
+// process.fs.watch('public', function (event, filename) {
+// 	process.console.warn('file changed:', filename);
+// 	process.exit();
+// });
+// var watch = require('watch')
+// watch.createMonitor('/home/mikeal', function (monitor) {
+//   monitor.files['/home/mikeal/.zshrc'] // Stat object for my zshrc.
+//   monitor.on("created", function (f, stat) {
+//     // exec reload command here
+//   })
+//   monitor.on("changed", function (f, curr, prev) {
+//     // exec reload command here
+//   })
+//   monitor.on("removed", function (f, stat) {
+//     // exec reload command here
+//   })
+// })
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 process.app.listen(pro.env.PORT, function() {

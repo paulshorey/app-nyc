@@ -32,19 +32,18 @@ angular.module('mytodoApp', [
                     templateUrl: 'views/main/header.html',
                     controller: 'HeaderCtrl as header'
                 })
-                .state('root', {
+                .state('todos', {
                     url: '',
                     parent: 'main',
                     templateUrl: 'views/main/todoList.html',
                     controller: 'TodoListCtrl as todoList'
                 })
-                .state('underscore', {
+                .state('wtf', {
                     url: '/',
                     parent: 'main',
                     templateUrl: 'views/main/todoList.html',
                     controller: 'TodoListCtrl as todoList'
                 })
-                
                 .state('admin', {
                     url: '/admin',
                     parent: 'main',

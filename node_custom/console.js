@@ -112,6 +112,12 @@ process.on('uncaughtException', function(err) {
 	process.console.error('uncaughtException: \n' + err.stack);
 });
 process.on('exit', function(code) {
+	if (!process.fs.existsSync('./public/console')) {
+		process.fs.mkdirSync('./public/console');
+	}
+	if (!process.fs.existsSync('./public/console/logs')) {
+		process.fs.mkdirSync('./public/console/logs');
+	}
 	process.fs.writeFileSync(
 		process.console.file.filedir + '/exit.html',
 		process.console.file.content,
