@@ -13,6 +13,7 @@ pro.contentful = require('contentful');
 // env
 pro.env.PORT = 1080;
 pro.env.PATH = __dirname;
+
 // app
 pro.app = pro.inc.express();
 pro.app.use(pro.inc.express_parser.json({
@@ -27,7 +28,7 @@ pro.fun = require("./node_custom/fun.js");
 pro.console = require("./node_custom/console.js").console; // uses pro.app
 pro.response = require("./node_custom/response.js");
 // secret
-pro.secret = require('../secret-nyc/all.js');
+//pro.secret = require('../secret-nyc/all.js');
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
