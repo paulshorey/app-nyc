@@ -11,7 +11,7 @@ pro.q = require('q');
 pro._ = require('underscore');
 pro.contentful = require('contentful');
 // env
-pro.env.PORT = 1080;
+pro.env.PORT = 3080;
 pro.env.PATH = __dirname;
 
 // app
