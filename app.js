@@ -42,7 +42,8 @@ pro.app.use(pro.inc.express.static('public'));
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // INDEX
 process.app.get('*', function(request, response) {
-	response.sendFile(__dirname+'/public/index.html');
+	process.console.log('serving app.html: '+__dirname+'/public/app.html');
+	response.sendFile(__dirname+'/public/app.html');
 });
 
 //////////////////////////////////////////////////////////////////////////////////////////////////

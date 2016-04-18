@@ -38,13 +38,13 @@
                     //check status of the sign in
                     switch (response.data.currentStatus) {
                         case 1: // The user is ready to sign in
-                            $state.go('todos');
+                            $state.go('/my');
                             break;
                         case 2: //The system is now waiting for the user to respond a verification email.
                             self.success = 'Please check your email to continue';
                             break;
-                        case 3: //The user signed up and is now waiting for an administrator approval.
-                            self.success = 'Please wait for the administrator to approve the sign up';
+                        case 3: //The user signed up and is now waiting for an useristrator approval.
+                            self.success = 'Please wait for the useristrator to approve the sign up';
                             break;
                     }
                 }, showError
@@ -55,7 +55,7 @@
             AuthService.signin(self.username, self.password)
                 .then(
                 function () {
-                    $state.go('todos');
+                    $state.go('/my');
                 },
                 showError
             );
@@ -66,7 +66,7 @@
         }
 
         function gotoTodos() {
-            $state.go('todos');
+            $state.go('/my');
         }
 
         self.socialSignin = function (provider) {

@@ -257,14 +257,14 @@ function $StateRefDynamicDirective($state, $timeout) {
  * the specified state names/globs, even the abstract ones.
  *
  * @Example
- * Given the following template, with "admin" being an abstract state:
+ * Given the following template, with "user" being an abstract state:
  * <pre>
- * <div ui-sref-active="{'active': 'admin.*'}">
- *   <a ui-sref-active="active" ui-sref="admin.roles">Roles</a>
+ * <div ui-sref-active="{'active': 'user.*'}">
+ *   <a ui-sref-active="active" ui-sref="user.roles">Roles</a>
  * </div>
  * </pre>
  *
- * When the current state is "admin.roles" the "active" class will be applied
+ * When the current state is "user.roles" the "active" class will be applied
  * to both the <div> and <a> elements. It is important to note that the state
  * names/globs passed to ui-sref-active shadow the state provided by ui-sref.
  */

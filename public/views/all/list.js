@@ -20,7 +20,7 @@
          */
         self.logout = function () {
             AuthService.logout();
-            $state.go('login');
+            $state.go('/app');
         };
 
     }

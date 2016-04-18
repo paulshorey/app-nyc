@@ -26,47 +26,49 @@ angular.module('mytodoApp', [
             $urlRouterProvider.otherwise("");
 
             $stateProvider
-                .state('main', {
-                    url: '',
+                .state('/appAbstract', {
+                	   url: '/',
                     abstract: true,
-                    templateUrl: 'views/main/header.html',
+                    templateUrl: 'views/all/header.html',
                     controller: 'HeaderCtrl as header'
                 })
-                .state('todos', {
+                .state('/all', {
                     url: '',
-                    parent: 'main',
-                    templateUrl: 'views/main/todoList.html',
+                    parent: '/appAbstract',
+                    templateUrl: 'views/all/list.html',
                     controller: 'TodoListCtrl as todoList'
                 })
-                .state('wtf', {
+
+                // user
+                .state('/userAbstract', {
                     url: '/',
-                    parent: 'main',
-                    templateUrl: 'views/main/todoList.html',
+                    abstract: true,
+                    templateUrl: 'views/my/header.html',
+                    controller: 'HeaderCtrl as header'
+                })
+                .state('/my', {
+                    url: '/my',
+                    parent: '/userAbstract',
+                    templateUrl: 'views/my/edit.html',
                     controller: 'TodoListCtrl as todoList'
                 })
-                .state('admin', {
-                    url: '/admin',
-                    parent: 'main',
-                    templateUrl: 'views/main/todoList.html',
-                    controller: 'TodoListCtrl as todoList'
-                })
-                .state('changePassword', {
-                    url: 'changePassword',
-                    parent: 'main',
-                    templateUrl: 'views/auth/change-password.html',
+                .state('/changePassword', {
+                    url: '/changePassword',
+                    parent: '/userAbstract',
+                    templateUrl: 'views/my/change-password.html',
                     controller: 'ChangePasswordCtrl as changePassword'
                 })
-                .state('login', {
+                .state('/login', {
                     url: '/login',
-                    templateUrl: 'views/auth/login.html',
+                    templateUrl: 'views/my/login.html',
                     controller: 'LoginCtrl as login',
                     params: {
                         error: null
                     }
                 })
-                .state('resetPassword', {
-                    url: '/resetPassword',
-                    templateUrl: 'views/auth/reset-password.html',
+                .state('/user/resetPassword', {
+                    url: '/user/resetPassword',
+                    templateUrl: 'views/my/reset-password.html',
                     controller: 'ResetPasswordCtrl as resetPassword'
                 });
         }]);

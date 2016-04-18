@@ -4303,9 +4303,9 @@ function annotate(fn, strictDi, name) {
  * @example
  * Here are some examples of creating value services.
  * ```js
- *   $provide.value('ADMIN_USER', 'admin');
+ *   $provide.value('ADMIN_USER', 'user');
  *
- *   $provide.value('RoleLookup', { admin: 0, writer: 1, reader: 2 });
+ *   $provide.value('RoleLookup', { user: 0, writer: 1, reader: 2 });
  *
  *   $provide.value('halfOf', function(value) {
  *     return value / 2;
@@ -11714,7 +11714,7 @@ function $InterpolateProvider() {
      *        escaped the interpolation start/end markers with REVERSE SOLIDUS U+005C (backslash)
      *        characters.</p>
      *      <p>Instead, the result of the attempted script injection is visible, and can be removed
-     *        from the database by an administrator.</p>
+     *        from the database by an useristrator.</p>
      *    </div>
      *  </file>
      * </example>
