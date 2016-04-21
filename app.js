@@ -10,6 +10,10 @@ pro.fs = require('fs');
 pro.q = require('q');
 pro._ = require('underscore');
 pro.contentful = require('contentful');
+pro.ejs = require("ejs");
+pro.o3o = require('o3o');
+pro.o3o.tags = pro.o3o();
+pro.os = require("os");
 // env
 pro.env.PORT = 3080;
 pro.env.PATH = __dirname;
@@ -30,10 +34,21 @@ pro.response = require("./node_custom/response.js");
 // secret
 //pro.secret = require('../secret-nyc/all.js');
 
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// VIEW
+pro.window = {};
+pro.window.system = {};
+pro.window.system.platform = pro.os.platform();
 
-//////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////
-// SERVE
+	pro.window.system.api = {};
+	pro.window.system.api.host = 'http://allevents.nyc';
+	if (pro.window.system.platform=='darwin') {
+		pro.window.system.api.host = 'http://localhost:1080';
+	}
+
+pro.window.page = {};
+pro.window.page.title = pro.o3o(pro.o3o.tags[Math.floor(Math.random() * pro.o3o.tags.length)]);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // ASSETS
@@ -41,9 +56,24 @@ pro.app.use(pro.inc.express.static('public'));
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // INDEX
-process.app.get('*', function(request, response) {
-	process.console.log('serving app.html: '+__dirname+'/public/app.html');
-	response.sendFile(__dirname+'/public/app.html');
+
+process.app.get('/close', function(request, response){
+	response.setHeader('Content-Type', 'text/html'); 
+	response.writeHead(200);
+	response.write('<script>window.close();</script>');
+	response.end();
+});
+
+process.app.get('*', function(request, response){
+	response.setHeader('Content-Type', 'text/html'); 
+	response.writeHead(200);
+	response.write(process.ejs.render(pro.fs.readFileSync('./public/app.html', 'utf-8')));
+	response.end();
+});
+
+process.app.use(function(err, req, res, next) {
+	console.error(err.stack);
+	res.status(500).send('Something broke!');
 });
 
 //////////////////////////////////////////////////////////////////////////////////////////////////

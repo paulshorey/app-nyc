@@ -1,23 +1,18 @@
 <div class="row">
 
-	<!-- admin -->
-	<div class="col-sm-4">
-		<a href="" ng-click="header.logout()">{{header.currentUser.name ? 'Sign Out' : 'Sign In'}}</a>
+	<div class="signin">
+		<div ng-if="header.currentUser.name">
+			<a href="" ng-if="header.currentUser.name" ng-click="header.logout()">Sign Out</a>
+		</div>
+		<div ng-if="!header.currentUser.name">
+			<a class="btn btn-block btn-social"
+				ng-repeat="(providerKey, providerDetails) in header.socialProviders"
+				ng-class="'btn-' + providerDetails.name"
+				ng-click="header.socialSignin(providerDetails)">
+				<i class="fa" ng-class="'fa-' + providerDetails.css"></i> {{providerDetails.label}}
+			</a>
+		</div>
 	</div>
-	<div class="col-sm-4 pull-left">
-		<span>{{header.currentUser.name || 'Guest'}}</span>
-	</div>
-	<div class="col-sm-4 pull-right" ng-show="header.currentUser.name">
-		<a href="" ui-sref="/my/changePassword">Change Password</a>
-	</div>
-
-	<a class="btn btn-block btn-social"
-		ng-repeat="(providerKey, providerDetails) in login.socialProviders"
-		ng-class="'btn-' + providerDetails.name"
-		ng-click="login.socialSignin(providerDetails)">
-		<i class="fa" ng-class="'fa-' + providerDetails.css"></i> {{providerDetails.label}}
-	</a>
-	<!-- /admin -->
 
 </div>
 <ui-view></ui-view>

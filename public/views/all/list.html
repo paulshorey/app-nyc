@@ -1,42 +1,76 @@
 <div class="container">
 
-    <h2>My xs</h2>
+	<h2>My Query:</h2>
 
-    <!-- Todos input -->
-    <form role="form" ng-submit="todoList.addTodo()">
-        <div class="row">
-            <div class="input-group">
-                <input type="text" ng-model="todoList.todo" placeholder="What needs to be done?" class="form-control">
-                <span class="input-group-btn">
+	<!-- Todos input -->
+	<form role="form" ng-submit="todoList.addTodo()">
+		<div class="row">
+			<div class="input-group">
+				<input type="text" ng-model="todoList.todo" placeholder="What needs to be done?" class="form-control">
+				<span class="input-group-btn">
                   <input type="submit" class="btn btn-primary" value="Add" ng-disabled="!todoList.todo">
                 </span>
-            </div>
-        </div>
-    </form>
-    <p></p>
+			</div>
+		</div>
+	</form>
+	<p></p>
 
-    <!-- Todos list -->
-    <div>
-        <p  class="input-group"
-            ng-repeat="todo in todoList.todos | orderBy:'-Id'"
-            style="padding:5px 10px; cursor: move;"
-            ng-class="{'todo-completed': todo.completed}">
-            <span class="input-group-btn">
-                <button class="btn"><input type="checkbox" class="btn btn-primary" ng-model="todo.completed" ng-click="todoList.updateTodo(todo)"></button>
+	<!-- Todos list -->
+	<div>
+		<p class="input-group" ng-repeat="todo in todoList.likes | orderBy:'-data'">
+			<span class="input-group-btn">
+                <button class="btn"><input type="checkbox" class="btn btn-primary" ng-model="todo.data" ng-click="todoList.updateTodo(todo)"></button>
             </span>
-            <input  type="text"
-                placeholder="{{todo.id}}"
-                ng-disabled="todo.completed"
-                ng-model="todo.description"
-                ng-change="todoList.updateTodo(todo)"
-                ng-model-options="{updateOn: 'default blur', debounce: {'default': 300, 'blur': 0}}"
-                class="form-control" >
-            <span class="input-group-btn">
+			<input type="text" placeholder="{{todo.data}}" ng-model="todo.data" ng-change="todoList.updateTodo(todo)" ng-model-options="{updateOn: 'default blur', debounce: {'default': 300, 'blur': 0}}" class="form-control">
+			<span class="input-group-btn">
                 <button class="btn btn-danger" ng-click="todoList.removeTodo(todo)" aria-label="Remove">X</button>
             </span>
-        </p>
-    </div>
-    <div ng-show="todoList.error" class="has-error">
-        <label class="form-control">{{todoList.error}}</label>
-    </div>
+		</p>
+	</div>
+	<div ng-show="todoList.error" class="has-error">
+		<label class="form-control">{{todoList.error}}</label>
+	</div>
+
+
+	<h2>Events:</h2>
+	<div>
+		<a href="javascript:;" ng-click="todoList.updateAll()">Refresh</a>
+	</div>
+
+	<div>
+		<div class="event" ng-repeat="event in todoList.events" ng-id="{{event._id}}">
+			<button ng-click="todoList.like(event._id)">+</button>
+			<div class="text" data-ng-bind-html="event.text"></div>
+		</div>
+	</div>
+
+
 </div>
+
+<style>
+	.event {
+		margin: 5px;
+		padding: 5px;
+		border-bottom: solid 1px #ccc;
+	}
+	
+	.event .text {}
+	
+	.event .text > span {
+		color: #333;
+		/*
+	padding-right:5px;
+	margin-right:5px;
+	border-right:solid 1px #333;
+	*/
+		display: block;
+	}
+	
+	.event .text > span:first-child {
+		font-weight: bold;
+	}
+	
+	.event .text > span:last-child {
+		border: none;
+	}
+</style>
