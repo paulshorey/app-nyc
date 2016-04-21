@@ -64,7 +64,7 @@ process.app.get('/close', function(request, response){
 	response.end();
 });
 
-process.app.get('*', function(request, response){
+process.app.get('/', function(request, response){
 	response.setHeader('Content-Type', 'text/html'); 
 	response.writeHead(200);
 	response.write(process.ejs.render(pro.fs.readFileSync('./public/app.html', 'utf-8')));
