@@ -1,4 +1,4 @@
-angular.module('starter.services', [])
+angular.module('ionicApp.services', [])
 
 .factory('AccountService', ["$q", function($q) {
   return {
@@ -21,10 +21,89 @@ angular.module('starter.services', [])
 }])
 
 
+
+.factory('QueryService', ["$rootScope", "$q", function($rootScope, $q) {
+
+  return {
+    getGuestQuerys : function(query) {
+      var deffered = $q.defer();
+      Stamplay.Query("object", "query")
+      .notExists("owner")
+      .exec()
+      .then(function(response) {
+        deffered.resolve(response)
+      }, function(error) {
+        deffered.reject(err);
+      })
+      return deffered.promise;
+    },
+
+    getUsersQuerys : function(query) {
+      var deffered = $q.defer();
+
+      Stamplay.Object("query")
+      .findByCurrentUser(["owner"])
+      .then(function(response) {
+        deffered.resolve(response)
+      }, function(err) {
+        deffered.reject(err);
+      })
+      return deffered.promise;
+    },
+
+    getQuery : function(id) {
+        var deffered = $q.defer();
+        Stamplay.Object("query").get({ _id : id })
+        .then(function(response) {
+          deffered.resolve(response)
+        }, function(error) {
+          deffered.reject(err);
+        })
+        return deffered.promise;
+    },
+
+    addNew : function(query) {
+      var deffered = $q.defer();
+
+      Stamplay.Object("query").save(query)
+      .then(function(response) {
+        deffered.resolve(response)
+      }, function(err) {
+        deffered.reject(err);
+      })
+      return deffered.promise
+    },
+    deleteQuery : function(id) {
+      var deffered = $q.defer();
+      Stamplay.Object("query").remove(id)
+      .then(function(response) {
+        deffered.resolve(response)
+      }, function(err) {
+        deffered.reject(err);
+      })
+      return deffered.promise;
+    },
+    updateQuery : function(query) {
+      var deffered = $q.defer();
+      Stamplay.Object("query").update(query._id, query)
+      .then(function(response) {
+        deffered.resolve(response)
+      }, function(err) {
+        deffered.reject(err);
+      })
+      return deffered.promise;
+    }
+
+  }
+}])
+
+
+
 .factory('TaskService', ["$rootScope", "$q", function($rootScope, $q) {
 
   return {
     getGuestTasks : function(query) {
+    	console.log('get GUEST tasks');
       var deffered = $q.defer();
       Stamplay.Query("object", "task")
       .notExists("owner")
@@ -38,6 +117,7 @@ angular.module('starter.services', [])
     },
 
     getUsersTasks : function(query) {
+    	console.log('get USER tasks');
       var deffered = $q.defer();
 
       Stamplay.Object("task")

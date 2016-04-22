@@ -1,20 +1,20 @@
 <ion-view>
   <ion-nav-bar align-title="center" class="bar-light">
-  <a ui-sref="tasks" style="z-index:1000000;" class="button back-button buttons button-clear header-item"><i class="icon ion-ios-arrow-back"></i> <span class="back-text"><span class="default-title">Tasks</span></span></a>
+  <a ui-sref="tasks" class="button back-button buttons button-clear header-item"><i class="icon ion-ios-arrow-back"></i> <span class="back-text"><span class="default-title">Tasks</span></span></a>
     <ion-nav-title>
-      NEW TASK
+      Welcome, {{ user.displayName }}
     </ion-nav-title>
   </ion-nav-bar>
   <ion-content>
     <h1 class="account-title center-align">Add A New Task</h1>
     <div class="list">
       <label class="item item-input">
-        <input type="text" placeholder="Title" ng-model="new.task.title">
+        <input type="text" placeholder="Title" ng-model="vm.task.title">
       </label>
       <label class="item item-input">
-        <input type="text" placeholder="Task Description" ng-model="new.task.body">
+        <input type="text" placeholder="Task Description" ng-model="vm.task.body">
       </label>
-      <button class="button button-full button-positive" ng-click="new.add()">Submit</button>
+      <button class="button button-full button-positive" ng-click="vm.add()">Submit</button>
     </div>
 
   </ion-content>

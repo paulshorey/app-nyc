@@ -1,11 +1,11 @@
 // Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
+// 'ionicApp' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+// 'ionicApp.services' is found in services.js
+// 'ionicApp.controllers' is found in controllers.js
+angular.module('ionicApp', ['ionic', 'ionicApp.controllers', 'ionicApp.services'])
 
 .run(function($ionicPlatform, $rootScope, AccountService) {
 
@@ -29,7 +29,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     })
 })
 
-.constant("socialProvider", "facebook")
+//.constant("socialProvider", "facebook")
 
 .constant('$ionicLoadingConfig', {
   template: "<ion-spinner></ion-spinner>",
@@ -47,27 +47,32 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   // setup an abstract state for the tabs directive
     .state('home', {
+      cache : false,
       url: '/home',
-      templateUrl: 'templates/home.html'
+      templateUrl: 'templates/home.html',
+      controller: "TaskController",
+      controllerAs : "vm"
     })
     .state('tasks', {
       cache : false,
       url: '/',
       templateUrl: 'templates/tasks.html',
-      controller: "HomeController",
-      controllerAs : "task"
+      controller: "TaskController",
+      controllerAs : "vm"
     })
     .state('new', {
+      cache : false,
       url: '/new',
       templateUrl: 'templates/new.html',
       controller: "TaskController",
-      controllerAs : "new"
+      controllerAs : "vm"
     })
     .state('edit', {
+      cache : false,
       url: '/task/:id',
       templateUrl: 'templates/edit.html',
       controller: "TaskController",
-      controllerAs : "edit"
+      controllerAs : "vm"
     })
 
 
