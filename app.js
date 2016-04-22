@@ -57,10 +57,10 @@ pro.app.use(pro.inc.express.static('www'));
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // INDEX
 
-process.app.get('/', function(request, response){
+process.app.get(/^[a-z\/]*$/gi, function(request, response){
 	response.setHeader('Content-Type', 'text/html'); 
 	response.writeHead(200);
-	response.write(process.ejs.render(pro.fs.readFileSync('./www/app.html', 'utf-8')));
+	response.write(process.ejs.render(pro.fs.readFileSync('./www/index.html', 'utf-8')));
 	response.end();
 });
 

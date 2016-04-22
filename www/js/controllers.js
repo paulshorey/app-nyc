@@ -12,6 +12,11 @@ angular.module('starter.controllers', [])
 
   var vm = this;
 
+  vm.gohome = function(){
+  	window.console.log('go home ?');
+  	$state.go('home');
+  };
+
   vm.login = function() {
     Stamplay.User.socialLogin(socialProvider)
   }
@@ -50,6 +55,11 @@ angular.module('starter.controllers', [])
   function removeActive() {
 
   }
+
+  vm.gohome = function(){
+  	window.console.log('go home ?');
+  	$state.go('home');
+  };
 
   // Fetch Tasks
   vm.fetch = function() {

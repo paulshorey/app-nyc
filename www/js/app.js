@@ -36,7 +36,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   hideOnStateChange : false
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $locationProvider, $urlRouterProvider) {
+	$locationProvider.html5Mode({ enabled: true, requireBase: false });
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -46,12 +47,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   // setup an abstract state for the tabs directive
     .state('home', {
-      url: '/',
+      url: '/home',
       templateUrl: 'templates/home.html'
     })
     .state('tasks', {
       cache : false,
-      url: '/tasks',
+      url: '/',
       templateUrl: 'templates/tasks.html',
       controller: "HomeController",
       controllerAs : "task"
