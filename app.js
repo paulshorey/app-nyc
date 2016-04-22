@@ -52,22 +52,15 @@ pro.window.page.title = pro.o3o(pro.o3o.tags[Math.floor(Math.random() * pro.o3o.
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // ASSETS
-pro.app.use(pro.inc.express.static('public'));
+pro.app.use(pro.inc.express.static('www'));
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // INDEX
 
-process.app.get('/close', function(request, response){
-	response.setHeader('Content-Type', 'text/html'); 
-	response.writeHead(200);
-	response.write('<script>window.close();</script>');
-	response.end();
-});
-
 process.app.get('/', function(request, response){
 	response.setHeader('Content-Type', 'text/html'); 
 	response.writeHead(200);
-	response.write(process.ejs.render(pro.fs.readFileSync('./public/app.html', 'utf-8')));
+	response.write(process.ejs.render(pro.fs.readFileSync('./www/app.html', 'utf-8')));
 	response.end();
 });
 
@@ -78,7 +71,7 @@ process.app.use(function(err, req, res, next) {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // RELOAD
-// process.fs.watch('public', function (event, filename) {
+// process.fs.watch('www', function (event, filename) {
 // 	process.console.warn('file changed:', filename);
 // 	process.exit();
 // });
