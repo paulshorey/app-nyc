@@ -1,0 +1,25 @@
+<ion-modal-view>
+	<ion-header-bar>
+		<h1 class="title">New Modal</h1>
+		<button class="button button-clear button-primary" ng-click="vm.closeModals()">X</button>
+	</ion-header-bar>
+	<ion-content>
+		<h1 class="account-title center-align">Add A New List</h1>
+		<div class="list">
+			<label class="item item-input">
+			<input type="text" placeholder="WHAT" ng-model="vm.list.category" />
+		    </label>
+			<label class="item item-input">
+			<input type="text" placeholder="WHEN" ng-model="vm.list.time" />
+		    </label>
+			<label class="item item-input">
+			<input type="text" placeholder="WITH" ng-model="vm.list.scene" />
+		    </label>
+			<label class="item item-input">
+			<input type="text" placeholder="Search" ng-model="vm.list.text" />
+		    </label>
+			<button class="button button-full button-positive" ng-click="vm.addSave()">Submit</button>
+		</div>
+
+	</ion-content>
+</ion-modal-view>

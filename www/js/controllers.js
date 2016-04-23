@@ -1,75 +1,17 @@
 angular.module('ionicApp.controllers', [])
 
-.directive('prevent-default', function() {
-    return function(scope, element, attrs) {
-        $(element).click(function(event) {
-            event.preventDefault();
-        });
-    }
+.directive('prevent-default', function () {
+	return function (scope, element, attrs) {
+		$(element)
+			.click(function (event) {
+				event.preventDefault();
+			});
+	}
 })
 
 
-.controller('TaskController', ["AccountService", "TaskService", "QueryService", "$rootScope", "$ionicLoading", "$rootScope", "$state", "$stateParams", "$ionicPopup", function (AccountService, TaskService, QueryService, $rootScope, $ionicLoading, $rootScope, $state, $stateParams, $ionicPopup) {
+.controller('ListController', ["AccountService", "ListService", "$ionicLoading", "$ionicPopup", "$ionicModal", "$scope", "$rootScope", "$state", "$timeout", "$stateParams", function (AccountService, ListService, $ionicLoading, $ionicPopup, $ionicModal, $scope, $rootScope, $state, $timeout, $stateParams) {
 	var vm = this;
-
-	vm.getUser = function () {
-		$ionicLoading.show();
-		AccountService.currentUser()
-			.then(function (user) {
-				$rootScope.user = user;
-				$ionicLoading.hide();
-				vm.getTasks();
-				vm.getQuerys();
-			}, function (error) {
-				console.error(error);
-				$ionicLoading.hide();
-			})
-	};
-	vm.getUser();
-	vm.getQuerys = function () {
-		if (!$rootScope.user) {
-			// Get all querys for guests.
-			QueryService.getGuestQuerys()
-				.then(
-					function (response) {
-						var querys = response.data;
-						vm.querys = [];
-						querys.forEach(function (item, idx, array) {
-							item.dt_create = new Date(item.dt_create)
-								.getTime();
-							vm.querys.push(array[idx]);
-						});
-						window.console.log('vm.querys', vm.querys);
-						$ionicLoading.hide();
-					},
-					function (error) {
-						$ionicLoading.hide();
-					}
-				)
-		} else {
-			// Get only the user signed in querys.
-			QueryService.getUsersQuerys()
-				.then(function (response) {
-						var querys = response.data;
-						vm.querys = [];
-						querys.forEach(function (item, idx, array) {
-							item.dt_create = new Date(item.dt_create)
-								.getTime();
-							vm.querys.push(array[idx]);
-						});
-						window.console.log('vm.querys', vm.querys);
-						$ionicLoading.hide();
-					},
-					function (error) {
-						$ionicLoading.hide();
-					})
-		}
-	};
-
-	/*
-		ACCOUNT CTRL
-	*/
-
 	var errorHandler = function (options) {
 		var errorAlert = $ionicPopup.alert({
 			title: options.title,
@@ -78,11 +20,9 @@ angular.module('ionicApp.controllers', [])
 		});
 	}
 
-	vm.gohome = function () {
-		window.console.log('go home ?');
-		$state.go('home');
-	};
-
+	/*
+		ACCOUNT
+	*/
 	vm.login = function (socialProvider) {
 		Stamplay.User.socialLogin(socialProvider);
 		AccountService.currentUser()
@@ -95,7 +35,6 @@ angular.module('ionicApp.controllers', [])
 				$ionicLoading.hide();
 			})
 	}
-
 	vm.logout = function () {
 		$ionicLoading.show();
 		var jwt = window.location.origin + "-jwt";
@@ -111,47 +50,60 @@ angular.module('ionicApp.controllers', [])
 			})
 	}
 
+	/*
+		MODALS
+	*/
+	$scope.modals = {};
+	vm.closeModals = function () {
+		for (var m in $scope.modals) {
+			$scope.modals[m].hide();
+		}
+	};
+	$scope.$on('$destroy', function () {
+		for (var m in $scope.modals) {
+			$scope.modals[m].remove();
+		}
+	});
+	$ionicModal.fromTemplateUrl('templates/modals/addList.html', {
+			scope: $scope,
+			animation: 'slide-in-up'
+		})
+		.then(function (modal) {
+			$scope.modals['addList'] = modal;
+		});
+	$ionicModal.fromTemplateUrl('templates/modals/editList.html', {
+			scope: $scope,
+			animation: 'slide-in-up'
+		})
+		.then(function (modal) {
+			$scope.modals['editList'] = modal;
+		});
 
 	/*
-		HOME CTRL
+		INITIAL 
+		get user, lists
 	*/
-
-	var findIndex = function (id) {
-		return vm.tasks.map(function (task) {
-				return task._id;
+	vm.getUser = function () {
+		$ionicLoading.show();
+		AccountService.currentUser()
+			.then(function (user) {
+				$rootScope.user = user;
+				$ionicLoading.hide();
+				vm.getLists();
+			}, function (error) {
+				console.error(error);
+				$ionicLoading.hide();
 			})
-			.indexOf(id);
-	}
-
-	// Display loading indicator
-	//$ionicLoading.show();
-
-	vm.setActive = function (id) {
-		vm.active = id;
-	}
-
-	function removeActive() {
-
-	}
-
-	vm.gohome = function () {
-		window.console.log('go home ?');
-		$state.go('home');
 	};
-
-	// Fetch Tasks
-	vm.getTasks = function () {
+	vm.getUser();
+	vm.getLists = function () {
 		if (!$rootScope.user) {
-			// Get all tasks for guests.
-			TaskService.getGuestTasks()
+			ListService.getGuestLists()
 				.then(
 					function (response) {
-						var tasks = response.data;
-						vm.tasks = [];
-						tasks.forEach(function (item, idx, array) {
-							item.dt_create = new Date(item.dt_create)
-								.getTime();
-							vm.tasks.push(array[idx]);
+						vm.lists = {};
+						response.data.forEach(function (item, idx, array) {
+							vm.updateList(array[idx]);
 						});
 						$ionicLoading.hide();
 					},
@@ -159,16 +111,12 @@ angular.module('ionicApp.controllers', [])
 						$ionicLoading.hide();
 					})
 		} else {
-			// Get only the user signed in tasks.
-			TaskService.getUsersTasks()
+			ListService.getUsersLists()
 				.then(
 					function (response) {
-						var tasks = response.data;
-						vm.tasks = [];
-						tasks.forEach(function (item, idx, array) {
-							item.dt_create = new Date(item.dt_create)
-								.getTime();
-							vm.tasks.push(array[idx]);
+						vm.lists = {};
+						response.data.forEach(function (item, idx, array) {
+							vm.updateList(array[idx]);
 						});
 						$ionicLoading.hide();
 					},
@@ -179,111 +127,101 @@ angular.module('ionicApp.controllers', [])
 	}
 
 
-
-	// Mark Complete a task.
-	vm.deleteTask = function (id) {
+	/*
+		ADD / EDIT
+		new, changed
+	*/
+	vm.addList = function () {
+		$scope.modals.addList.show();
+	};
+	vm.editList = function (id) {
+		$scope.modals.editList.show(id);
+	};
+	vm.addSave = function () {
 		$ionicLoading.show();
-		vm.tasks.splice(findIndex(id), 1);
-		TaskService.deleteTask(id)
-			.then(function () {
+		ListService.addNew(vm.list)
+			.then(function (list) {
 				$ionicLoading.hide();
+				vm.updateList(list);
+				vm.closeModals();
 			}, function (error) {
 				$ionicLoading.hide();
 			})
 	}
-
-	vm.setStatus = function (task) {
-		task.complete = task.complete ? !task.complete : true;
-		TaskService.patchTask(task)
-			.then(function (task) {}, function (error) {})
-	}
-
-
-	/*
-		TASK CTRL
-	*/
-
-	if ($stateParams.id) {
+	vm.editSave = function () {
 		$ionicLoading.show();
-		TaskService.getTask($stateParams.id)
-			.then(function (task) {
+		ListService.updateList(vm.list)
+			.then(function (list) {
 				$ionicLoading.hide();
-				vm.task = task.data[0];
+				vm.updateList(list);
+				vm.closeModals();
+			}, function (error) {
+				$ionicLoading.hide();
+			})
+	}
+	vm.getList = function (id) {
+		$ionicLoading.show();
+		ListService.getList(id)
+			.then(function (list) {
+				$ionicLoading.hide();
+				vm.updateList(list.data[0]);
+				vm.closeModals();
 			}, function (err) {
 				$ionicLoading.hide();
 				console.error(err);
 			})
 	}
 
-	// Add a task.
-	vm.add = function () {
-		$ionicLoading.show();
-		TaskService.addNew(vm.task)
-			.then(function (task) {
-				$ionicLoading.hide();
-				$state.go("tasks", {}, {
-					reload: true
-				});
-			}, function (error) {
-				$ionicLoading.hide();
-			})
+	/*
+		ACTIVE 
+		by id
+	*/
+	vm.setActive = function (id) {
+		vm.active = id;
+		vm.list = vm.lists[id];
 	}
-
-	vm.save = function () {
-		$ionicLoading.show();
-		TaskService.updateTask(vm.task)
-			.then(function (task) {
-				$ionicLoading.hide();
-				$state.go("tasks", {}, {
-					reload: true
-				});
-			}, function (error) {
-				$ionicLoading.hide();
-			})
+	vm.clearActive = function () {
+		vm.active = null;
+		vm.list = {};
 	}
 
 
 	/*
-		QUERY CTRL
+		DELETE 
+		status, cleanup
 	*/
-
-	if ($stateParams.id) {
+	vm.deleteList = function (id) {
 		$ionicLoading.show();
-		TaskService.getTask($stateParams.id)
-			.then(function (task) {
+		ListService.deleteList(id)
+			.then(function (list) {
+				vm.forgetList(list);
 				$ionicLoading.hide();
-				vm.task = task.data[0];
-			}, function (err) {
-				$ionicLoading.hide();
-				console.error(err);
-			})
-	}
-
-	// Add a task.
-	vm.add = function () {
-		$ionicLoading.show();
-		TaskService.addNew(vm.task)
-			.then(function (task) {
-				$ionicLoading.hide();
-				$state.go("tasks", {}, {
-					reload: true
-				});
 			}, function (error) {
 				$ionicLoading.hide();
 			})
 	}
+	vm.setStatus = function (list) {
+		list.complete = list.complete ? !list.complete : true;
+		ListService.patchList(list)
+			.then(function (list) {}, function (error) {})
+	}
 
-	vm.save = function () {
-		$ionicLoading.show();
-		TaskService.updateTask(vm.task)
-			.then(function (task) {
-				$ionicLoading.hide();
-				$state.go("tasks", {}, {
-					reload: true
-				});
-			}, function (error) {
-				$ionicLoading.hide();
-			})
+
+	/*
+		USE 
+		update events
+	*/
+	vm.updateList = function (list) {
+		vm.lists[list.id] = list;
+		/*
+			QUERY
+		*/
+	}
+	vm.forgetList = function (list) {
+		delete vm.lists[list.id];
+		/*
+			QUERY
+		*/
 	}
 
 

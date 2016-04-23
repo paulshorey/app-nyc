@@ -1,187 +1,104 @@
 angular.module('ionicApp.services', [])
 
-.factory('AccountService', ["$q", function($q) {
-  return {
-    currentUser : function() {
-      var def = $q.defer();
-      Stamplay.User.currentUser()
-      .then(function(response) {
-        if(response.user === undefined) {
-          def.resolve(false);
-        } else {
-          def.resolve(response.user);
-        }
-      }, function(error) {
-        def.reject();
-      }
-    )
-    return def.promise;
-  }
-}
+.factory('AccountService', ["$q", function ($q) {
+	return {
+		currentUser: function () {
+			var def = $q.defer();
+			Stamplay.User.currentUser()
+				.then(function (response) {
+					if (response.user === undefined) {
+						def.resolve(false);
+					} else {
+						def.resolve(response.user);
+					}
+				}, function (error) {
+					def.reject();
+				})
+			return def.promise;
+		}
+	}
 }])
 
 
+.factory('ListService', ["$rootScope", "$q", function ($rootScope, $q) {
 
-.factory('QueryService', ["$rootScope", "$q", function($rootScope, $q) {
+	return {
+		getGuestLists: function (query) {
+			console.log('get GUEST lists');
+			var deffered = $q.defer();
+			Stamplay.Query("object", "list")
+				.notExists("owner")
+				.exec()
+				.then(function (response) {
+					deffered.resolve(response)
+				}, function (error) {
+					deffered.reject(err);
+				})
+			return deffered.promise;
+		},
 
-  return {
-    getGuestQuerys : function(query) {
-      var deffered = $q.defer();
-      Stamplay.Query("object", "query")
-      .notExists("owner")
-      .exec()
-      .then(function(response) {
-        deffered.resolve(response)
-      }, function(error) {
-        deffered.reject(err);
-      })
-      return deffered.promise;
-    },
+		getUsersLists: function (query) {
+			console.log('get USER lists');
+			var deffered = $q.defer();
 
-    getUsersQuerys : function(query) {
-      var deffered = $q.defer();
+			Stamplay.Object("list")
+				.findByCurrentUser(["owner"])
+				.then(function (response) {
+					deffered.resolve(response)
+				}, function (err) {
+					deffered.reject(err);
+				})
+			return deffered.promise;
+		},
 
-      Stamplay.Object("query")
-      .findByCurrentUser(["owner"])
-      .then(function(response) {
-        deffered.resolve(response)
-      }, function(err) {
-        deffered.reject(err);
-      })
-      return deffered.promise;
-    },
+		getList: function (id) {
+			var deffered = $q.defer();
+			Stamplay.Object("list")
+				.get({
+					_id: id
+				})
+				.then(function (response) {
+					deffered.resolve(response)
+				}, function (error) {
+					deffered.reject(err);
+				})
+			return deffered.promise;
+		},
 
-    getQuery : function(id) {
-        var deffered = $q.defer();
-        Stamplay.Object("query").get({ _id : id })
-        .then(function(response) {
-          deffered.resolve(response)
-        }, function(error) {
-          deffered.reject(err);
-        })
-        return deffered.promise;
-    },
+		addNew: function (list) {
+			var deffered = $q.defer();
 
-    addNew : function(query) {
-      var deffered = $q.defer();
+			Stamplay.Object("list")
+				.save(list)
+				.then(function (response) {
+					deffered.resolve(response)
+				}, function (err) {
+					deffered.reject(err);
+				})
+			return deffered.promise
+		},
+		deleteList: function (id) {
+			var deffered = $q.defer();
+			Stamplay.Object("list")
+				.remove(id)
+				.then(function (response) {
+					deffered.resolve(response)
+				}, function (err) {
+					deffered.reject(err);
+				})
+			return deffered.promise;
+		},
+		updateList: function (list) {
+			var deffered = $q.defer();
+			Stamplay.Object("list")
+				.update(list._id, list)
+				.then(function (response) {
+					deffered.resolve(response)
+				}, function (err) {
+					deffered.reject(err);
+				})
+			return deffered.promise;
+		}
 
-      Stamplay.Object("query").save(query)
-      .then(function(response) {
-        deffered.resolve(response)
-      }, function(err) {
-        deffered.reject(err);
-      })
-      return deffered.promise
-    },
-    deleteQuery : function(id) {
-      var deffered = $q.defer();
-      Stamplay.Object("query").remove(id)
-      .then(function(response) {
-        deffered.resolve(response)
-      }, function(err) {
-        deffered.reject(err);
-      })
-      return deffered.promise;
-    },
-    updateQuery : function(query) {
-      var deffered = $q.defer();
-      Stamplay.Object("query").update(query._id, query)
-      .then(function(response) {
-        deffered.resolve(response)
-      }, function(err) {
-        deffered.reject(err);
-      })
-      return deffered.promise;
-    }
-
-  }
-}])
-
-
-
-.factory('TaskService', ["$rootScope", "$q", function($rootScope, $q) {
-
-  return {
-    getGuestTasks : function(query) {
-    	console.log('get GUEST tasks');
-      var deffered = $q.defer();
-      Stamplay.Query("object", "task")
-      .notExists("owner")
-      .exec()
-      .then(function(response) {
-        deffered.resolve(response)
-      }, function(error) {
-        deffered.reject(err);
-      })
-      return deffered.promise;
-    },
-
-    getUsersTasks : function(query) {
-    	console.log('get USER tasks');
-      var deffered = $q.defer();
-
-      Stamplay.Object("task")
-      .findByCurrentUser(["owner"])
-      .then(function(response) {
-        deffered.resolve(response)
-      }, function(err) {
-        deffered.reject(err);
-      })
-      return deffered.promise;
-    },
-
-    getTask : function(id) {
-        var deffered = $q.defer();
-        Stamplay.Object("task").get({ _id : id })
-        .then(function(response) {
-          deffered.resolve(response)
-        }, function(error) {
-          deffered.reject(err);
-        })
-        return deffered.promise;
-    },
-
-    addNew : function(task) {
-      var deffered = $q.defer();
-
-      Stamplay.Object("task").save(task)
-      .then(function(response) {
-        deffered.resolve(response)
-      }, function(err) {
-        deffered.reject(err);
-      })
-      return deffered.promise
-    },
-    deleteTask : function(id) {
-      var deffered = $q.defer();
-      Stamplay.Object("task").remove(id)
-      .then(function(response) {
-        deffered.resolve(response)
-      }, function(err) {
-        deffered.reject(err);
-      })
-      return deffered.promise;
-    },
-    updateTask : function(task) {
-      var deffered = $q.defer();
-      Stamplay.Object("task").update(task._id, task)
-      .then(function(response) {
-        deffered.resolve(response)
-      }, function(err) {
-        deffered.reject(err);
-      })
-      return deffered.promise;
-    },
-    patchTask : function(task) {
-      var deffered = $q.defer();
-      Stamplay.Object("task").patch(task._id, { complete: task.complete})
-      .then(function(response) {
-        deffered.resolve(response)
-      }, function(err) {
-        deffered.reject(err);
-      })
-      return deffered.promise;
-    }
-
-  }
+	}
 }]);

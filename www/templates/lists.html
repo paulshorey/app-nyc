@@ -18,48 +18,47 @@
 			</div>
 		</ion-nav-title>
 		<ion-nav-buttons side="right">
-			<a class="button button-icon icon ion-plus-circled" ui-sref="new"></a>
+			<a class="button button-icon icon ion-plus-circled" href="/" prevent-default ng-click="vm.clearActive(); vm.addList()"></a>
 		</ion-nav-buttons>
 	</ion-nav-bar>
 	<ion-content>
 		<h1 class="account-title center-align">
 			<div ng-if="user">
-				{{vm.tasks.length}} Tasks
+				{{vm.lists.length}} Lists
 			</div>
-			<div ng-if="!user && vm.tasks !== undefined">
-				Community Tasks
+			<div ng-if="!user && vm.lists !== undefined">
+				Community Lists
 			</div>
 		</h1>
 		<div can-swipe="true">
-			<div ng-repeat="item in vm.tasks" ng-class="{ 'active' : item.id === vm.active }">
+			<div ng-repeat="item in vm.lists" ng-class="{ 'active' : item.id === vm.active }" on-tap="vm.setActive(item._id)">
 				<div class="row">
 					<div class="col col-20" style="display: flex;justify-content: flex-end;align-items: center;">
 						<button class="button button-clear" style="font-size:2rem !important" ng-click="vm.setStatus(item)">
 							<i class="ion ion-checkmark-circled" ng-class="{ 'balanced' : item.complete }"></i>
 						</button>
 					</div>
-					<div class="col col-80" on-tap="vm.setActive(item._id)">
-						<h2>{{ item.title }}</h2>
-						<p>{{ item.body }}</p>
-						<label class="dark">
-							{{ item.dt_create | date : "short"}}
-						</label>
+					<div class="col col-60">
+						<div>{{ item.category }}</div>
+						<div>{{ item.time }}</div>
+						<div>{{ item.scene }}</div>
+						<div>{{ item.text }}</div>
 					</div>
-				</div>
-				<div class="item-options">
-					<button class="button-energized ion-edit" ui-sref="edit({ id : item._id })"></button>
-					<button class="button-assertive ion-trash-a" ng-click="vm.deleteTask(item._id)"></button>
+					<div class="col col-20">
+						<button class="button-energized ion-edit" ng-click="vm.editList(item._id)"></button>
+						<button class="button-assertive ion-trash-a" ng-click="vm.deleteList(item._id)"></button>
+					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="card" ng-show="vm.tasks.length === 0">
+		<div class="card" ng-show="vm.lists.length === 0">
 			<div class="item item-body center-align">
 				<h2 class="dark">
 					Umm..it's empty in here..
 				</h2>
 				<h2 class="dark">
-					Try adding a task by clicking the <i class="ion-plus-circled dark"></i>icon in the top right corner.
+					Try adding a list by clicking the <i class="ion-plus-circled dark"></i>icon in the top right corner.
 				</h2>
 			</div>
 		</div>
