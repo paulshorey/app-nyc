@@ -35,11 +35,12 @@ angular.module('ionicApp', ['ionic', 'ionicApp.controllers', 'ionicApp.services'
 	hideOnStateChange: false
 })
 
-.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
+.config(function ($stateProvider, $httpProvider, $locationProvider, $urlRouterProvider) {
 	$locationProvider.html5Mode({
 		enabled: true,
 		requireBase: false
 	});
+	$httpProvider.defaults.useXDomain = true;
 
 	// Ionic uses AngularUI Router which uses the concept of states
 	// Learn more here: https://github.com/angular-ui/ui-router
@@ -48,13 +49,6 @@ angular.module('ionicApp', ['ionic', 'ionicApp.controllers', 'ionicApp.services'
 	$stateProvider
 
 	// setup an abstract state for the tabs directive
-		.state('home', {
-			cache: false,
-			url: '/home',
-			templateUrl: 'templates/home.html',
-			controller: "ListController",
-			controllerAs: "vm"
-		})
 		.state('lists', {
 			cache: false,
 			url: '/',
@@ -62,17 +56,24 @@ angular.module('ionicApp', ['ionic', 'ionicApp.controllers', 'ionicApp.services'
 			controller: "ListController",
 			controllerAs: "vm"
 		})
-		.state('new', {
+		.state('about', {
 			cache: false,
-			url: '/new',
-			templateUrl: 'templates/new.html',
+			url: '/about',
+			templateUrl: 'templates/about.html',
 			controller: "ListController",
 			controllerAs: "vm"
 		})
-		.state('edit', {
+		.state('addList', {
 			cache: false,
-			url: '/list/:id',
-			templateUrl: 'templates/edit.html',
+			url: '/addList',
+			templateUrl: 'templates/modals/addList.html',
+			controller: "ListController",
+			controllerAs: "vm"
+		})
+		.state('editList', {
+			cache: false,
+			url: '/editList/:id',
+			templateUrl: 'templates/modals/editList.html',
 			controller: "ListController",
 			controllerAs: "vm"
 		})

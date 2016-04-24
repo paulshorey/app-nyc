@@ -46,13 +46,7 @@ pro.window.system.platform = pro.os.platform();
 	if (pro.window.system.platform=='darwin') {
 		pro.window.system.api.host = 'http://localhost:1080';
 	}
-
-pro.window.page = {};
-pro.window.page.title = pro.o3o(pro.o3o.tags[Math.floor(Math.random() * pro.o3o.tags.length)]);
-
-//////////////////////////////////////////////////////////////////////////////////////////////////
-// ASSETS
-pro.app.use(pro.inc.express.static('www'));
+	pro.window.system.o3o = pro.o3o(pro.o3o.tags[Math.floor(Math.random() * pro.o3o.tags.length)]);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // INDEX
@@ -64,6 +58,9 @@ process.app.get(/^[a-z\/]*$/gi, function(request, response){
 	response.end();
 });
 
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// ASSETS
+process.app.use(pro.inc.express.static('www'));
 process.app.use(function(err, req, res, next) {
 	console.error(err.stack);
 	res.status(500).send('Something broke!');

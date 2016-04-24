@@ -10,7 +10,10 @@ angular.module('ionicApp.controllers', [])
 })
 
 
-.controller('ListController', ["AccountService", "ListService", "$ionicLoading", "$ionicPopup", "$ionicModal", "$scope", "$rootScope", "$state", "$timeout", "$stateParams", function (AccountService, ListService, $ionicLoading, $ionicPopup, $ionicModal, $scope, $rootScope, $state, $timeout, $stateParams) {
+.controller('ListController', 
+           ["AccountService", "ListService", "EventService",		"$ionicLoading", "$ionicPopup", "$ionicModal", 		"$scope", "$rootScope", "$state", "$timeout", "$stateParams", function 
+           (AccountService, ListService, EventService, 				$ionicLoading, $ionicPopup, $ionicModal, 			$scope, $rootScope, $state, $timeout, $stateParams) 
+	{
 	var vm = this;
 	var errorHandler = function (options) {
 		var errorAlert = $ionicPopup.alert({
@@ -19,6 +22,7 @@ angular.module('ionicApp.controllers', [])
 			okText: "Try Again"
 		});
 	}
+
 
 	/*
 		ACCOUNT
@@ -216,6 +220,21 @@ angular.module('ionicApp.controllers', [])
 		/*
 			QUERY
 		*/
+		var query = {};
+		query.category = list.category;
+		query.scene = list.scene;
+		query.time = list.time;
+		EventService.getEvents(query).then(function(response){
+
+			console.log('events',response.data.data);
+			if (!vm.events) {
+				vm.events = {};
+			}
+			vm.events[list.id] = response.data.data;
+
+		}, function(error) {
+			console.error(error);
+		});
 	}
 	vm.forgetList = function (list) {
 		delete vm.lists[list.id];
@@ -223,7 +242,6 @@ angular.module('ionicApp.controllers', [])
 			QUERY
 		*/
 	}
-
 
 
 }])

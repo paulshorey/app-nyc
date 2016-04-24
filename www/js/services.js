@@ -20,20 +20,25 @@ angular.module('ionicApp.services', [])
 }])
 
 
-.factory('EventsService', ["$rootScope", "$q", function ($rootScope, $q) {
+.factory('EventService', ["$rootScope", "$http", "$q", function ($rootScope, $http, $q) {
 
 	return {
 
 		getEvents: function (query) {
 			var deffered = $q.defer();
-			Stamplay.Query("object", "list")
-				.notExists("owner")
-				.exec()
-				.then(function (response) {
-					deffered.resolve(response)
-				}, function (error) {
-					deffered.reject(err);
-				})
+			$http({
+				url: window.system.api.host+'/events',
+				method: "POST",
+				data: query,
+				withCredentials: true,
+				headers: {
+					'Content-Type': 'application/json; charset=utf-8'
+				}
+			}).then(function(response){
+				deffered.resolve(response);
+			},function(error){
+				deffered.reject(error);
+			});
 			return deffered.promise;
 		}
 
