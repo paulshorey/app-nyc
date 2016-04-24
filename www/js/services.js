@@ -20,6 +20,28 @@ angular.module('ionicApp.services', [])
 }])
 
 
+.factory('EventsService', ["$rootScope", "$q", function ($rootScope, $q) {
+
+	return {
+
+		getEvents: function (query) {
+			var deffered = $q.defer();
+			Stamplay.Query("object", "list")
+				.notExists("owner")
+				.exec()
+				.then(function (response) {
+					deffered.resolve(response)
+				}, function (error) {
+					deffered.reject(err);
+				})
+			return deffered.promise;
+		}
+
+	}
+
+}])
+
+
 .factory('ListService', ["$rootScope", "$q", function ($rootScope, $q) {
 
 	return {
