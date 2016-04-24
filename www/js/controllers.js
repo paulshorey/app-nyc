@@ -227,10 +227,13 @@ angular.module('ionicApp.controllers', [])
 		EventService.getEvents(query).then(function(response){
 
 			console.log('events',response.data.data);
-			if (!vm.events) {
-				vm.events = {};
+			var events = response.data.data;
+			var html = '';
+			for (var each in events) {
+				var event = events[each];
+				html += '<div>'+event.text+'</div>';
 			}
-			vm.events[list.id] = response.data.data;
+			vm.lists[list.id].events = html;
 
 		}, function(error) {
 			console.error(error);
