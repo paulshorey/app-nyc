@@ -35,7 +35,7 @@ angular.module('ionicApp', ['ionic', 'ionicApp.controllers', 'ionicApp.services'
 	hideOnStateChange: false
 })
 
-.config(function ($stateProvider, $httpProvider, $locationProvider, $urlRouterProvider) {
+.config(function ($ionicConfigProvider, 		$stateProvider, $httpProvider, $locationProvider, $urlRouterProvider) {
 	$locationProvider.html5Mode({
 		enabled: true,
 		requireBase: false
