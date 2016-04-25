@@ -6,26 +6,25 @@
 	<title>events-nyc</title>
 	<link href="css/ionic.app.css" rel="stylesheet" />
 	<link href="css/layout.css" rel="stylesheet" />
-
 	<script src="lib/ionic/js/ionic.bundle.js"></script>
-
 	<script src="cordova.js"></script>
 	<script src="https://drrjhlchpvi7e.cloudfront.net/libs/stamplay-js-sdk/2.0.5/stamplay.min.js"></script>
 	<script>
-	// default settings
-	var system = {};
-	system.api = {};
-	system.api.host = 'http://api.allevents.nyc';
-	// 
-	// server settings
-	var nodejs = <%- '\n'+JSON.stringify(process.window.system,null,'\t') %>;
-	for (var node in nodejs) {
-		system[node] = nodejs[node];
+	// nodejs <%- '\n\t window.nodejs = '+JSON.stringify(process.window.system,null,'\t')+';\n' %>
+	//
+	// window
+	window.system = {};
+	window.system.api = {};
+	window.system.api.host = 'http://api.allevents.nyc';
+	if (window.nodejs) {
+		for (var node in nodejs) {
+			window.system[node] = window.nodejs[node];
+		}
 	}
 	//
 	// stamplay settings
 	Stamplay.init("ionic-nyc", {
-		isMobile: window.nodejs ? false : false, // !!! ... MOBILE vs DESKTOP on STAMPLAY ... LOGIN SUCCESS REDIRECT ... !!!
+		isMobile: /localhost|stamplay|allevents/.test(window.location.host) ? false : true,
 		absoluteUrl : true,
 		autorefreshSocialLogin : true
 	});
