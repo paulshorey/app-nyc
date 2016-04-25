@@ -105,6 +105,7 @@ angular.module('ionicApp.controllers', [])
 			ListService.getGuestLists()
 				.then(
 					function (response) {
+						vm.events = {};
 						vm.lists = {};
 						response.data.forEach(function (item, idx, array) {
 							vm.updateList(array[idx]);
@@ -118,6 +119,7 @@ angular.module('ionicApp.controllers', [])
 			ListService.getUsersLists()
 				.then(
 					function (response) {
+						vm.events = {};
 						vm.lists = {};
 						response.data.forEach(function (item, idx, array) {
 							vm.updateList(array[idx]);
