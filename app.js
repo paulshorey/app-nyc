@@ -42,7 +42,7 @@ pro.window.system = {};
 pro.window.system.platform = pro.os.platform();
 
 	pro.window.system.api = {};
-	pro.window.system.api.host = 'http://allevents.nyc';
+	pro.window.system.api.host = 'http://api.allevents.nyc';
 	// if (pro.window.system.platform=='darwin') {
 	// 	pro.window.system.api.host = 'http://localhost:1080';
 	// }
