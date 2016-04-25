@@ -31,8 +31,7 @@ angular.module('ionicApp.services', [])
 				method: "POST",
 				data: query,
 				headers: {
-					'Content-Type': 'application/json; charset=utf-8',
-					'Host': window.location.host
+					'Content-Type': 'application/json; charset=utf-8'
 				}
 			}).then(function(response){
 				deffered.resolve(response);
