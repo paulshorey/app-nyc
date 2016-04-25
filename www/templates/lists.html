@@ -21,7 +21,7 @@
 			<a class="button button-icon icon ion-plus-circled" href="/" prevent-default ng-click="vm.clearActive(); vm.addList()"></a>
 		</ion-nav-buttons>
 	</ion-nav-bar>
-	<ion-content>
+	<div class="ion-content">
 		<h1 class="account-title center-align">
 			<div ng-if="user">
 				{{vm.lists.length}} Lists
@@ -30,7 +30,7 @@
 				Community Lists
 			</div>
 		</h1>
-		<div can-swipe="true">
+		<div>
 			<div ng-repeat="item in vm.lists" ng-class="{ 'active' : item.id === vm.active }" on-tap="vm.setActive(item._id)">
 				<div class="row">
 					<div class="col col-20" style="display: flex;justify-content: flex-end;align-items: center;">
@@ -65,5 +65,5 @@
 		</div>
 
 
-	</ion-content>
+	</div>
 </ion-view>
