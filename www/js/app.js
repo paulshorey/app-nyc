@@ -45,8 +45,8 @@ angular.module('ionicApp', ['ionic', 'ionicApp.controllers', 'ionicApp.services'
 	$httpProvider.defaults.headers.post['Pragma'] = 'no-cache';
 	$ionicConfigProvider.views.maxCache(0);
 
-	// $httpProvider.defaults.useXDomain = true;
-	// delete $httpProvider.defaults.headers.common['X-Requested-With'];
+	$httpProvider.defaults.useXDomain = true;
+	delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
 	// Ionic uses AngularUI Router which uses the concept of states
 	// Learn more here: https://github.com/angular-ui/ui-router
