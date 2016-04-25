@@ -30,7 +30,6 @@ angular.module('ionicApp.services', [])
 				url: window.system.api.host+'/events',
 				method: "POST",
 				data: query,
-				withCredentials: true,
 				headers: {
 					'Content-Type': 'application/json; charset=utf-8'
 				}

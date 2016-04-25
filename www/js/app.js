@@ -45,8 +45,6 @@ angular.module('ionicApp', ['ionic', 'ionicApp.controllers', 'ionicApp.services'
 	$httpProvider.defaults.headers.post['Pragma'] = 'no-cache';
 	$ionicConfigProvider.views.maxCache(0);
 
-	$httpProvider.defaults.useXDomain = true;
-
 	// Ionic uses AngularUI Router which uses the concept of states
 	// Learn more here: https://github.com/angular-ui/ui-router
 	// Set up the various states which the app can be in.
