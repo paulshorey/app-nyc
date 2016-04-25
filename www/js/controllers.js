@@ -228,12 +228,20 @@ angular.module('ionicApp.controllers', [])
 
 			console.log('events',response.data.data);
 			var events = response.data.data;
-			var html = '';
+			var old_timestamp = 0;
+			var old_date = '';
+			var html = '		<div class="events">\n';
 			for (var each in events) {
 				var event = events[each];
-				html += '<div>'+event.text+'</div>';
+				if (event.timestamp != old_timestamp || event.date != old_date) {
+					html += '	<div class="events-timestamp"><span>'+event.date+'</span> <span>'+event.time+'</div>\n';
+				}
+				html += '		<a class="events-event event-link" href="'+event.link+'" target="_blank" style="background-image:url('+event.image+');">\n';
+				html += '			<div class="event-text">'+event.text+'</div>\n';
+				html += '		</a>';
 			}
-			vm.lists[list.id].events = html;
+			html += '		</div>\n';
+			vm.events[list.id] = html;
 
 		}, function(error) {
 			console.error(error);
