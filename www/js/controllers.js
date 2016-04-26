@@ -243,7 +243,7 @@ angular.module('ionicApp.controllers', [])
 				html += '		</a>';
 			}
 			html += '		</div>\n';
-			vm.events[list.id] = html;
+			document.getElementById(list.id+'_events').innerHTML = html;
 
 		}, function(error) {
 			console.error(error);

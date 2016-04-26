@@ -43,7 +43,7 @@
 						<div>{{ item.time }}</div>
 						<div>{{ item.scene }}</div>
 						<div>{{ item.text }}</div>
-						<div ng-bind-html="vm.events[item.id]"></div>
+						<div id="{{item.id}}_events"></div>
 					</div>
 					<div class="col col-20">
 						<button class="button-energized ion-edit" ng-click="vm.editList(item._id)"></button>
