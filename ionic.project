@@ -1,6 +1,6 @@
 {
-  "name": "stamplay-ionic-starter",
-  "app_id": "5a3f57b5",
+  "name": "events-nyc",
+  "app_id": "99407f22",
   "gulpStartupTasks": [
     "sass",
     "watch"
