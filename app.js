@@ -44,7 +44,7 @@ process.window.system = {};
 process.window.system.platform = process.os.platform();
 
 	process.window.system.api = {};
-	process.window.system.api.host = 'http://api.allevents.nyc';
+	process.window.system.api.host = 'https://api.allevents.nyc';
 	// if (process.window.system.platform=='darwin') {
 	// 	process.window.system.api.host = 'http://localhost:1080';
 	// }
