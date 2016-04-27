@@ -14,73 +14,24 @@
 	<!-- Cordova is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
 	<!-- <script src="cordova.js"></script> -->
 	<script>
+	// general
+	window.isMobile = !(/localhost|stamplay|allevents/.test(window.location.host));
+	//
 	// nodejs <%- '\n\t window.nodejs = '+JSON.stringify(process.window.system,null,'\t')+';\n' %>
 	//
-	// window
+	// system
 	window.system = {};
 	window.system.api = {};
-	window.system.api.host = 'https://api.allevents.nyc';
+	window.system.api.host = 'http'+(isMobile?'':'s')+'://api.allevents.nyc';
 	window.system.stamplay = {};
-	window.system.stamplay.host = 'https://ionic-nyc.stamplayapp.com';
+	window.system.stamplay.host = 'http'+(isMobile?'':'s')+'://ionic-nyc.stamplayapp.com';
 	window.system.app = {};
-	window.system.app.host = 'https://allevents.nyc';
+	window.system.app.host = 'http'+(isMobile?'':'s')+'://allevents.nyc';
 	if (window.nodejs) {
 		for (var node in nodejs) {
 			window.system[node] = window.nodejs[node];
 		}
 	}
-	// window.system.api.host = 'http://localhost:1080';
-	// window.console.warn(window.location.host);
-	//
-	window.uu = {};
-	window.uu.stringify_once = function(_in) {
-		// ...
-		var _out = [];
-		var _i = 0;
-		// array
-		if (typeof _in === 'object') {
-			for (_i in _in) {
-				if (_in.hasOwnProperty(_i)) {
-					_out.push([_i, _in[_i] + '']);
-				}
-			}
-			// undefined
-		} else if (_in === undefined) {
-			_out = 'undefined';
-			// null
-		} else if (_in === null) {
-			_out = 'null';
-			// string
-		} else {
-			_out = _in + '';
-		}
-		// ...
-		return JSON.stringify(_out,null,'\t');
-	};
-	window.uu.stringify_double = function(_in) {
-		// ...
-		var _out = [];
-		var _i = 0;
-		// array
-		if (typeof _in === 'object') {
-			for (_i in _in) {
-				if (_in.hasOwnProperty(_i)) {
-					_out.push([_i, uu.stringify_once(_in[_i])]);
-				}
-			}
-			// undefined
-		} else if (_in === undefined) {
-			_out = 'undefined';
-			// null
-		} else if (_in === null) {
-			_out = 'null';
-			// string
-		} else {
-			_out = _in + '';
-		}
-		// ...
-		return JSON.stringify(_out,null,'\t');
-	};
 	</script>
 
 	<!--
@@ -90,7 +41,7 @@
 	<script>
 	// stamplay settings
 	Stamplay.init("ionic-nyc", {
-		isMobile: /localhost|stamplay|allevents/.test(window.location.host) ? false : true,
+		isMobile: window.isMobile,
 		absoluteUrl : true,
 		autorefreshSocialLogin : true
 	});
