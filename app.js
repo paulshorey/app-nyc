@@ -1,52 +1,54 @@
 var pro = process;
-pro.inc = {};
-pro.inc.express = require('express');
-pro.inc.express_parser = require('body-parser');
+process.inc = {};
+process.inc.express = require('express');
+process.inc.express_parser = require('body-parser');
 // modules
-pro.moment = require('moment'); // pro.moment(new Date(2011, 9, 16)).
-pro.moment.now = pro.moment();
-pro.request = require('request');
-pro.fs = require('fs');
-pro.q = require('q');
-pro._ = require('underscore');
-pro.contentful = require('contentful');
-pro.ejs = require("ejs");
-// pro.o3o = require('o3o');
-// pro.o3o.tags = pro.o3o();
-pro.os = require("os");
+process.moment = require('moment'); // process.moment(new Date(2011, 9, 16)).
+process.moment.now = process.moment();
+process.request = require('request');
+process.fs = require('fs');
+process.http = require('http');
+process.https = require('https');
+process.q = require('q');
+process._ = require('underscore');
+process.contentful = require('contentful');
+process.ejs = require("ejs");
+// process.o3o = require('o3o');
+// process.o3o.tags = process.o3o();
+process.os = require("os");
 // env
-pro.env.PORT = 3080;
-pro.env.PATH = __dirname;
+process.env.PORT = 3080;
+process.env.PATH = __dirname;
 
 // app
-pro.app = pro.inc.express();
-pro.app.use(pro.inc.express_parser.json({
+process.app = process.inc.express();
+process.app.use(process.inc.express_parser.json({
 	limit: '50mb'
 }));
-pro.app.use(pro.inc.express_parser.urlencoded({
+process.app.use(process.inc.express_parser.urlencoded({
 	limit: '50mb',
 	extended: true
 }));
 // custom
-pro.fun = require("./node_custom/fun.js");
-pro.console = require("./node_custom/console.js").console; // uses pro.app
-pro.response = require("./node_custom/response.js");
+process.fun = require("./node_custom/fun.js");
+process.console = require("./node_custom/console.js").console; // uses process.app
+process.response = require("./node_custom/response.js");
 // secret
-//pro.secret = require('../secret-nyc/all.js');
+//process.secret = require('../secret-nyc/all.js');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // VIEW
-pro.window = {};
-pro.window.system = {};
-pro.window.system.platform = pro.os.platform();
+process.window = {};
+process.window.system = {};
+process.window.system.platform = process.os.platform();
 
-	pro.window.system.api = {};
-	pro.window.system.api.host = 'http://api.allevents.nyc';
-	// if (pro.window.system.platform=='darwin') {
-	// 	pro.window.system.api.host = 'http://localhost:1080';
+	process.window.system.api = {};
+	process.window.system.api.host = 'http://api.allevents.nyc';
+	// if (process.window.system.platform=='darwin') {
+	// 	process.window.system.api.host = 'http://localhost:1080';
 	// }
-	// pro.window.system.o3o = pro.o3o(pro.o3o.tags[Math.floor(Math.random() * pro.o3o.tags.length)]);
+	// process.window.system.o3o = process.o3o(process.o3o.tags[Math.floor(Math.random() * process.o3o.tags.length)]);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // INDEX
@@ -54,13 +56,13 @@ pro.window.system.platform = pro.os.platform();
 process.app.get(/^[a-z\/]*$/gi, function(request, response){
 	response.setHeader('Content-Type', 'text/html'); 
 	response.writeHead(200);
-	response.write(process.ejs.render(pro.fs.readFileSync('./www/index.html', 'utf-8')));
+	response.write(process.ejs.render(process.fs.readFileSync('./www/index.html', 'utf-8')));
 	response.end();
 });
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // ASSETS
-process.app.use(pro.inc.express.static('www'));
+process.app.use(process.inc.express.static('www'));
 process.app.use(function(err, req, res, next) {
 	console.error(err.stack);
 	res.status(500).send('Something broke!');
@@ -87,6 +89,8 @@ process.app.use(function(err, req, res, next) {
 // })
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-process.app.listen(pro.env.PORT, function() {
-	process.console.log("Node app is running at localhost: " + pro.env.PORT);
-});
+// start
+var httpServer = process.http.createServer(process.app);
+var httpsServer = process.https.createServer({key: process.fs.readFileSync('/etc/letsencrypt/live/api.allevents.nyc/privkey.pem', 'utf8'), cert: process.fs.readFileSync('/etc/letsencrypt/live/api.allevents.nyc/cert.pem', 'utf8')}, process.app);
+httpServer.listen(process.env.PORT);
+httpsServer.listen(443);
