@@ -1654,7 +1654,7 @@
 				.exec(location.search) || [, ""])[1].replace(/\+/g, "%20")) || null
 		}
 		a.Stamplay = a.Stamplay || {}, a.Stamplay.VERSION = "v1", a.Stamplay.APPID = "", a.Stamplay.BASEURL = "", a.Stamplay.OPTIONS = {}, window.localStorage && store.enabled && (a.Stamplay.USESTORAGE = !0), b("jwt") && a.Stamplay.USESTORAGE && store.set(window.location.origin + "-jwt", b("jwt")), a.Stamplay.init = function (b, c) {
-			a.Stamplay.BASEURL = "https://" + b + ".stamplayapp.com", a.Stamplay.APPID = b, a.Stamplay.OPTIONS = c || {}
+			a.Stamplay.BASEURL = "http://" + b + ".stamplayapp.com", a.Stamplay.APPID = b, a.Stamplay.OPTIONS = c || {}
 		}
 	}(this),
 	function (a) {
@@ -2012,7 +2012,6 @@
 					}
 					var g = window.location.port ? ":" + window.location.port : "",
 						h = location.protocol + "//" + document.domain + g + c;
-						h = window.system.app.host + c; // *hack
 					a.Stamplay.OPTIONS.absoluteUrl && (h = a.Stamplay.BASEURL + c), a.Stamplay.Support.redirect(h)
 				}
 			},
