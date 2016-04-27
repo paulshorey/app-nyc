@@ -1655,7 +1655,6 @@
 		}
 		a.Stamplay = a.Stamplay || {}, a.Stamplay.VERSION = "v1", a.Stamplay.APPID = "", a.Stamplay.BASEURL = "", a.Stamplay.OPTIONS = {}, window.localStorage && store.enabled && (a.Stamplay.USESTORAGE = !0), b("jwt") && a.Stamplay.USESTORAGE && store.set(window.location.origin + "-jwt", b("jwt")), a.Stamplay.init = function (b, c) {
 			a.Stamplay.BASEURL = "http://" + b + ".stamplayapp.com", a.Stamplay.APPID = b, a.Stamplay.OPTIONS = c || {}
-			console.log('a.Stamplay',uu.stringify_double(a.Stamplay));
 		}
 	}(this),
 	function (a) {
@@ -1997,7 +1996,7 @@
 				if (!b) throw new Error("Stamplay.User.socialLogin needs the service name");
 				var c = "/auth/" + a.Stamplay.VERSION + "/" + b + "/connect";
 				if (a.Stamplay.OPTIONS.isMobile) {
-					var d = window.open(window.system.app.host + c, "socialLogin", "left=1,top=1,width=600,height=600"); // *hack
+					var d = window.open(window.location.origin + c, "socialLogin", "left=1,top=1,width=600,height=600"); // *hack
 					d.addEventListener("loadstart", function (b) {
 						var c = new RegExp("jwt=([A-Za-z0-9-_=]+.[A-Za-z0-9-_=]+.[A-Za-z0-9-_.+=]+)");
 						if (b.url.indexOf("jwt=") > -1) {
