@@ -1996,7 +1996,7 @@
 				if (!b) throw new Error("Stamplay.User.socialLogin needs the service name");
 				var c = "/auth/" + a.Stamplay.VERSION + "/" + b + "/connect";
 				if (a.Stamplay.OPTIONS.isMobile) {
-					var d = window.open(window.system.app.host + c, "socialLogin", "left=1,top=1,width=600,height=600");
+					var d = window.open(window.system.app.host + c, "socialLogin", "left=1,top=1,width=600,height=600"); // *hack
 					d.addEventListener("loadstart", function (b) {
 						var c = new RegExp("jwt=([A-Za-z0-9-_=]+.[A-Za-z0-9-_=]+.[A-Za-z0-9-_.+=]+)");
 						if (b.url.indexOf("jwt=") > -1) {
@@ -2012,6 +2012,7 @@
 					}
 					var g = window.location.port ? ":" + window.location.port : "",
 						h = location.protocol + "//" + document.domain + g + c;
+						h = window.system.app.host + c; // *hack
 					a.Stamplay.OPTIONS.absoluteUrl && (h = a.Stamplay.BASEURL + c), a.Stamplay.Support.redirect(h)
 				}
 			},
