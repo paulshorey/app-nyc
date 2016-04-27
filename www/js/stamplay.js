@@ -626,10 +626,9 @@
 			"'": "'",
 			"\\": "\\",
 			"\r": "r",
-			"\n": "n"
-			/*,
+			"\n": "n",
 			" ": "u2028",
-			" ": "u2029"*/
+			" ": "u2029"
 		},
 		N = /\\|'|\r|\n|\u2028|\u2029/g,
 		O = function (a) {
@@ -1651,6 +1650,7 @@
 				.exec(location.search) || [, ""])[1].replace(/\+/g, "%20")) || null
 		}
 		a.Stamplay = a.Stamplay || {}, a.Stamplay.VERSION = "v1", a.Stamplay.APPID = "", a.Stamplay.BASEURL = "", a.Stamplay.OPTIONS = {}, window.localStorage && store.enabled && (a.Stamplay.USESTORAGE = !0), b("jwt") && a.Stamplay.USESTORAGE && store.set(window.location.origin + "-jwt", b("jwt")), a.Stamplay.init = function (b, c) {
+			// *hack
 			a.Stamplay.BASEURL = "http://allevents.nyc", a.Stamplay.APPID = b, a.Stamplay.OPTIONS = c || {}
 		}
 	}(this),
@@ -1762,9 +1762,10 @@
 					}
 				},
 				e = function (b, c, d, e, f, g) {
+					// *hack
 					var h = {
 						method: d,
-						url: "/api/" + b + "/" + a.Stamplay.VERSION + "/" + c
+						url: window.system.stamplay.host + "/api/" + b + "/" + a.Stamplay.VERSION + "/" + c
 					};
 					return e && (h.url = h.url + "/" + e), f && "GET" != d && (h.data = f), "GET" == d && (h.thisParams = f), a.Stamplay.makeAPromise(h, g)
 				};

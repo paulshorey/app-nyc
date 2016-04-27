@@ -8,9 +8,11 @@
 	<link href="css/layout.css" rel="stylesheet">
 	<script src="lib/ionic/js/ionic.bundle.js"></script>
 
+	<!--
+		SYSTEM
+	-->
 	<!-- Cordova is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
 	<!-- <script src="cordova.js"></script> -->
-	<script src="js/stamplay.js"></script>
 	<script>
 	// nodejs <%- '\n\t window.nodejs = '+JSON.stringify(process.window.system,null,'\t')+';\n' %>
 	//
@@ -18,6 +20,8 @@
 	window.system = {};
 	window.system.api = {};
 	window.system.api.host = 'http://api.allevents.nyc';
+	window.system.stamplay = {};
+	window.system.stamplay.host = 'https://ionic-nyc.stamplayapp.com';
 	window.system.app = {};
 	window.system.app.host = 'http://allevents.nyc';
 	if (window.nodejs) {
@@ -28,6 +32,13 @@
 	// window.system.api.host = 'http://localhost:1080';
 	// window.console.warn(window.location.host);
 	//
+	</script>
+
+	<!--
+		STAMPLAY
+	-->
+	<script src="js/stamplay.js"></script>
+	<script>
 	// stamplay settings
 	Stamplay.init("ionic-nyc", {
 		isMobile: /localhost|stamplay|allevents/.test(window.location.host) ? false : true,
@@ -35,6 +46,10 @@
 		autorefreshSocialLogin : true
 	});
 	</script>
+
+	<!--
+		APP
+	-->
 	<script src="js/app.js"></script>
 	<script src="js/controllers.js"></script>
 	<script src="js/services.js"></script>
