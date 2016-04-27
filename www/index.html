@@ -32,6 +32,55 @@
 	// window.system.api.host = 'http://localhost:1080';
 	// window.console.warn(window.location.host);
 	//
+	window.uu = {};
+	window.uu.stringify_once = function(_in) {
+		// ...
+		var _out = [];
+		var _i = 0;
+		// array
+		if (typeof _in === 'object') {
+			for (_i in _in) {
+				if (_in.hasOwnProperty(_i)) {
+					_out.push([_i, _in[_i] + '']);
+				}
+			}
+			// undefined
+		} else if (_in === undefined) {
+			_out = 'undefined';
+			// null
+		} else if (_in === null) {
+			_out = 'null';
+			// string
+		} else {
+			_out = _in + '';
+		}
+		// ...
+		return JSON.stringify(_out,null,'\t');
+	};
+	window.uu.stringify_double = function(_in) {
+		// ...
+		var _out = [];
+		var _i = 0;
+		// array
+		if (typeof _in === 'object') {
+			for (_i in _in) {
+				if (_in.hasOwnProperty(_i)) {
+					_out.push([_i, uu.stringify_once(_in[_i])]);
+				}
+			}
+			// undefined
+		} else if (_in === undefined) {
+			_out = 'undefined';
+			// null
+		} else if (_in === null) {
+			_out = 'null';
+			// string
+		} else {
+			_out = _in + '';
+		}
+		// ...
+		return JSON.stringify(_out,null,'\t');
+	};
 	</script>
 
 	<!--

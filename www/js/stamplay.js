@@ -1655,7 +1655,7 @@
 		}
 		a.Stamplay = a.Stamplay || {}, a.Stamplay.VERSION = "v1", a.Stamplay.APPID = "", a.Stamplay.BASEURL = "", a.Stamplay.OPTIONS = {}, window.localStorage && store.enabled && (a.Stamplay.USESTORAGE = !0), b("jwt") && a.Stamplay.USESTORAGE && store.set(window.location.origin + "-jwt", b("jwt")), a.Stamplay.init = function (b, c) {
 			a.Stamplay.BASEURL = "http://" + b + ".stamplayapp.com", a.Stamplay.APPID = b, a.Stamplay.OPTIONS = c || {}
-			console.log('a.Stamplay.OPTIONS',JSON.stringify(a.Stamplay.OPTIONS));
+			console.log('a.Stamplay',uu.stringify_double(a.Stamplay));
 		}
 	}(this),
 	function (a) {
