@@ -18,6 +18,8 @@
 	window.system = {};
 	window.system.api = {};
 	window.system.api.host = 'http://api.allevents.nyc';
+	window.system.app = {};
+	window.system.app.host = 'http://allevents.nyc';
 	if (window.nodejs) {
 		for (var node in nodejs) {
 			window.system[node] = window.nodejs[node];
