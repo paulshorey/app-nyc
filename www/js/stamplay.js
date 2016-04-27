@@ -626,13 +626,9 @@
 			"'": "'",
 			"\\": "\\",
 			"\r": "r",
-			"\n": "n"
-			/*
-				*hack
-				,
+			"\n": "n",
 			" ": "u2028",
 			" ": "u2029"
-			*/
 		},
 		N = /\\|'|\r|\n|\u2028|\u2029/g,
 		O = function (a) {
@@ -1654,8 +1650,7 @@
 				.exec(location.search) || [, ""])[1].replace(/\+/g, "%20")) || null
 		}
 		a.Stamplay = a.Stamplay || {}, a.Stamplay.VERSION = "v1", a.Stamplay.APPID = "", a.Stamplay.BASEURL = "", a.Stamplay.OPTIONS = {}, window.localStorage && store.enabled && (a.Stamplay.USESTORAGE = !0), b("jwt") && a.Stamplay.USESTORAGE && store.set(window.location.origin + "-jwt", b("jwt")), a.Stamplay.init = function (b, c) {
-			// *hack
-			a.Stamplay.BASEURL = "http://allevents.nyc", a.Stamplay.APPID = b, a.Stamplay.OPTIONS = c || {}
+			a.Stamplay.BASEURL = "https://" + b + ".stamplayapp.com", a.Stamplay.APPID = b, a.Stamplay.OPTIONS = c || {}
 		}
 	}(this),
 	function (a) {
@@ -1766,10 +1761,9 @@
 					}
 				},
 				e = function (b, c, d, e, f, g) {
-					// *hack
 					var h = {
 						method: d,
-						url: window.system.stamplay.host + "/api/" + b + "/" + a.Stamplay.VERSION + "/" + c
+						url: "/api/" + b + "/" + a.Stamplay.VERSION + "/" + c
 					};
 					return e && (h.url = h.url + "/" + e), f && "GET" != d && (h.data = f), "GET" == d && (h.thisParams = f), a.Stamplay.makeAPromise(h, g)
 				};
@@ -1807,7 +1801,7 @@
 					data: {
 						email: b
 					},
-					url: window.system.stamplay.host + "/api/auth/" + a.Stamplay.VERSION + "/validate/email"
+					url: "/api/auth/" + a.Stamplay.VERSION + "/validate/email"
 				}, c)
 			}
 		}
@@ -1966,7 +1960,7 @@
 					default:
 						this.instance = "users"
 					}
-					var e = window.system.stamplay.host + "/api/" + this.model + "/" + a.Stamplay.VERSION + "/" + this.instance + "?where={" + this.executable + "}" + this.paginationQuery + this.selectionQuery + this.sortQuery + this.populateQuery + this.populateOwnerQuery;
+					var e = "/api/" + this.model + "/" + a.Stamplay.VERSION + "/" + this.instance + "?where={" + this.executable + "}" + this.paginationQuery + this.selectionQuery + this.sortQuery + this.populateQuery + this.populateOwnerQuery;
 					return a.Stamplay.makeAPromise({
 						method: "GET",
 						url: e
@@ -1984,19 +1978,19 @@
 			currentUser: function (b) {
 				return a.Stamplay.makeAPromise({
 					method: "GET",
-					url: window.system.stamplay.host + "/api/" + this.brickId + "/" + a.Stamplay.VERSION + "/getStatus"
+					url: "/api/" + this.brickId + "/" + a.Stamplay.VERSION + "/getStatus"
 				}, b)
 			},
 			login: function (b, c) {
 				return a.Stamplay.makeAPromise({
 					method: "POST",
 					data: b,
-					url: window.system.stamplay.host + "/auth/" + a.Stamplay.VERSION + "/local/login"
+					url: "/auth/" + a.Stamplay.VERSION + "/local/login"
 				}, c)
 			},
 			socialLogin: function (b) {
 				if (!b) throw new Error("Stamplay.User.socialLogin needs the service name");
-				var c = window.system.stamplay.host + "/auth/" + a.Stamplay.VERSION + "/" + b + "/connect";
+				var c = "/auth/" + a.Stamplay.VERSION + "/" + b + "/connect";
 				if (a.Stamplay.OPTIONS.isMobile) {
 					var d = window.open(a.Stamplay.BASEURL + c, "socialLogin", "left=1,top=1,width=600,height=600");
 					d.addEventListener("loadstart", function (b) {
@@ -2014,8 +2008,6 @@
 					}
 					var g = window.location.port ? ":" + window.location.port : "",
 						h = location.protocol + "//" + document.domain + g + c;
-						// *hack
-						// h = window.system.stamplay.host + c;
 					a.Stamplay.OPTIONS.absoluteUrl && (h = a.Stamplay.BASEURL + c), a.Stamplay.Support.redirect(h)
 				}
 			},
@@ -2023,15 +2015,15 @@
 				return a.Stamplay.makeAPromise({
 					method: "POST",
 					data: b,
-					url: window.system.stamplay.host + "/api/" + this.brickId + "/" + a.Stamplay.VERSION + "/" + this.resourceId
+					url: "/api/" + this.brickId + "/" + a.Stamplay.VERSION + "/" + this.resourceId
 				}, c)
 			},
 			logout: function (b, c) {
 				if (a.Stamplay.USESTORAGE && store.remove(window.location.origin + "-jwt"), b) return a.Stamplay.makeAPromise({
 					method: "GET",
-					url: window.system.stamplay.host + "/auth/" + a.Stamplay.VERSION + "/logout"
+					url: "/auth/" + a.Stamplay.VERSION + "/logout"
 				}, c);
-				var d = window.system.stamplay.host + "/auth/" + a.Stamplay.VERSION + "/logout",
+				var d = "/auth/" + a.Stamplay.VERSION + "/logout",
 					e = window.location.port ? ":" + window.location.port : "",
 					f = location.protocol + "//" + document.domain + e + d;
 				a.Stamplay.OPTIONS.absoluteUrl && (f = a.Stamplay.BASEURL + d), a.Stamplay.Support.redirect(f)
@@ -2040,25 +2032,25 @@
 				return a.Stamplay.makeAPromise({
 					method: "POST",
 					data: b,
-					url: window.system.stamplay.host + "/api/" + this.brickId + "/" + a.Stamplay.VERSION + "/users/resetpassword"
+					url: "/api/" + this.brickId + "/" + a.Stamplay.VERSION + "/users/resetpassword"
 				}, c)
 			},
 			activities: function (b, c) {
 				return a.Stamplay.makeAPromise({
 					method: "GET",
-					url: window.system.stamplay.host + "/api/" + this.brickId + "/" + a.Stamplay.VERSION + "/users/" + b + "/activities"
+					url: "/api/" + this.brickId + "/" + a.Stamplay.VERSION + "/users/" + b + "/activities"
 				}, c)
 			},
 			following: function (b, c) {
 				return a.Stamplay.makeAPromise({
 					method: "GET",
-					url: window.system.stamplay.host + "/api/" + this.brickId + "/" + a.Stamplay.VERSION + "/users/" + b + "/following"
+					url: "/api/" + this.brickId + "/" + a.Stamplay.VERSION + "/users/" + b + "/following"
 				}, c)
 			},
 			followedBy: function (b, c) {
 				return a.Stamplay.makeAPromise({
 					method: "GET",
-					url: window.system.stamplay.host + "/api/" + this.brickId + "/" + a.Stamplay.VERSION + "/users/" + b + "/followed_by"
+					url: "/api/" + this.brickId + "/" + a.Stamplay.VERSION + "/users/" + b + "/followed_by"
 				}, c)
 			},
 			follow: function (b, c) {
@@ -2067,7 +2059,7 @@
 					data: {
 						userId: b
 					},
-					url: window.system.stamplay.host + "/api/" + this.brickId + "/" + a.Stamplay.VERSION + "/users/follow"
+					url: "/api/" + this.brickId + "/" + a.Stamplay.VERSION + "/users/follow"
 				}, c)
 			},
 			unfollow: function (b, c) {
@@ -2076,26 +2068,26 @@
 					data: {
 						userId: b
 					},
-					url: window.system.stamplay.host + "/api/" + this.brickId + "/" + a.Stamplay.VERSION + "/users/unfollow"
+					url: "/api/" + this.brickId + "/" + a.Stamplay.VERSION + "/users/unfollow"
 				}, c)
 			},
 			getRoles: function (b) {
 				return a.Stamplay.makeAPromise({
 					method: "GET",
-					url: window.system.stamplay.host + "/api/user/" + a.Stamplay.VERSION + "/roles"
+					url: "/api/user/" + a.Stamplay.VERSION + "/roles"
 				}, b)
 			},
 			getRole: function (b, c) {
 				return a.Stamplay.makeAPromise({
 					method: "GET",
-					url: window.system.stamplay.host + "/api/user/" + a.Stamplay.VERSION + "/roles/" + b
+					url: "/api/user/" + a.Stamplay.VERSION + "/roles/" + b
 				}, c)
 			}
 		};
 		_.extend(b, a.Stamplay.BaseComponent(b.brickId, b.resourceId)), delete b.patch, b.remove = function (b, c) {
 			return a.Stamplay.makeAPromise({
 					method: "DELETE",
-					url: window.system.stamplay.host + "/api/" + this.brickId + "/" + a.Stamplay.VERSION + "/" + this.resourceId + "/" + b
+					url: "/api/" + this.brickId + "/" + a.Stamplay.VERSION + "/" + this.resourceId + "/" + b
 				}, c)
 				.then(function (b) {
 					if (a.Stamplay.USESTORAGE) {
@@ -2115,10 +2107,10 @@
 				findByCurrentUser: function (b, c) {
 					return 1 == arguments.length && _.isFunction(arguments[0]) || 0 == arguments.length ? a.Stamplay.makeAPromise({
 						method: "GET",
-						url: window.system.stamplay.host + "/api/" + this.brickId + "/" + a.Stamplay.VERSION + "/" + this.resourceId + "/find/owner"
+						url: "/api/" + this.brickId + "/" + a.Stamplay.VERSION + "/" + this.resourceId + "/find/owner"
 					}, arguments[0]) : a.Stamplay.makeAPromise({
 						method: "GET",
-						url: window.system.stamplay.host + "/api/" + this.brickId + "/" + a.Stamplay.VERSION + "/" + this.resourceId + "/find/" + b
+						url: "/api/" + this.brickId + "/" + a.Stamplay.VERSION + "/" + this.resourceId + "/find/" + b
 					}, c)
 				},
 				upVote: function (a, b) {
@@ -2164,7 +2156,7 @@
 				return a.Stamplay.makeAPromise({
 					method: "PUT",
 					data: d ? d : {},
-					url: window.system.stamplay.host + "/api/" + this.brickId + "/" + a.Stamplay.VERSION + "/" + this.resourceId + "/" + b + "/" + c
+					url: "/api/" + this.brickId + "/" + a.Stamplay.VERSION + "/" + this.resourceId + "/" + b + "/" + c
 				}, e)
 			},
 			d = function (b, c) {
@@ -2189,7 +2181,7 @@
 				.trim()
 				.toLowerCase()
 				.replace(/\s+/g, "_"),
-				d = window.system.stamplay.host + "/api/webhook/" + a.Stamplay.VERSION + "/" + c + "/catch";
+				d = "/api/webhook/" + a.Stamplay.VERSION + "/" + c + "/catch";
 			return {
 				post: function (b, c) {
 					return a.Stamplay.makeAPromise({
@@ -2205,7 +2197,7 @@
 	function (a) {
 		"use strict";
 		var b = {
-			url: window.system.stamplay.host + "/api/stripe/" + a.Stamplay.VERSION + "/",
+			url: "/api/stripe/" + a.Stamplay.VERSION + "/",
 			createCustomer: function (b, c) {
 				return a.Stamplay.makeAPromise({
 					method: "POST",
@@ -2337,7 +2329,7 @@
 				.trim()
 				.toLowerCase()
 				.replace(/\s+/g, "_"),
-				f = window.system.stamplay.host + "/api/codeblock/" + a.Stamplay.VERSION + "/run/" + e;
+				f = "/api/codeblock/" + a.Stamplay.VERSION + "/run/" + e;
 			return {
 				run: function (d, e, g) {
 					var h = b("POST"),
