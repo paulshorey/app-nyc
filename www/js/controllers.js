@@ -238,7 +238,7 @@ angular.module('ionicApp.controllers', [])
 				if (event.timestamp != old_timestamp || event.date != old_date) {
 					html += '	<div class="events-timestamp"><span>'+event.date+'</span> <span>'+event.time+'</div>\n';
 				}
-				html += '		<div class="events-event event-link" onClick="window.open(\''+event.link+'\', \'_system\')" prevent-default style="background-image:url('+event.image+');">\n';
+				html += '		<div class="events-event event-link" onClick="window.open(\''+event.link+'\', \'_system\')" style="background-image:url('+event.image+');">\n';
 				html += '			<div class="event-text">'+event.text+'</div>\n';
 				html += '		</div>';
 			}
