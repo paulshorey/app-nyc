@@ -111,6 +111,9 @@ angular.module('ionicApp.controllers', [])
 							vm.updateList(array[idx]);
 						});
 						$ionicLoading.hide();
+						$timeout(function(){
+							vm.slickLists();
+						});
 					},
 					function (error) {
 						$ionicLoading.hide();
@@ -125,6 +128,9 @@ angular.module('ionicApp.controllers', [])
 							vm.updateList(array[idx]);
 						});
 						$ionicLoading.hide();
+						$timeout(function(){
+							vm.slickLists();
+						});
 					},
 					function (error) {
 						$ionicLoading.hide();
@@ -247,10 +253,6 @@ angular.module('ionicApp.controllers', [])
 			}
 			html += '		</div>\n';
 			document.getElementById(list.id+'_events').innerHTML = html;
-			/*
-				DOM
-			*/
-			vm.slickLists();
 
 		}, function(error) {
 			console.error(error);
@@ -261,54 +263,40 @@ angular.module('ionicApp.controllers', [])
 		delete vm.lists[list.id];
 		// QUERY
 		//
-		// DOM
-		vm.slickLists();
 	}
 	vm.slickLists = function(){
-
-		$timeout(function(){
-
-			$('.my-lists').slick({
-			  dots: true,
-			  infinite: false,
-			  speed: 300,
-			  slidesToShow: 4,
-			  slidesToScroll: 4,
-			  responsive: [
-			    {
-			      breakpoint: 1024,
-			      settings: {
-			        slidesToShow: 3,
-			        slidesToScroll: 3,
-			        infinite: true,
-			        dots: true
-			      }
-			    },
-			    {
-			      breakpoint: 600,
-			      settings: {
-			        slidesToShow: 2,
-			        slidesToScroll: 2
-			      }
-			    },
-			    {
-			      breakpoint: 480,
-			      settings: {
-			        slidesToShow: 1,
-			        slidesToScroll: 1
-			      }
-			    }
-			  ]
-			});
-			$('.my-lists').on('init', function(event, slick, currentSlide, nextSlide){
-				console.log('st INIT');
-			});
-			$('.my-lists').on('reInit', function(event, slick, currentSlide, nextSlide){
-				console.log('re INIT');
-			});
-
-		},100);
-
+		$('.my-lists').slick({
+		  dots: true,
+		  infinite: false,
+		  speed: 300,
+		  slidesToShow: 4,
+		  slidesToScroll: 4,
+		  responsive: [
+		    {
+		      breakpoint: 1024,
+		      settings: {
+		        slidesToShow: 3,
+		        slidesToScroll: 3,
+		        infinite: true,
+		        dots: true
+		      }
+		    },
+		    {
+		      breakpoint: 600,
+		      settings: {
+		        slidesToShow: 2,
+		        slidesToScroll: 2
+		      }
+		    },
+		    {
+		      breakpoint: 480,
+		      settings: {
+		        slidesToShow: 1,
+		        slidesToScroll: 1
+		      }
+		    }
+		  ]
+		});
 	}
 
 

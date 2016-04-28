@@ -30,7 +30,7 @@
 
 		<div class="my-lists">
 
-			<div class="my-list" ng-repeat="item in vm.lists" ng-class="{ 'active' : item.id === vm.active }" on-tap="vm.setActive(item._id)">
+			<div class="my-list" ng-repeat="item in vm.lists track by $index" ng-class="{ 'active' : item.id === vm.active }" on-tap="vm.setActive(item._id)" id="myList{{$index+1}}">
 				<div class="my-list-header">
 					<span class="my-list-buttons ulist-buttons-left">
 						<button class="uui-icon uui-hollow icon-checkbox-checked uui-hover-yellow"></button>
