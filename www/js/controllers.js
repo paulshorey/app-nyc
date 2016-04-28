@@ -250,7 +250,7 @@ angular.module('ionicApp.controllers', [])
 			/*
 				DOM
 			*/
-			vm.updateLists();
+			vm.slickLists();
 
 		}, function(error) {
 			console.error(error);
@@ -262,7 +262,7 @@ angular.module('ionicApp.controllers', [])
 		// QUERY
 		//
 		// DOM
-		vm.updateLists();
+		vm.slickLists();
 	}
 	vm.slickLists = function(){
 
