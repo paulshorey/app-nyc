@@ -1,4 +1,13 @@
 /*
+	RESET
+*/
+body {
+  margin: 0; }
+
+a {
+  text-decoration: none; }
+
+/*
 	GENERAL
 */
 body {
@@ -17,16 +26,21 @@ body {
   font-size: 18px;
   display: inline-block;
   vertical-align: middle; }
-  [class^="uui-"][class^="ion-"], [class^="uui-"][class*=" ion-"],
-  [class*=" uui-"][class^="ion-"],
-  [class*=" uui-"][class*=" ion-"] {
-    padding-top: 2px; }
 
 .uui-title {
   position: relative;
   height: 24px;
   line-height: 24px;
   font-weight: bold;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0;
+  color: #333; }
+
+.uui-text {
+  position: relative;
+  height: 24px;
+  line-height: 24px;
   display: inline-block;
   vertical-align: middle;
   padding: 0;
@@ -54,8 +68,17 @@ body {
 .uui-button:before {
   vertical-align: top;
   position: relative;
-  top: -1px;
+  font-size: 90%;
   color: #666; }
+
+.uui-icon[class^="ion-"]:before, .uui-icon[class*=" ion-"]:before,
+.uui-button[class^="ion-"]:before,
+.uui-button[class*=" ion-"]:before {
+  font-size: 100%; }
+
+a.uui-icon:before {
+  vertical-align: middle;
+  top: 0; }
 
 .uui-hint-subtle:before {
   text-shadow: 0 0 1px #fbbc05; }

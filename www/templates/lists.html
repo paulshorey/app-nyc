@@ -2,39 +2,38 @@
 	
 	<div class="utop">
 
+		<div class="utop-title uui-title" ng-if="user">
+			{{vm.lists.length}} Lists
+		</div>
+		<div class="utop-title uui-title" ng-if="!user && vm.lists !== undefined">
+			Community Lists
+		</div>
+
 		<div class="unav">
-			<a class="uui-icon ion-plus" href="/" prevent-default ng-click="vm.clearActive(); vm.addList()"></a> <span class="uui-title">suggest a source</span> 
-			<span class="uui-title">...</span>
-			<div class="utop-title" ng-if="user.displayName">
-				<span class="uui-title">Welcome, {{ user.displayName }} (<a href="/" prevent-default ng-click="vm.logout()">logout</a>)</span>
-			</div>
-			<div class="utop-title" ng-if="!user.displayName">
-				<span class="uui-title">login to save your search: </span> 
-				<button class="uui-icon ion-social-facebook" ng-click="vm.login('facebook')"></button>
-				<button class="uui-icon ion-social-google" ng-click="vm.login('google')"></button>
-				<button class="uui-icon ion-social-github" ng-click="vm.login('github')"></button>
-				<a class="uui-icon ion-unlocked"  href="/" prevent-default ng-click="vm.clearActive(); vm.addList()"></a>
-			</div>
+			<a class="uui-icon icon-connection" href="/" prevent-default ng-click="vm.clearActive(); vm.addList()"></a> <span class="uui-text">suggest a source</span> 
+			<span class="uui-text">...</span>
+			<span ng-if="user.displayName">
+				<span class="uui-text">welcome, {{ user.displayName }} (<a href="/" prevent-default ng-click="vm.logout()">logout</a>)</span>
+			</span>
+			<span ng-if="!user.displayName">
+				<span class="uui-text">login to save your search: </span> 
+				<button class="uui-icon icon-facebook" ng-click="vm.login('facebook')"></button>
+				<button class="uui-icon icon-google" ng-click="vm.login('google')"></button>
+				<button class="uui-icon icon-github" ng-click="vm.login('github')"></button>
+				<a class="uui-icon icon-unlocked"  href="/" prevent-default ng-click="vm.clearActive(); vm.addList()"></a>
+			</span>
 		</div>
 
 	</div>
 
 	<div class="ucontent">
-		<h1 class="ucontent-title">
-			<div ng-if="user">
-				{{vm.lists.length}} Lists
-			</div>
-			<div ng-if="!user && vm.lists !== undefined">
-				Community Lists
-			</div>
-		</h1>
 
 		<div class="ulists">
 
 			<div class="ulist" ng-repeat="item in vm.lists" ng-class="{ 'active' : item.id === vm.active }" on-tap="vm.setActive(item._id)">
 				<div class="ulist-header">
 					<span class="ulist-buttons ulist-buttons-left">
-						<button class="uui-icon uui-hint-subtle icon-star-outline" ng-click="vm.setStatus(item)" ng-class="{ 'balanced' : item.complete }"></button>
+						<button class="uui-icon uui-hint-subtle icon-checkbox-checked" ng-click="vm.setStatus(item)" ng-class="{ 'balanced' : item.complete }"></button>
 					</span>
 					<span class="ulist-title">
 						<span class="uui-title">{{ item.category }}</span>

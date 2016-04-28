@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'icomoon';
-    src:    url('fonts/icomoon.eot?izh94l');
-    src:    url('fonts/icomoon.eot?izh94l#iefix') format('embedded-opentype'),
-        url('fonts/icomoon.ttf?izh94l') format('truetype'),
-        url('fonts/icomoon.woff?izh94l') format('woff'),
-        url('fonts/icomoon.svg?izh94l#icomoon') format('svg');
+    src:    url('fonts/icomoon.eot?rji0cp');
+    src:    url('fonts/icomoon.eot?rji0cp#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?rji0cp') format('truetype'),
+        url('fonts/icomoon.woff?rji0cp') format('woff'),
+        url('fonts/icomoon.svg?rji0cp#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -32,5 +32,32 @@
 }
 .icon-star-circle:before {
     content: "\e900";
+}
+.icon-connection:before {
+    content: "\e90b";
+}
+.icon-unlocked:before {
+    content: "\e903";
+}
+.icon-happy:before {
+    content: "\e904";
+}
+.icon-plus:before {
+    content: "\e905";
+}
+.icon-cross:before {
+    content: "\e906";
+}
+.icon-checkbox-checked:before {
+    content: "\e907";
+}
+.icon-google:before {
+    content: "\e908";
+}
+.icon-facebook:before {
+    content: "\e909";
+}
+.icon-github:before {
+    content: "\e90a";
 }
 

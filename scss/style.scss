@@ -1,4 +1,15 @@
 /*
+	RESET
+*/
+body {
+	margin:0;
+}
+a {
+	text-decoration:none;
+}
+
+
+/*
 	GENERAL
 */
 body {
@@ -24,11 +35,6 @@ body {
 	font-size:18px;
 	display:inline-block;
 	vertical-align:middle;
-	// tweak IONIC
-	&[class^="ion-"],
-	&[class*=" ion-"] {
-		padding-top:2px;
-	}
 }
 
 // icons and buttons and title to fit
@@ -37,6 +43,15 @@ body {
 	height:24px;
 	line-height:24px;
 	font-weight:bold;
+	display:inline-block;
+	vertical-align:middle;
+	padding:0;
+	color:#333;
+}
+.uui-text {
+	position:relative;
+	height:24px;
+	line-height:24px;
 	display:inline-block;
 	vertical-align:middle;
 	padding:0;
@@ -67,15 +82,23 @@ body {
 	&:before {
 		vertical-align:top;
 		position:relative;
-		//font-size:110%;
-		top:-1px;
+		font-size:90%;
 		color:#666;
+	}
+	// tweak IONIC
+	&[class^="ion-"]:before,
+	&[class*=" ion-"]:before {
+		font-size:100%;
 	}
 	&:hover {
 		&:before {
 
 		}
 	}
+}
+a.uui-icon:before {
+	vertical-align:middle;
+	top:0;
 }
 .uui-hint-subtle {
 	&:before {
