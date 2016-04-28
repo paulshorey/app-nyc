@@ -14,10 +14,9 @@
 	<!-- Cordova is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
 	<!-- <script src="cordova.js"></script> -->
 	<script>
-	// general
-	window.isMobile = !(/localhost|stamplay|allevents/.test(window.location.host));
 	//
 	// nodejs <%- '\n\t window.nodejs = '+JSON.stringify(process.window.system,null,'\t')+';\n' %>
+	window.isMobile = window.nodejs ? false : true;//!(/localhost|stamplay|allevents/.test(window.location.host));
 	//
 	// system
 	window.system = {};

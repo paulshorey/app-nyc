@@ -41,9 +41,9 @@ angular.module('ionicApp', ['ionic', 'ionicApp.controllers', 'ionicApp.services'
 		requireBase: false
 	});
 	
-	// $httpProvider.defaults.headers.post['Cache-Control'] = 'no-cache';
-	// $httpProvider.defaults.headers.post['Pragma'] = 'no-cache';
-	// $ionicConfigProvider.views.maxCache(0);
+	$httpProvider.defaults.headers.post['Cache-Control'] = 'no-cache';
+	$httpProvider.defaults.headers.post['Pragma'] = 'no-cache';
+	$ionicConfigProvider.views.maxCache(0);
 	// $httpProvider.defaults.useXDomain = true;
 	delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
