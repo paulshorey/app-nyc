@@ -1,3 +1,90 @@
-.back-button {
-	z-index:1000000;
+/*
+	GENERAL
+*/
+body {
+	font-family:Georgia, Times, serif;
+}
+
+
+/*
+	UI
+*/
+
+// default UUI
+[class^="uui-"],
+[class*=" uui-"] {
+	position:relative;
+	height:24px;
+	font-size:18px;
+	display:inline-block;
+	vertical-align:middle;
+	// tweak IONIC
+	&[class^="ion-"],
+	&[class*=" ion-"] {
+		padding-top:2px;
+	}
+}
+
+// icons and buttons and title to fit
+.uui-title {
+	position:relative;
+	height:24px;
+	line-height:24px;
+	font-weight:bold;
+	display:inline-block;
+	vertical-align:middle;
+	padding:0;
+	color:#333;
+}
+.uui-icon,
+.uui-button {
+	width:24px;
+	padding:0;
+	text-align:center;
+}
+.uui-icon {
+	border:none;
+	background:transparent;
+}
+.uui-button {
+	border:none;
+	background:transparent;
+	&.uui-circle {
+		border-radius:50%;
+	}
+	&.uui-square {
+		border-radius:2px;
+	}
+}
+.uui-icon,
+.uui-button {
+	&:before {
+		vertical-align:top;
+		position:relative;
+		//font-size:110%;
+		top:-1px;
+		color:#666;
+	}
+	&:hover {
+		&:before {
+
+		}
+	}
+}
+.uui-hint-subtle {
+	&:before {
+		text-shadow:0 0 1px #fbbc05;
+	}
+}
+.uui-hollow {
+	&:before {
+		text-shadow:0 0 1px #000;
+		color:#fff;
+	}
+	&:hover {
+		&:before {
+			text-shadow:#fff;
+			color:#000;
+		}
+	}
 }

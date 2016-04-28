@@ -91,6 +91,7 @@ process.app.use(function(err, req, res, next) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // start
 var httpServer = process.http.createServer(process.app);
-var httpsServer = process.https.createServer({key: process.fs.readFileSync('/etc/letsencrypt/live/allevents.nyc/privkey.pem', 'utf8'), cert: process.fs.readFileSync('/etc/letsencrypt/live/allevents.nyc/fullchain.pem', 'utf8')}, process.app);
 httpServer.listen(process.env.PORT);
-httpsServer.listen(443);
+
+// var httpsServer = process.https.createServer({key: process.fs.readFileSync('/etc/letsencrypt/live/allevents.nyc/privkey.pem', 'utf8'), cert: process.fs.readFileSync('/etc/letsencrypt/live/allevents.nyc/fullchain.pem', 'utf8')}, process.app);
+// httpsServer.listen(443);

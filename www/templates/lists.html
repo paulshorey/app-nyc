@@ -1,27 +1,25 @@
 <ion-view>
-	<ion-nav-bar align-title="center" class="bar-light">
-		<a ui-sref="home" class="button back-button buttons button-clear header-item"><i class="icon ion-ios-arrow-back"></i> <span class="back-text"><span class="default-title">Home</span></span></a>
-		<ion-nav-title>
-			<div ng-if="user.displayName">
-				Welcome, {{ user.displayName }} (<a href="/" prevent-default ng-click="vm.logout()">logout</a>)
+	
+	<div class="utop">
+
+		<div class="unav">
+			<a class="uui-icon ion-plus" href="/" prevent-default ng-click="vm.clearActive(); vm.addList()"></a> <span class="uui-title">suggest a source</span> 
+			<span class="uui-title">...</span>
+			<div class="utop-title" ng-if="user.displayName">
+				<span class="uui-title">Welcome, {{ user.displayName }} (<a href="/" prevent-default ng-click="vm.logout()">logout</a>)</span>
 			</div>
-			<div ng-if="!user.displayName">
-				<button ng-click="vm.login('facebook')" class="">
-				<i class="ion-social-facebook"></i> Log in with Facebook
-				</button>
-				<button ng-click="vm.login('google')" class="">
-				<i class="ion-social-google"></i> Log in with Google+
-				</button>
-				<button ng-click="vm.login('github')" class="">
-				<i class="ion-social-github"></i> Log in with Github
-				</button>
+			<div class="utop-title" ng-if="!user.displayName">
+				<span class="uui-title">login to save your search: </span> 
+				<button class="uui-icon ion-social-facebook" ng-click="vm.login('facebook')"></button>
+				<button class="uui-icon ion-social-google" ng-click="vm.login('google')"></button>
+				<button class="uui-icon ion-social-github" ng-click="vm.login('github')"></button>
+				<a class="uui-icon ion-unlocked"  href="/" prevent-default ng-click="vm.clearActive(); vm.addList()"></a>
 			</div>
-		</ion-nav-title>
-		<ion-nav-buttons side="right">
-			<a class="button button-icon icon ion-plus-circled" href="/" prevent-default ng-click="vm.clearActive(); vm.addList()"></a>
-		</ion-nav-buttons>
-	</ion-nav-bar>
-	<div class="ion-content">
+		</div>
+
+	</div>
+
+	<div class="ucontent">
 		<h1 class="account-title center-align">
 			<div ng-if="user">
 				{{vm.lists.length}} Lists
@@ -30,27 +28,29 @@
 				Community Lists
 			</div>
 		</h1>
-		<div>
-			<div ng-repeat="item in vm.lists" ng-class="{ 'active' : item.id === vm.active }" on-tap="vm.setActive(item._id)">
-				<div class="row">
-					<div class="col col-20" style="display: flex;justify-content: flex-end;align-items: center;">
-						<button class="button button-clear" style="font-size:2rem !important" ng-click="vm.setStatus(item)">
-							<i class="ion ion-checkmark-circled" ng-class="{ 'balanced' : item.complete }"></i>
-						</button>
-					</div>
-					<div class="col col-60">
-						<div>{{ item.category }}</div>
-						<div>{{ item.time }}</div>
-						<div>{{ item.scene }}</div>
-						<div>{{ item.text }}</div>
-						<div id="{{item.id}}_events"></div>
-					</div>
-					<div class="col col-20">
-						<button class="button-energized ion-edit" ng-click="vm.editList(item._id)"></button>
-						<button class="button-assertive ion-trash-a" ng-click="vm.deleteList(item._id)"></button>
-					</div>
+
+		<div class="ulists">
+
+			<div class="ulist" ng-repeat="item in vm.lists" ng-class="{ 'active' : item.id === vm.active }" on-tap="vm.setActive(item._id)">
+				<div class="ulist-header">
+					<span class="ulist-buttons ulist-buttons-left">
+						<button class="uui-icon uui-hint-subtle icon-star-outline" ng-click="vm.setStatus(item)" ng-class="{ 'balanced' : item.complete }"></button>
+					</span>
+					<span class="ulist-title">
+						<span class="uui-title">{{ item.category }}</span>
+						<span class="uui-title">{{ item.time }}</span>
+						<span class="uui-title">{{ item.scene }}</span>
+						<span class="uui-title">{{ item.text }}</span>
+					</span>
+					<span class="ulist-buttons ulist-buttons-right">
+						<button class="uui-icon uui-hollow ion-edit" ng-click="vm.editList(item._id)"></button>
+						<button class="uui-icon uui-hollow ion-close" ng-click="vm.deleteList(item._id)"></button>
+					</span>
 				</div>
+
+				<div class="ulist-events" id="{{item.id}}_events"></div>
 			</div>
+
 		</div>
 
 		<div class="card" ng-show="vm.lists.length === 0">
@@ -64,6 +64,6 @@
 			</div>
 		</div>
 
-
 	</div>
+
 </ion-view>

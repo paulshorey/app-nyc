@@ -24,6 +24,23 @@ angular.module('ionicApp.services', [])
 
 	return {
 
+		getCategories: function (query) {
+			var deffered = $q.defer();
+			$http({
+				url: window.system.api.host+'/categories',
+				method: "GET",
+				headers: {
+					'Content-Type': 'application/json; charset=utf-8',
+					'X-Host': window.location.host
+				}
+			}).then(function(response){
+				deffered.resolve(response);
+			},function(error){
+				deffered.reject(error);
+			});
+			return deffered.promise;
+		},
+
 		getEvents: function (query) {
 			var deffered = $q.defer();
 			$http({

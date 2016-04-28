@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 	<title>ALL EVENTS (in) NYC</title>
-	<link href="css/ionic.app.css" rel="stylesheet">
-	<link href="css/layout.css" rel="stylesheet">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="initial-scale=0.75, maximum-scale=0.75, user-scalable=no, width=device-width" />
+	<!--<link href="css/ionic.app.css" rel="stylesheet">-->
+	<link href="gfx/icomoon/style.css" rel="stylesheet" />
+ 	<link href="css/layout.css" rel="stylesheet" />
+	<link href="css/style.css" rel="stylesheet" />
 	<script src="lib/ionic/js/ionic.bundle.js"></script>
-
+	<script src="https://drrjhlchpvi7e.cloudfront.net/libs/stamplay-js-sdk/2.0.5/stamplay.min.js"></script>
 	<!--
 		SYSTEM
 	-->
@@ -17,26 +19,25 @@
 	//
 	// nodejs <%- '\n\t window.nodejs = '+JSON.stringify(process.window.system,null,'\t')+';\n' %>
 	window.isMobile = window.document ? false : true;//!(/localhost|stamplay|allevents/.test(window.location.host));
+	window.isLocalhost = window.location.hostname.indexOf('localhost')!=-1;
 	//
 	// system
 	window.system = {};
 	window.system.api = {};
-	window.system.api.host = 'http'+(isMobile?'':'s')+'://api.allevents.nyc';
+	window.system.api.host = 'http'+(isMobile || isLocalhost?'':'s')+'://'+(isMobile || isLocalhost?'localhost:1080':'api.allevents.nyc');
 	window.system.stamplay = {};
 	window.system.stamplay.host = 'http'+(isMobile?'':'s')+'://ionic-nyc.stamplayapp.com';
 	window.system.app = {};
-	window.system.app.host = 'http'+(isMobile?'':'s')+'://allevents.nyc';
+	window.system.app.host = 'http'+(isMobile || isLocalhost?'':'s')+'://'+(isMobile || isLocalhost?'localhost:3080':'allevents.nyc');
 	if (window.nodejs) {
 		for (var node in nodejs) {
 			window.system[node] = window.nodejs[node];
 		}
 	}
 	</script>
-
 	<!--
 		STAMPLAY
 	-->
-	<script src="https://drrjhlchpvi7e.cloudfront.net/libs/stamplay-js-sdk/2.0.5/stamplay.min.js"></script>
 	<script>
 	// stamplay settings
 	Stamplay.init("ionic-nyc", {
@@ -45,7 +46,6 @@
 		autorefreshSocialLogin : !window.isMobile
 	});
 	</script>
-
 	<!--
 		APP
 	-->
@@ -54,6 +54,10 @@
 	<script src="js/services.js"></script>
 </head>
 <body ng-app="ionicApp">
+
 	<ion-nav-view></ion-nav-view>
+
+	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.css"/>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.min.js"></script>
 </body>
 </html>
