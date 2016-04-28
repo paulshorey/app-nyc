@@ -1,18 +1,18 @@
 <ion-view>
 	
-	<div class="utop">
+	<div class="my-top">
 
-		<div class="utop-title uui-title" ng-if="user">
+		<div class="my-top-title uui-title" ng-if="my-ser">
 			{{vm.lists.length}} Lists
 		</div>
-		<div class="utop-title uui-title" ng-if="!user && vm.lists !== undefined">
+		<div class="my-top-title uui-title" ng-if="!user && vm.lists !== undefined">
 			Community Lists
 		</div>
 
-		<div class="unav">
+		<div class="my-nav">
 			<a class="uui-icon icon-connection" href="/" prevent-default ng-click="vm.clearActive(); vm.addList()"></a> <span class="uui-text">suggest a source</span> 
 			<span class="uui-text">...</span>
-			<span ng-if="user.displayName">
+			<span ng-if="my-ser.displayName">
 				<span class="uui-text">welcome, {{ user.displayName }} (<a href="/" prevent-default ng-click="vm.logout()">logout</a>)</span>
 			</span>
 			<span ng-if="!user.displayName">
@@ -26,28 +26,28 @@
 
 	</div>
 
-	<div class="ucontent">
+	<div class="my-content">
 
-		<div class="ulists">
+		<div class="my-lists">
 
-			<div class="ulist" ng-repeat="item in vm.lists" ng-class="{ 'active' : item.id === vm.active }" on-tap="vm.setActive(item._id)">
-				<div class="ulist-header">
-					<span class="ulist-buttons ulist-buttons-left">
+			<div class="my-list" ng-repeat="item in vm.lists" ng-class="{ 'active' : item.id === vm.active }" on-tap="vm.setActive(item._id)">
+				<div class="my-list-header">
+					<span class="my-list-buttons ulist-buttons-left">
 						<button class="uui-icon uui-hint-subtle icon-checkbox-checked" ng-click="vm.setStatus(item)" ng-class="{ 'balanced' : item.complete }"></button>
 					</span>
-					<span class="ulist-title">
+					<span class="my-list-title">
 						<span class="uui-title">{{ item.category }}</span>
 						<span class="uui-title">{{ item.time }}</span>
 						<span class="uui-title">{{ item.scene }}</span>
 						<span class="uui-title">{{ item.text }}</span>
 					</span>
-					<span class="ulist-buttons ulist-buttons-right">
+					<span class="my-list-buttons ulist-buttons-right">
 						<button class="uui-icon uui-hollow ion-edit" ng-click="vm.editList(item._id)"></button>
 						<button class="uui-icon uui-hollow ion-close" ng-click="vm.deleteList(item._id)"></button>
 					</span>
 				</div>
 
-				<div class="ulist-events" id="{{item.id}}_events"></div>
+				<div class="my-list-events" id="{{item.id}}_events"></div>
 			</div>
 
 		</div>

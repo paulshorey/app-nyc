@@ -1,22 +1,4 @@
 /*
-	RESET
-*/
-body {
-  margin: 0; }
-
-a {
-  text-decoration: none; }
-
-/*
-	GENERAL
-*/
-body {
-  font-family: Arial, Helvetica, sans-serif; }
-
-.ucontent {
-  font-family: Georgia, Times, serif; }
-
-/*
 	UI
 */
 [class^="uui-"],
