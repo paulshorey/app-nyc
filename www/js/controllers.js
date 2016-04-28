@@ -111,7 +111,6 @@ angular.module('ionicApp.controllers', [])
 							vm.updateList(array[idx]);
 						});
 						$ionicLoading.hide();
-						vm.updateLists();
 					},
 					function (error) {
 						$ionicLoading.hide();
@@ -126,7 +125,6 @@ angular.module('ionicApp.controllers', [])
 							vm.updateList(array[idx]);
 						});
 						$ionicLoading.hide();
-						vm.updateLists();
 					},
 					function (error) {
 						$ionicLoading.hide();
@@ -220,6 +218,9 @@ angular.module('ionicApp.controllers', [])
 		update events
 	*/
 	vm.updateList = function (list) {
+		/*
+			VAR
+		*/
 		vm.lists[list.id] = list;
 		/*
 			QUERY
@@ -246,18 +247,24 @@ angular.module('ionicApp.controllers', [])
 			}
 			html += '		</div>\n';
 			document.getElementById(list.id+'_events').innerHTML = html;
+			/*
+				DOM
+			*/
+			vm.updateLists();
 
 		}, function(error) {
 			console.error(error);
 		});
 	}
 	vm.forgetList = function (list) {
+		// VAR
 		delete vm.lists[list.id];
-		/*
-			QUERY
-		*/
+		// QUERY
+		//
+		// DOM
+		vm.updateLists();
 	}
-	vm.updateLists = function () {
+	vm.slickLists = function(){
 
 		$timeout(function(){
 
@@ -293,8 +300,14 @@ angular.module('ionicApp.controllers', [])
 			    }
 			  ]
 			});
+			$('.my-lists').on('init', function(event, slick, currentSlide, nextSlide){
+				console.log('st INIT');
+			});
+			$('.my-lists').on('reInit', function(event, slick, currentSlide, nextSlide){
+				console.log('re INIT');
+			});
 
-		},1000);
+		},100);
 
 	}
 
