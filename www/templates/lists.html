@@ -33,7 +33,7 @@
 			<div class="my-list" ng-repeat="item in vm.lists" ng-class="{ 'active' : item.id === vm.active }" on-tap="vm.setActive(item._id)">
 				<div class="my-list-header">
 					<span class="my-list-buttons ulist-buttons-left">
-						<button class="uui-icon uui-hint-subtle icon-checkbox-checked" ng-click="vm.setStatus(item)" ng-class="{ 'balanced' : item.complete }"></button>
+						<button class="uui-icon uui-hollow icon-checkbox-checked uui-hover-yellow"></button>
 					</span>
 					<span class="my-list-title">
 						<span class="uui-title">{{ item.category }}</span>

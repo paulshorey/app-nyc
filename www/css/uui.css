@@ -62,9 +62,6 @@ a.uui-icon:before {
   vertical-align: middle;
   top: 0; }
 
-.uui-hint-subtle:before {
-  text-shadow: 0 0 1px #fbbc05; }
-
 .uui-hollow:before {
   text-shadow: 0 0 1px #000;
   color: #fff; }
@@ -72,3 +69,7 @@ a.uui-icon:before {
 .uui-hollow:hover:before {
   text-shadow: #fff;
   color: #000; }
+
+.uui-hover-yellow:hover:before {
+  color: #fbbc05;
+  text-shadow: none; }
