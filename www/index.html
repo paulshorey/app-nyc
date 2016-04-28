@@ -16,7 +16,7 @@
 	<script>
 	//
 	// nodejs <%- '\n\t window.nodejs = '+JSON.stringify(process.window.system,null,'\t')+';\n' %>
-	window.isMobile = window.nodejs ? false : true;//!(/localhost|stamplay|allevents/.test(window.location.host));
+	window.isMobile = window.document ? false : true;//!(/localhost|stamplay|allevents/.test(window.location.host));
 	//
 	// system
 	window.system = {};
