@@ -9,6 +9,12 @@
 			Community Lists
 		</div>
 
+		<br />
+		<div style="float:left;">
+			<button ng-click="vm.slickConfig.method.slickPrev()">&laquo;</button>
+			<button ng-click="vm.slickConfig.method.slickNext()">&raquo;</button>
+		</div>
+
 		<div class="my-nav">
 			<a class="uui-icon icon-connection" href="/" prevent-default ng-click="vm.clearActive(); vm.addList()"></a> <span class="uui-text">suggest a source</span> 
 			<span class="uui-text">...</span>
@@ -28,8 +34,6 @@
 
 	<div class="my-content">
 
-		<button ng-click="vm.slickConfig.method.slickPrev()">slickPrev()</button>
-		<button ng-click="vm.slickConfig.method.slickNext()">slickNext()</button>
 		<slick settings="vm.slickConfig" ng-if="vm.slickOk" class="my-lists">
 
 			<div class="my-list" ng-repeat="item in vm.lists track by $index" ng-class="{ 'active' : item.id === vm.active }" on-tap="vm.setActive(item._id)" id="myList{{$index+1}}">
