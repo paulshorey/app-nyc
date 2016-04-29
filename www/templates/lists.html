@@ -28,7 +28,9 @@
 
 	<div class="my-content">
 
-		<div class="my-lists">
+		<button ng-click="vm.slickConfig.method.slickPrev()">slickPrev()</button>
+		<button ng-click="vm.slickConfig.method.slickNext()">slickNext()</button>
+		<slick settings="vm.slickConfig" ng-if="vm.slickOk" class="my-lists">
 
 			<div class="my-list" ng-repeat="item in vm.lists track by $index" ng-class="{ 'active' : item.id === vm.active }" on-tap="vm.setActive(item._id)" id="myList{{$index+1}}">
 				<div class="my-list-header">
@@ -47,10 +49,10 @@
 					</span>
 				</div>
 
-				<div class="my-list-events" id="{{item.id}}_events"></div>
+				<div class="my-list-events" ng-bind-html="vm.events[item.id]"></div>
 			</div>
 
-		</div>
+		</slick>
 
 		<div class="card" ng-show="vm.lists.length === 0">
 			<div class="item item-body center-align">

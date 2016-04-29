@@ -4,7 +4,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'ionicApp.services' is found in services.js
 // 'ionicApp.controllers' is found in controllers.js
-angular.module('ionicApp', ['ionic', 'ionicApp.controllers', 'ionicApp.services'])
+angular.module('ionicApp', ['ionic', 'ionicApp.controllers', 'ionicApp.services', 'slickCarousel'])
 
 .run(function ($ionicPlatform, $rootScope, AccountService) {
 

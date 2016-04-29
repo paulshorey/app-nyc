@@ -11,8 +11,8 @@ angular.module('ionicApp.controllers', [])
 
 
 .controller('ListController', 
-           ["AccountService", "ListService", "EventService",		"$ionicLoading", "$ionicPopup", "$ionicModal", 		"$scope", "$rootScope", "$state", "$timeout", "$stateParams", function 
-           (AccountService, ListService, EventService, 				$ionicLoading, $ionicPopup, $ionicModal, 			$scope, $rootScope, $state, $timeout, $stateParams) 
+           ["AccountService", "ListService", "EventService",		"$ionicLoading", "$ionicPopup", "$ionicModal", 		"$scope", "$rootScope", "$state", "$timeout", "$stateParams", "$sce", function 
+           (AccountService, ListService, EventService, 				$ionicLoading, $ionicPopup, $ionicModal,				$scope, $rootScope, $state, $timeout, $stateParams, $sce) 
 	{
 	var vm = this;
 	var errorHandler = function (options) {
@@ -111,9 +111,6 @@ angular.module('ionicApp.controllers', [])
 							vm.updateList(array[idx]);
 						});
 						$ionicLoading.hide();
-						$timeout(function(){
-							vm.slickLists();
-						});
 					},
 					function (error) {
 						$ionicLoading.hide();
@@ -128,9 +125,6 @@ angular.module('ionicApp.controllers', [])
 							vm.updateList(array[idx]);
 						});
 						$ionicLoading.hide();
-						$timeout(function(){
-							vm.slickLists();
-						});
 					},
 					function (error) {
 						$ionicLoading.hide();
@@ -227,7 +221,13 @@ angular.module('ionicApp.controllers', [])
 		/*
 			VAR
 		*/
+		vm.slickOk = false;
+		// < unslick
 		vm.lists[list.id] = list;
+		// > slick
+		$timeout(function(){
+			vm.slickOk = true;
+		});
 		/*
 			QUERY
 		*/
@@ -236,7 +236,6 @@ angular.module('ionicApp.controllers', [])
 		query.scene = list.scene;
 		query.time = list.time;
 		EventService.getEvents(query).then(function(response){
-
 			console.log('events',response.data.data);
 			var events = response.data.data;
 			var old_timestamp = 0;
@@ -252,52 +251,65 @@ angular.module('ionicApp.controllers', [])
 				html += '		</div>';
 			}
 			html += '		</div>\n';
-			document.getElementById(list.id+'_events').innerHTML = html;
+			//document.getElementById(list.id+'_events').innerHTML = html;
+			vm.events[list.id] = $sce.trustAsHtml(html);
 
 		}, function(error) {
 			console.error(error);
 		});
 	}
 	vm.forgetList = function (list) {
-		// VAR
+		vm.slickOk = false;
+		// < unslick
 		delete vm.lists[list.id];
-		// QUERY
-		//
-	}
-	vm.slickLists = function(){
-		$('.my-lists').slick({
-		  dots: true,
-		  infinite: false,
-		  speed: 300,
-		  slidesToShow: 4,
-		  slidesToScroll: 4,
-		  responsive: [
-		    {
-		      breakpoint: 1024,
-		      settings: {
-		        slidesToShow: 3,
-		        slidesToScroll: 3,
-		        infinite: true,
-		        dots: true
-		      }
-		    },
-		    {
-		      breakpoint: 600,
-		      settings: {
-		        slidesToShow: 2,
-		        slidesToScroll: 2
-		      }
-		    },
-		    {
-		      breakpoint: 480,
-		      settings: {
-		        slidesToShow: 1,
-		        slidesToScroll: 1
-		      }
-		    }
-		  ]
+		delete vm.events[list.id];
+		// > slick
+		$timeout(function(){
+			vm.slickOk = true;
 		});
 	}
 
 
+	/*
+		UI 
+		carousel
+	*/
+	vm.slickConfig = {
+	  lazyLoad: 'ondemand',
+	  method: {},
+	  dots: false,
+	  arrows: false,
+	  infinite: true,
+	  speed: 300,
+	  slidesToShow: 4,
+	  slidesToScroll: 4,
+	  responsive: [
+	    {
+	      breakpoint: 1024,
+	      settings: {
+	        slidesToShow: 3,
+	        slidesToScroll: 3,
+	        infinite: true,
+	        dots: true
+	      }
+	    },
+	    {
+	      breakpoint: 600,
+	      settings: {
+	        slidesToShow: 2,
+	        slidesToScroll: 2
+	      }
+	    },
+	    {
+	      breakpoint: 480,
+	      settings: {
+	        slidesToShow: 1,
+	        slidesToScroll: 1
+	      }
+	    }
+	  ]
+	};
+
 }])
+
+;
