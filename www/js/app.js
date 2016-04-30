@@ -23,8 +23,12 @@ angular.module('ionicApp', ['ionic', 'ionicApp.controllers', 'ionicApp.services'
 	});
 
 	AccountService.currentUser()
-		.then(function (user) {
-			$rootScope.user = user;
+		.then(function (data) {
+			$rootScope.user = data;
+		})
+	AccountService.allCategories()
+		.then(function (data) {
+			$rootScope.categories = data;
 		})
 })
 

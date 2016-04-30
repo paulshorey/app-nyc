@@ -1,0 +1,7 @@
+.item-select {
+  float: left; }
+  .item-select select {
+    position: relative;
+    padding: 0 10px 0 0px;
+    direction: ltr;
+    max-width: 100%; }

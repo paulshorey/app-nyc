@@ -2,7 +2,7 @@
 	
 	<div class="my-top">
 
-		<div class="my-top-title uui-title" ng-if="my-ser">
+		<div class="my-top-title uui-title" ng-if="user">
 			{{vm.lists.length}} Lists
 		</div>
 		<div class="my-top-title uui-title" ng-if="!user && vm.lists !== undefined">
@@ -18,7 +18,7 @@
 		<div class="my-nav">
 			<a class="uui-icon icon-connection" href="/" prevent-default ng-click="vm.clearActive(); vm.addList()"></a> <span class="uui-text">suggest a source</span> 
 			<span class="uui-text">...</span>
-			<span ng-if="my-ser.displayName">
+			<span ng-if="user.displayName">
 				<span class="uui-text">welcome, {{ user.displayName }} (<a href="/" prevent-default ng-click="vm.logout()">logout</a>)</span>
 			</span>
 			<span ng-if="!user.displayName">
@@ -28,6 +28,38 @@
 				<button class="uui-icon icon-github" ng-click="vm.login('github')"></button>
 				<a class="uui-icon icon-unlocked"  href="/" prevent-default ng-click="vm.clearActive(); vm.addList()"></a>
 			</span>
+		</div>
+
+		<div>
+			<div>
+				<label class="item item-input item-select">
+					<div class = "input-label">
+						WHAT
+					</div>
+					<select>
+						<option ng-repeat="cat in categories">{{cat.title}}</option>
+					</select>
+				</label>
+			<div>
+				<label class="item item-input item-select">
+					<div class = "input-label">
+						WHEN
+					</div>
+					<select>
+						<option ng-repeat="cat in categories">{{cat.title}}</option>
+					</select>
+				</label>
+			</div>
+			<div>
+				<label class="item item-input item-select">
+					<div class = "input-label">
+						[.a]NYC
+					</div>
+					<select>
+						<option ng-repeat="cat in categories">{{cat.title}}</option>
+					</select>
+				</label>
+			</div>
 		</div>
 
 	</div>

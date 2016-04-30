@@ -1,6 +1,6 @@
 angular.module('ionicApp.services', [])
 
-.factory('AccountService', ["$q", function ($q) {
+.factory('AccountService', ["$q", "$http", function ($q, $http) {
 	return {
 		currentUser: function () {
 			var def = $q.defer();
@@ -15,6 +15,22 @@ angular.module('ionicApp.services', [])
 					def.reject();
 				})
 			return def.promise;
+		},
+		allCategories: function (query) {
+			var deffered = $q.defer();
+			$http({
+				url: window.system.api.host+'/categories',
+				method: "GET",
+				headers: {
+					'Content-Type': 'application/json; charset=utf-8',
+					'X-Host': window.location.host
+				}
+			}).then(function(response){
+				deffered.resolve(response.data.data);
+			},function(error){
+				deffered.reject(error);
+			});
+			return deffered.promise;
 		}
 	}
 }])
