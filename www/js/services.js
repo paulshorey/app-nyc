@@ -1,21 +1,8 @@
 angular.module('ionicApp.services', [])
 
-.factory('AccountService', ["$q", "$http", function ($q, $http) {
+.factory('ContentService', ["$q", "$http", function ($q, $http) {
 	return {
-		currentUser: function () {
-			var def = $q.defer();
-			Stamplay.User.currentUser()
-				.then(function (response) {
-					if (response.user === undefined) {
-						def.resolve(false);
-					} else {
-						def.resolve(response.user);
-					}
-				}, function (error) {
-					def.reject();
-				})
-			return def.promise;
-		},
+
 		allCategories: function (query) {
 			var deffered = $q.defer();
 			$http({
@@ -32,30 +19,34 @@ angular.module('ionicApp.services', [])
 			});
 			return deffered.promise;
 		}
+
+	}
+}])
+
+.factory('AccountService', ["$q", function ($q) {
+	return {
+
+		currentUser: function () {
+			var def = $q.defer();
+			Stamplay.User.currentUser()
+				.then(function (response) {
+					if (response.user === undefined) {
+						def.resolve(false);
+					} else {
+						def.resolve(response.user);
+					}
+				}, function (error) {
+					def.reject();
+				})
+			return def.promise;
+		}
+
 	}
 }])
 
 
 .factory('EventService', ["$rootScope", "$http", "$q", function ($rootScope, $http, $q) {
-
 	return {
-
-		getCategories: function (query) {
-			var deffered = $q.defer();
-			$http({
-				url: window.system.api.host+'/categories',
-				method: "GET",
-				headers: {
-					'Content-Type': 'application/json; charset=utf-8',
-					'X-Host': window.location.host
-				}
-			}).then(function(response){
-				deffered.resolve(response);
-			},function(error){
-				deffered.reject(error);
-			});
-			return deffered.promise;
-		},
 
 		getEvents: function (query) {
 			var deffered = $q.defer();
@@ -76,13 +67,12 @@ angular.module('ionicApp.services', [])
 		}
 
 	}
-
 }])
 
 
 .factory('ListService', ["$rootScope", "$q", function ($rootScope, $q) {
-
 	return {
+
 		getGuestLists: function (query) {
 			console.log('get GUEST lists');
 			var deffered = $q.defer();

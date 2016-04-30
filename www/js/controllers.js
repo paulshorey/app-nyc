@@ -11,8 +11,8 @@ angular.module('ionicApp.controllers', [])
 
 
 .controller('ListController', 
-           ["AccountService", "ListService", "EventService",		"$ionicLoading", "$ionicPopup", "$ionicModal", 		"$scope", "$rootScope", "$state", "$timeout", "$stateParams", "$sce", function 
-           (AccountService, ListService, EventService, 				$ionicLoading, $ionicPopup, $ionicModal,				$scope, $rootScope, $state, $timeout, $stateParams, $sce) 
+           ["AccountService", "ListService", "EventService", "ContentService", 		"$ionicLoading", "$ionicPopup", "$ionicModal", 		"$scope", "$rootScope", "$state", "$timeout", "$stateParams", "$sce", function 
+           (AccountService, ListService, EventService, ContentService, 				$ionicLoading, $ionicPopup, $ionicModal,				$scope, $rootScope, $state, $timeout, $stateParams, $sce) 
 	{
 	var vm = this;
 	vm.slickConfig = window.slickConfig;
@@ -58,72 +58,96 @@ angular.module('ionicApp.controllers', [])
 	/*
 		MODALS
 	*/
-	$scope.modals = {};
-	vm.closeModals = function () {
-		for (var m in $scope.modals) {
-			$scope.modals[m].hide();
-		}
-	};
-	$scope.$on('$destroy', function () {
-		for (var m in $scope.modals) {
-			$scope.modals[m].remove();
-		}
-	});
-	$ionicModal.fromTemplateUrl('templates/modals/addList.html', {
-			scope: $scope,
-			animation: 'slide-in-up'
-		})
-		.then(function (modal) {
-			$scope.modals['addList'] = modal;
-		});
-	$ionicModal.fromTemplateUrl('templates/modals/editList.html', {
-			scope: $scope,
-			animation: 'slide-in-up'
-		})
-		.then(function (modal) {
-			$scope.modals['editList'] = modal;
-		});
+	// $scope.modals = {};
+	// vm.closeModals = function () {
+	// 	for (var m in $scope.modals) {
+	// 		$scope.modals[m].hide();
+	// 	}
+	// };
+	// $scope.$on('$destroy', function () {
+	// 	for (var m in $scope.modals) {
+	// 		$scope.modals[m].remove();
+	// 	}
+	// });
+	// $ionicModal.fromTemplateUrl('templates/modals/addList.html', {
+	// 		scope: $scope,
+	// 		animation: 'slide-in-up'
+	// 	})
+	// 	.then(function (modal) {
+	// 		$scope.modals['addList'] = modal;
+	// 	});
+	// $ionicModal.fromTemplateUrl('templates/modals/editList.html', {
+	// 		scope: $scope,
+	// 		animation: 'slide-in-up'
+	// 	})
+	// 	.then(function (modal) {
+	// 		$scope.modals['editList'] = modal;
+	// 	});
 
 	/*
-		INITIAL 
-		get user, lists
+		GET 
 	*/
 	vm.getUser = function () {
 		$ionicLoading.show();
 		AccountService.currentUser()
-			.then(function (user) {
-				$rootScope.user = user;
-				$ionicLoading.hide();
-				vm.getLists();
-			}, function (error) {
-				console.error(error);
-				$ionicLoading.hide();
-			})
+			.then(
+			      function (user) {
+					$rootScope.user = user;
+					$ionicLoading.hide();
+					vm.getLists();
+				}, function (error) {
+					console.error(error);
+					$ionicLoading.hide();
+				})
 	};
 	vm.getUser();
 	vm.getLists = function () {
-		if (!$rootScope.user) {
-			ListService.getGuestLists()
-				.then(
-					function (response) {
-						vm.events = {};
-						vm.lists = {};
-						response.data.forEach(function (item, idx, array) {
-							vm.updateList(array[idx]);
+
+		ContentService.allCategories()
+			.then(
+				function (response) {
+					vm.events = {};
+					vm.lists = {};
+					console.log('categories',response);
+					response.forEach(function (item, id, array) { 
+						var list =  {category:array[id].title};
+						
+						// <list>
+						vm.slickOk = false;
+						// <
+						vm.lists[ list.category ] = list;
+						vm.listEvents( list );
+						// >
+						$timeout(function(){
+							vm.slickOk = true;
 						});
-						$ionicLoading.hide();
-					},
-					function (error) {
-						$ionicLoading.hide();
-					})
-		} else {
+						// </list>
+
+					});
+					$ionicLoading.hide();
+				},
+				function (error) {
+					$ionicLoading.hide();
+				})
+
+		if ($rootScope.user) {
 			ListService.getUsersLists()
 				.then(
 					function (response) {
-						vm.events = {};
-						vm.lists = {};
-						response.data.forEach(function (item, idx, array) {
-							vm.updateList(array[idx]);
+						vm.userLists = {};
+						response.data.forEach(function (item, id, array) {
+							var list = array[id];
+							
+							// <list>
+							vm.slickOk = false;
+							// <
+							vm.userLists[ list.category ] = list;
+							vm.listEvents( list );
+							// >
+							$timeout(function(){
+								vm.slickOk = true;
+							});
+							// </list>
 						});
 						$ionicLoading.hide();
 					},
@@ -133,114 +157,56 @@ angular.module('ionicApp.controllers', [])
 		}
 	}
 
-
 	/*
-		ADD / EDIT
-		new, changed
+		SET 
 	*/
-	vm.addList = function () {
-		$scope.modals.addList.show();
-	};
-	vm.editList = function (id) {
-		$scope.modals.editList.show(id);
-	};
-	vm.addSave = function () {
+	vm.listRemove = function (list) {
+		
+		// <lists>
 		$ionicLoading.show();
-		ListService.addNew(vm.list)
-			.then(function (list) {
-				$ionicLoading.hide();
-				vm.updateList(list);
-				vm.closeModals();
-			}, function (error) {
-				$ionicLoading.hide();
-			})
-	}
-	vm.editSave = function () {
-		$ionicLoading.show();
-		ListService.updateList(vm.list)
-			.then(function (list) {
-				$ionicLoading.hide();
-				vm.updateList(list);
-				vm.closeModals();
-			}, function (error) {
-				$ionicLoading.hide();
-			})
-	}
-	vm.getList = function (id) {
-		$ionicLoading.show();
-		ListService.getList(id)
-			.then(function (list) {
-				$ionicLoading.hide();
-				vm.updateList(list.data[0]);
-				vm.closeModals();
-			}, function (err) {
-				$ionicLoading.hide();
-				console.error(err);
-			})
-	}
-
-	/*
-		ACTIVE 
-		by id
-	*/
-	vm.setActive = function (id) {
-		vm.active = id;
-		vm.list = vm.lists[id];
-	}
-	vm.clearActive = function () {
-		vm.active = null;
-		vm.list = {};
-	}
-
-
-	/*
-		DELETE 
-		status, cleanup
-	*/
-	vm.deleteList = function (id) {
-		$ionicLoading.show();
-		ListService.deleteList(id)
-			.then(function (list) {
-				vm.forgetList(list);
-				$ionicLoading.hide();
-			}, function (error) {
-				$ionicLoading.hide();
-			})
-	}
-	vm.setStatus = function (list) {
-		list.complete = list.complete ? !list.complete : true;
-		ListService.patchList(list)
-			.then(function (list) {}, function (error) {})
-	}
-
-
-	/*
-		USE 
-		update events
-	*/
-	vm.updateList = function (list) {
-		/*
-			VAR
-		*/
 		vm.slickOk = false;
-		// < unslick
-		vm.lists[list.id] = list;
-		// > slick
+		// <
+		delete vm.userLists[ list.category ];
+		delete vm.lists[ list.category ];
+		delete vm.events[ list.category ];
+		// >
 		$timeout(function(){
 			vm.slickOk = true;
+			$ionicLoading.hide();
 		});
-		/*
-			QUERY
-		*/
+		// </lists>
+
+	}
+	vm.listUpdate = function (list) {
+		
+		// <lists>
+		$ionicLoading.show();
+		vm.slickOk = false;
+		// <
+		delete vm.userLists[ list.category ];
+		delete vm.lists[ list.category ];
+		delete vm.events[ list.category ];
+		vm.userLists[ list.category ] = list;
+		vm.listEvents(list);
+		// >
+		$timeout(function(){
+			vm.slickOk = true;
+			$ionicLoading.hide();
+		});
+		// </lists>
+
+	}
+	vm.listEvents = function (list) {
 		var query = {};
 		query.category = list.category;
 		query.scene = list.scene;
 		query.time = list.time;
 		EventService.getEvents(query).then(function(response){
-			console.log('events',response.data.data);
 			var events = response.data.data;
 			var old_timestamp = 0;
 			var old_date = '';
+
+			// <events>
 			var html = '		<div class="events">\n';
 			for (var each in events) {
 				var event = events[each];
@@ -252,34 +218,12 @@ angular.module('ionicApp.controllers', [])
 				html += '		</div>';
 			}
 			html += '		</div>\n';
-			//document.getElementById(list.id+'_events').innerHTML = html;
-			vm.events[list.id] = $sce.trustAsHtml(html);
+			vm.events[ list.category ] = $sce.trustAsHtml(html);
+			// </events>
 
 		}, function(error) {
 			console.error(error);
 		});
-	}
-	vm.forgetList = function (list) {
-		vm.slickOk = false;
-		// < unslick
-		delete vm.lists[list.id];
-		delete vm.events[list.id];
-		// > slick
-		$timeout(function(){
-			vm.slickOk = true;
-		});
-	}
-
-	vm.newList = {};
-	vm.newListSave = function(){
-		vm.list = {};
-		if (vm.newList.what) {
-			vm.list.category = vm.newList.what;
-		}
-		if (vm.newList.when) {
-			vm.list.time = vm.newList.when;
-		}
-		vm.addSave();
 	}
 
 }])

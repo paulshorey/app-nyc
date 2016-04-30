@@ -24,9 +24,14 @@
 	<script>
 	//
 	// nodejs <%- '\n\t window.nodejs = '+JSON.stringify(process.window.system,null,'\t')+';\n' %>
+	if (window.nodejs) {
+		for (var node in nodejs) {
+			window.system[node] = window.nodejs[node];
+		}
+	}
+	// quickDial
 	window.isMobile = window.document ? false : true;//!(/localhost|stamplay|allevents/.test(window.location.host));
 	window.isLocalhost = window.location.hostname.indexOf('localhost')!=-1;
-	//
 	// system
 	window.system = {};
 	window.system.api = {};
@@ -35,11 +40,6 @@
 	window.system.stamplay.host = 'http'+(isMobile?'':'s')+'://ionic-nyc.stamplayapp.com';
 	window.system.app = {};
 	window.system.app.host = 'http'+(isMobile || isLocalhost?'':'s')+'://'+(isMobile || isLocalhost?'localhost:3080':'allevents.nyc');
-	if (window.nodejs) {
-		for (var node in nodejs) {
-			window.system[node] = window.nodejs[node];
-		}
-	}
 	</script>
 	<!--
 		STAMPLAY

@@ -33,7 +33,7 @@
 
 			<div>
 				<label class="item item-input item-select">
-					<select ng-change="vm.newListSave()" ng-model="vm.newList.what">
+					<select ng-change="vm.listUpdate()" ng-model="vm.list.what">
 						<option selected value="">WHAT</option>
 						<option selected value="">anything</option>
 						<option selected value="">-</option>
@@ -41,7 +41,7 @@
 					</select>
 				</label>
 				<label class="item item-input item-select">
-					<select ng-change="vm.newListSave()" ng-model="vm.newList.when">
+					<select ng-change="vm.listUpdate()" ng-model="vm.list.when">
 						<option selected value="">WHEN</option>
 						<option selected value="">anytime</option>
 						<option selected value="">-</option>
@@ -52,7 +52,7 @@
 					</select>
 				</label>
 				<label class="item item-input item-select">
-					<select ng-change="vm.newListSave()" ng-model="vm.newList.with">
+					<select ng-change="vm.listUpdate()" ng-model="vm.list.with">
 						<option selected value="">[.]NYC</option>
 						<option selected value="">every type</option>
 						<option selected value="">-</option>
@@ -66,10 +66,10 @@
 		<div>
 			<slick settings="vm.slickConfig" ng-if="vm.slickOk" class="my-lists">
 
-				<div class="my-list" ng-repeat="item in vm.lists track by $index" ng-class="{ 'active' : item.id === vm.active }" on-tap="vm.setActive(item._id)" id="myList{{$index+1}}">
+				<div class="my-list" ng-repeat="item in vm.userLists track by $index">
 					<div class="my-list-header">
 						<span class="my-list-buttons ulist-buttons-left">
-							<button class="uui-icon uui-hollow icon-checkbox-checked uui-hover-yellow"></button>
+							<button class="uui-icon uui-hollow icon-checkbox-checked uui-hover-yellow" ng-click="vm.listUpdate(item)"></button>
 						</span>
 						<span class="my-list-title">
 							<span class="uui-title">{{ item.category }}</span>
@@ -78,12 +78,28 @@
 							<span class="uui-title">{{ item.text }}</span>
 						</span>
 						<span class="my-list-buttons ulist-buttons-right">
-							<button class="uui-icon uui-hollow ion-edit" ng-click="vm.editList(item._id)"></button>
-							<button class="uui-icon uui-hollow ion-close" ng-click="vm.deleteList(item._id)"></button>
+							<button class="uui-icon uui-hollow ion-close" ng-click="vm.listRemove(item)"></button>
 						</span>
 					</div>
+					<div class="my-list-events" ng-bind-html="vm.events[item.category]"></div>
+				</div>
 
-					<div class="my-list-events" ng-bind-html="vm.events[item.id]"></div>
+				<div class="my-list" ng-repeat="item in vm.lists track by $index">
+					<div class="my-list-header">
+						<span class="my-list-buttons ulist-buttons-left">
+							<button class="uui-icon uui-hollow icon-checkbox-checked uui-hover-yellow" ng-click="vm.listUpdate(item)"></button>
+						</span>
+						<span class="my-list-title">
+							<span class="uui-title">{{ item.category }}</span>
+							<span class="uui-title">{{ item.time }}</span>
+							<span class="uui-title">{{ item.scene }}</span>
+							<span class="uui-title">{{ item.text }}</span>
+						</span>
+						<span class="my-list-buttons ulist-buttons-right">
+							<button class="uui-icon uui-hollow ion-close" ng-click="vm.listRemove(item)"></button>
+						</span>
+					</div>
+					<div class="my-list-events" ng-bind-html="vm.events[item.category]"></div>
 				</div>
 
 			</slick>
