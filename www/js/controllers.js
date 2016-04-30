@@ -103,32 +103,41 @@ angular.module('ionicApp.controllers', [])
 	vm.getUser();
 	vm.getLists = function () {
 
-		ContentService.allCategories()
-			.then(
-				function (response) {
-					vm.events = {};
-					vm.lists = {};
-					console.log('categories',response);
-					response.forEach(function (item, id, array) { 
-						var list =  {category:array[id].title};
-						
-						// <list>
-						vm.slickOk = false;
-						// <
-						vm.lists[ list.category ] = list;
-						vm.listEvents( list );
-						// >
-						$timeout(function(){
-							vm.slickOk = true;
-						});
-						// </list>
+		if (!vm.lists) {
+			// first get default, then user
+			ContentService.allCategories()
+				.then(
+					function (response) {
+						vm.events = {};
+						vm.lists = {};
+						response.forEach(function (item, id, array) { 
+							var list =  {category:array[id].title};
+							
+							// <list>
+							vm.slickOk = false;
+							// <
+							vm.lists[ list.category ] = list;
+							vm.listEvents( list );
+							// >
+							$timeout(function(){
+								vm.slickOk = true;
+							});
+							// </list>
 
-					});
-					$ionicLoading.hide();
-				},
-				function (error) {
-					$ionicLoading.hide();
-				})
+						});
+						vm.getUserLists();
+						$ionicLoading.hide();
+					},
+					function (error) {
+						$ionicLoading.hide();
+					})
+		} else {
+			// jump straight to user lists
+			vm.getUserLists();
+		}
+
+	}
+	vm.getUserLists = function () {
 
 		if ($rootScope.user) {
 			ListService.getUsersLists()
@@ -141,6 +150,7 @@ angular.module('ionicApp.controllers', [])
 							// <list>
 							vm.slickOk = false;
 							// <
+							delete vm.lists[ list.category ];
 							vm.userLists[ list.category ] = list;
 							vm.listEvents( list );
 							// >
@@ -155,6 +165,7 @@ angular.module('ionicApp.controllers', [])
 						$ionicLoading.hide();
 					})
 		}
+
 	}
 
 	/*
