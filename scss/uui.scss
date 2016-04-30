@@ -53,6 +53,7 @@
 	&:before {
 		vertical-align:top;
 		position:relative;
+		top: 1px;
 		font-size:90%;
 		color:#666;
 	}
@@ -69,7 +70,6 @@
 }
 a.uui-icon:before {
 	vertical-align:middle;
-	top:0;
 }
 .uui-hollow {
 	&:before {

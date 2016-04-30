@@ -1,94 +1,93 @@
 <ion-view>
+
+	<div class="my-content">
 	
-	<div class="my-top">
+		<div class="my-top">
 
-		<div class="my-top-title uui-title" ng-if="user">
-			{{vm.lists.length}} Lists
-		</div>
-		<div class="my-top-title uui-title" ng-if="!user && vm.lists !== undefined">
-			Community Lists
-		</div>
+			<div class="my-top-title uui-title" ng-if="user">
+				{{vm.lists.length}} Lists
+			</div>
+			<div class="my-top-title uui-title" ng-if="!user && vm.lists !== undefined">
+				Community Lists
+			</div>
 
-		<br />
-		<div style="float:left;">
-			<button ng-click="vm.slickConfig.method.slickPrev()">&laquo;</button>
-			<button ng-click="vm.slickConfig.method.slickNext()">&raquo;</button>
-		</div>
+			<div>
+				<button ng-click="vm.slickConfig.method.slickPrev()">&laquo;</button>
+				<button ng-click="vm.slickConfig.method.slickNext()">&raquo;</button>
+			</div>
 
-		<div class="my-nav">
-			<a class="uui-icon icon-connection" href="/" prevent-default ng-click="vm.clearActive(); vm.addList()"></a> <span class="uui-text">suggest a source</span> 
-			<span class="uui-text">...</span>
-			<span ng-if="user.displayName">
-				<span class="uui-text">welcome, {{ user.displayName }} (<a href="/" prevent-default ng-click="vm.logout()">logout</a>)</span>
-			</span>
-			<span ng-if="!user.displayName">
-				<span class="uui-text">login to save your search: </span> 
-				<button class="uui-icon icon-facebook" ng-click="vm.login('facebook')"></button>
-				<button class="uui-icon icon-google" ng-click="vm.login('google')"></button>
-				<button class="uui-icon icon-github" ng-click="vm.login('github')"></button>
-				<a class="uui-icon icon-unlocked"  href="/" prevent-default ng-click="vm.clearActive(); vm.addList()"></a>
-			</span>
+			<div class="my-nav">
+				<a class="uui-icon icon-connection" href="/" prevent-default ng-click="vm.clearActive(); vm.addList()"></a> <span class="uui-text">suggest a source</span> 
+				<span class="uui-text">...</span>
+				<span ng-if="user.displayName">
+					<span class="uui-text">welcome, {{ user.displayName }} (<a href="/" prevent-default ng-click="vm.logout()">logout</a>)</span>
+				</span>
+				<span ng-if="!user.displayName">
+					<span class="uui-text">login to save your search: </span> 
+					<button class="uui-icon icon-facebook" ng-click="vm.login('facebook')"></button>
+					<button class="uui-icon icon-google" ng-click="vm.login('google')"></button>
+					<button class="uui-icon icon-github" ng-click="vm.login('github')"></button>
+					<a class="uui-icon icon-unlocked"  href="/" prevent-default ng-click="vm.clearActive(); vm.addList()"></a>
+				</span>
+			</div>
+
+			<div>
+				<label class="item item-input item-select">
+					<select ng-change="vm.newListSave()" ng-model="vm.newList.what">
+						<option selected value="">WHAT</option>
+						<option selected value="">anything</option>
+						<option selected value="">-</option>
+						<option ng-repeat="cat in categories" value="{{cat.title}}">{{cat.title}}</option>
+					</select>
+				</label>
+				<label class="item item-input item-select">
+					<select ng-change="vm.newListSave()" ng-model="vm.newList.when">
+						<option selected value="">WHEN</option>
+						<option selected value="">anytime</option>
+						<option selected value="">-</option>
+						<option selected value="today">today</option>
+						<option selected value="tomorrow">tomorrow</option>
+						<option selected value="this week">this week</option>
+						<option selected value="this month">this month</option>
+					</select>
+				</label>
+				<label class="item item-input item-select">
+					<select ng-change="vm.newListSave()" ng-model="vm.newList.with">
+						<option selected value="">[.]NYC</option>
+						<option selected value="">every type</option>
+						<option selected value="">-</option>
+						<option ng-repeat="cat in categories" value="{{cat.title}}">{{cat.title}}</option>
+					</select>
+				</label>
+			</div>
+
 		</div>
 
 		<div>
-			<div>
-				<label class="item item-input item-select">
-					<div class = "input-label">
-						WHAT
+			<slick settings="vm.slickConfig" ng-if="vm.slickOk" class="my-lists">
+
+				<div class="my-list" ng-repeat="item in vm.lists track by $index" ng-class="{ 'active' : item.id === vm.active }" on-tap="vm.setActive(item._id)" id="myList{{$index+1}}">
+					<div class="my-list-header">
+						<span class="my-list-buttons ulist-buttons-left">
+							<button class="uui-icon uui-hollow icon-checkbox-checked uui-hover-yellow"></button>
+						</span>
+						<span class="my-list-title">
+							<span class="uui-title">{{ item.category }}</span>
+							<span class="uui-title">{{ item.time }}</span>
+							<span class="uui-title">{{ item.scene }}</span>
+							<span class="uui-title">{{ item.text }}</span>
+						</span>
+						<span class="my-list-buttons ulist-buttons-right">
+							<button class="uui-icon uui-hollow ion-edit" ng-click="vm.editList(item._id)"></button>
+							<button class="uui-icon uui-hollow ion-close" ng-click="vm.deleteList(item._id)"></button>
+						</span>
 					</div>
-					<select>
-						<option ng-repeat="cat in categories">{{cat.title}}</option>
-					</select>
-				</label>
-			<div>
-				<label class="item item-input item-select">
-					<div class = "input-label">
-						WHEN
-					</div>
-					<select>
-						<option ng-repeat="cat in categories">{{cat.title}}</option>
-					</select>
-				</label>
-			</div>
-			<div>
-				<label class="item item-input item-select">
-					<div class = "input-label">
-						[.a]NYC
-					</div>
-					<select>
-						<option ng-repeat="cat in categories">{{cat.title}}</option>
-					</select>
-				</label>
-			</div>
-		</div>
 
-	</div>
-
-	<div class="my-content">
-
-		<slick settings="vm.slickConfig" ng-if="vm.slickOk" class="my-lists">
-
-			<div class="my-list" ng-repeat="item in vm.lists track by $index" ng-class="{ 'active' : item.id === vm.active }" on-tap="vm.setActive(item._id)" id="myList{{$index+1}}">
-				<div class="my-list-header">
-					<span class="my-list-buttons ulist-buttons-left">
-						<button class="uui-icon uui-hollow icon-checkbox-checked uui-hover-yellow"></button>
-					</span>
-					<span class="my-list-title">
-						<span class="uui-title">{{ item.category }}</span>
-						<span class="uui-title">{{ item.time }}</span>
-						<span class="uui-title">{{ item.scene }}</span>
-						<span class="uui-title">{{ item.text }}</span>
-					</span>
-					<span class="my-list-buttons ulist-buttons-right">
-						<button class="uui-icon uui-hollow ion-edit" ng-click="vm.editList(item._id)"></button>
-						<button class="uui-icon uui-hollow ion-close" ng-click="vm.deleteList(item._id)"></button>
-					</span>
+					<div class="my-list-events" ng-bind-html="vm.events[item.id]"></div>
 				</div>
 
-				<div class="my-list-events" ng-bind-html="vm.events[item.id]"></div>
-			</div>
-
-		</slick>
+			</slick>
+		</div>
 
 		<div class="card" ng-show="vm.lists.length === 0">
 			<div class="item item-body center-align">

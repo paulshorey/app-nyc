@@ -15,6 +15,7 @@ angular.module('ionicApp.controllers', [])
            (AccountService, ListService, EventService, 				$ionicLoading, $ionicPopup, $ionicModal,				$scope, $rootScope, $state, $timeout, $stateParams, $sce) 
 	{
 	var vm = this;
+	vm.slickConfig = window.slickConfig;
 	var errorHandler = function (options) {
 		var errorAlert = $ionicPopup.alert({
 			title: options.title,
@@ -269,46 +270,17 @@ angular.module('ionicApp.controllers', [])
 		});
 	}
 
-
-	/*
-		UI 
-		carousel
-	*/
-	vm.slickConfig = {
-	  lazyLoad: 'ondemand',
-	  method: {},
-	  dots: false,
-	  arrows: false,
-	  infinite: true,
-	  speed: 300,
-	  slidesToShow: 4,
-	  slidesToScroll: 4,
-	  responsive: [
-	    {
-	      breakpoint: 1024,
-	      settings: {
-	        slidesToShow: 3,
-	        slidesToScroll: 3,
-	        infinite: true,
-	        dots: true
-	      }
-	    },
-	    {
-	      breakpoint: 600,
-	      settings: {
-	        slidesToShow: 2,
-	        slidesToScroll: 2
-	      }
-	    },
-	    {
-	      breakpoint: 480,
-	      settings: {
-	        slidesToShow: 1,
-	        slidesToScroll: 1
-	      }
-	    }
-	  ]
-	};
+	vm.newList = {};
+	vm.newListSave = function(){
+		vm.list = {};
+		if (vm.newList.what) {
+			vm.list.category = vm.newList.what;
+		}
+		if (vm.newList.when) {
+			vm.list.time = vm.newList.when;
+		}
+		vm.addSave();
+	}
 
 }])
 

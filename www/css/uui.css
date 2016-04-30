@@ -50,6 +50,7 @@
 .uui-button:before {
   vertical-align: top;
   position: relative;
+  top: 1px;
   font-size: 90%;
   color: #666; }
 
@@ -59,8 +60,7 @@
   font-size: 100%; }
 
 a.uui-icon:before {
-  vertical-align: middle;
-  top: 0; }
+  vertical-align: middle; }
 
 .uui-hollow:before {
   text-shadow: 0 0 1px #000;
