@@ -3,10 +3,10 @@ angular.module('ionicApp.services', [])
 .factory('ContentService', ["$q", "$http", function ($q, $http) {
 	return {
 
-		allCategories: function (query) {
+		getAll: function (query) {
 			var deffered = $q.defer();
 			$http({
-				url: window.system.api.host+'/categories',
+				url: window.system.api.host+'/all',
 				method: "GET",
 				headers: {
 					'Content-Type': 'application/json; charset=utf-8',

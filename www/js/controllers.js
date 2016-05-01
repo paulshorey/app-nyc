@@ -14,7 +14,9 @@ angular.module('ionicApp.controllers', [])
            ["AccountService", "ListService", "EventService", "ContentService", 		"$ionicLoading", "$ionicPopup", "$ionicModal", 		"$scope", "$rootScope", "$state", "$timeout", "$stateParams", "$sce", function 
            (AccountService, ListService, EventService, ContentService, 				$ionicLoading, $ionicPopup, $ionicModal,				$scope, $rootScope, $state, $timeout, $stateParams, $sce) 
 	{
+	window.ListController = this;
 	var vm = this;
+	vm.slickOk = 1;
 	vm.slickConfig = window.slickConfig;
 	var errorHandler = function (options) {
 		var errorAlert = $ionicPopup.alert({
@@ -23,7 +25,11 @@ angular.module('ionicApp.controllers', [])
 			okText: "Try Again"
 		});
 	}
-
+	vm.list = {};
+	vm.userLists = {};
+	vm.userEvents = {};
+	vm.anonLists = {};
+	vm.anonEvents = {};
 
 	/*
 		ACCOUNT
@@ -103,30 +109,33 @@ angular.module('ionicApp.controllers', [])
 	vm.getUser();
 	vm.getLists = function () {
 
-		if (!vm.lists) {
+		if (!vm.anonLists.length) {
 			// first get default, then user
-			ContentService.allCategories()
+			ContentService.getAll()
 				.then(
-					function (response) {
-						vm.events = {};
-						vm.lists = {};
-						response.forEach(function (item, id, array) { 
-							var list =  {category:array[id].title};
+					function (all) {
+
+						// lists
+						all.categories.forEach(function (item, id, array) { 
+							var list =  {uid:array[id].title,category:array[id].title,scene:''};
 							
 							// <list>
-							vm.slickOk = false;
+							vm.slickOk -= 1;
 							// <
-							vm.lists[ list.category ] = list;
-							vm.listEvents( list );
-							// >
-							$timeout(function(){
-								vm.slickOk = true;
-							});
+							vm.anonLists[ list.uid ] = list;
+							vm.listEvents( list, 'anonEvents' );
 							// </list>
 
 						});
 						vm.getUserLists();
 						$ionicLoading.hide();
+
+						// content
+						vm.categories = all.categories;
+						vm.scenes = all.scenes;
+						vm.sites = all.sites;
+						vm.eventsCount = all.eventsCount;
+
 					},
 					function (error) {
 						$ionicLoading.hide();
@@ -143,20 +152,16 @@ angular.module('ionicApp.controllers', [])
 			ListService.getUsersLists()
 				.then(
 					function (response) {
-						vm.userLists = {};
 						response.data.forEach(function (item, id, array) {
 							var list = array[id];
 							
 							// <list>
-							vm.slickOk = false;
+							vm.slickOk -= 1;
 							// <
-							delete vm.lists[ list.category ];
-							vm.userLists[ list.category ] = list;
-							vm.listEvents( list );
-							// >
-							$timeout(function(){
-								vm.slickOk = true;
-							});
+							delete vm.anonLists[ list.uid ];
+							delete vm.anonEvents[ list.uid ];
+							vm.userLists[ list.uid ] = list;
+							vm.listEvents( list, 'userEvents' );
 							// </list>
 						});
 						$ionicLoading.hide();
@@ -175,39 +180,61 @@ angular.module('ionicApp.controllers', [])
 		
 		// <lists>
 		$ionicLoading.show();
-		vm.slickOk = false;
+		vm.slickOk -= 1;
 		// <
-		delete vm.userLists[ list.category ];
-		delete vm.lists[ list.category ];
-		delete vm.events[ list.category ];
+		vm.listClean( list.uid );
 		// >
 		$timeout(function(){
-			vm.slickOk = true;
+			vm.slickOk += 1;
 			$ionicLoading.hide();
 		});
 		// </lists>
 
+		// [data]
+		ListService.deleteList(list.id)
+			.then(function (list) {
+			}, function (error) {
+			})
+		// [/data]
 	}
-	vm.listUpdate = function (list) {
+	vm.listAdd = function () {
+		vm.list.uid = vm.list.category+vm.list.scene;
+		var list = vm.list;
 		
 		// <lists>
 		$ionicLoading.show();
-		vm.slickOk = false;
+		vm.slickOk -= 1;
 		// <
-		delete vm.userLists[ list.category ];
-		delete vm.lists[ list.category ];
-		delete vm.events[ list.category ];
-		vm.userLists[ list.category ] = list;
-		vm.listEvents(list);
+		vm.listClean( list.uid );
+		vm.userLists[ list.uid ] = list;
+		vm.listEvents(list, 'userEvents' );
+		vm.list = {};
 		// >
 		$timeout(function(){
-			vm.slickOk = true;
+			vm.slickOk += 1;
 			$ionicLoading.hide();
 		});
 		// </lists>
 
+		// [data]
+		// [/data]
+
 	}
-	vm.listEvents = function (list) {
+	vm.listClean = function( id ) {
+		if (vm.anonLists[ id ]) {
+			delete vm.anonLists[ id ];
+		}
+		if (vm.anonEvents[ id ]) {
+			delete vm.anonEvents[ id ];
+		}
+		if (vm.userLists[ id ]) {
+			delete vm.userLists[ id ];
+		}
+		if (vm.userEvents[ id ]) {
+			delete vm.userEvents[ id ];
+		}
+	}
+	vm.listEvents = function (list, whatEvents) {
 		var query = {};
 		query.category = list.category;
 		query.scene = list.scene;
@@ -216,22 +243,40 @@ angular.module('ionicApp.controllers', [])
 			var events = response.data.data;
 			var old_timestamp = 0;
 			var old_date = '';
+			if (events.length) {
 
-			// <events>
-			var html = '		<div class="events">\n';
-			for (var each in events) {
-				var event = events[each];
-				if (event.timestamp != old_timestamp || event.date != old_date) {
-					html += '	<div class="events-timestamp"><span>'+event.date+'</span> <span>'+event.time+'</div>\n';
+				// <events>
+				vm[ whatEvents ][ list.uid ] = {};
+				vm[ whatEvents ][ list.uid ].count = events.length;
+				vm[ whatEvents ][ list.uid ].sources = {};
+
+				// <html>
+				var html = '		<div class="events">\n';
+				for (var each in events) {
+					var event = events[each];
+					//vm.events[ list.uid ].sources[ event.host ] = event.host;
+
+					if (event.timestamp != old_timestamp || event.date != old_date) {
+						html += '	<div class="events-timestamp"><span>'+event.date+'</span> <span>'+event.time+'</div>\n';
+					}
+					html += '		<div class="events-event event-link" onClick="window.open(\''+event.link+'\', \'_system\')" style="background-image:url('+event.image+');">\n';
+					html += '			<div class="event-text">'+event.text+'</div>\n';
+					html += '		</div>';
 				}
-				html += '		<div class="events-event event-link" onClick="window.open(\''+event.link+'\', \'_system\')" style="background-image:url('+event.image+');">\n';
-				html += '			<div class="event-text">'+event.text+'</div>\n';
-				html += '		</div>';
-			}
-			html += '		</div>\n';
-			vm.events[ list.category ] = $sce.trustAsHtml(html);
-			// </events>
+				html += '		</div>\n';
+				// </html>
 
+				console.log('vm[ '+whatEvents+' ][ '+list.uid+' ]',html.substr(0,100));
+				$timeout(function(){
+					vm[ whatEvents ][ list.uid ].html = $sce.trustAsHtml(html);
+				});
+				// </events>
+
+			}
+			// >
+			$timeout(function(){
+				vm.slickOk += 1;
+			});
 		}, function(error) {
 			console.error(error);
 		});

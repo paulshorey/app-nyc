@@ -40,15 +40,8 @@ process.response = require("./node_custom/response.js");
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // VIEW
 process.window = {};
-process.window.system = {};
-process.window.system.platform = process.os.platform();
-
-	process.window.system.api = {};
-	process.window.system.api.host = 'https://api.allevents.nyc';
-	// if (process.window.system.platform=='darwin') {
-	// 	process.window.system.api.host = 'http://localhost:1080';
-	// }
-	// process.window.system.o3o = process.o3o(process.o3o.tags[Math.floor(Math.random() * process.o3o.tags.length)]);
+process.window.server = {};
+process.window.server.platform = process.os.platform();
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // INDEX
