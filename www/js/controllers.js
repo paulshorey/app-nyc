@@ -26,9 +26,9 @@ angular.module('ionicApp.controllers', [])
 		});
 	}
 	vm.list = {};
-	vm.userLists = {};
+	vm.userLists = [];
 	vm.userEvents = {};
-	vm.anonLists = {};
+	vm.anonLists = [];
 	vm.anonEvents = {};
 
 	/*
@@ -117,12 +117,12 @@ angular.module('ionicApp.controllers', [])
 
 						// lists
 						all.categories.forEach(function (item, id, array) { 
-							var list =  {uid:array[id].title,category:array[id].title,scene:''};
+							var list =  {uid:vm.anonLists.length,category:array[id].title,scene:''};
 							
 							// <list>
 							vm.slickOk -= 1;
 							// <
-							vm.anonLists[ list.uid ] = list;
+							vm.anonLists.unshift(list);
 							vm.listEvents( list, 'anonEvents' );
 							// </list>
 
@@ -160,7 +160,7 @@ angular.module('ionicApp.controllers', [])
 							// <
 							delete vm.anonLists[ list.uid ];
 							delete vm.anonEvents[ list.uid ];
-							vm.userLists[ list.uid ] = list;
+							vm.userLists.unshift(list);
 							vm.listEvents( list, 'userEvents' );
 							// </list>
 						});
@@ -194,17 +194,20 @@ angular.module('ionicApp.controllers', [])
 		// [/data]
 	}
 	vm.listAdd = function (list) {
-		vm.list.uid = vm.list.category+vm.list.scene;
-		if (!list) {
+		if (list) {
+			vm.listClean( list.uid );
+		} else {
 			list = vm.list;
 		}
-		
+
 		// <lists>
-		vm.slickOk -= 1;
-		vm.listClean( list.uid );
-		vm.userLists[ list.uid ] = list;
-		vm.listEvents(list, 'userEvents' );
-		vm.list = {};
+		$timeout(function(){
+			list.uid = vm.userLists.length;
+			vm.slickOk -= 1;
+			vm.userLists.unshift(list);
+			vm.listEvents(list, 'userEvents' );
+			vm.list = {};
+		});
 		// </lists>
 
 		// [data]
