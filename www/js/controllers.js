@@ -179,14 +179,10 @@ angular.module('ionicApp.controllers', [])
 	vm.listRemove = function (list) {
 		
 		// <lists>
-		$ionicLoading.show();
 		vm.slickOk -= 1;
-		// <
 		vm.listClean( list.uid );
-		// >
 		$timeout(function(){
 			vm.slickOk += 1;
-			$ionicLoading.hide();
 		});
 		// </lists>
 
@@ -204,18 +200,11 @@ angular.module('ionicApp.controllers', [])
 		}
 		
 		// <lists>
-		$ionicLoading.show();
 		vm.slickOk -= 1;
-		// <
 		vm.listClean( list.uid );
 		vm.userLists[ list.uid ] = list;
 		vm.listEvents(list, 'userEvents' );
 		vm.list = {};
-		// >
-		$timeout(function(){
-			vm.slickOk += 1;
-			$ionicLoading.hide();
-		});
 		// </lists>
 
 		// [data]
@@ -237,6 +226,9 @@ angular.module('ionicApp.controllers', [])
 		}
 	}
 	vm.listEvents = function (list, whatEvents) {
+		$timeout(function(){
+			vm.slickOk += 1;
+		});
 		var query = {};
 		query.category = list.category;
 		query.scene = list.scene;
@@ -275,10 +267,6 @@ angular.module('ionicApp.controllers', [])
 				// </events>
 
 			}
-			// >
-			$timeout(function(){
-				vm.slickOk += 1;
-			});
 		}, function(error) {
 			console.error(error);
 		});
