@@ -17,7 +17,7 @@
 			</div>
 
 			<div class="my-nav">
-				<a class="uui-icon icon-connection" href="/" prevent-default ng-click="vm.clearActive(); vm.addList()"></a> <span class="uui-text">suggest a source</span> 
+				<a class="uui-icon icon-connection" href="/"></a> <span class="uui-text">suggest a source</span> 
 				<span class="uui-text">...</span>
 				<span ng-if="user.displayName">
 					<span class="uui-text">welcome, {{ user.displayName }} (<a href="/" prevent-default ng-click="vm.logout()">logout</a>)</span>
@@ -67,7 +67,7 @@
 			<slick settings="vm.slickConfig" ng-if="vm.slickOk" class="my-lists">
 
 				<!-- user Lists -->
-				<div class="my-list" ng-repeat="item in vm.userLists" ng-if="1==1 || vm.userEvents[ item.uid ].count">
+				<div class="my-list" ng-repeat="item in vm.userLists track by $index" ng-if="vm.userEvents[ item.uid ].count">
 					<div class="my-list-header">
 						<span class="my-list-buttons ulist-buttons-left">
 							<button class="uui-icon uui-hollow icon-checkbox-checked uui-hover-yellow" ng-click="vm.listAdd(item)"></button>
@@ -87,7 +87,7 @@
 				</div>
 
 				<!-- all Lists -->
-				<div class="my-list" ng-repeat="item in vm.anonLists" ng-if="1==1 || vm.anonEvents[ item.uid ].count">
+				<div class="my-list" ng-repeat="item in vm.anonLists track by $index" ng-if="vm.anonEvents[ item.uid ].count">
 					<div class="my-list-header">
 						<span class="my-list-buttons ulist-buttons-left">
 							<button class="uui-icon uui-hollow icon-checkbox-checked uui-hover-yellow" ng-click="vm.listAdd(item)"></button>

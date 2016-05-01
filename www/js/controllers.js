@@ -117,7 +117,7 @@ angular.module('ionicApp.controllers', [])
 
 						// lists
 						all.categories.forEach(function (item, id, array) { 
-							var list =  {uid:vm.anonLists.length,category:array[id].title,scene:''};
+							var list =  {uid:'a'+vm.anonLists.length,category:array[id].title,scene:''};
 							
 							// <list>
 							vm.slickOk -= 1;
@@ -202,7 +202,7 @@ angular.module('ionicApp.controllers', [])
 
 		// <lists>
 		$timeout(function(){
-			list.uid = vm.userLists.length;
+			list.uid = 'u'+list.uid+vm.userLists.length;
 			vm.slickOk -= 1;
 			vm.userLists.unshift(list);
 			vm.listEvents(list, 'userEvents' );
@@ -214,24 +214,25 @@ angular.module('ionicApp.controllers', [])
 		// [/data]
 
 	}
-	vm.listClean = function( id ) {
-		if (vm.anonLists[ id ]) {
-			delete vm.anonLists[ id ];
+	vm.listClean = function( uid ) {
+		for (var list in vm.anonLists) {
+			if (vm.anonLists[list].uid == uid) {
+				vm.anonLists.splice(list, 1);
+			}
 		}
-		if (vm.anonEvents[ id ]) {
-			delete vm.anonEvents[ id ];
+		if (vm.anonEvents[ uid ]) {
+			delete vm.anonEvents[ uid ];
 		}
-		if (vm.userLists[ id ]) {
-			delete vm.userLists[ id ];
+		for (var list in vm.userLists) {
+			if (vm.userLists[list].uid == uid) {
+				vm.userLists.splice(list, 1);
+			}
 		}
-		if (vm.userEvents[ id ]) {
-			delete vm.userEvents[ id ];
+		if (vm.userEvents[ uid ]) {
+			delete vm.userEvents[ uid ];
 		}
 	}
 	vm.listEvents = function (list, whatEvents) {
-		$timeout(function(){
-			vm.slickOk += 1;
-		});
 		var query = {};
 		query.category = list.category;
 		query.scene = list.scene;
@@ -268,9 +269,15 @@ angular.module('ionicApp.controllers', [])
 					vm[ whatEvents ][ list.uid ].html = $sce.trustAsHtml(html);
 				});
 				// </events>
-
 			}
+
+			$timeout(function(){
+				vm.slickOk += 1;
+			});
 		}, function(error) {
+			$timeout(function(){
+				vm.slickOk += 1;
+			});
 			console.error(error);
 		});
 	}
