@@ -197,9 +197,11 @@ angular.module('ionicApp.controllers', [])
 			})
 		// [/data]
 	}
-	vm.listAdd = function () {
+	vm.listAdd = function (list) {
 		vm.list.uid = vm.list.category+vm.list.scene;
-		var list = vm.list;
+		if (!list) {
+			list = vm.list;
+		}
 		
 		// <lists>
 		$ionicLoading.show();
