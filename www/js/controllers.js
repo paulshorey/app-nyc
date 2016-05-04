@@ -10,14 +10,41 @@ angular.module('ionicApp.controllers', [])
 })
 
 
-.controller('ListController', 
-           ["AccountService", "ListService", "EventService", "ContentService", 		"$ionicLoading", "$ionicPopup", "$ionicModal", 		"$scope", "$rootScope", "$state", "$timeout", "$stateParams", "$sce", function 
-           (AccountService, ListService, EventService, ContentService, 				$ionicLoading, $ionicPopup, $ionicModal,				$scope, $rootScope, $state, $timeout, $stateParams, $sce) 
-	{
+.controller('ListController', ["AccountService", "ListService", "EventService", "ContentService", "$ionicLoading", "$ionicPopup", "$ionicModal", "$window", "$scope", "$rootScope", "$state", "$timeout", "$stateParams", "$sce", function (AccountService, ListService, EventService, ContentService, $ionicLoading, $ionicPopup, $ionicModal, $window, $scope, $rootScope, $state, $timeout, $stateParams, $sce) {
 	window.ListController = this;
 	var vm = this;
-	vm.slickOk = 1;
-	vm.slickConfig = window.slickConfig;
+	vm.listsReady = 1;
+	vm.slickConfig = {
+		lazyLoad: 'ondemand',
+		method: {},
+		dots: false,
+		arrows: false,
+		infinite: true,
+		speed: 300,
+		slidesToShow: 4,
+		slidesToScroll: 4,
+		responsive: [{
+			breakpoint: 1024,
+			settings: {
+				slidesToShow: 3,
+				slidesToScroll: 3,
+				infinite: true,
+				dots: true
+			}
+		}, {
+			breakpoint: 600,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 2
+			}
+		}, {
+			breakpoint: 480,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1
+			}
+		}]
+	};
 	var errorHandler = function (options) {
 		var errorAlert = $ionicPopup.alert({
 			title: options.title,
@@ -25,45 +52,10 @@ angular.module('ionicApp.controllers', [])
 			okText: "Try Again"
 		});
 	}
-	vm.list = {};
-	vm.userLists = [];
-	vm.userEvents = {};
-	vm.anonLists = [];
-	vm.anonEvents = {};
+	vm.list = {data:{}};
+	vm.lists = {};
+	vm.lists_new = {};
 
-	/*
-		ACCOUNT
-	*/
-	vm.login = function (socialProvider) {
-		Stamplay.User.socialLogin(socialProvider);
-		AccountService.currentUser()
-			.then(function (user) {
-				$rootScope.user = user;
-				$ionicLoading.hide();
-				vm.getUser();
-			}, function (error) {
-				console.error(error);
-				$ionicLoading.hide();
-			})
-	}
-	vm.logout = function () {
-		$ionicLoading.show();
-		var jwt = window.location.origin + "-jwt";
-		window.localStorage.removeItem(jwt);
-		AccountService.currentUser()
-			.then(function (user) {
-				$rootScope.user = user;
-				$ionicLoading.hide();
-				vm.getUser();
-			}, function (error) {
-				console.error(error);
-				$ionicLoading.hide();
-			})
-	}
-
-	/*
-		MODALS
-	*/
 	// $scope.modals = {};
 	// vm.closeModals = function () {
 	// 	for (var m in $scope.modals) {
@@ -90,79 +82,127 @@ angular.module('ionicApp.controllers', [])
 	// 		$scope.modals['editList'] = modal;
 	// 	});
 
+
+
 	/*
-		GET 
+		VERBS
 	*/
-	vm.getUser = function () {
+	vm.login = function (socialProvider) {
+		vm.syncLocal();
+		Stamplay.User.socialLogin(socialProvider);
+		AccountService.currentUser()
+			.then(function (user) {
+				$rootScope.user = user;
+				$ionicLoading.hide();
+				vm.setUser();
+			}, function (error) {
+				console.error(error);
+				$ionicLoading.hide();
+			})
+	}
+	vm.logout = function () {
+		vm.syncLocal();
+		$ionicLoading.show();
+		var jwt = window.location.origin + "-jwt";
+		window.localStorage.removeItem(jwt);
+		AccountService.currentUser()
+			.then(function (user) {
+				$rootScope.user = user;
+				$ionicLoading.hide();
+				vm.setUser();
+			}, function (error) {
+				console.error(error);
+				$ionicLoading.hide();
+			})
+	}
+	$scope.$on('$destroy', vm.syncLocal);
+	window.onbeforeunload =  vm.syncLocal;
+	vm.syncLocal = function(){
+		// if (vm.lists.userLists.length) {
+		// 	window.localStorage.lists = JSON.stringify(vm.lists);
+		// }
+	};
+
+	vm.setUser = function () {
 		$ionicLoading.show();
 		AccountService.currentUser()
 			.then(
-			      function (user) {
+				function (user) {
 					$rootScope.user = user;
 					$ionicLoading.hide();
-					vm.getLists();
-				}, function (error) {
+					vm.setLists();
+					if (window.localStorage.lists) {
+						// var lists = JSON.parse(window.localStorage.lists);
+						// if (lists.userLists) {
+						// 	$timeout(function(){
+						// 		vm.lists = lists;
+						// 	});
+						// 	console.log('window.localStorage',window.localStorage);
+						// 	window.localStorage.removeItem('lists');
+						// }
+					}
+
+				},
+				function (error) {
 					console.error(error);
 					$ionicLoading.hide();
 				})
-	};
-	vm.getUser();
-	vm.getLists = function () {
+	}; 
+	vm.setUser(); 
+	vm.setLists = function () {
 
-		if (!vm.anonLists.length) {
-			// first get default, then user
-			ContentService.getAll()
-				.then(
-					function (all) {
+		ContentService.getAll()
+			.then(
+				function (all) {
 
-						// lists
-						all.categories.forEach(function (item, id, array) { 
-							var list =  {uid:'a'+vm.anonLists.length,category:array[id].title,scene:''};
-							
-							// <list>
-							vm.slickOk -= 1;
-							// <
-							vm.anonLists.unshift(list);
-							vm.listEvents( list, 'anonEvents' );
-							// </list>
+					// lists
+					all.categories.forEach(function (item, id, array) {
+						var list = {
+							data: {
+								uid: 'default' + id,
+								category: array[id].title,
+								scene: '',
+								text: '',
+								likes: 1
+							},
+							sortorder: array.length - id,
+							type: 'default'
+						};
+						vm.listsReady -= 1;
+						vm.lists[ list.data.uid ] = list;
+						vm.listEvents( list ); 
 
-						});
-						vm.getUserLists();
-						$ionicLoading.hide();
+					});
+					vm.setUserLists();
 
-						// content
-						vm.categories = all.categories;
-						vm.scenes = all.scenes;
-						vm.sites = all.sites;
-						vm.eventsCount = all.eventsCount;
+					// content
+					vm.categories = all.categories;
+					vm.scenes = all.scenes;
+					vm.sites = all.sites;
+					vm.eventsCount = all.eventsCount;
 
-					},
-					function (error) {
-						$ionicLoading.hide();
-					})
-		} else {
-			// jump straight to user lists
-			vm.getUserLists();
-		}
+				},
+				function (error) {
+					$ionicLoading.hide();
+				})
 
 	}
-	vm.getUserLists = function () {
+	vm.setUserLists = function () {
 
 		if ($rootScope.user) {
 			ListService.getUsersLists()
 				.then(
 					function (response) {
 						response.data.forEach(function (item, id, array) {
-							var list = array[id];
-							
-							// <list>
-							vm.slickOk -= 1;
-							// <
-							delete vm.anonLists[ list.uid ];
-							delete vm.anonEvents[ list.uid ];
-							vm.userLists.unshift(list);
-							vm.listEvents( list, 'userEvents' );
-							// </list>
+							var list = {
+								data: array[id],
+								sortorder: 1000 + id,
+								type: 'user'
+							};
+
+							vm.listsReady -= 1;
+							vm.lists[ list.data.uid ] = list;
+							vm.listEvents( list ); 
 						});
 						$ionicLoading.hide();
 					},
@@ -173,40 +213,57 @@ angular.module('ionicApp.controllers', [])
 
 	}
 
+
 	/*
-		SET 
+		LISTSSS
+	*/
+	vm.listsClean = function (list) {
+		for (var uid in vm.lists) {
+			if (uid == list.data.uid) {
+				delete vm.lists[uid];
+			}
+		}
+		vm.syncLocal();
+	}
+
+
+	/*
+		LIST 
 	*/
 	vm.listRemove = function (list) {
-		
+
 		// <lists>
-		vm.slickOk -= 1;
-		vm.listClean( list.uid );
-		$timeout(function(){
-			vm.slickOk += 1;
+		vm.listsReady -= 1;
+		vm.listsClean(list);
+		$timeout(function () {
+			vm.listsReady += 1;
 		});
 		// </lists>
 
 		// [data]
-		ListService.deleteList(list.id)
-			.then(function (list) {
-			}, function (error) {
-			})
-		// [/data]
+		ListService.deleteList(list.data.id)
+			.then(function (list) {}, function (error) {})
+			// [/data]
+	}
+	vm.listKey = function (list, whatList) {
+
 	}
 	vm.listAdd = function (list) {
 		if (list) {
-			vm.listClean( list.uid );
-		} else {
-			list = vm.list;
+			vm.listsClean(list);
 		}
 
 		// <lists>
-		$timeout(function(){
-			list.uid = 'u'+list.uid+vm.userLists.length;
-			vm.slickOk -= 1;
-			vm.userLists.unshift(list);
-			vm.listEvents(list, 'userEvents' );
-			vm.list = {};
+		$timeout(function () {
+			if (list) {
+				vm.list.data = list.data;
+			}
+			vm.list.data.uid = 'userLists'+Date.now() + vm.list.data.uid;
+			vm.list.sortorder = Date.now();
+			vm.listsReady -= 1;
+			vm.lists[ vm.list.data.uid ] = vm.list;
+			vm.listEvents(vm.list);
+			vm.list = {data:{}};
 		});
 		// </lists>
 
@@ -214,74 +271,89 @@ angular.module('ionicApp.controllers', [])
 		// [/data]
 
 	}
-	vm.listClean = function( uid ) {
-		for (var list in vm.anonLists) {
-			if (vm.anonLists[list].uid == uid) {
-				vm.anonLists.splice(list, 1);
-			}
-		}
-		if (vm.anonEvents[ uid ]) {
-			delete vm.anonEvents[ uid ];
-		}
-		for (var list in vm.userLists) {
-			if (vm.userLists[list].uid == uid) {
-				vm.userLists.splice(list, 1);
-			}
-		}
-		if (vm.userEvents[ uid ]) {
-			delete vm.userEvents[ uid ];
-		}
-	}
-	vm.listEvents = function (list, whatEvents) {
+	vm.listEvents = function (list) {
 		var query = {};
-		query.category = list.category;
-		query.scene = list.scene;
-		query.time = list.time;
-		EventService.getEvents(query).then(function(response){
-			var events = response.data.data;
-			var old_timestamp = 0;
-			var old_date = '';
-			if (events.length) {
+		console.log('listEvents', list);
+		query.category = list.data.category;
+		query.scene = list.data.scene;
+		query.time = list.data.time;
+		EventService.getEvents(query)
+			.then(function (response) {
+				var events = response.data.data;
+				var old_timestamp = 0;
+				var old_date = '';
+				if (events.length) {
 
-				// <events>
-				vm[ whatEvents ][ list.uid ] = {};
-				vm[ whatEvents ][ list.uid ].count = events.length;
-				vm[ whatEvents ][ list.uid ].sources = {};
+					// <events>
+					list.count = events.length;
+					list.sources = {};
 
-				// <html>
-				var html = '		<div class="events">\n';
-				for (var each in events) {
-					var event = events[each];
-					//vm.events[ list.uid ].sources[ event.host ] = event.host;
+					// <html>
+					var html = '		<div class="events">\n';
+					for (var each in events) {
+						var event = events[each];
+						//vm.events[ list.data.uid ].sources[ event.host ] = event.host;
 
-					if (event.timestamp != old_timestamp || event.date != old_date) {
-						html += '	<div class="events-timestamp"><span>'+event.date+'</span> <span>'+event.time+'</div>\n';
+						if (event.timestamp != old_timestamp || event.date != old_date) {
+							html += '	<div class="events-timestamp"><span>' + event.date + '</span> <span>' + event.time + '</div>\n';
+						}
+						html += '		<div class="events-event event-link" onClick="window.open(\'' + event.link + '\', \'_system\')" style="background-image:url(' + event.image + ');">\n';
+						html += '			<div class="event-text">' + event.text + '</div>\n';
+						html += '		</div>';
 					}
-					html += '		<div class="events-event event-link" onClick="window.open(\''+event.link+'\', \'_system\')" style="background-image:url('+event.image+');">\n';
-					html += '			<div class="event-text">'+event.text+'</div>\n';
-					html += '		</div>';
+					html += '		</div>\n';
+					// </html>
+
+					$timeout(function () {
+						list.html = $sce.trustAsHtml(html);
+					});
+					// </events>
 				}
-				html += '		</div>\n';
-				// </html>
 
-				console.log('vm[ '+whatEvents+' ][ '+list.uid+' ]',html.substr(0,100));
-				$timeout(function(){
-					vm[ whatEvents ][ list.uid ].html = $sce.trustAsHtml(html);
+				$timeout(function () {
+					vm.listsReady += 1;
 				});
-				// </events>
-			}
-
-			$timeout(function(){
-				vm.slickOk += 1;
+			}, function (error) {
+				$timeout(function () {
+					vm.listsReady += 1;
+				});
+				console.error(error);
 			});
-		}, function(error) {
-			$timeout(function(){
-				vm.slickOk += 1;
-			});
-			console.error(error);
-		});
 	}
 
 }])
+
+.filter('orderObjectBy', function() {
+  return function(items, field, reverse) {
+    var filtered = [];
+    angular.forEach(items, function(item) {
+      filtered.push(item);
+    });
+    filtered.sort(function (a, b) {
+      return (a[field] > b[field] ? 1 : -1);
+    });
+    if(reverse) filtered.reverse();
+    return filtered;
+  };
+})
+
+// .directive('lists', [function() {     
+// 	return {         
+// 		templateUrl: 'state.tpl.html',         
+// 		scope: {             
+// 			state: '=xyzState',         
+// 		},    
+// 	}; 
+// }]); 
+
+
+// .directive('lists', function () {
+// 	return function (scope, element, attrs) {
+// 		$(element)
+// 			.click(function (event) {
+// 				event.preventDefault();
+// 			});
+// 	}
+// })
 
 ;

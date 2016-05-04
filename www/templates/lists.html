@@ -5,7 +5,7 @@
 		<div class="my-top">
 
 			<div class="my-top-title uui-title" ng-if="user">
-				{{vm.lists.length}} Lists ... {{vm.slickOk}}
+				My Lists ... {{vm.listReady}}
 			</div>
 			<div class="my-top-title uui-title" ng-if="!user && vm.lists !== undefined">
 				Community Lists
@@ -33,7 +33,7 @@
 
 			<div>
 				<label class="item item-input item-select">
-					<select ng-change="vm.listAdd()" ng-model="vm.list.category">
+					<select ng-change="vm.listAdd()" ng-model="vm.list.data.category">
 						<option selected value="">WHAT</option>
 						<option selected value="">anything</option>
 						<option selected value="">-</option>
@@ -41,7 +41,7 @@
 					</select>
 				</label>
 				<label class="item item-input item-select">
-					<select ng-change="vm.listAdd()" ng-model="vm.list.time">
+					<select ng-change="vm.listAdd()" ng-model="vm.list.data.time">
 						<option selected value="">WHEN</option>
 						<option selected value="">anytime</option>
 						<option selected value="">-</option>
@@ -52,7 +52,7 @@
 					</select>
 				</label>
 				<label class="item item-input item-select">
-					<select ng-change="vm.listAdd()" ng-model="vm.list.scene">
+					<select ng-change="vm.listAdd()" ng-model="vm.list.data.scene">
 						<option selected value="">[.]NYC</option>
 						<option selected value="">every type</option>
 						<option selected value="">-</option>
@@ -64,60 +64,29 @@
 		</div>
 
 		<div>
-			<slick settings="vm.slickConfig" ng-if="vm.slickOk" class="my-lists">
+			<slick settings="vm.slickConfig" ng-if="vm.listsReady" class="mylis">
 
 				<!-- user Lists -->
-				<div class="my-list" ng-repeat="item in vm.userLists track by $index" ng-if="vm.userEvents[ item.uid ].count">
-					<div class="my-list-header">
-						<span class="my-list-buttons ulist-buttons-left">
-							<button class="uui-icon uui-hollow icon-checkbox-checked uui-hover-yellow" ng-click="vm.listAdd(item)"></button>
+				<div class="myli" ng-repeat="list in vm.lists | orderObjectBy:'sortorder':true" ng-if="list.count">
+					<div class="myli-header">
+						<span class="myli-buttons myli-buttons-left">
+							<button class="uui-icon uui-hollow icon-checkbox-checked uui-hover-yellow" ng-click="vm.listAdd(list)"></button>
 						</span>
-						<span class="my-list-title">
-							<span class="uui-title">{{ item.uid }} </span>
-							<span class="uui-title">{{ item.category }}</span>
-							<span class="uui-title">{{ item.time }}</span>
-							<span class="uui-title">{{ item.scene }}</span>
-							<span class="uui-title">{{ item.text }}</span>
+						<span class="myli-title">
+							<span class="uui-title">{{ list.data.uid }} </span>
+							<span class="uui-title">{{ list.data.category }}</span>
+							<span class="uui-title">{{ list.data.time }}</span>
+							<span class="uui-title">{{ list.data.scene }}</span>
+							<span class="uui-title">{{ list.data.text }}</span>
 						</span>
-						<span class="my-list-buttons ulist-buttons-right">
-							<button class="uui-icon uui-hollow ion-close" ng-click="vm.listRemove(item)"></button>
-						</span>
-					</div>
-					<div class="my-list-events" ng-bind-html="vm.userEvents[ item.uid ].html"></div>
-				</div>
-
-				<!-- all Lists -->
-				<div class="my-list" ng-repeat="item in vm.anonLists track by $index" ng-if="vm.anonEvents[ item.uid ].count">
-					<div class="my-list-header">
-						<span class="my-list-buttons ulist-buttons-left">
-							<button class="uui-icon uui-hollow icon-checkbox-checked uui-hover-yellow" ng-click="vm.listAdd(item)"></button>
-						</span>
-						<span class="my-list-title">
-							<span class="uui-title">{{ item.uid }} </span>
-							<span class="uui-title">{{ item.category }}</span>
-							<span class="uui-title">{{ item.time }}</span>
-							<span class="uui-title">{{ item.scene }}</span>
-							<span class="uui-title">{{ item.text }}</span>
-						</span>
-						<span class="my-list-buttons ulist-buttons-right">
-							<button class="uui-icon uui-hollow ion-close" ng-click="vm.listRemove(item)"></button>
+						<span class="myli-buttons myli-buttons-right">
+							<button class="uui-icon uui-hollow ion-close" ng-click="vm.listRemove(list)"></button>
 						</span>
 					</div>
-					<div class="my-list-events" ng-bind-html="vm.anonEvents[ item.uid ].html"></div>
+					<div class="myli-events" ng-bind-html="list.html"></div>
 				</div>
 
 			</slick>
-		</div>
-
-		<div class="card" ng-show="vm.lists.length === 0">
-			<div class="item item-body center-align">
-				<h2 class="dark">
-					Umm..it's empty in here..
-				</h2>
-				<h2 class="dark">
-					Try adding a list by clicking the <i class="ion-plus-circled dark"></i>icon in the top right corner.
-				</h2>
-			</div>
 		</div>
 
 	</div>
