@@ -387,24 +387,33 @@ angular.module('ionicApp.controllers', [])
 					);
 			});
 			$(element).scroll($.debounce( 
-				( element[0].clientWidth / 3 ) + 50, // this should be less than animation duration, or it will trigger itself
+				( element[0].clientWidth / 4 ) + 10, // this should be less than animation duration, or it will trigger itself
 				function (event) {
 					var target = event.target;
-					var duration = target.clientWidth / 3;
+					var duration = target.clientWidth / 4;
 					if (target.doNotScroll) {
 						return;
 					}
 					console.log('duration',duration);
 					console.log(' scrolled: ('+target.clientWidth+') ' + target.scrollLeft+' < '+target.scrollLeftLast);
 
+					// goto page
 					var round = 'ceil';
 					if ( target.scrollLeft < target.scrollLeftLast ) {
 						round = 'floor';
 					}
-					var columns = Math[round]( target.scrollLeft / target.firstElementChild.clientWidth );
-					var scrollTo = target.firstElementChild.clientWidth * columns;
-					$(target).animate({ scrollLeft: ( scrollTo ) }, { duration: duration });
+					var pages = Math[round]( target.scrollLeft / target.firstElementChild.clientWidth );
+					var scrollTo = target.firstElementChild.clientWidth * pages;
+					// go to column (if real close)
+					var columns = Math.round( target.scrollLeft / target.firstElementChild.firstElementChild.clientWidth );
+					var scrollToColumn = target.firstElementChild.firstElementChild.clientWidth * columns;
+					if ( Math.abs( target.scrollLeft - scrollToColumn ) < 60 ) {
+						scrollTo = scrollToColumn;
+					}
 
+					// ok go
+					$(target).animate({ scrollLeft: ( scrollTo ) }, { duration: duration });
+					// done
 					target.doNotScroll = true;
 					$timeout(
 						scope.scroll_enable,
