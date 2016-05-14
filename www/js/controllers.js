@@ -14,37 +14,6 @@ angular.module('ionicApp.controllers', [])
 	window.ListController = this;
 	var vm = this;
 	vm.listsReady = 1;
-	vm.slickConfig = {
-		lazyLoad: 'ondemand',
-		method: {},
-		dots: false,
-		arrows: false,
-		infinite: true,
-		speed: 300,
-		slidesToShow: 4,
-		slidesToScroll: 4,
-		responsive: [{
-			breakpoint: 1024,
-			settings: {
-				slidesToShow: 3,
-				slidesToScroll: 3,
-				infinite: true,
-				dots: true
-			}
-		}, {
-			breakpoint: 600,
-			settings: {
-				slidesToShow: 2,
-				slidesToScroll: 2
-			}
-		}, {
-			breakpoint: 480,
-			settings: {
-				slidesToShow: 1,
-				slidesToScroll: 1
-			}
-		}]
-	};
 	var errorHandler = function (options) {
 		var errorAlert = $ionicPopup.alert({
 			title: options.title,
@@ -237,6 +206,9 @@ angular.module('ionicApp.controllers', [])
 		vm.listsClean(list);
 		$timeout(function () {
 			vm.listsReady += 1;
+			if (vm.listsReady==1) {
+				console.log('lists are ready!');
+			}
 		});
 		// </lists>
 
@@ -273,7 +245,6 @@ angular.module('ionicApp.controllers', [])
 	}
 	vm.listEvents = function (list) {
 		var query = {};
-		console.log('listEvents', list);
 		query.category = list.data.category;
 		query.scene = list.data.scene;
 		query.time = list.data.time;
@@ -316,6 +287,9 @@ angular.module('ionicApp.controllers', [])
 			}, function (error) {
 				$timeout(function () {
 					vm.listsReady += 1;
+					if (vm.listsReady==1) {
+						console.log('lists are ready!');
+					}
 				});
 				console.error(error);
 			});
@@ -347,13 +321,100 @@ angular.module('ionicApp.controllers', [])
 // }]); 
 
 
-// .directive('lists', function () {
-// 	return function (scope, element, attrs) {
-// 		$(element)
-// 			.click(function (event) {
-// 				event.preventDefault();
-// 			});
-// 	}
-// })
+.directive('scrollable', function ($timeout, $ionicLoading) {
+	return {
+		restrict: 'A',
+		scope: {
+			vm: '='
+		},
+		link: function (scope, element, attrs) {
+			scope.scroll_enable = function(){
+				var target = element[0];
+				target.doNotScroll = false;
+				target.scrollLeftLast = target.scrollLeft;
+			};
+			scope.$watch(
+				function () { return Object.keys(scope.$parent.vm.lists).length ? element[0].firstElementChild.childElementCount : false; },
+				function (newValue, oldValue) {
+					// scroll to beginning
+					if (oldValue > 0 && newValue > oldValue) {
+						var target = element[0];
+						var duration = target.clientWidth / 2;
+						console.log(newValue+' > '+oldValue);
+
+						var scrollTo = 0;
+						target.doNotScroll = 'scroll--changed';
+						$ionicLoading.show();
+						target.scrollLeft = target.scrollLeft + target.firstElementChild.firstElementChild.scrollWidth;
+						$timeout(function(){
+							$ionicLoading.hide();
+							$(target).animate({ scrollLeft: scrollTo }, { duration: duration });
+
+							$timeout(
+								scope.scroll_enable,
+								duration+100
+							);
+
+						},500);
+					}
+				}
+			);
+
+			$('[scrollable-left]').click(function(){
+					var target = element[0];
+					var duration = target.clientWidth / 2;
+
+					var scrollTo = target.scrollLeft - target.clientWidth;
+					$(target).animate({ scrollLeft: scrollTo }, { duration: duration });
+
+					target.doNotScroll = 'scrollable-left';
+					$timeout(
+						scope.scroll_enable,
+						duration
+					);
+			});
+			$('[scrollable-right]').click(function(){
+					var target = element[0];
+					var duration = target.clientWidth / 2;
+
+					var scrollTo = target.scrollLeft + target.clientWidth;
+					$(target).animate({ scrollLeft: scrollTo }, { duration: duration });
+
+					target.doNotScroll = 'scrollable-right';
+					$timeout(
+						scope.scroll_enable,
+						duration
+					);
+			});
+			$(element).scroll($.debounce( 
+				( element[0].clientWidth / 3 ) + 50, // this should be less than animation duration, or it will trigger itself
+				function (event) {
+					var target = event.target;
+					var duration = target.clientWidth / 3;
+					if (target.doNotScroll) {
+						return;
+					}
+					console.log('duration',duration);
+					console.log(' scrolled: ('+target.clientWidth+') ' + target.scrollLeft+' < '+target.scrollLeftLast);
+
+					var round = 'ceil';
+					if ( target.scrollLeft < target.scrollLeftLast ) {
+						round = 'floor';
+					}
+					var columns = Math[round]( target.scrollLeft / target.firstElementChild.clientWidth );
+					var scrollTo = target.firstElementChild.clientWidth * columns;
+					$(target).animate({ scrollLeft: ( scrollTo ) }, { duration: duration });
+
+					target.doNotScroll = true;
+					$timeout(
+						scope.scroll_enable,
+						duration
+					);
+
+				} 
+			));
+		}
+	}
+})
 
 ;

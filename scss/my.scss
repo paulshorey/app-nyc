@@ -9,6 +9,25 @@ a {
 }
 
 
+// @font-face {font-family: "ambroise-francois-demi";
+//     src: url("http://db.onlinewebfonts.com/t/7c4e4fcaeefb49b065a55b7853f4279f.eot");
+//     src: url("http://db.onlinewebfonts.com/t/7c4e4fcaeefb49b065a55b7853f4279f.eot?#iefix") format("embedded-opentype"),
+//     url("http://db.onlinewebfonts.com/t/7c4e4fcaeefb49b065a55b7853f4279f.woff2") format("woff2"),
+//     url("http://db.onlinewebfonts.com/t/7c4e4fcaeefb49b065a55b7853f4279f.woff") format("woff"),
+//     url("http://db.onlinewebfonts.com/t/7c4e4fcaeefb49b065a55b7853f4279f.ttf") format("truetype"),
+//     url("http://db.onlinewebfonts.com/t/7c4e4fcaeefb49b065a55b7853f4279f.svg#Ambroise Francois") format("svg");
+// }	
+//    url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.ttf") format("truetype"),
+@font-face {font-family: "bodoni";
+    src: url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.eot");
+    src: url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.eot?#iefix") format("embedded-opentype"),
+    url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.woff2") format("woff2"),
+    url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.woff") format("woff"),
+    url("http://www.myfontfree.com/data/543/b/bodoniboldbt/bodoni bold bt.ttf") format("truetype"),
+    url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.svg#Bodoni") format("svg");
+}
+
+
 /*
 	GENERAL
 */
@@ -16,7 +35,12 @@ body {
 	font-family:Arial, Helvetica, sans-serif;
 }
 .my-content {
-	font-family:Georgia, Times, serif;
+	font-family:Times, serif;
+}
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 125dpi){ 
+	.my-content {
+		font-family:bodoni, "Bodoni 72", Times, serif;
+	}
 }
 
 
@@ -63,5 +87,58 @@ body {
 				text-transform:capitalize;
 			}
 		}
+	}
+}
+
+$c1-upto: 480px;
+$c2-upto: 600px;
+$c3-upto: 1024px;
+$c4-upto: 10000px;
+// $range-three: {lower601px, 1024px];
+// $range-all: [1025px, 10000px];
+
+$media-one:  "(min-width:0px) and (max-width:#{$c1-upto})" !default;
+$media-two: "(min-width:#{$c1-upto + 1}) and (max-width:#{$c2-upto})" !default;
+$media-three: "(min-width:#{$c2-upto + 1}) and (max-width:#{$c3-upto})" !default;
+$media-all: "(min-width:#{$c3-upto + 1})" !default;
+
+.mylists {
+	width: calc( 100% - 38px );
+	overflow: auto;
+	margin: 19px;
+}
+.mylis {
+	white-space:nowrap;
+}
+.myli {
+	// height: 0;
+	// overflow: hidden;
+	// transition: height 2s;
+	display:inline-block;
+	vertical-align:top;
+	white-space:normal;
+}
+@media #{$media-one} {
+	.myli {
+		background:yellow;
+		width:100%;
+	}
+}
+@media #{$media-two} {
+	.myli {
+		background:green;
+		width:50%;
+	}
+}
+@media #{$media-three} {
+	.myli {
+		background:blue;
+		width:33.33%;
+	}
+}
+@media #{$media-all}{
+	.myli {
+		background:violet;
+		width:25%;
 	}
 }

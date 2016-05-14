@@ -5,15 +5,15 @@
 		<div class="my-top">
 
 			<div class="my-top-title uui-title" ng-if="user">
-				My Lists ... {{vm.listReady}}
+				My Lists ... {{vm.listsReady}}
 			</div>
 			<div class="my-top-title uui-title" ng-if="!user && vm.lists !== undefined">
-				Community Lists
+				Community Lists ... {{vm.listsReady}}
 			</div>
 
 			<div>
-				<button ng-click="vm.slickConfig.method.slickPrev()">&laquo;</button>
-				<button ng-click="vm.slickConfig.method.slickNext()">&raquo;</button>
+				<button scrollable-left>&laquo;</button>
+				<button scrollable-right>&raquo;</button>
 			</div>
 
 			<div class="my-nav">
@@ -63,10 +63,11 @@
 
 		</div>
 
-		<div>
-			<slick settings="vm.slickConfig" ng-if="vm.listsReady" class="mylis">
+		<div class="mylists" scrollable>
 
-				<!-- user Lists -->
+			<!-- <slick settings="vm.slickConfig" ng-if="vm.listsReady" class="mylis" ng-xrep="{{ vm.listsReady==1 ? vm.listsReady=vm.listsReady+1 : true }}"> -->
+ 			<div class="mylis">
+				
 				<div class="myli" ng-repeat="list in vm.lists | orderObjectBy:'sortorder':true" ng-if="list.count">
 					<div class="myli-header">
 						<span class="myli-buttons myli-buttons-left">
@@ -86,7 +87,9 @@
 					<div class="myli-events" ng-bind-html="list.html"></div>
 				</div>
 
-			</slick>
+			</div>
+			<!-- </slick> -->
+
 		</div>
 
 	</div>

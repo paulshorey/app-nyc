@@ -1,4 +1,4 @@
-angular.module('ionicApp', ['ionic', 'ionicApp.controllers', 'ionicApp.services', 'slickCarousel'])
+angular.module('ionicApp', ['ionic', 'ionicApp.controllers', 'ionicApp.services'])
 
 .run(function ($ionicPlatform, $rootScope, AccountService) {
 
