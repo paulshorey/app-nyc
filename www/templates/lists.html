@@ -68,17 +68,13 @@
 			<!-- <slick settings="vm.slickConfig" ng-if="vm.listsReady" class="mylis" ng-xrep="{{ vm.listsReady==1 ? vm.listsReady=vm.listsReady+1 : true }}"> -->
  			<div class="mylis">
 				
-				<div class="myli" ng-repeat="list in vm.lists | orderObjectBy:'sortorder':true" ng-if="list.count">
+				<div class="myli" ng-repeat="list in vm.lists | orderObjectBy:'sortorder':true">
 					<div class="myli-header">
 						<span class="myli-buttons myli-buttons-left">
 							<button class="uui-icon uui-hollow icon-checkbox-checked uui-hover-yellow" ng-click="vm.listAdd(list)"></button>
 						</span>
 						<span class="myli-title">
 							<span class="uui-title">{{ list.data.uid }} </span>
-							<span class="uui-title">{{ list.data.category }}</span>
-							<span class="uui-title">{{ list.data.time }}</span>
-							<span class="uui-title">{{ list.data.scene }}</span>
-							<span class="uui-title">{{ list.data.text }}</span>
 						</span>
 						<span class="myli-buttons myli-buttons-right">
 							<button class="uui-icon uui-hollow ion-close" ng-click="vm.listRemove(list)"></button>

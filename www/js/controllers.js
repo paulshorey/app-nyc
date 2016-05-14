@@ -128,7 +128,8 @@ angular.module('ionicApp.controllers', [])
 					all.categories.forEach(function (item, id, array) {
 						var list = {
 							data: {
-								uid: 'default' + id,
+								uid: array[id].title,
+								// uid: 'default' + id,
 								category: array[id].title,
 								scene: '',
 								text: '',
@@ -230,12 +231,21 @@ angular.module('ionicApp.controllers', [])
 			if (list) {
 				vm.list.data = list.data;
 			}
-			vm.list.data.uid = 'userLists'+Date.now() + vm.list.data.uid;
-			vm.list.sortorder = Date.now();
+			// vm.list.data.uid = 'userLists'+Date.now() + vm.list.data.uid;
+			console.log('list',vm.list);
+			vm.list.data.uid = vm.list.data.category;
+			if (!vm.lists[ vm.list.data.uid ]) {
+				vm.lists[ vm.list.data.uid ] = vm.list;
+			}
+			vm.lists[ vm.list.data.uid ].sortorder = Date.now();
 			vm.listsReady -= 1;
-			vm.lists[ vm.list.data.uid ] = vm.list;
 			vm.listEvents(vm.list);
-			vm.list = {data:{}};
+			var listsIds = Object.keys(vm.lists).sort(function(a, b) {return (vm.lists[b].sortorder - vm.lists[a].sortorder)});
+			console.log('listsIds',listsIds);
+			if (vm.list.data.category==listsIds[0]) {
+			} else {
+				vm.list = {data:{}};
+			}
 		});
 		// </lists>
 
