@@ -2,7 +2,10 @@
 
 	<div class="my-content">
 	
-		<div class="my-top">
+		<div class="my-top" ng-class="{ 'isMobile' : client.isMobile }">
+
+			<img src="/gfx/svg/logo-desktop.svg" height="60px" ng-if="! client.isMobile" />
+			<img src="/gfx/svg/logo-desktop.svg" height="24px" ng-if="client.isMobile" />
 
 			<div class="my-top-title uui-title" ng-if="user">
 				My Lists ... {{vm.listsReady}}

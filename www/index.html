@@ -50,6 +50,16 @@
 	window.system.api.host = 'http'+(isMobile || isLocalhost?'':'s')+'://'+(isMobile || isLocalhost?'localhost:1080':'api.allevents.nyc');
 	window.system.stamplay.host = 'http'+(isMobile?'':'s')+'://ionic-nyc.stamplayapp.com';
 	window.system.app.host = 'http'+(isMobile || isLocalhost?'':'s')+'://'+(isMobile || isLocalhost?'localhost:3080':'allevents.nyc');
+	// client (nothin to do with ionic/stamplay, just for the end user)
+	window.client = {};
+	window.client.ua = navigator.userAgent.toLowerCase();
+	window.client.isAndroid = ua.indexOf("android") > -1; // or tablet
+	window.client.isIphone = ua.indexOf("iP") > -1; // or iPad
+	window.client.isMobile = ( window.client.isAndroid || window.client.isIphone ) || false;
+
+if(isAndroid) {
+    // do something
+}
 	</script>
 	<!--
 		STAMPLAY

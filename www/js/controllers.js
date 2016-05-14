@@ -11,7 +11,8 @@ angular.module('ionicApp.controllers', [])
 
 
 .controller('ListController', ["AccountService", "ListService", "EventService", "ContentService", "$ionicLoading", "$ionicPopup", "$ionicModal", "$window", "$scope", "$rootScope", "$state", "$timeout", "$stateParams", "$sce", function (AccountService, ListService, EventService, ContentService, $ionicLoading, $ionicPopup, $ionicModal, $window, $scope, $rootScope, $state, $timeout, $stateParams, $sce) {
-	window.ListController = this;
+	//window.ListController = this;
+	$rootScope.client = window.client;
 	var vm = this;
 	vm.listsReady = 1;
 	var errorHandler = function (options) {
