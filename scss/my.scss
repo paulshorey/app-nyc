@@ -8,6 +8,7 @@ a {
 	text-decoration:none;
 	color:inherit;
 }
+@import "compass/css3";
 
 
 // @font-face {font-family: "ambroise-francois-demi";
@@ -50,16 +51,18 @@ body {
 	NAV
 */
 .my-top {
+	position:relative;
 	z-index:10;
-	margin: 5px 0 17px;
-	padding: 10px 20px 17px;
+	margin: 5px 0 15px;
+	padding: 10px 20px 18px;
 	border-bottom: solid 1px #ccc;
 	.top-logo {
-		img {
-			display:block;
-			height:66px;
-			margin:0 auto;
-		}
+		display:block;
+		margin: 0 auto;
+		width: 50%;
+		height: 62px;
+		background: url('/gfx/logo-desktop.svg') center no-repeat;
+		background-size: contain;
 	}
 	.top-left {
 		position: absolute;
@@ -68,24 +71,46 @@ body {
 		label {
 			display:block;
 			border:none;
+			background:transparent;
 			span:before,
-			select {
+			select,
+			input {
 				color:#ff00ff;
 				font-size:17px;
 				line-height:17px;
 				padding:0;
+				background:transparent;
+				display:inline-block;
+				height: 20px;
+				overflow: hidden;
+			}
+			input::-webkit-input-placeholder {  
+				color:#ff00ff;
+			}
+			input:-moz-placeholder {  
+				color:#ff00ff;
+			}
+			input::-moz-placeholder {  
+				color:#ff00ff;
+			}
+			input:-ms-input-placeholder {  
+				color:#ff00ff;
 			}
 		}
 	}
 	.top-right {
 		position:absolute;
-		right:4px;
-		top:10px;
+		right:2px;
+		top:9px;
 		text-align:right;
 		color:#ccc;
+		width:50%;
+		@include filter-gradient(#00ffffff, #ffffff, vertical); // IE6-9
+		@include background-image(linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%));
 		> * {
 			display:block;
 			font-size:17px;
+			height:23px;
 		}
 	}
 }
@@ -142,9 +167,9 @@ body {
 	}
 }
 
-$c1-upto: 480px;
-$c2-upto: 600px;
-$c3-upto: 1024px;
+$c1-upto: 500px;
+$c2-upto: 800px;
+$c3-upto: 1280px;
 $c4-upto: 10000px;
 // $range-three: {lower601px, 1024px];
 // $range-all: [1025px, 10000px];

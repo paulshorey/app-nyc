@@ -6,22 +6,21 @@
 		<div class="my-top is-desktop" ng-if="! client.isMobile">
 
 			<div class="top-logo">
-				<img src="/gfx/logo-desktop.svg" />
 			</div>
 
 			<div class="top-right">
 				<a href="/" prevent-default ng-click="vm.clearActive(); vm.addList()">
-					<span class="uui-text">about us / get involved </span> <span class="uui-icon icon-unlocked"></span>
+					<span class="uui-text">about us / get involved </span> <span class="uui-icon icon-hipster2"></span>
 				</a>
 				<a href="/" prevent-default ng-click="vm.clearActive(); vm.addList()">
-					<span class="uui-text">add / remove a source </span> <span class="uui-icon icon-unlocked"></span>
+					<span class="uui-text">add / remove a source </span> <span class="uui-icon icon-link"></span>
 				</a>
 
 				<a ng-if="user.displayName" href="/" prevent-default ng-click="vm.logout()">
 					<span class="uui-text">welcome, {{ user.displayName }}</span>
 				</a>
 				<a ng-if="!user.displayName" href="/" prevent-default ng-click="vm.clearActive(); vm.addList()">
-					<span class="uui-text">login to save your lists </span> <span class="uui-icon icon-unlocked"></span>
+					<span class="uui-text">login to save your lists </span> <span class="uui-icon icon-pushpin"></span>
 				</a>
 				<!-- <button class="uui-icon icon-facebook" ng-click="vm.login('facebook')"></button>
 				<button class="uui-icon icon-google" ng-click="vm.login('google')"></button>
@@ -51,13 +50,8 @@
 					</select>
 				</label>
 				<label class="item item-input item-select">
-					<span class="uui-icon icon-select"></span>
-					<select class="uui-text" ng-change="vm.listAdd()" ng-model="vm.list.data.scene">
-						<option selected value="">[.]NYC</option>
-						<option selected value="">every type</option>
-						<option selected value="">-</option>
-						<option ng-repeat="sce in vm.scenes" value="{{sce.title}}">{{sce.title}}</option>
-					</select>
+					<span class="uui-icon ion-search"></span>
+					<input class="uui-text" ng-blur="vm.listAdd()" type="text" ng-model="vm.list.data.search" placeholder="SEARCH" />
 				</label>
 			</div>
 
