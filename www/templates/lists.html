@@ -68,7 +68,8 @@
 							<button class="uui-icon uui-hollow icon-star-square uui-hover-yellow" ng-click="vm.listAdd(list)"></button>
 						</span>
 						<span class="myli-title">
-							<span class="uui-title a">{{ list.data.uid }} </span>
+							<span class="uui-title a" ng-class="{ 'active': vm.list.data.category==list.data.uid }">{{ list.data.uid }} </span>
+							<span class="uui-subtitle a">{{ list.data.time }} </span>
 						</span>
 						<span class="myli-buttons myli-buttons-right">
 							<button class="uui-icon uui-hollow ion-close" ng-click="vm.listRemove(list)"></button>

@@ -71,7 +71,7 @@ body {
 		background: url('/gfx/logo-desktop.svg') center no-repeat;
 		background-size: contain;
 		position:relative;
-		left: calc(-50px + 5%);
+		left: calc(-45px + 5%);
 	}
 	.top-left {
 		position: absolute;
@@ -256,6 +256,9 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 		margin:5px 0 10px;
 		color:#ff00ff;
 		text-transform:uppercase;
+		.active {
+			color:#00bbff;
+		}
 	}
 	.myli-buttons {
 		float: right;

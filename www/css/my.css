@@ -50,7 +50,7 @@ body {
     background: url("/gfx/logo-desktop.svg") center no-repeat;
     background-size: contain;
     position: relative;
-    left: calc(-50px + 5%); }
+    left: calc(-45px + 5%); }
   .my-top .top-left {
     position: absolute;
     left: 7px;
@@ -189,6 +189,8 @@ body {
     margin: 5px 0 10px;
     color: #ff00ff;
     text-transform: uppercase; }
+    .myli .myli-header .active {
+      color: #00bbff; }
   .myli .myli-buttons {
     float: right;
     margin: 1px 6px;
