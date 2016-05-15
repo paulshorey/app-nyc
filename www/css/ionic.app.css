@@ -9490,3 +9490,9 @@ a.button {
   position: absolute;
   opacity: 0;
   transition-duration: 0s; }
+
+input, button, select, textarea {
+  font-family: inherit; }
+
+.item-select:after {
+  content: none; }

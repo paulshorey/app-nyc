@@ -21,3 +21,10 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700);
 @import "www/lib/ionic/scss/ionic";
+
+input, button, select, textarea {
+    font-family: inherit;
+}
+.item-select:after {
+	content:none;
+}

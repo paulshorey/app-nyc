@@ -4,33 +4,34 @@
 [class^="uui-"],
 [class*=" uui-"] {
 	position:relative;
-	height:24px;
-	font-size:18px;
+	line-height:1.5em;
+	font-size:1em;
 	display:inline-block;
 	vertical-align:middle;
+	color:inherit;
 }
 .uui-title {
 	position:relative;
-	height:24px;
-	line-height:24px;
+	height:1.5em;
+	line-height:1.5em;
 	font-weight:bold;
 	display:inline-block;
 	vertical-align:middle;
 	padding:0;
-	color:#333;
+	color:inherit;
 }
 .uui-text {
 	position:relative;
-	height:24px;
-	line-height:24px;
+	height:1.5em;
+	line-height:1.5em;
 	display:inline-block;
 	vertical-align:middle;
 	padding:0;
-	color:#333;
+	color:inherit;
 }
 .uui-icon,
 .uui-button {
-	width:24px;
+	width:1.5em;
 	padding:0;
 	text-align:center;
 }
@@ -51,21 +52,12 @@
 .uui-icon,
 .uui-button {
 	&:before {
-		vertical-align:top;
-		position:relative;
-		top: 1px;
-		font-size:90%;
-		color:#666;
-	}
-	// tweak IONIC
-	&[class^="ion-"]:before,
-	&[class*=" ion-"]:before {
-		font-size:100%;
-	}
-	&:hover {
-		&:before {
-
-		}
+		vertical-align: middle;
+		position: static;
+		top: 0.35em;
+		font-size: 0.9em;
+		color: inherit;
+		display: block;
 	}
 }
 a.uui-icon:before {

@@ -1,42 +1,37 @@
 <ion-view>
-
+	<span scrollable-left class="icon-column-arrow-left"></span>
+	<span scrollable-right class="icon-column-arrow-right"></span>
 	<div class="my-content">
 	
-		<div class="my-top" ng-class="{ 'isMobile' : client.isMobile }">
+		<div class="my-top is-desktop" ng-if="! client.isMobile">
 
-			<img src="/gfx/svg/logo-desktop.svg" height="60px" ng-if="! client.isMobile" />
-			<img src="/gfx/svg/logo-desktop.svg" height="24px" ng-if="client.isMobile" />
-
-			<div class="my-top-title uui-title" ng-if="user">
-				My Lists ... {{vm.listsReady}}
-			</div>
-			<div class="my-top-title uui-title" ng-if="!user && vm.lists !== undefined">
-				Community Lists ... {{vm.listsReady}}
+			<div class="top-logo">
+				<img src="/gfx/logo-desktop.svg" />
 			</div>
 
-			<div>
-				<button scrollable-left>&laquo;</button>
-				<button scrollable-right>&raquo;</button>
+			<div class="top-right">
+				<a href="/" prevent-default ng-click="vm.clearActive(); vm.addList()">
+					<span class="uui-text">about us / get involved </span> <span class="uui-icon icon-unlocked"></span>
+				</a>
+				<a href="/" prevent-default ng-click="vm.clearActive(); vm.addList()">
+					<span class="uui-text">add / remove a source </span> <span class="uui-icon icon-unlocked"></span>
+				</a>
+
+				<a ng-if="user.displayName" href="/" prevent-default ng-click="vm.logout()">
+					<span class="uui-text">welcome, {{ user.displayName }}</span>
+				</a>
+				<a ng-if="!user.displayName" href="/" prevent-default ng-click="vm.clearActive(); vm.addList()">
+					<span class="uui-text">login to save your lists </span> <span class="uui-icon icon-unlocked"></span>
+				</a>
+				<!-- <button class="uui-icon icon-facebook" ng-click="vm.login('facebook')"></button>
+				<button class="uui-icon icon-google" ng-click="vm.login('google')"></button>
+				<button class="uui-icon icon-github" ng-click="vm.login('github')"></button> -->
 			</div>
 
-			<div class="my-nav">
-				<a class="uui-icon icon-connection" href="/"></a> <span class="uui-text">suggest a source</span> 
-				<span class="uui-text">...</span>
-				<span ng-if="user.displayName">
-					<span class="uui-text">welcome, {{ user.displayName }} (<a href="/" prevent-default ng-click="vm.logout()">logout</a>)</span>
-				</span>
-				<span ng-if="!user.displayName">
-					<span class="uui-text">login to save your search: </span> 
-					<button class="uui-icon icon-facebook" ng-click="vm.login('facebook')"></button>
-					<button class="uui-icon icon-google" ng-click="vm.login('google')"></button>
-					<button class="uui-icon icon-github" ng-click="vm.login('github')"></button>
-					<a class="uui-icon icon-unlocked"  href="/" prevent-default ng-click="vm.clearActive(); vm.addList()"></a>
-				</span>
-			</div>
-
-			<div>
+			<div class="top-left">
 				<label class="item item-input item-select">
-					<select ng-change="vm.listAdd()" ng-model="vm.list.data.category">
+					<span class="uui-icon icon-select"></span>
+					<select class="uui-text" ng-change="vm.listAdd()" ng-model="vm.list.data.category">
 						<option selected value="">WHAT</option>
 						<option selected value="">anything</option>
 						<option selected value="">-</option>
@@ -44,7 +39,8 @@
 					</select>
 				</label>
 				<label class="item item-input item-select">
-					<select ng-change="vm.listAdd()" ng-model="vm.list.data.time">
+					<span class="uui-icon icon-select"></span>
+					<select class="uui-text" ng-change="vm.listAdd()" ng-model="vm.list.data.time">
 						<option selected value="">WHEN</option>
 						<option selected value="">anytime</option>
 						<option selected value="">-</option>
@@ -55,7 +51,8 @@
 					</select>
 				</label>
 				<label class="item item-input item-select">
-					<select ng-change="vm.listAdd()" ng-model="vm.list.data.scene">
+					<span class="uui-icon icon-select"></span>
+					<select class="uui-text" ng-change="vm.listAdd()" ng-model="vm.list.data.scene">
 						<option selected value="">[.]NYC</option>
 						<option selected value="">every type</option>
 						<option selected value="">-</option>
@@ -74,7 +71,7 @@
 				<div class="myli" ng-repeat="list in vm.lists | orderObjectBy:'sortorder':true">
 					<div class="myli-header">
 						<span class="myli-buttons myli-buttons-left">
-							<button class="uui-icon uui-hollow icon-checkbox-checked uui-hover-yellow" ng-click="vm.listAdd(list)"></button>
+							<button class="uui-icon uui-hollow icon-star-square uui-hover-yellow" ng-click="vm.listAdd(list)"></button>
 						</span>
 						<span class="myli-title">
 							<span class="uui-title">{{ list.data.uid }} </span>
