@@ -2,20 +2,21 @@ var gulp = require('gulp');
 var gutil = require('gulp-util');
 var bower = require('bower');
 var concat = require('gulp-concat');
+var compass = require('gulp-compass');
 var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
 var autoprefixer = require("gulp-autoprefixer");
 var paths = {
-  sass: ['./scss/**/*.scss']
+  sass: ['./www/scss/**/*.scss']
 };
 
 gulp.task('default', ['sass']);
 
 gulp.task('sass', function(done) {
-  gulp.src('./scss/*.scss')
-    .pipe(sass())
+  gulp.src('./www/scss/*.scss')
+    .pipe(sass({compass:true}))
     .on('error', sass.logError)
     .pipe(autoprefixer({
 			browsers: ['last 4 versions'],

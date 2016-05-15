@@ -1,7 +1,7 @@
 <ion-view>
-	<span scrollable-left class="icon-column-arrow-left"></span>
-	<span scrollable-right class="icon-column-arrow-right"></span>
 	<div class="my-content">
+	<span scrollable-left class="icon-column-arrow-left a"></span>
+	<span scrollable-right class="icon-column-arrow-right a"></span>
 	
 		<div class="my-top is-desktop" ng-if="! client.isMobile">
 
@@ -28,19 +28,19 @@
 			</div>
 
 			<div class="top-left">
-				<label class="item item-input item-select">
+				<label class="item item-input item-select a select-what" ng-class="{ 'active': vm.list.data.category }">
 					<span class="uui-icon icon-select"></span>
 					<select class="uui-text" ng-change="vm.listAdd()" ng-model="vm.list.data.category">
-						<option selected value="">WHAT</option>
+						<option selected value="">WHAT TO DO ?</option>
 						<option selected value="">anything</option>
 						<option selected value="">-</option>
 						<option ng-repeat="cat in vm.categories" value="{{cat.title}}">{{cat.title}}</option>
 					</select>
 				</label>
-				<label class="item item-input item-select">
+				<label class="item item-input item-select a select-when" ng-class="{ 'active': vm.list.data.time }">
 					<span class="uui-icon icon-select"></span>
 					<select class="uui-text" ng-change="vm.listAdd()" ng-model="vm.list.data.time">
-						<option selected value="">WHEN</option>
+						<option selected value="">THIS WEEK</option>
 						<option selected value="">anytime</option>
 						<option selected value="">-</option>
 						<option selected value="today">today</option>
@@ -49,9 +49,9 @@
 						<option selected value="this month">this month</option>
 					</select>
 				</label>
-				<label class="item item-input item-select">
+				<label class="item item-input item-select a select-search" hoverfocus ng-class="{ 'active': vm.list.data.search }">
 					<span class="uui-icon ion-search"></span>
-					<input class="uui-text" ng-blur="vm.listAdd()" type="text" ng-model="vm.list.data.search" placeholder="SEARCH" />
+					<input class="uui-text" ng-change="vm.listAdd()" type="text" ng-model="vm.list.data.search" placeholder="SEARCH" />
 				</label>
 			</div>
 
@@ -68,7 +68,7 @@
 							<button class="uui-icon uui-hollow icon-star-square uui-hover-yellow" ng-click="vm.listAdd(list)"></button>
 						</span>
 						<span class="myli-title">
-							<span class="uui-title">{{ list.data.uid }} </span>
+							<span class="uui-title a">{{ list.data.uid }} </span>
 						</span>
 						<span class="myli-buttons myli-buttons-right">
 							<button class="uui-icon uui-hollow ion-close" ng-click="vm.listRemove(list)"></button>

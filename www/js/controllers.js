@@ -228,26 +228,29 @@ angular.module('ionicApp.controllers', [])
 		}
 
 		// <lists>
-		$timeout(function () {
-			if (list) {
-				vm.list.data = list.data;
-			}
-			// vm.list.data.uid = 'userLists'+Date.now() + vm.list.data.uid;
-			console.log('list',vm.list);
-			vm.list.data.uid = vm.list.data.category;
-			if (!vm.lists[ vm.list.data.uid ]) {
-				vm.lists[ vm.list.data.uid ] = vm.list;
-			}
-			vm.lists[ vm.list.data.uid ].sortorder = Date.now();
-			vm.listsReady -= 1;
-			vm.listEvents(vm.list);
-			var listsIds = Object.keys(vm.lists).sort(function(a, b) {return (vm.lists[b].sortorder - vm.lists[a].sortorder)});
-			console.log('listsIds',listsIds);
-			if (vm.list.data.category==listsIds[0]) {
-			} else {
-				vm.list = {data:{}};
-			}
-		});
+		console.log('listAdd', vm.list);
+		if (vm.list.data.category || vm.list.data.time || vm.list.data.scene || vm.list.data.search) {
+			$timeout(function () {
+				if (list) {
+					vm.list.data = list.data;
+				}
+				// vm.list.data.uid = 'userLists'+Date.now() + vm.list.data.uid;
+				console.log('list',vm.list);
+				vm.list.data.uid = vm.list.data.category;
+				if (!vm.lists[ vm.list.data.uid ]) {
+					vm.lists[ vm.list.data.uid ] = vm.list;
+				}
+				vm.lists[ vm.list.data.uid ].sortorder = Date.now();
+				vm.listsReady -= 1;
+				vm.listEvents(vm.list);
+				var listsIds = Object.keys(vm.lists).sort(function(a, b) {return (vm.lists[b].sortorder - vm.lists[a].sortorder)});
+				console.log('listsIds',listsIds);
+				if (vm.list.data.category==listsIds[0]) {
+				} else {
+					vm.list = {data:{}};
+				}
+			});
+		}
 		// </lists>
 
 		// [data]
@@ -330,6 +333,20 @@ angular.module('ionicApp.controllers', [])
 // 		},    
 // 	}; 
 // }]); 
+
+
+.directive('hoverfocus', function () {
+	return function (scope, element, attrs) {
+		$(element).hover(function (event) {
+			$(element).find('input').focus().bind('keypress',function(e){
+				var code = (e.keyCode ? e.keyCode : e.which);
+				if(code == 13) { 
+					$(this).blur();
+				}
+			});
+		});
+	}
+})
 
 
 .directive('scrollable', function ($timeout, $ionicLoading) {

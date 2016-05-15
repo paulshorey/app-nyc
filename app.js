@@ -5,7 +5,7 @@ process.inc.express_parser = require('body-parser');
 // modules
 process.moment = require('moment'); // process.moment(new Date(2011, 9, 16)).
 process.moment.now = process.moment();
-process.request = require('request');
+// process.request = require('request');
 process.fs = require('fs');
 process.http = require('http');
 process.https = require('https');
