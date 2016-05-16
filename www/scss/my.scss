@@ -1,9 +1,15 @@
+// @import "../lib/compass-sass-mixins/lib/compass";
 /*
 	RESET
 */
 body {
 	margin:0;
 }
+
+
+/*
+	GENERAL
+*/
 a {
 	text-decoration:none;
 	color:inherit;
@@ -18,32 +24,17 @@ a, .a {
 [ng-click] {
 	cursor:pointer;
 }
-
-// @import "../lib/compass-sass-mixins/lib/compass";
-
-
-// @font-face {font-family: "ambroise-francois-demi";
-//     src: url("http://db.onlinewebfonts.com/t/7c4e4fcaeefb49b065a55b7853f4279f.eot");
-//     src: url("http://db.onlinewebfonts.com/t/7c4e4fcaeefb49b065a55b7853f4279f.eot?#iefix") format("embedded-opentype"),
-//     url("http://db.onlinewebfonts.com/t/7c4e4fcaeefb49b065a55b7853f4279f.woff2") format("woff2"),
-//     url("http://db.onlinewebfonts.com/t/7c4e4fcaeefb49b065a55b7853f4279f.woff") format("woff"),
-//     url("http://db.onlinewebfonts.com/t/7c4e4fcaeefb49b065a55b7853f4279f.ttf") format("truetype"),
-//     url("http://db.onlinewebfonts.com/t/7c4e4fcaeefb49b065a55b7853f4279f.svg#Ambroise Francois") format("svg");
-// }	
-//    url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.ttf") format("truetype"),
+@font-face {font-family: "robinson";
+    src: url("/gfx/fonts/robinson.otf");
+}
 @font-face {font-family: "bodoni";
     src: url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.eot");
     src: url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.eot?#iefix") format("embedded-opentype"),
     url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.woff2") format("woff2"),
     url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.woff") format("woff"),
-    url("http://www.myfontfree.com/data/543/b/bodoniboldbt/bodoni bold bt.ttf") format("truetype"),
+    url("http://db.onlinewebfonts.com/t/7c4e4fcaeefb49b065a55b7853f4279f.ttf") format("truetype"),
     url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.svg#Bodoni") format("svg");
 }
-
-
-/*
-	GENERAL
-*/
 body {
 	font-family:Arial, Helvetica, sans-serif;
 	color:#666;
@@ -57,205 +48,9 @@ body {
 	}
 }
 
-
 /*
-	TOP ( DESKTOP )
+	SPECIFIC
 */
-.my-top {
-	position:relative;
-	margin: 0 0 15px;
-	padding: 15px 20px 18px;
-	border-bottom: solid 1px #ccc;
-	.top-logo {
-		display:block;
-		margin: 0 auto;
-		width: 50%;
-		height: 62px;
-		background: url('/gfx/logo-desktop.svg') center no-repeat;
-		background-size: contain;
-		position:relative;
-		left: calc(-45px + 5%);
-	}
-	.top-left {
-		position: absolute;
-		left: 7px;
-		top: 11px;
-		label {
-			display:block;
-			border:none;
-			background:transparent;
-			color:#ff00ff;
-			span:before,
-			select,
-			input {
-				font-size:17px;
-				line-height:17px;
-				padding:0;
-				background:transparent;
-				display:inline-block;
-				height: 20px;
-				overflow: hidden;
-				text-transform:uppercase;
-				color:#ff00ff;
-			}
-			&.select-what select {
-				font-weight:bold;
-				letter-spacing:0.5px;
-			}
-			&.select-search span:before,
-			&.select-search select,
-			&.select-search input {
-				color:#cccccc;
-			}
-			input::-webkit-input-placeholder {  
-				color:#cccccc;
-			}
-			input:-moz-placeholder {  
-				color:#cccccc;
-			}
-			input::-moz-placeholder {  
-				color:#cccccc;
-			}
-			input:-ms-input-placeholder {  
-				color:#cccccc;
-			}
-
-			&:hover span:before,
-			&:hover select,
-			&:hover input {
-				color:#00bbff;
-			}
-			&:hover input::-webkit-input-placeholder {  
-				color:#00bbff;
-			}
-			&:hover input:-moz-placeholder {  
-				color:#00bbff;
-			}
-			&:hover input::-moz-placeholder {  
-				color:#00bbff;
-			}
-			&:hover input:-ms-input-placeholder {  
-				color:#00bbff;
-			}
-
-			&.active span:before,
-			&.active select,
-			&.active input {
-				color:#00bbff;
-			}
-			&.active input::-webkit-input-placeholder {  
-				color:#00bbff;
-			}
-			&.active input:-moz-placeholder {  
-				color:#00bbff;
-			}
-			&.active input::-moz-placeholder {  
-				color:#00bbff;
-			}
-			&.active input:-ms-input-placeholder {  
-				color:#00bbff;
-			}
-
-
-		}
-	}
-	.top-right {
-		position:absolute;
-		right:2px;
-		top:9px;
-		text-align:right;
-		color:#ccc;
-		padding:0 0 0 15px;
-		font-size:17px;
-		height:23px;
-	}
-}
-#top-mobile {
-	padding: 6px 0 7px;
-	.top-logo {
-		height: 20px;
-		left:auto;
-	}
-	.top-left {
-		font-size:19.5px;
-		position: absolute;
-		left: 1px;
-		top: 4px;
-		span:first-child {
-			color:#ff00ff;
-		}
-		.ion-search {
-			margin: 0 0 0 -12px;
-			font-size: 25px;
-			color: #ccc;
-		}
-		.ion-search:before {
-			line-height:1em;
-		}
-	}
-	.top-right {
-		font-size:20px;
-		position: absolute;
-		right: 0px;
-		top: 2px;
-	}
-}
-#top-mobile-select {
-	position: absolute;
-	top: 5px;
-	left: 1px;
-	background: #fff;
-	height: 1.75em;
-	transition: top 1s;
-	label {
-		width: calc(33% - 36px);
-		display:inline-block;
-		border: 0;
-		margin: 0 2px 0 5px;
-		span:before {
-			font-size: 1.25em;
-			line-height: 1.5em;
-			background:#fff;
-		}
-		&.item-select,
-		select {
-			color:#ff00ff;
-			background:#fff;
-			text-transform:uppercase;
-		}
-		&:hover select {
-			color:#00bbff;
-		}
-		&.active select,
-		&.active span:before {
-			color:#00bbff;
-		}
-		&.select-search {
-			color:#ccc;
-		}
-	}
-	.select-right {
-		position:absolute;
-		right:0;
-		label {
-			width:auto;
-		}
-		.select-submit {
-			color:#ff00ff;
-			.uui-text {
-				margin-left: -5px;
-			}
-		}
-		.select-cancel {
-			color:#ccc;
-		}
-	}
-}
-#top-mobile-select.hidden {
-	top:-30px;
-}
-
-
 [scrollable-right],
 [scrollable-left] {
 	position: absolute;
@@ -278,6 +73,246 @@ body {
 
 
 /*
+	TOP
+*/
+	/*
+		Desktop
+	*/
+	.my-top {
+		position:relative;
+		margin: 0 0 15px;
+		padding: 15px 20px 18px;
+		border-bottom: solid 1px #ccc;
+		.top-logo {
+			display:block;
+			margin: 0 auto;
+			width: 50%;
+			height: 62px;
+			background: url('/gfx/logo-desktop.svg') center no-repeat;
+			background-size: contain;
+			position:relative;
+			left: calc(-45px + 5%);
+		}
+		.top-left {
+			position: absolute;
+			left: 7px;
+			top: 11px;
+			label {
+				display:block;
+				border:none;
+				background:transparent;
+				color:#ff00ff;
+				span:before,
+				select,
+				input {
+					font-size:17px;
+					line-height:17px;
+					padding:0;
+					background:transparent;
+					display:inline-block;
+					height: 20px;
+					overflow: hidden;
+					text-transform:uppercase;
+					color:#ff00ff;
+				}
+				&.select-what select {
+					font-weight:bold;
+					letter-spacing:0.5px;
+				}
+				&.select-search span:before,
+				&.select-search select,
+				&.select-search input {
+					color:#cccccc;
+				}
+				input::-webkit-input-placeholder {  
+					color:#cccccc;
+				}
+				input:-moz-placeholder {  
+					color:#cccccc;
+				}
+				input::-moz-placeholder {  
+					color:#cccccc;
+				}
+				input:-ms-input-placeholder {  
+					color:#cccccc;
+				}
+
+				&:hover span:before,
+				&:hover select,
+				&:hover input {
+					color:#00bbff;
+				}
+				&:hover input::-webkit-input-placeholder {  
+					color:#00bbff;
+				}
+				&:hover input:-moz-placeholder {  
+					color:#00bbff;
+				}
+				&:hover input::-moz-placeholder {  
+					color:#00bbff;
+				}
+				&:hover input:-ms-input-placeholder {  
+					color:#00bbff;
+				}
+
+				&.active span:before,
+				&.active select,
+				&.active input {
+					color:#00bbff;
+				}
+				&.active input::-webkit-input-placeholder {  
+					color:#00bbff;
+				}
+				&.active input:-moz-placeholder {  
+					color:#00bbff;
+				}
+				&.active input::-moz-placeholder {  
+					color:#00bbff;
+				}
+				&.active input:-ms-input-placeholder {  
+					color:#00bbff;
+				}
+
+
+			}
+		}
+		.top-right {
+			position:absolute;
+			right:2px;
+			top:9px;
+			text-align:right;
+			color:#ccc;
+			padding:0 0 0 15px;
+			font-size:17px;
+			height:23px;
+			> a {
+				display:block;
+			}
+		}
+	}
+
+		/* 
+			Mobile
+		*/
+		#top-mobile {
+			padding: 6px 0 7px;
+			.top-logo-options {
+				img {
+					height: 20px;
+					margin:1px auto;
+					display:block;
+				}
+			}
+			.top-left {
+				font-size:19.5px;
+				position: absolute;
+				left: 1px;
+				top: 5px;
+				span:first-child {
+					color:#ff00ff;
+				}
+				.ion-search {
+					margin: 0 0 0 -12px;
+					font-size: 25px;
+					color: #ccc;
+				}
+				.ion-search:before {
+					line-height:1em;
+				}
+			}
+			.top-right {
+				font-size:20px;
+				position: absolute;
+				right: 0px;
+				top: 3px;
+			}
+		}
+
+		#top-mobile-select {
+			position: absolute;
+			top: 6px;
+			left: 1px;
+			background: #fff;
+			height: 1.75em;
+			transition: top 1s;
+			width:100%;
+			label {
+				width: calc(33% - 41px);
+				display:inline-block;
+				border: 0;
+				margin: 0 2px 0 5px;
+				vertical-align:middle;
+				padding: 0;
+				font-size: 100%;
+				line-height: 100%;
+				span:before {
+					font-size: 1.25em;
+					line-height: 1.5em;
+					background:#fff;
+				}
+				&.item-select,
+				select {
+					color:#ff00ff;
+					background:#fff;
+					text-transform:uppercase;
+				}
+				&:hover select {
+					color:#00bbff;
+				}
+				&.active select,
+				&.active span:before {
+					color:#00bbff;
+				}
+				&.select-search {
+					color:#ccc;
+				}
+			}
+			.select-submit {
+				color:#ff00ff;
+				width:auto;
+				.uui-text {
+					margin-left: -5px;
+				}
+			}
+			.select-cancel {
+				color:#ccc;
+				width:auto;
+				padding-left:10px;
+			}
+		}
+		#top-mobile-select.hidden {
+			top:-30px;
+		}
+
+		#top-mobile-options {
+			color:#ccc;
+			position: absolute;
+			top: 6px;
+			left: 1px;
+			background: #fff;
+			height: 1.66em;
+			transition: top 1s;
+			font-family:robinson, sans-serif;
+			font-size:17px;
+			width:100%;
+			> a {
+				margin: 0 3px 0 1px;
+				.uui-text {
+					color:#666;
+				}
+			}
+			> a:last-child {
+				position: absolute;
+				right: 0;
+				top: 1px;
+			}
+		}
+		#top-mobile-options.hidden {
+			top:-30px;
+		}
+
+
+/*
 	CONTENT
 */
 .my-content {
@@ -292,25 +327,7 @@ body {
 		display:block;
 		clear:both;
 	}
-	.my-content-title {
-	}
 }
-
-.my-lists {
-	margin:10px;
-	.my-list {
-		margin:10px;
-		.my-list-header {
-			margin:0 -3px 6px;
-			.my-list-title {
-				text-transform:capitalize;
-				font-weight:bold;
-				letter-spacing:0.5px;
-			}
-		}
-	}
-}
-
 
 
 /*

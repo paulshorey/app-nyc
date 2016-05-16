@@ -222,6 +222,9 @@ angular.module('ionicApp.controllers', [])
 	vm.listKey = function (list, whatList) {
 
 	}
+	vm.listReset = function (list) {
+		vm.list = {data:{}};
+	}
 	vm.listAdd = function (list) {
 		if (list) {
 			vm.listsClean(list);
@@ -230,6 +233,12 @@ angular.module('ionicApp.controllers', [])
 		// <lists>
 		console.log('listAdd', vm.list);
 		if (vm.list.data.category || vm.list.data.time || vm.list.data.scene || vm.list.data.search) {
+			if (vm.list.data.category == 'any') {
+				vm.list.data.category = '';
+			}
+			if (vm.list.data.time == 'any') {
+				vm.list.data.time = '';
+			}
 			$timeout(function () {
 				if (list) {
 					vm.list.data = list.data;

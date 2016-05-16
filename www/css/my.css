@@ -4,6 +4,9 @@
 body {
   margin: 0; }
 
+/*
+	GENERAL
+*/
 a {
   text-decoration: none;
   color: inherit; }
@@ -18,13 +21,14 @@ a:hover *, .a:hover,
   cursor: pointer; }
 
 @font-face {
+  font-family: "robinson";
+  src: url("/gfx/fonts/robinson.otf"); }
+
+@font-face {
   font-family: "bodoni";
   src: url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.eot");
-  src: url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.eot?#iefix") format("embedded-opentype"), url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.woff2") format("woff2"), url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.woff") format("woff"), url("http://www.myfontfree.com/data/543/b/bodoniboldbt/bodoni bold bt.ttf") format("truetype"), url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.svg#Bodoni") format("svg"); }
+  src: url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.eot?#iefix") format("embedded-opentype"), url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.woff2") format("woff2"), url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.woff") format("woff"), url("http://db.onlinewebfonts.com/t/7c4e4fcaeefb49b065a55b7853f4279f.ttf") format("truetype"), url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.svg#Bodoni") format("svg"); }
 
-/*
-	GENERAL
-*/
 body {
   font-family: Arial, Helvetica, sans-serif;
   color: #666; }
@@ -37,8 +41,33 @@ body {
     font-family: "Bodoni 72", bodoni, Times, serif; } }
 
 /*
-	TOP ( DESKTOP )
+	SPECIFIC
 */
+[scrollable-right],
+[scrollable-left] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-indent: 0;
+  width: 24px;
+  overflow: hidden;
+  font-size: 155px;
+  text-align: left;
+  cursor: pointer;
+  color: #ff00ff;
+  padding: 33% 0 22%; }
+
+[scrollable-left] {
+  right: auto;
+  left: 0;
+  text-indent: -63px; }
+
+/*
+	TOP
+*/
+/*
+		Desktop
+	*/
 .my-top {
   position: relative;
   margin: 0 0 15px;
@@ -122,17 +151,23 @@ body {
     padding: 0 0 0 15px;
     font-size: 17px;
     height: 23px; }
+    .my-top .top-right > a {
+      display: block; }
 
+/* 
+			Mobile
+		*/
 #top-mobile {
   padding: 6px 0 7px; }
-  #top-mobile .top-logo {
+  #top-mobile .top-logo-options img {
     height: 20px;
-    left: auto; }
+    margin: 1px auto;
+    display: block; }
   #top-mobile .top-left {
     font-size: 19.5px;
     position: absolute;
     left: 1px;
-    top: 4px; }
+    top: 5px; }
     #top-mobile .top-left span:first-child {
       color: #ff00ff; }
     #top-mobile .top-left .ion-search {
@@ -145,20 +180,25 @@ body {
     font-size: 20px;
     position: absolute;
     right: 0px;
-    top: 2px; }
+    top: 3px; }
 
 #top-mobile-select {
   position: absolute;
-  top: 5px;
+  top: 6px;
   left: 1px;
   background: #fff;
   height: 1.75em;
-  transition: top 1s; }
+  transition: top 1s;
+  width: 100%; }
   #top-mobile-select label {
-    width: calc(33% - 36px);
+    width: calc(33% - 41px);
     display: inline-block;
     border: 0;
-    margin: 0 2px 0 5px; }
+    margin: 0 2px 0 5px;
+    vertical-align: middle;
+    padding: 0;
+    font-size: 100%;
+    line-height: 100%; }
     #top-mobile-select label span:before {
       font-size: 1.25em;
       line-height: 1.5em;
@@ -175,39 +215,41 @@ body {
       color: #00bbff; }
     #top-mobile-select label.select-search {
       color: #ccc; }
-  #top-mobile-select .select-right {
-    position: absolute;
-    right: 0; }
-    #top-mobile-select .select-right label {
-      width: auto; }
-    #top-mobile-select .select-right .select-submit {
-      color: #ff00ff; }
-      #top-mobile-select .select-right .select-submit .uui-text {
-        margin-left: -5px; }
-    #top-mobile-select .select-right .select-cancel {
-      color: #ccc; }
+  #top-mobile-select .select-submit {
+    color: #ff00ff;
+    width: auto; }
+    #top-mobile-select .select-submit .uui-text {
+      margin-left: -5px; }
+  #top-mobile-select .select-cancel {
+    color: #ccc;
+    width: auto;
+    padding-left: 10px; }
 
 #top-mobile-select.hidden {
   top: -30px; }
 
-[scrollable-right],
-[scrollable-left] {
+#top-mobile-options {
+  color: #ccc;
   position: absolute;
-  top: 0;
-  right: 0;
-  text-indent: 0;
-  width: 24px;
-  overflow: hidden;
-  font-size: 155px;
-  text-align: left;
-  cursor: pointer;
-  color: #ff00ff;
-  padding: 33% 0 22%; }
+  top: 6px;
+  left: 1px;
+  background: #fff;
+  height: 1.66em;
+  transition: top 1s;
+  font-family: robinson, sans-serif;
+  font-size: 17px;
+  width: 100%; }
+  #top-mobile-options > a {
+    margin: 0 3px 0 1px; }
+    #top-mobile-options > a .uui-text {
+      color: #666; }
+  #top-mobile-options > a:last-child {
+    position: absolute;
+    right: 0;
+    top: 1px; }
 
-[scrollable-left] {
-  right: auto;
-  left: 0;
-  text-indent: -63px; }
+#top-mobile-options.hidden {
+  top: -30px; }
 
 /*
 	CONTENT
@@ -223,17 +265,6 @@ body {
   .my-content > * {
     display: block;
     clear: both; }
-
-.my-lists {
-  margin: 10px; }
-  .my-lists .my-list {
-    margin: 10px; }
-    .my-lists .my-list .my-list-header {
-      margin: 0 -3px 6px; }
-      .my-lists .my-list .my-list-header .my-list-title {
-        text-transform: capitalize;
-        font-weight: bold;
-        letter-spacing: 0.5px; }
 
 /*
 	STYLE
