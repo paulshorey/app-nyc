@@ -280,9 +280,11 @@ angular.module('ionicApp.controllers', [])
 						//vm.events[ list.data.uid ].sources[ event.host ] = event.host;
 
 						if (event.timestamp != old_timestamp || event.date != old_date) {
-							html += '	<div class="events-timestamp"><span>' + event.date + '</span> <span>' + event.time + '</div>\n';
+							html += '	<div class="events-timestamp"><span>' + (event.date||'') + '</span> <span>' + (event.time||'') + '</div>\n';
 						}
-						html += '		<div class="events-event event-link" onClick="window.open(\'' + event.link + '\', \'_system\')" style="background-image:url(' + event.image + ');">\n';
+						// html += '		<div class="events-event event-link" onClick="window.open(\'' + event.link + '\', \'_system\')" style="background-image:url(' + event.image + ');">\n';
+						html += '		<div class="events-event">';
+						html += '			<div class="event-image" style="background-image:url(' + event.image + ');"></div>\n';
 						html += '			<div class="event-text">' + event.text + '</div>\n';
 						html += '		</div>';
 					}
@@ -440,7 +442,7 @@ angular.module('ionicApp.controllers', [])
 					}
 
 					// ok go
-					$(target).animate({ scrollLeft: ( scrollTo ) }, { duration: duration });
+					$(target).animate({ scrollLeft: scrollTo }, { duration: duration });
 					// done
 					target.doNotScroll = true;
 					$timeout(

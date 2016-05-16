@@ -29,6 +29,15 @@
   padding: 0;
   color: inherit; }
 
+textarea.uui-text, input[type].uui-text {
+  position: relative;
+  height: 1.5em;
+  line-height: 1.5em;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0;
+  color: inherit; }
+
 .uui-icon,
 .uui-button {
   width: 1.5em;
@@ -51,10 +60,11 @@
 .uui-button:before {
   vertical-align: middle;
   position: static;
+  color: inherit;
+  display: block;
   top: 0.35em;
   font-size: 0.9em;
-  color: inherit;
-  display: block; }
+  line-height: 1.5em; }
 
 a.uui-icon:before {
   vertical-align: middle; }

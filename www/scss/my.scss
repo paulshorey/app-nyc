@@ -15,7 +15,11 @@ a, .a {
 		cursor:pointer;
 	}
 }
-@import "../lib/compass-sass-mixins/lib/compass";
+[ng-click] {
+	cursor:pointer;
+}
+
+// @import "../lib/compass-sass-mixins/lib/compass";
 
 
 // @font-face {font-family: "ambroise-francois-demi";
@@ -49,17 +53,16 @@ body {
 }
 @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 125dpi){ 
 	.my-content {
-		font-family: bodoni, "Bodoni 72", Times, serif;
+		font-family: "Bodoni 72", bodoni, Times, serif;
 	}
 }
 
 
 /*
-	NAV
+	TOP ( DESKTOP )
 */
 .my-top {
 	position:relative;
-	z-index:10000;
 	margin: 0 0 15px;
 	padding: 15px 20px 18px;
 	border-bottom: solid 1px #ccc;
@@ -81,6 +84,7 @@ body {
 			display:block;
 			border:none;
 			background:transparent;
+			color:#ff00ff;
 			span:before,
 			select,
 			input {
@@ -91,8 +95,8 @@ body {
 				display:inline-block;
 				height: 20px;
 				overflow: hidden;
-				color:#ff00ff;
 				text-transform:uppercase;
+				color:#ff00ff;
 			}
 			&.select-what select {
 				font-weight:bold;
@@ -162,14 +166,96 @@ body {
 		text-align:right;
 		color:#ccc;
 		padding:0 0 0 15px;
-		@include background(linear-gradient(to right, rgba(255,255,255,0) 0, rgba(255,255,255,1) 15px));
-		> * {
-			display:block;
-			font-size:17px;
-			height:23px;
+		font-size:17px;
+		height:23px;
+	}
+}
+#top-mobile {
+	padding: 6px 0 7px;
+	.top-logo {
+		height: 20px;
+		left:auto;
+	}
+	.top-left {
+		font-size:19.5px;
+		position: absolute;
+		left: 1px;
+		top: 4px;
+		span:first-child {
+			color:#ff00ff;
+		}
+		.ion-search {
+			margin: 0 0 0 -12px;
+			font-size: 25px;
+			color: #ccc;
+		}
+		.ion-search:before {
+			line-height:1em;
+		}
+	}
+	.top-right {
+		font-size:20px;
+		position: absolute;
+		right: 0px;
+		top: 2px;
+	}
+}
+#top-mobile-select {
+	position: absolute;
+	top: 5px;
+	left: 1px;
+	background: #fff;
+	height: 1.75em;
+	transition: top 1s;
+	label {
+		width: calc(33% - 36px);
+		display:inline-block;
+		border: 0;
+		margin: 0 2px 0 5px;
+		span:before {
+			font-size: 1.25em;
+			line-height: 1.5em;
+			background:#fff;
+		}
+		&.item-select,
+		select {
+			color:#ff00ff;
+			background:#fff;
+			text-transform:uppercase;
+		}
+		&:hover select {
+			color:#00bbff;
+		}
+		&.active select,
+		&.active span:before {
+			color:#00bbff;
+		}
+		&.select-search {
+			color:#ccc;
+		}
+	}
+	.select-right {
+		position:absolute;
+		right:0;
+		label {
+			width:auto;
+		}
+		.select-submit {
+			color:#ff00ff;
+			.uui-text {
+				margin-left: -5px;
+			}
+		}
+		.select-cancel {
+			color:#ccc;
 		}
 	}
 }
+#top-mobile-select.hidden {
+	top:-30px;
+}
+
+
 [scrollable-right],
 [scrollable-left] {
 	position: absolute;
@@ -180,10 +266,9 @@ body {
 	overflow:hidden;
 	font-size: 155px;
 	text-align: left;
-	z-index:1000;
 	cursor:pointer;
 	color:#ff00ff;
-	padding:50% 0;
+	padding:33% 0 22%;
 }
 [scrollable-left] {
 	right:auto;
@@ -226,18 +311,11 @@ body {
 	}
 }
 
-$c1-upto: 500px;
-$c2-upto: 800px;
-$c3-upto: 1280px;
-$c4-upto: 10000px;
-// $range-three: {lower601px, 1024px];
-// $range-all: [1025px, 10000px];
 
-$media-one:  "(min-width:0px) and (max-width:#{$c1-upto})" !default;
-$media-two: "(min-width:#{$c1-upto + 1}) and (max-width:#{$c2-upto})" !default;
-$media-three: "(min-width:#{$c2-upto + 1}) and (max-width:#{$c3-upto})" !default;
-$media-all: "(min-width:#{$c3-upto + 1})" !default;
 
+/*
+	STYLE
+*/
 .mylists {
 	width: calc( 100% - 48px );
 	overflow: auto;
@@ -250,7 +328,8 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 	display:inline-block;
 	vertical-align:top;
 	white-space:normal;
-	padding:0 5px;
+	padding:0 4px 0 6px;
+	height:calc(100vh - 120px);
 	.myli-header {
 		font-size:19px;
 		margin:5px 0 10px;
@@ -266,6 +345,21 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 		display: none;
 	}
 }
+
+
+/*
+	COLUMNS
+*/
+$c1-upto: 500px;
+$c2-upto: 800px;
+$c3-upto: 1280px;
+$c4-upto: 10000px;
+
+$media-one:  "(min-width:0px) and (max-width:#{$c1-upto})" !default;
+$media-two: "(min-width:#{$c1-upto + 1}) and (max-width:#{$c2-upto})" !default;
+$media-three: "(min-width:#{$c2-upto + 1}) and (max-width:#{$c3-upto})" !default;
+$media-all: "(min-width:#{$c3-upto + 1})" !default;
+
 @media #{$media-one} {
 	.myli {
 		width:100%;
@@ -281,8 +375,21 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 		width:33.33%;
 	}
 }
-@media #{$media-all}{
+@media #{$media-all} {
 	.myli {
 		width:25%;
+	}
+}
+
+
+/*
+	EVENT
+*/
+.events {
+	.events-timestamp {
+		font-weight:bold;
+	}
+	.events-event {
+		margin: 5px 0;
 	}
 }

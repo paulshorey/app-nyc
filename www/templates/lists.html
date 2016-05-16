@@ -3,7 +3,7 @@
 	<span scrollable-left class="icon-column-arrow-left a"></span>
 	<span scrollable-right class="icon-column-arrow-right a"></span>
 	
-		<div class="my-top is-desktop" ng-if="! client.isMobile">
+		<div class="my-top" id="top-desktop" ng-if="! client.isMobile">
 
 			<div class="top-logo">
 			</div>
@@ -55,6 +55,75 @@
 				</label>
 			</div>
 
+		</div>
+		<div class="my-top" id="top-mobile" ng-if="client.isMobile">
+
+			<div class="top-logo">
+			</div>
+
+			<div class="top-left">
+				<span class="uui-icon icon-plus" ng-click="client.mobileSelect=true"></span>
+				<span class="uui-icon ion-search" ng-click="client.mobileSelect=true"></span>
+			</div>
+
+			<div class="top-right">
+				<span class="uui-icon ion-unlocked"></span>
+			</div>
+
+		</div>
+
+		<div id="top-mobile-select" ng-if="client.isMobile" ng-class="{ 'hidden': !client.mobileSelect }">
+			<div class="select-right">
+				<label class="select-submit" ng-click="vm.listAdd()">
+					<span class="uui-icon ion-play"></span>
+					<span class="uui-text">GO</span>
+				</label>
+				<label class="select-cancel">
+					<button class="uui-icon icon-cross" ng-click="client.mobileSelect=false"></button>
+				</label>
+			</div>
+
+			<label class="item item-input item-select a select-what" ng-class="{ 'active': vm.list.data.category }">
+				<span class="uui-icon icon-select"></span>
+				<select class="uui-text" ng-model="vm.list.data.category">
+					<option selected value="">WHAT TO DO ?</option>
+					<option selected value="">anything</option>
+					<option selected value="">-</option>
+					<option ng-repeat="cat in vm.categories" value="{{cat.title}}">{{cat.title}}</option>
+				</select>
+			</label>
+			<label class="item item-input item-select a select-when" ng-class="{ 'active': vm.list.data.time }">
+				<span class="uui-icon icon-select"></span>
+				<select class="uui-text" ng-model="vm.list.data.time">
+					<option selected value="">THIS WEEK</option>
+					<option selected value="">anytime</option>
+					<option selected value="">-</option>
+					<option selected value="today">today</option>
+					<option selected value="tomorrow">tomorrow</option>
+					<option selected value="this week">this week</option>
+					<option selected value="this month">this month</option>
+				</select>
+			</label>
+			<label class="item item-input item-select a select-search" hoverfocus ng-class="{ 'active': vm.list.data.search }">
+				<span class="uui-icon ion-search"></span>
+				<input class="uui-text" type="text" ng-model="vm.list.data.search" placeholder="SEARCH" />
+			</label>
+		</div>
+
+		<div id="top-mobile-options" ng-if="client.isMobile" ng-class="{ 'hidden': !client.mobileOptions }">
+			<a href="/" prevent-default ng-click="vm.clearActive(); vm.addList()">
+				<span class="uui-text">about us / get involved </span> <span class="uui-icon icon-hipster2"></span>
+			</a>
+			<a href="/" prevent-default ng-click="vm.clearActive(); vm.addList()">
+				<span class="uui-text">add / remove a source </span> <span class="uui-icon icon-link"></span>
+			</a>
+
+			<a ng-if="user.displayName" href="/" prevent-default ng-click="vm.logout()">
+				<span class="uui-text">welcome, {{ user.displayName }}</span>
+			</a>
+			<a ng-if="!user.displayName" href="/" prevent-default ng-click="vm.clearActive(); vm.addList()">
+				<span class="uui-text">login to save your lists </span> <span class="uui-icon icon-pushpin"></span>
+			</a>
 		</div>
 
 		<div class="mylists" scrollable>
