@@ -193,8 +193,9 @@ body {
 		/* 
 			Mobile
 		*/
-		#top-mobile {
+		.top-mobile {
 			padding: 6px 0 7px;
+			border-bottom: solid 1px #ccc;
 			.top-logo-options {
 				img {
 					height: 20px;
@@ -227,14 +228,36 @@ body {
 			}
 		}
 
-		#top-mobile-select {
+		.top-mobile.mobile-options {
+			color:#ccc;
 			position: absolute;
-			top: 6px;
-			left: 1px;
 			background: #fff;
-			height: 1.75em;
 			transition: top 1s;
+			font-family: Robinson, sans-serif;
+			font-size:17px;
 			width:100%;
+			padding: 5px 1px 4px;
+			top: 0;
+			left: 0;
+			> a {
+				margin: 0 3px 0 1px;
+				.uui-text {
+					color:#666;
+				}
+				&:hover .uui-text {
+					color:inherit;
+				}
+			}
+			> a:last-child {
+				float: right;
+				padding: 2px 0;
+			}
+		}
+		.top-mobile.mobile-options.hidden {
+			top:-45px;
+		}
+
+		.top-mobile.mobile-select {
 			label {
 				width: calc(33% - 41px);
 				display:inline-block;
@@ -278,39 +301,6 @@ body {
 				width:auto;
 				padding-left:10px;
 			}
-		}
-		#top-mobile-select.hidden {
-			top:-30px;
-		}
-
-		#top-mobile-options {
-			color:#ccc;
-			position: absolute;
-			top: 6px;
-			left: 1px;
-			background: #fff;
-			height: 1.66em;
-			transition: top 1s;
-			font-family: Robinson, sans-serif;
-			font-size:17px;
-			width:100%;
-			> a {
-				margin: 0 3px 0 1px;
-				.uui-text {
-					color:#666;
-				}
-				&:hover .uui-text {
-					color:inherit;
-				}
-			}
-			> a:last-child {
-				position: absolute;
-				right: 0;
-				top: 1px;
-			}
-		}
-		#top-mobile-options.hidden {
-			top:-30px;
 		}
 
 

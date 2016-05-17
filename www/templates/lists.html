@@ -4,7 +4,7 @@
 	<span scrollable-right class="icon-column-arrow-right a"></span>
 	
 
-		<div class="my-top" id="top-desktop" ng-if="! client.isMobile">
+		<div class="my-top top-desktop" ng-if="! client.isMobile">
 			<div class="top-logo">
 			</div>
 			<div class="top-right">
@@ -53,7 +53,7 @@
 		</div>
 
 
-		<div class="my-top" id="top-mobile" ng-if="client.isMobile">
+		<div class="my-top top-mobile" ng-if="client.isMobile">
 			<div class="top-logo-options">
 				<img src="/gfx/logo-mobile-options.svg" ng-click="client.mobileOptions=true" />
 			</div>
@@ -67,7 +67,7 @@
 		</div>
 
 
-		<div id="top-mobile-select" ng-if="client.isMobile" ng-class="{ 'hidden': !client.mobileSelect }">
+		<div class="top-mobile mobile-options mobile-select" id="top-mobile-select" ng-if="client.isMobile" ng-class="{ 'hidden': !client.mobileSelect }">
 
 			<label class="item item-input item-select a select-what" ng-class="{ 'active': vm.list.data.category }">
 				<span class="uui-icon icon-select"></span>
@@ -104,7 +104,7 @@
 		</div>
 
 
-		<div id="top-mobile-options" ng-if="client.isMobile" ng-class="{ 'hidden': ! client.mobileOptions }">
+		<div class="top-mobile mobile-options" ng-if="client.isMobile" ng-class="{ 'hidden': ! client.mobileOptions }">
 			<a href="/" prevent-default ng-click="vm.clearActive(); vm.addList()">
 				<span class="uui-icon icon-hipster2"></span> <span class="uui-text">about us / get involved </span>
 			</a>

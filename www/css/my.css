@@ -154,101 +154,92 @@ body {
 /* 
 			Mobile
 		*/
-#top-mobile {
-  padding: 6px 0 7px; }
-  #top-mobile .top-logo-options img {
+.top-mobile {
+  padding: 6px 0 7px;
+  border-bottom: solid 1px #ccc; }
+  .top-mobile .top-logo-options img {
     height: 20px;
     margin: 1px auto;
     display: block; }
-  #top-mobile .top-left {
+  .top-mobile .top-left {
     font-size: 19.5px;
     position: absolute;
     left: 1px;
     top: 5px; }
-    #top-mobile .top-left span:first-child {
+    .top-mobile .top-left span:first-child {
       color: #ff00ff; }
-    #top-mobile .top-left .ion-search {
+    .top-mobile .top-left .ion-search {
       margin: 0 0 0 -12px;
       font-size: 25px;
       color: #ccc; }
-    #top-mobile .top-left .ion-search:before {
+    .top-mobile .top-left .ion-search:before {
       line-height: 1em; }
-  #top-mobile .top-right {
+  .top-mobile .top-right {
     font-size: 20px;
     position: absolute;
     right: 0px;
     top: 3px; }
 
-#top-mobile-select {
-  position: absolute;
-  top: 6px;
-  left: 1px;
-  background: #fff;
-  height: 1.75em;
-  transition: top 1s;
-  width: 100%; }
-  #top-mobile-select label {
-    width: calc(33% - 41px);
-    display: inline-block;
-    border: 0;
-    margin: 0 2px 0 5px;
-    vertical-align: middle;
-    padding: 0;
-    font-size: 100%;
-    line-height: 100%; }
-    #top-mobile-select label span:before {
-      font-size: 1.25em;
-      line-height: 1.5em;
-      background: #fff; }
-    #top-mobile-select label.item-select,
-    #top-mobile-select label select {
-      color: #ff00ff;
-      background: #fff;
-      text-transform: uppercase; }
-    #top-mobile-select label:hover select {
-      color: #00bbff; }
-    #top-mobile-select label.active select,
-    #top-mobile-select label.active span:before {
-      color: #00bbff; }
-    #top-mobile-select label.select-search {
-      color: #ccc; }
-  #top-mobile-select .select-submit {
-    color: #ff00ff;
-    width: auto; }
-    #top-mobile-select .select-submit .uui-text {
-      margin-left: -5px; }
-  #top-mobile-select .select-cancel {
-    color: #ccc;
-    width: auto;
-    padding-left: 10px; }
-
-#top-mobile-select.hidden {
-  top: -30px; }
-
-#top-mobile-options {
+.top-mobile.mobile-options {
   color: #ccc;
   position: absolute;
-  top: 6px;
-  left: 1px;
   background: #fff;
-  height: 1.66em;
   transition: top 1s;
   font-family: Robinson, sans-serif;
   font-size: 17px;
-  width: 100%; }
-  #top-mobile-options > a {
+  width: 100%;
+  padding: 5px 1px 4px;
+  top: 0;
+  left: 0; }
+  .top-mobile.mobile-options > a {
     margin: 0 3px 0 1px; }
-    #top-mobile-options > a .uui-text {
+    .top-mobile.mobile-options > a .uui-text {
       color: #666; }
-    #top-mobile-options > a:hover .uui-text {
+    .top-mobile.mobile-options > a:hover .uui-text {
       color: inherit; }
-  #top-mobile-options > a:last-child {
-    position: absolute;
-    right: 0;
-    top: 1px; }
+  .top-mobile.mobile-options > a:last-child {
+    float: right;
+    padding: 2px 0; }
 
-#top-mobile-options.hidden {
-  top: -30px; }
+.top-mobile.mobile-options.hidden {
+  top: -45px; }
+
+.top-mobile.mobile-select label {
+  width: calc(33% - 41px);
+  display: inline-block;
+  border: 0;
+  margin: 0 2px 0 5px;
+  vertical-align: middle;
+  padding: 0;
+  font-size: 100%;
+  line-height: 100%; }
+  .top-mobile.mobile-select label span:before {
+    font-size: 1.25em;
+    line-height: 1.5em;
+    background: #fff; }
+  .top-mobile.mobile-select label.item-select,
+  .top-mobile.mobile-select label select {
+    color: #ff00ff;
+    background: #fff;
+    text-transform: uppercase; }
+  .top-mobile.mobile-select label:hover select {
+    color: #00bbff; }
+  .top-mobile.mobile-select label.active select,
+  .top-mobile.mobile-select label.active span:before {
+    color: #00bbff; }
+  .top-mobile.mobile-select label.select-search {
+    color: #ccc; }
+
+.top-mobile.mobile-select .select-submit {
+  color: #ff00ff;
+  width: auto; }
+  .top-mobile.mobile-select .select-submit .uui-text {
+    margin-left: -5px; }
+
+.top-mobile.mobile-select .select-cancel {
+  color: #ccc;
+  width: auto;
+  padding-left: 10px; }
 
 /*
 	CONTENT
