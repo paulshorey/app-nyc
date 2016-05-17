@@ -24,10 +24,14 @@ a, .a {
 [ng-click] {
 	cursor:pointer;
 }
-@font-face {font-family: "robinson";
-    src: url("/gfx/fonts/robinson.otf");
+@font-face {font-family: "Robinson";
+    src: url("gfx/fonts/robinson.otf");
+    src: url("gfx/fonts/robinson.woff2") format("woff2"),
+    url("gfx/fonts/robinson.woff") format("woff"),
+    url("gfx/fonts/robinson.ttf") format("truetype"),
+    url("gfx/fonts/robinson.svg#Robinson") format("svg");
 }
-@font-face {font-family: "bodoni";
+@font-face {font-family: "Bodoni";
     src: url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.eot");
     src: url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.eot?#iefix") format("embedded-opentype"),
     url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.woff2") format("woff2"),
@@ -40,12 +44,7 @@ body {
 	color:#666;
 }
 .my-content {
-	font-family: "Bodoni 72", Times, serif;
-}
-@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 125dpi){ 
-	.my-content {
-		font-family: "Bodoni 72", bodoni, Times, serif;
-	}
+	font-family: "Bodoni 72", Bodoni, Times, serif;
 }
 
 /*
@@ -88,7 +87,7 @@ body {
 			margin: 0 auto;
 			width: 50%;
 			height: 62px;
-			background: url('/gfx/logo-desktop.svg') center no-repeat;
+			background: url('gfx/logo-desktop.svg') center no-repeat;
 			background-size: contain;
 			position:relative;
 			left: calc(-45px + 5%);
@@ -292,13 +291,16 @@ body {
 			background: #fff;
 			height: 1.66em;
 			transition: top 1s;
-			font-family:robinson, sans-serif;
+			font-family: Robinson, sans-serif;
 			font-size:17px;
 			width:100%;
 			> a {
 				margin: 0 3px 0 1px;
 				.uui-text {
 					color:#666;
+				}
+				&:hover .uui-text {
+					color:inherit;
 				}
 			}
 			> a:last-child {
@@ -403,10 +405,14 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 	EVENT
 */
 .events {
+	font-family:serif;
 	.events-timestamp {
 		font-weight:bold;
+		text-transform: uppercase;
 	}
 	.events-event {
+		font-weight:normal;
+		text-transform:lowercase;
 		margin: 5px 0;
 	}
 }

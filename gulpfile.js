@@ -31,8 +31,15 @@ gulp.task('sass', function(done) {
     .on('end', done);
 });
 
+gulp.task('concat', function() {
+  return gulp.src('./www/css/*.css')
+    .pipe(concat('all.css'))
+    .pipe(gulp.dest('./www'));
+});
+
+
 gulp.task('watch', function() {
-  gulp.watch(paths.sass, ['sass']);
+  gulp.watch(paths.sass, ['sass', 'concat']);
 });
 
 gulp.task('install', ['git-check'], function() {

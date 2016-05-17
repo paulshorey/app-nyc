@@ -21,11 +21,12 @@ a:hover *, .a:hover,
   cursor: pointer; }
 
 @font-face {
-  font-family: "robinson";
-  src: url("/gfx/fonts/robinson.otf"); }
+  font-family: "Robinson";
+  src: url("gfx/fonts/robinson.otf");
+  src: url("gfx/fonts/robinson.woff2") format("woff2"), url("gfx/fonts/robinson.woff") format("woff"), url("gfx/fonts/robinson.ttf") format("truetype"), url("gfx/fonts/robinson.svg#Robinson") format("svg"); }
 
 @font-face {
-  font-family: "bodoni";
+  font-family: "Bodoni";
   src: url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.eot");
   src: url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.eot?#iefix") format("embedded-opentype"), url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.woff2") format("woff2"), url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.woff") format("woff"), url("http://db.onlinewebfonts.com/t/7c4e4fcaeefb49b065a55b7853f4279f.ttf") format("truetype"), url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.svg#Bodoni") format("svg"); }
 
@@ -34,11 +35,7 @@ body {
   color: #666; }
 
 .my-content {
-  font-family: "Bodoni 72", Times, serif; }
-
-@media (-webkit-min-device-pixel-ratio: 1.5), (-webkit-min-device-pixel-ratio: 1.3020833333333333), (min-resolution: 125dpi) {
-  .my-content {
-    font-family: "Bodoni 72", bodoni, Times, serif; } }
+  font-family: "Bodoni 72", Bodoni, Times, serif; }
 
 /*
 	SPECIFIC
@@ -78,7 +75,7 @@ body {
     margin: 0 auto;
     width: 50%;
     height: 62px;
-    background: url("/gfx/logo-desktop.svg") center no-repeat;
+    background: url("gfx/logo-desktop.svg") center no-repeat;
     background-size: contain;
     position: relative;
     left: calc(-45px + 5%); }
@@ -236,13 +233,15 @@ body {
   background: #fff;
   height: 1.66em;
   transition: top 1s;
-  font-family: robinson, sans-serif;
+  font-family: Robinson, sans-serif;
   font-size: 17px;
   width: 100%; }
   #top-mobile-options > a {
     margin: 0 3px 0 1px; }
     #top-mobile-options > a .uui-text {
       color: #666; }
+    #top-mobile-options > a:hover .uui-text {
+      color: inherit; }
   #top-mobile-options > a:last-child {
     position: absolute;
     right: 0;
@@ -317,8 +316,12 @@ body {
 /*
 	EVENT
 */
-.events .events-timestamp {
-  font-weight: bold; }
-
-.events .events-event {
-  margin: 5px 0; }
+.events {
+  font-family: serif; }
+  .events .events-timestamp {
+    font-weight: bold;
+    text-transform: uppercase; }
+  .events .events-event {
+    font-weight: normal;
+    text-transform: lowercase;
+    margin: 5px 0; }

@@ -1,3 +1,9 @@
+input, button, select, textarea {
+  font-family: inherit; }
+
+.item-select:after {
+  content: none; }
+
 .item-select {
   padding: 0;
   font-size: 100%;
