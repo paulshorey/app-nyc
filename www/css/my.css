@@ -311,8 +311,6 @@ body {
         margin: 1px 6px;
         display: none; }
       .my-lists .my-lis .my-li .my-li-header {
-        position: absolute;
-        top: 0;
         width: 100%;
         font-size: 21px;
         margin: 0;
@@ -325,12 +323,14 @@ body {
         .my-lists .my-lis .my-li .my-li-header .active {
           color: #82BE78; }
         .my-lists .my-lis .my-li .my-li-header .my-li-title span {
-          display: block; }
+          display: block;
+          height: 1em;
+          line-height: 1em; }
       .my-lists .my-lis .my-li .my-li-events {
         height: 100%;
         overflow: hidden;
         overflow-y: auto;
-        padding: 30px 0 0 0; }
+        padding: 3px 0 0 0; }
 
 /*
 	RESPONSIVE GRID
@@ -380,8 +380,6 @@ body {
     color: #ccc;
     font-weight: bold;
     margin: 0 5px 0 0; }
-  .events-event .event-subtext > span:first-child {
-    font-weight: normal; }
 
 /*
 	LIST EVENTS
@@ -392,7 +390,6 @@ body {
     margin: 5px 0 10px; }
 
 .events-timestamp {
-  display: none;
   font-weight: bold;
   text-transform: uppercase;
   margin: 10px 0 0px;

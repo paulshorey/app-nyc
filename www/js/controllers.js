@@ -298,7 +298,7 @@ angular.module('ionicApp.controllers', [])
 		EventService.getEvents(query)
 			.then(function (response) {
 				var events = response.data.data;
-				var old_timestamp = 0;
+				var old_timestring = '';
 				var old_date = '';
 				if (events.length) {
 
@@ -312,30 +312,42 @@ angular.module('ionicApp.controllers', [])
 					var html = '		<div class="my-events">\n';
 					for (var each in events) {
 						var event = events[each];
-						event.timestamp = Date.create(event.timestamp).short();
-						event.timestamp = event.timestamp.replace(' 12:00am','');
-						if (event.timestamp != old_timestamp) {
-							var timeUnique = cutOldBeginning(old_timestamp, event.timestamp);
-							html += '	<div class="events-timestamp"><span>' + timeUnique + '</span></div>\n';
+						var today = moment().startOf('day');
+						var timestring = Date.create(event.timestamp).short();
+						if (event.timestamp < today.add(1, 'days').format('x')) {
+							timestring = 'today';
+						} else if (event.timestamp < today.add(2, 'days').format('x')) {
+							timestring = 'tomorrow';
+						} else if (event.timestamp < today.add(7, 'days').format('x')) {
+							timestring = 'this week';
+						} else if (event.timestamp < today.add(30, 'days').format('x')) {
+							timestring = 'this month';
+						}
+						//event.timestamp = event.timestamp.replace(' 12:00am','');
+						if (timestring != old_timestring) {
+							//var timeUnique = cutOldBeginning(old_timestamp, event.timestamp);
+							html += '	<div class="events-timestamp"><span>' + timestring + '</span></div>\n';
 						}
 						// html += '		<div class="events-event event-link" onClick="window.open(\'' + event.link + '\', \'_system\')" style="background-image:url(' + event.image + ');">\n';
-						var ehtml = '';
-						ehtml += '		<div class="events-event">';
+						var ev = '';
+						ev += '		<div class="events-event">';
 						if (event.image) {
-							ehtml += '		<div class="event-image" style="background-image:url(\'' + event.image + '\');"></div>\n';
+							ev += '		<div class="event-image" style="background-image:url(\'' + event.image + '\');"></div>\n';
 						}
-						ehtml += '			<div class="event-text">' + event.text + '</div>\n';
-						//if (event.time) {
-						ehtml += '			<div class="event-subtext"><span>'+event.timestamp+'</span><span>'+(event.time||'')+'</span></div>\n';
-						//}
-						ehtml += '		</div>';
+						ev += '			<div class="event-text">' + event.text + '</div>\n';
+						if (timestring=='this week' || timestring=='this month') {
+							ev += '		<div class="event-subtext"><span><span class="ion-calendar"></span> '+Date.create(event.timestamp).long()+'</span></div>\n';
+						} else if (event.time) {
+							ev += '		<div class="event-subtext"><span><span class="ion-calendar"></span> '+moment(event.timestamp).format('h:mma')+'</span></div>\n';
+						}
+						ev += '		</div>';
 						//
-						html += ehtml;
-						old_timestamp = event.timestamp;
+						html += ev;
+						old_timestring = timestring;
 
 						// <featured></featured>
 						if (event.image) {
-							vm.featuredEvents.push({html:$sce.trustAsHtml(ehtml),image:event.image,random:event.random});
+							vm.featuredEvents.push({html:$sce.trustAsHtml(ev),image:event.image,random:event.random});
 						}
 
 					}
