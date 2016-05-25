@@ -331,15 +331,29 @@ angular.module('ionicApp.controllers', [])
 						// html += '		<div class="events-event event-link" onClick="window.open(\'' + event.link + '\', \'_system\')" style="background-image:url(' + event.image + ');">\n';
 						var ev = '';
 						ev += '		<div class="events-event">';
-						if (event.image) {
-							ev += '		<div class="event-image" style="background-image:url(\'' + event.image + '\');"></div>\n';
+							if (event.image) {
+								ev += '	<div class="event-image" style="background-image:url(\'' + event.image + '\');"></div>\n';
+							}
+						ev += '			<div class="event-text">\n';
+						if ( event.texts[0] ) {
+							ev += '			<span><a class="event-link" href="' + event.link + '" target="_blank" prevent-default onClick="window.open(\'' + event.link + '\', \'_system\')">'+event.texts[0]+'</a></span>\n';
 						}
-						ev += '			<div class="event-text">' + event.text + '</div>\n';
-						if (timestring=='this week' || timestring=='this month') {
-							ev += '		<div class="event-subtext"><span><span class="ion-calendar"></span> '+Date.create(event.timestamp).long()+'</span></div>\n';
-						} else if (event.time) {
-							ev += '		<div class="event-subtext"><span><span class="ion-calendar"></span> '+moment(event.timestamp).format('h:mma')+'</span></div>\n';
+						if ( event.texts[1] ) {
+							ev += '			<span>'+event.texts[1]+'</span>\n';
 						}
+						if ( event.texts[2] ) {
+							ev += '			<span>'+event.texts[2]+'</span>\n';
+						}
+						ev += '			</div>\n';
+						ev += '			<div class="event-subtext">\n';
+							if (timestring.indexOf('week')!=-1 || timestring.indexOf('month')!=-1) {
+								ev += '		<span><span class="ion-calendar"></span> '+Date.create(event.timestamp).long()+'</span>\n';
+							} else if (event.time) {
+								ev += '		<span><span class="ion-calendar"></span> '+moment(event.timestamp).format('h:mma')+'</span>\n';
+							}
+							ev += '			<span class="subtext-source"><span class="icon-link"></span><!-- '+event.source_host+'--></span>\n';
+							ev += '			<span><span class="icon-star-outline"></span></span>\n';
+						ev += '			</div>\n';
 						ev += '		</div>';
 						//
 						html += ev;

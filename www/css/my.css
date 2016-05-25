@@ -307,13 +307,13 @@ body {
       padding: 0 4px 0 6px;
       height: 100%; }
       .my-lists .my-lis .my-li .my-li-buttons {
-        float: right;
-        margin: 1px 6px;
-        display: none; }
+        margin: 0 -3px 0 -3px;
+        display: inline-block;
+        vertical-align: middle; }
       .my-lists .my-lis .my-li .my-li-header {
         width: 100%;
         font-size: 21px;
-        margin: 0;
+        margin: 1px 0 0 0;
         color: orange;
         text-transform: uppercase;
         padding: 0;
@@ -322,10 +322,13 @@ body {
         background: linear-gradient(to bottom, #ffffff, #ffffff 85%, rgba(255, 255, 255, 0)); }
         .my-lists .my-lis .my-li .my-li-header .active {
           color: #82BE78; }
-        .my-lists .my-lis .my-li .my-li-header .my-li-title span {
-          display: block;
-          height: 1em;
-          line-height: 1em; }
+        .my-lists .my-lis .my-li .my-li-header .my-li-title {
+          display: inline-block;
+          vertical-align: middle; }
+          .my-lists .my-lis .my-li .my-li-header .my-li-title span {
+            display: block;
+            height: 1em;
+            line-height: 1em; }
       .my-lists .my-lis .my-li .my-li-events {
         height: 100%;
         overflow: hidden;
@@ -375,13 +378,20 @@ body {
       font-weight: bold;
       text-transform: none; }
   .events-event .event-subtext {
-    opacity: 0; }
+    word-wrap: nowrap;
+    width: 100%;
+    overflow: hidden; }
     .events-event .event-subtext > span {
       display: inline-block;
       text-transform: capitalize;
       color: #ccc;
       font-weight: bold;
       margin: 0 5px 0 0; }
+    .events-event .event-subtext .subtext-source {
+      text-transform: lowercase; }
+      .events-event .event-subtext .subtext-source .icon-link {
+        font-size: 80%;
+        margin: 0 -1px 0 0; }
 
 /*
 	LIST EVENTS
@@ -389,7 +399,7 @@ body {
 .my-events {
   font-family: "Times New Roman", serif; }
   .my-events .events-event {
-    margin: 5px 0 10px; }
+    margin: 6px 0 12px; }
 
 .events-timestamp {
   font-weight: bold;
@@ -419,6 +429,6 @@ body {
       display: none; }
     .my-featured > div .events-event div.event-image {
       display: inline-block;
-      width: 208px;
+      width: 244px;
       height: 156px;
       max-width: 100%; }

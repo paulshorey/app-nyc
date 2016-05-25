@@ -77,6 +77,13 @@ a.uui-icon:before {
   text-shadow: #fff;
   color: #000; }
 
-.uui-hover-yellow:hover:before {
-  color: #fbbc05;
+.uui-muted:before {
+  color: #ccc; }
+
+.uui-hollow-orange:before {
+  color: #fff;
+  text-shadow: 0 0 1px orange; }
+
+.uui-hover-orange:hover:before {
+  color: orange;
   text-shadow: none; }

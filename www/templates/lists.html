@@ -79,17 +79,14 @@
 				<div class="my-li" ng-repeat="list in vm.lists | orderObjectBy:'sortorder':true">
 
 					<div class="my-li-header">
-						<span class="my-li-buttons my-li-buttons-left">
-							<button class="uui-icon uui-hollow icon-star-square uui-hover-yellow" ng-click="vm.listAdd(list)"></button>
-						</span>
 						<span class="my-li-title">
 							<span class="uui-title a" ng-class="{ 'active': ( vm.list.data.category && vm.list.data.category==list.data.uid ) }">{{ list.data.category || 'Anything' }} </span>
 							<span class="uui-subtitle a" ng-if="list.data.search">{{ list.data.time || 'Anytime' }} </span>
 							<span class="uui-subtitle a" ng-if="list.data.search">{{ list.data.scene || 'Any' }} </span>
 							<span class="uui-subtitle a" ng-if="list.data.search">{{ list.data.search || 'Any' }} </span>
 						</span>
-						<span class="my-li-buttons my-li-buttons-right">
-							<button class="uui-icon uui-hollow ion-close" ng-click="vm.listRemove(list)"></button>
+						<span class="my-li-buttons my-li-buttons-left">
+							<button class="uui-icon icon-star uui-hover-orange uui-hollow-orange" ng-click="vm.listAdd(list)"></button>
 						</span>
 					</div>
 

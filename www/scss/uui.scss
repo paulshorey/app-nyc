@@ -85,10 +85,22 @@ a.uui-icon:before {
 		}
 	}
 }
-
-.uui-hover-yellow:hover {
+.uui-muted {
 	&:before {
-		color:#fbbc05;
+		color:#ccc;
+	}
+}
+
+
+.uui-hollow-orange {
+	&:before {
+		color:#fff;
+		text-shadow:0 0 1px orange;
+	}
+}
+.uui-hover-orange:hover {
+	&:before {
+		color:orange;
 		text-shadow:none;
 	}
 }
