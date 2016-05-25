@@ -25,32 +25,40 @@ angular.module('ionicApp.controllers', [])
 	vm.list = {data:{}};
 	vm.lists = {};
 	vm.lists_new = {};
+	vm.featuredEvents = [];
 
-	// $scope.modals = {};
-	// vm.closeModals = function () {
-	// 	for (var m in $scope.modals) {
-	// 		$scope.modals[m].hide();
-	// 	}
-	// };
-	// $scope.$on('$destroy', function () {
-	// 	for (var m in $scope.modals) {
-	// 		$scope.modals[m].remove();
-	// 	}
-	// });
-	// $ionicModal.fromTemplateUrl('templates/modals/addList.html', {
-	// 		scope: $scope,
-	// 		animation: 'slide-in-up'
-	// 	})
-	// 	.then(function (modal) {
-	// 		$scope.modals['addList'] = modal;
-	// 	});
-	// $ionicModal.fromTemplateUrl('templates/modals/editList.html', {
-	// 		scope: $scope,
-	// 		animation: 'slide-in-up'
-	// 	})
-	// 	.then(function (modal) {
-	// 		$scope.modals['editList'] = modal;
-	// 	});
+
+	$scope.modals = {};
+	$ionicModal.fromTemplateUrl('templates/modals/mobileOptions.html', {
+			scope: $scope,
+			animation: 'slide-in-right'
+		})
+		.then(function (modal) {
+			$scope.modals['mobileOptions'] = modal;
+		});
+	$ionicModal.fromTemplateUrl('templates/modals/mobileSelect.html', {
+			scope: $scope,
+			animation: 'slide-in-left'
+		})
+		.then(function (modal) {
+			$scope.modals['mobileSelect'] = modal;
+		});
+	$scope.$on('modal.shown', function() {
+		$('.my-content').addClass('blurry');
+	});
+	$scope.$on('modal.hidden', function() {
+		$('.my-content').removeClass('blurry');
+	});
+	vm.closeModals = function () {
+		for (var m in $scope.modals) {
+			$scope.modals[m].hide();
+		}
+	};
+	$scope.$on('$destroy', function () {
+		for (var m in $scope.modals) {
+			$scope.modals[m].remove();
+		}
+	});
 
 
 
@@ -107,7 +115,6 @@ angular.module('ionicApp.controllers', [])
 						// 	$timeout(function(){
 						// 		vm.lists = lists;
 						// 	});
-						// 	console.log('window.localStorage',window.localStorage);
 						// 	window.localStorage.removeItem('lists');
 						// }
 					}
@@ -208,9 +215,6 @@ angular.module('ionicApp.controllers', [])
 		vm.listsClean(list);
 		$timeout(function () {
 			vm.listsReady += 1;
-			if (vm.listsReady==1) {
-				console.log('lists are ready!');
-			}
 		});
 		// </lists>
 
@@ -231,7 +235,6 @@ angular.module('ionicApp.controllers', [])
 		}
 
 		// <lists>
-		console.log('listAdd', vm.list);
 		if (vm.list.data.category || vm.list.data.time || vm.list.data.scene || vm.list.data.search) {
 			if (vm.list.data.category == 'any') {
 				vm.list.data.category = '';
@@ -244,7 +247,6 @@ angular.module('ionicApp.controllers', [])
 					vm.list.data = list.data;
 				}
 				// vm.list.data.uid = 'userLists'+Date.now() + vm.list.data.uid;
-				console.log('list',vm.list);
 				vm.list.data.uid = vm.list.data.category;
 				if (!vm.lists[ vm.list.data.uid ]) {
 					vm.lists[ vm.list.data.uid ] = vm.list;
@@ -253,7 +255,6 @@ angular.module('ionicApp.controllers', [])
 				vm.listsReady -= 1;
 				vm.listEvents(vm.list);
 				var listsIds = Object.keys(vm.lists).sort(function(a, b) {return (vm.lists[b].sortorder - vm.lists[a].sortorder)});
-				console.log('listsIds',listsIds);
 				if (vm.list.data.category==listsIds[0]) {
 				} else {
 					vm.list = {data:{}};
@@ -266,6 +267,29 @@ angular.module('ionicApp.controllers', [])
 		// [/data]
 
 	}
+	var cutOldBeginning = function(oldWhole, newWhole) {
+		if (!newWhole) {
+			return false;
+		}
+		if (!oldWhole) {
+			return newWhole;
+		}
+		var output = newWhole;
+		var oldWholeArray = oldWhole.split(' ');
+		for (var ea in oldWholeArray) {
+			ea = parseInt(ea);
+			var oldStart = oldWholeArray.slice(0,ea+1).join(' ');
+			if (ea==0) {
+				continue;
+			}
+			if (newWhole.startsWith(oldStart)) {
+				output = '<span class="fragment">'+newWhole.replace(oldStart,'')+'</span>';
+			} else {
+				break;
+			}
+		}
+		return output;
+	};
 	vm.listEvents = function (list) {
 		var query = {};
 		query.category = list.data.category;
@@ -278,6 +302,8 @@ angular.module('ionicApp.controllers', [])
 				var old_date = '';
 				if (events.length) {
 
+					
+					// ALL
 					// <events>
 					list.count = events.length;
 					list.sources = {};
@@ -286,16 +312,29 @@ angular.module('ionicApp.controllers', [])
 					var html = '		<div class="events">\n';
 					for (var each in events) {
 						var event = events[each];
+						event.timestamp = Date.create(event.timestamp).long();
+						event.timestamp = event.timestamp.replace(' 12:00am','');
 						if (event.timestamp != old_timestamp) {
-							html += '	<div class="events-timestamp"><span>' + Date.create(event.timestamp).long() + '</span>\n';
+							var timeString = cutOldBeginning(old_timestamp, event.timestamp);
+							html += '	<div class="events-timestamp"><span>' + timeString + '</span></div>\n';
 						}
 						// html += '		<div class="events-event event-link" onClick="window.open(\'' + event.link + '\', \'_system\')" style="background-image:url(' + event.image + ');">\n';
-						html += '		<div class="events-event">';
-						html += '			<div class="event-image" style="background-image:url(' + event.image + ');"></div>\n';
-						html += '			<div class="event-text">' + event.text + '</div>\n';
-						html += '		</div>';
+						var ehtml = '';
+						ehtml += '		<div class="events-event">';
+						if (event.image) {
+							ehtml += '			<div class="event-image" style="background-image:url(\'' + event.image + '\');"></div>\n';
+						}
+						ehtml += '			<div class="event-text">' + event.text + '</div>\n';
+						ehtml += '		</div>';
 						//
+						html += ehtml;
 						old_timestamp = event.timestamp;
+
+						// <featured></featured>
+						if (event.image) {
+							vm.featuredEvents.push({html:$sce.trustAsHtml(ehtml),image:event.image,random:event.random});
+						}
+
 					}
 					html += '		</div>\n';
 					// </html>
@@ -312,9 +351,6 @@ angular.module('ionicApp.controllers', [])
 			}, function (error) {
 				$timeout(function () {
 					vm.listsReady += 1;
-					if (vm.listsReady==1) {
-						console.log('lists are ready!');
-					}
 				});
 				console.error(error);
 			});
@@ -359,7 +395,6 @@ angular.module('ionicApp.controllers', [])
 	}
 })
 
-
 .directive('scrollable', function ($timeout, $ionicLoading) {
 	return {
 		restrict: 'A',
@@ -379,7 +414,6 @@ angular.module('ionicApp.controllers', [])
 					if (oldValue > 0 && newValue > oldValue) {
 						var target = element[0];
 						var duration = target.clientWidth / 2;
-						console.log(newValue+' > '+oldValue);
 
 						var scrollTo = 0;
 						target.doNotScroll = 'scroll--changed';
@@ -433,8 +467,6 @@ angular.module('ionicApp.controllers', [])
 					if (target.doNotScroll) {
 						return;
 					}
-					console.log('duration',duration);
-					console.log(' scrolled: ('+target.clientWidth+') ' + target.scrollLeft+' < '+target.scrollLeftLast);
 
 					// goto page
 					var round = 'ceil';

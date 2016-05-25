@@ -1,4 +1,4 @@
-// @import "../lib/compass-sass-mixins/lib/compass";
+@import "../lib/compass-sass-mixins/lib/compass";
 /*
 	RESET
 */
@@ -17,19 +17,24 @@ a {
 a, .a {
 	&:hover,
 	&:hover * {
-		color:#00bbff;
+		color:#82BE78;
 		cursor:pointer;
 	}
 }
 [ng-click] {
 	cursor:pointer;
+	&:hover,
+	&:hover * {
+		color:#82BE78;
+		cursor:pointer;
+	}
 }
 @font-face {font-family: "Robinson";
-    src: url("gfx/fonts/robinson.otf");
-    src: url("gfx/fonts/robinson.woff2") format("woff2"),
-    url("gfx/fonts/robinson.woff") format("woff"),
-    url("gfx/fonts/robinson.ttf") format("truetype"),
-    url("gfx/fonts/robinson.svg#Robinson") format("svg");
+    src: url("../gfx/fonts/robinson.otf");
+    src: url("../gfx/fonts/robinson.woff2") format("woff2"),
+    url("../gfx/fonts/robinson.woff") format("woff"),
+    url("../gfx/fonts/robinson.ttf") format("truetype"),
+    url("../gfx/fonts/robinson.svg#Robinson") format("svg");
 }
 @font-face {font-family: "Bodoni";
     src: url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.eot");
@@ -45,15 +50,40 @@ body {
 }
 .my-content {
 	font-family: "Bodoni 72", Bodoni, Times, serif;
+	position: fixed;
+	z-index:1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	transition:filter 0.5s;
+	> * {
+		display:block;
+		clear:both;
+	}
+	&.blurry {
+		@include filter(grayscale(50%));
+		@include filter(blur(5px));
+	}
+}
+.modal {
+	background:rgba(255,255,255,0.66);
 }
 
 /*
 	SPECIFIC
 */
+[scrollable] {
+	position:relative;
+	overflow:hidden;
+	overflow-x:auto;
+	height:calc( 100% - 40px );
+}
 [scrollable-right],
 [scrollable-left] {
 	position: absolute;
-	top: 0;
+	top: calc( 20vh + 40px );
 	right: 0;
 	text-indent:0;
 	width:24px;
@@ -61,25 +91,97 @@ body {
 	font-size: 155px;
 	text-align: left;
 	cursor:pointer;
-	color:#ff00ff;
-	padding:33% 0 22%;
+	color:#FFBE00;
+	padding:7.5vh 0 7.5vh;
+	z-index:1000;
 }
 [scrollable-left] {
 	right:auto;
 	left:0;
 	text-indent:-63px;
 }
-
+[scrollable-right] {
+	width:20px;
+}
 
 /*
-	TOP
+	MODAL mobile options
 */
+.mobile-options {
+	color:#ccc;
+	font-size:17px;
+	padding: 5px 1px 4px;
+	> a,
+	> label {
+		display:block;
+		border: 0;
+		margin: 0 2px 0 5px;
+		vertical-align:middle;
+		padding: 0;
+		font-size: 100%;
+		line-height: 100%;
+		margin: 0 3px 0 1px;
+		.uui-text {
+			color:#666;
+		}
+		&:hover .uui-text {
+			color:inherit;
+		}
+	}
+	> a:last-child {
+		position: absolute;
+		top: 8px;
+		right: 0;
+	}
+	
 	/*
-		Desktop
+		MODAL mobile select
+	*/
+	&.mobile-select {
+		// font-family: "Bodoni 72", Bodoni, serif;
+		> label {
+			span:before {
+				font-size: 1.25em;
+				line-height: 1.5em;
+				background:#fff;
+			}
+			&.item-select,
+			select {
+				color:#FFBE00;
+				text-transform:uppercase;
+			}
+			&:hover select {
+				color:#82BE78;
+			}
+			&.active select,
+			&.active span:before {
+				color:#82BE78;
+			}
+			&.select-search {
+				color:#ccc;
+			}
+		}
+		.select-submit {
+			color:#FFBE00;
+			width:auto;
+			.uui-text {
+				margin-left: -5px;
+			}
+		}
+		.select-cancel {
+			color:#ccc;
+			width:auto;
+			padding-left:10px;
+		}
+	}
+}
+
+
+	/*
+		TOP: all
 	*/
 	.my-top {
-		position:relative;
-		margin: 0 0 15px;
+		margin: 0;
 		padding: 15px 20px 18px;
 		border-bottom: solid 1px #ccc;
 		.top-logo {
@@ -87,10 +189,9 @@ body {
 			margin: 0 auto;
 			width: 50%;
 			height: 62px;
-			background: url('gfx/logo-desktop.svg') center no-repeat;
+			background: url('../gfx/logo.png') center no-repeat;
 			background-size: contain;
 			position:relative;
-			left: calc(-45px + 5%);
 		}
 		.top-left {
 			position: absolute;
@@ -100,7 +201,7 @@ body {
 				display:block;
 				border:none;
 				background:transparent;
-				color:#ff00ff;
+				color:#FFBE00;
 				span:before,
 				select,
 				input {
@@ -112,7 +213,8 @@ body {
 					height: 20px;
 					overflow: hidden;
 					text-transform:uppercase;
-					color:#ff00ff;
+					color:#FFBE00;
+					padding: 0 1px;
 				}
 				&.select-what select {
 					font-weight:bold;
@@ -122,6 +224,7 @@ body {
 				&.select-search select,
 				&.select-search input {
 					color:#cccccc;
+					cursor: text;
 				}
 				input::-webkit-input-placeholder {  
 					color:#cccccc;
@@ -139,37 +242,37 @@ body {
 				&:hover span:before,
 				&:hover select,
 				&:hover input {
-					color:#00bbff;
+					color:#82BE78;
 				}
 				&:hover input::-webkit-input-placeholder {  
-					color:#00bbff;
+					color:#82BE78;
 				}
 				&:hover input:-moz-placeholder {  
-					color:#00bbff;
+					color:#82BE78;
 				}
 				&:hover input::-moz-placeholder {  
-					color:#00bbff;
+					color:#82BE78;
 				}
 				&:hover input:-ms-input-placeholder {  
-					color:#00bbff;
+					color:#82BE78;
 				}
 
 				&.active span:before,
 				&.active select,
 				&.active input {
-					color:#00bbff;
+					color:#F9A021;
 				}
 				&.active input::-webkit-input-placeholder {  
-					color:#00bbff;
+					color:#F9A021;
 				}
 				&.active input:-moz-placeholder {  
-					color:#00bbff;
+					color:#F9A021;
 				}
 				&.active input::-moz-placeholder {  
-					color:#00bbff;
+					color:#F9A021;
 				}
 				&.active input:-ms-input-placeholder {  
-					color:#00bbff;
+					color:#F9A021;
 				}
 
 
@@ -188,32 +291,28 @@ body {
 				display:block;
 			}
 		}
-	}
 
-		/* 
-			Mobile
+		/*
+			TOP: mobile
 		*/
-		.top-mobile {
-			padding: 6px 0 7px;
+		&.top-mobile {
+			padding: 10px 0 0;
 			border-bottom: solid 1px #ccc;
-			.top-logo-options {
-				img {
-					height: 20px;
-					margin:1px auto;
-					display:block;
-				}
+			.top-logo {
+				height: 31px;
+				margin: -4px auto 6px;
 			}
 			.top-left {
 				font-size:19.5px;
 				position: absolute;
 				left: 1px;
-				top: 5px;
+				top: 9px;
 				span:first-child {
-					color:#ff00ff;
+					color:#FFBE00;
 				}
 				.ion-search {
-					margin: 0 0 0 -12px;
-					font-size: 25px;
+					margin: 0 0 0 -14px;
+					font-size: 27px;
 					color: #ccc;
 				}
 				.ion-search:before {
@@ -223,141 +322,77 @@ body {
 			.top-right {
 				font-size:20px;
 				position: absolute;
-				right: 0px;
-				top: 3px;
+				right: 2px;
+				top: 8px;
+				.ion-unlocked {
+					margin: 1px -9px 0 0;
+				}
 			}
 		}
 
-		.top-mobile.mobile-options {
-			color:#ccc;
-			position: absolute;
-			background: #fff;
-			transition: top 1s;
-			font-family: Robinson, sans-serif;
-			font-size:17px;
-			width:100%;
-			padding: 5px 1px 4px;
-			top: 0;
-			left: 0;
-			> a {
-				margin: 0 3px 0 1px;
-				.uui-text {
-					color:#666;
-				}
-				&:hover .uui-text {
-					color:inherit;
-				}
-			}
-			> a:last-child {
-				float: right;
-				padding: 2px 0;
-			}
-		}
-		.top-mobile.mobile-options.hidden {
-			top:-45px;
+		/*
+			TOP: statement
+		*/
+		&.top-statement {
+			margin: -10px 0 15px;
+			padding: 4px 0;
+			text-align: center;
 		}
 
-		.top-mobile.mobile-select {
-			label {
-				width: calc(33% - 41px);
+	}
+
+
+	/*
+		MAIN: LISTS
+	*/
+	.my-lists {
+		position: relative;
+		z-index:1;
+		overflow: hidden;
+		overflow-x: auto;
+		margin: 13px 0 0 25px;
+		height:100%;
+		.my-lis {
+			white-space:nowrap;
+			height:100%;
+			.my-li {
 				display:inline-block;
-				border: 0;
-				margin: 0 2px 0 5px;
-				vertical-align:middle;
-				padding: 0;
-				font-size: 100%;
-				line-height: 100%;
-				span:before {
-					font-size: 1.25em;
-					line-height: 1.5em;
-					background:#fff;
+				vertical-align:top;
+				white-space:normal;
+				padding:0 4px 0 6px;
+				height:100%;
+				.my-li-buttons {
+					float: right;
+					margin: 1px 6px;
+					display: none;
 				}
-				&.item-select,
-				select {
-					color:#ff00ff;
-					background:#fff;
+				.my-li-header {
+					position:absolute;
+					top:0;
+					width:100%;
+					font-size:21px;
+					margin:0;
+					color:#FFBE00;
 					text-transform:uppercase;
+					padding: 0;
+					@include background(linear-gradient(to bottom, #ffffff, #ffffff 85%, rgba(255,255,255,0.0)));
+					.active {
+						color:#82BE78;
+					}
 				}
-				&:hover select {
-					color:#00bbff;
+				.my-li-events {
+					height: 100%;
+					overflow: hidden;
+					overflow-y: auto;
+					padding: 30px 0 0 0;
 				}
-				&.active select,
-				&.active span:before {
-					color:#00bbff;
-				}
-				&.select-search {
-					color:#ccc;
-				}
-			}
-			.select-submit {
-				color:#ff00ff;
-				width:auto;
-				.uui-text {
-					margin-left: -5px;
-				}
-			}
-			.select-cancel {
-				color:#ccc;
-				width:auto;
-				padding-left:10px;
 			}
 		}
+	}
 
 
 /*
-	CONTENT
-*/
-.my-content {
-	position: fixed;
-	z-index:1;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	overflow: auto;
-	> * {
-		display:block;
-		clear:both;
-	}
-}
-
-
-/*
-	STYLE
-*/
-.mylists {
-	width: calc( 100% - 48px );
-	overflow: auto;
-	margin: 0 0 0 25px;
-}
-.mylis {
-	white-space:nowrap;
-}
-.myli {
-	display:inline-block;
-	vertical-align:top;
-	white-space:normal;
-	padding:0 4px 0 6px;
-	height:calc(100vh - 120px);
-	.myli-header {
-		font-size:19px;
-		margin:5px 0 10px;
-		color:#ff00ff;
-		text-transform:uppercase;
-		.active {
-			color:#00bbff;
-		}
-	}
-	.myli-buttons {
-		float: right;
-		margin: 1px 6px;
-		display: none;
-	}
-}
-
-
-/*
-	COLUMNS
+	RESPONSIVE GRID
 */
 $c1-upto: 500px;
 $c2-upto: 800px;
@@ -370,39 +405,90 @@ $media-three: "(min-width:#{$c2-upto + 1}) and (max-width:#{$c3-upto})" !default
 $media-all: "(min-width:#{$c3-upto + 1})" !default;
 
 @media #{$media-one} {
-	.myli {
+	.my-li {
 		width:100%;
 	}
 }
 @media #{$media-two} {
-	.myli {
+	.my-li {
 		width:50%;
 	}
 }
 @media #{$media-three} {
-	.myli {
+	.my-li {
 		width:33.33%;
 	}
 }
 @media #{$media-all} {
-	.myli {
+	.my-li {
 		width:25%;
 	}
 }
 
 
 /*
-	EVENT
+	COMPONENTS
 */
 .events {
 	font-family:serif;
-	.events-timestamp {
-		font-weight:bold;
-		text-transform: uppercase;
+}
+.events-timestamp {
+	font-weight:bold;
+	text-transform: uppercase;
+	margin:10px 0 0px;
+	color:#8291A0;
+	// span.fragment {
+	// 	font-weight:normal;
+	// }
+}
+.events-event {
+	font-weight:normal;
+	text-transform:lowercase;
+	margin: 0;
+	.event-image {
+		display:none;
+		background-position:center;
+		background-repeat:no-repeat;
+		background-size:cover;
+		width:100%;
+		height:0;
+		padding-bottom:46%;
 	}
-	.events-event {
-		font-weight:normal;
-		text-transform:lowercase;
-		margin: 5px 0;
+	.event-text {
+		> span {
+			display:block;
+		}
+		> span:first-child {
+			font-weight:bold;
+		}
 	}
+}
+
+
+/*
+	FEATURED SECTION
+*/
+.my-featured {
+	height: 20vh;
+	width: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+	border-bottom: solid 1px #ccc;
+	padding: 5px 0;
+	box-sizing: content-box;
+	overflow-x: auto;
+	> div {
+		display:inline-block;
+		max-width:33.33%;
+		.event-text {
+			display:none;
+		}
+		.event-image {
+			display: inline-block;
+			width: 180px;
+			height: 20vh;
+			max-width:100%;
+		}
+	}
+
 }

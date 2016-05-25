@@ -1,10 +1,10 @@
-<ion-view>
+<ion-view ng-class="{ 'isMobile': client.isMobile }">
 	<div class="my-content">
 	<span scrollable-left class="icon-column-arrow-left a"></span>
 	<span scrollable-right class="icon-column-arrow-right a"></span>
 	
 
-		<div class="my-top top-desktop" ng-if="! client.isMobile">
+		<div class="my-top top-desktop" ng-if="1==2 && ! client.isMobile">
 			<div class="top-logo">
 			</div>
 			<div class="top-right">
@@ -21,9 +21,6 @@
 				<a ng-if="!user.displayName" href="/" prevent-default ng-click="vm.clearActive(); vm.addList()">
 					<span class="uui-text">login to save your lists </span> <span class="uui-icon icon-pushpin"></span>
 				</a>
-				<!-- <button class="uui-icon icon-facebook" ng-click="vm.login('facebook')"></button>
-				<button class="uui-icon icon-google" ng-click="vm.login('google')"></button>
-				<button class="uui-icon icon-github" ng-click="vm.login('github')"></button> -->
 			</div>
 			<div class="top-left">
 				<label class="item item-input item-select a select-what" ng-class="{ 'active': vm.list.data.category }">
@@ -53,92 +50,44 @@
 		</div>
 
 
-		<div class="my-top top-mobile" ng-if="client.isMobile">
-			<div class="top-logo-options">
-				<img src="/gfx/logo-mobile-options.svg" ng-click="client.mobileOptions=true" />
+		<div class="my-top top-mobile" ng-if="1==1 || client.isMobile">
+			<div class="top-logo" ng-class="{ 'isMobile': client.isMobile }">
 			</div>
 			<div class="top-left">
-				<span class="uui-icon icon-plus" ng-click="client.mobileSelect=true"></span>
-				<span class="uui-icon ion-search" ng-click="client.mobileSelect=true"></span>
+				<span class="uui-icon icon-plus" ng-click="modals.mobileSelect.show()"></span>
+				<span class="uui-icon ion-search" ng-click="modals.mobileSelect.show()"></span>
 			</div>
 			<div class="top-right">
-				<span class="uui-icon ion-unlocked" ng-click="client.mobileOptions=true"></span>
+				<span class="uui-icon ion-unlocked" ng-click="modals.mobileOptions.show()"></span>
+				<span class="uui-icon icon-options-large" ng-click="modals.mobileOptions.show()"></span>
 			</div>
 		</div>
 
-
-		<div class="top-mobile mobile-options mobile-select" id="top-mobile-select" ng-if="client.isMobile" ng-class="{ 'hidden': !client.mobileSelect }">
-
-			<label class="item item-input item-select a select-what" ng-class="{ 'active': vm.list.data.category }">
-				<span class="uui-icon icon-select"></span>
-				<select class="uui-text" ng-model="vm.list.data.category">
-					<option selected value="">WHAT TO DO ?</option>
-					<option selected value="any">anything</option>
-					<option ng-repeat="cat in vm.categories" value="{{cat.title}}">{{cat.title}}</option>
-				</select>
-			</label>
-			<label class="item item-input item-select a select-when" ng-class="{ 'active': vm.list.data.time }">
-				<span class="uui-icon icon-select"></span>
-				<select class="uui-text" ng-model="vm.list.data.time">
-					<option selected value="">THIS WEEK</option>
-					<option selected value="anytime">anytime</option>
-					<option selected value="today">today</option>
-					<option selected value="tomorrow">tomorrow</option>
-					<option selected value="this week">this week</option>
-					<option selected value="this month">this month</option>
-				</select>
-			</label>
-			<label class="item item-input item-select a select-search" hoverfocus ng-class="{ 'active': vm.list.data.search }">
-				<span class="uui-icon ion-search"></span>
-				<input class="uui-text" type="text" ng-model="vm.list.data.search" placeholder="SEARCH" />
-			</label>
-
-			<label class="select-submit" ng-click="vm.listAdd();vm.listReset();">
-				<span class="uui-icon ion-play"></span>
-				<span class="uui-text">GO</span>
-			</label>
-			<label class="select-cancel">
-				<button class="uui-icon icon-cross" ng-click="client.mobileSelect=false;vm.listReset();"></button>
-			</label>
-
+		<div class="my-featured">
+			<div class="" ng-repeat="event in vm.featuredEvents | orderObjectBy:'random':true" ng-bind-html="event.html">
+			</div> 
 		</div>
 
 
-		<div class="top-mobile mobile-options" ng-if="client.isMobile" ng-class="{ 'hidden': ! client.mobileOptions }">
-			<a href="/" prevent-default ng-click="vm.clearActive(); vm.addList()">
-				<span class="uui-icon icon-hipster2"></span> <span class="uui-text">about us / get involved </span>
-			</a>
-			<a href="/" prevent-default ng-click="vm.clearActive(); vm.addList()">
-				<span class="uui-icon icon-link"></span> <span class="uui-text">add / remove a source </span>
-			</a>
-			<a ng-if="user.displayName" href="/" prevent-default ng-click="vm.logout()">
-				<span class="uui-text">welcome, {{ user.displayName }}</span>
-			</a>
-			<a ng-if="!user.displayName" href="/" prevent-default ng-click="vm.clearActive(); vm.addList()">
-				<span class="uui-icon icon-pushpin"></span> <span class="uui-text">login to save your lists </span>
-			</a>
-			<a href="/" prevent-default ng-click="client.mobileOptions=false">
-				<span class="uui-icon icon-cross"></span>
-			</a>
-		</div>
+		<div class="my-lists" scrollable>
+ 			<div class="my-lis">
+				<div class="my-li" ng-repeat="list in vm.lists | orderObjectBy:'sortorder':true">
 
-
-		<div class="mylists" scrollable>
- 			<div class="mylis">
-				<div class="myli" ng-repeat="list in vm.lists | orderObjectBy:'sortorder':true">
-					<div class="myli-header">
-						<span class="myli-buttons myli-buttons-left">
+					<div class="my-li-header">
+						<span class="my-li-buttons my-li-buttons-left">
 							<button class="uui-icon uui-hollow icon-star-square uui-hover-yellow" ng-click="vm.listAdd(list)"></button>
 						</span>
-						<span class="myli-title">
+						<span class="my-li-title">
 							<span class="uui-title a" ng-class="{ 'active': ( vm.list.data.category && vm.list.data.category==list.data.uid ) }">{{ list.data.category || 'Anything' }} </span>
 							<span class="uui-subtitle a">| {{ list.data.time || 'Anytime' }} </span>
 						</span>
-						<span class="myli-buttons myli-buttons-right">
+						<span class="my-li-buttons my-li-buttons-right">
 							<button class="uui-icon uui-hollow ion-close" ng-click="vm.listRemove(list)"></button>
 						</span>
 					</div>
-					<div class="myli-events" ng-bind-html="list.html"></div>
+
+					<div class="my-li-events" ng-bind-html="list.html"></div>
+
 				</div>
 			</div>
 		</div>

@@ -1,0 +1,42 @@
+<ion-modal-view>
+	<ion-header-bar>
+		<h1 class="title">Do what?...</h1>
+		<button class="button button-clear button-primary" ng-click="vm.closeModals()">X</button>
+	</ion-header-bar>
+	<ion-content>
+
+		<div class="mobile-options mobile-select" id="top-mobile-select" ng-if="client.isMobile" ng-class="{ 'hidden': !client.mobileSelect }">
+
+			<label class="item item-input item-select a select-what" ng-class="{ 'active': vm.list.data.category }">
+				<span class="uui-icon icon-select"></span>
+				<select class="uui-text" ng-model="vm.list.data.category">
+					<option selected value="">WHAT TO DO ?</option>
+					<option selected value="any">anything</option>
+					<option ng-repeat="cat in vm.categories" value="{{cat.title}}">{{cat.title}}</option>
+				</select>
+			</label>
+			<label class="item item-input item-select a select-when" ng-class="{ 'active': vm.list.data.time }">
+				<span class="uui-icon icon-select"></span>
+				<select class="uui-text" ng-model="vm.list.data.time">
+					<option selected value="">THIS WEEK</option>
+					<option selected value="anytime">anytime</option>
+					<option selected value="today">today</option>
+					<option selected value="tomorrow">tomorrow</option>
+					<option selected value="this week">this week</option>
+					<option selected value="this month">this month</option>
+				</select>
+			</label>
+			<label class="item item-input item-select a select-search" hoverfocus ng-class="{ 'active': vm.list.data.search }">
+				<span class="uui-icon ion-search"></span>
+				<input class="uui-text" type="text" ng-model="vm.list.data.search" placeholder="SEARCH" />
+			</label>
+
+			<label class="select-submit" ng-click="vm.listAdd();vm.listReset();">
+				<span class="uui-icon ion-play"></span>
+				<span class="uui-text">GO</span>
+			</label>
+
+		</div>
+
+	</ion-content>
+</ion-modal-view>
