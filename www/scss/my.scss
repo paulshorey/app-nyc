@@ -396,6 +396,11 @@ body {
 					.active {
 						color:#82BE78;
 					}
+					.my-li-title {
+						span {
+							display: block;
+						}
+					}
 				}
 				.my-li-events {
 					height: 100%;

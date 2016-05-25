@@ -324,6 +324,8 @@ body {
         background: linear-gradient(to bottom, #ffffff, #ffffff 85%, rgba(255, 255, 255, 0)); }
         .my-lists .my-lis .my-li .my-li-header .active {
           color: #82BE78; }
+        .my-lists .my-lis .my-li .my-li-header .my-li-title span {
+          display: block; }
       .my-lists .my-lis .my-li .my-li-events {
         height: 100%;
         overflow: hidden;

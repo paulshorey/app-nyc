@@ -84,7 +84,9 @@
 						</span>
 						<span class="my-li-title">
 							<span class="uui-title a" ng-class="{ 'active': ( vm.list.data.category && vm.list.data.category==list.data.uid ) }">{{ list.data.category || 'Anything' }} </span>
-							<span class="uui-subtitle a">| {{ list.data.time || 'Anytime' }} </span>
+							<span class="uui-subtitle a">{{ list.data.time || 'Anytime' }} </span>
+							<span class="uui-subtitle a">{{ list.data.scene || 'Any' }} </span>
+							<span class="uui-subtitle a" ng-if="list.data.search">{{ list.data.search || 'Any' }} </span>
 						</span>
 						<span class="my-li-buttons my-li-buttons-right">
 							<button class="uui-icon uui-hollow ion-close" ng-click="vm.listRemove(list)"></button>

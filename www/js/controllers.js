@@ -326,7 +326,7 @@ angular.module('ionicApp.controllers', [])
 						}
 						ehtml += '			<div class="event-text">' + event.text + '</div>\n';
 						//if (event.time) {
-							ehtml += '			<div class="event-subtext"><span>'+event.timestamp+'</span><span>'+(event.time||'')+'</span></div>\n';
+						ehtml += '			<div class="event-subtext"><span>'+event.timestamp+'</span><span>'+(event.time||'')+'</span></div>\n';
 						//}
 						ehtml += '		</div>';
 						//
