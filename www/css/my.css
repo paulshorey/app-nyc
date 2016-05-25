@@ -374,12 +374,14 @@ body {
     .events-event .event-text > span:first-child {
       font-weight: bold;
       text-transform: none; }
-  .events-event .event-subtext > span {
-    display: inline-block;
-    text-transform: capitalize;
-    color: #ccc;
-    font-weight: bold;
-    margin: 0 5px 0 0; }
+  .events-event .event-subtext {
+    opacity: 0; }
+    .events-event .event-subtext > span {
+      display: inline-block;
+      text-transform: capitalize;
+      color: #ccc;
+      font-weight: bold;
+      margin: 0 5px 0 0; }
 
 /*
 	LIST EVENTS

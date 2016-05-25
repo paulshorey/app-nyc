@@ -475,6 +475,7 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 		}
 	}
 	.event-subtext {
+		opacity:0;
 		> span {
 			display:inline-block;
 			text-transform:capitalize;
