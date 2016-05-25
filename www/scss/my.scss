@@ -187,7 +187,8 @@ body {
 			margin: 0 auto;
 			width: 50%;
 			height: 62px;
-			background: url('../gfx/logo.png') center no-repeat;
+			background-position: center;
+			background-repeat: no-repeat;
 			background-size: contain;
 			position:relative;
 		}
@@ -337,11 +338,11 @@ body {
 				}
 				.tt-left {
 					color:#ccc;
-					margin: 0 -7px 0 0;
+					margin: 0 -6px 0 0;
 				}
 				.tt-right {
 					color:#ccc;
-					margin: 0 -6px 0 6px;
+					margin: 0 -5px 0 5px;
 				}
 			}
 		}
@@ -470,9 +471,14 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 	}
 	.event-subtext {
 		> span {
-			display:block;
+			display:inline-block;
 			text-transform:capitalize;
 			color:#ccc;
+			font-weight:bold;
+			margin: 0 5px 0 0;
+		}
+		> span:first-child {
+			font-weight:normal;
 		}
 	}
 }
@@ -481,12 +487,13 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 	LIST EVENTS
 */
 .my-events {
-	font-family:serif;
+	font-family:"Times New Roman", serif;
 	.events-event {
 		margin: 5px 0 10px;
 	}
 }
 .events-timestamp {
+	display:none;
 	font-weight:bold;
 	text-transform: uppercase;
 	margin:10px 0 0px;

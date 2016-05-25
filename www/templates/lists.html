@@ -51,7 +51,7 @@
 
 
 		<div class="my-top top-mobile" ng-if="1==1 || client.isMobile">
-			<div class="top-logo" ng-class="{ 'isMobile': client.isMobile }">
+			<div class="top-logo" ng-class="{ 'isMobile': client.isMobile }" ng-style="{ 'background-image': 'url(\'/gfx/logo/'+client.host+'.png\')' }">
 			</div>
 			<div class="top-left">
 				<span class="uui-icon icon-plus" ng-click="modals.mobileSelect.show()"></span>
@@ -62,7 +62,7 @@
 			<div class="top-right">
 				<span class="uui-text tt-left" ng-click="modals.mobileOptions.show()">Save</span>
 				<span class="uui-icon ion-unlocked" ng-click="modals.mobileOptions.show()"></span>
-				<span class="uui-text tt-right" ng-click="modals.mobileOptions.show()">About</span>
+				<span class="uui-text tt-right" ng-click="modals.mobileOptions.show()">More</span>
 				<span class="uui-icon icon-options-large" ng-click="modals.mobileOptions.show()"></span>
 			</div>
 		</div>

@@ -314,9 +314,9 @@ angular.module('ionicApp.controllers', [])
 						var event = events[each];
 						event.timestamp = Date.create(event.timestamp).short();
 						event.timestamp = event.timestamp.replace(' 12:00am','');
-						var timeHour = cutOldBeginning(old_timestamp, event.timestamp);
 						if (event.timestamp != old_timestamp) {
-							html += '	<div class="events-timestamp"><span>' + timeHour + '</span></div>\n';
+							var timeUnique = cutOldBeginning(old_timestamp, event.timestamp);
+							html += '	<div class="events-timestamp"><span>' + timeUnique + '</span></div>\n';
 						}
 						// html += '		<div class="events-event event-link" onClick="window.open(\'' + event.link + '\', \'_system\')" style="background-image:url(' + event.image + ');">\n';
 						var ehtml = '';
@@ -325,9 +325,9 @@ angular.module('ionicApp.controllers', [])
 							ehtml += '		<div class="event-image" style="background-image:url(\'' + event.image + '\');"></div>\n';
 						}
 						ehtml += '			<div class="event-text">' + event.text + '</div>\n';
-						if (event.time) {
-							ehtml += '			<div class="event-subtext"><span>'+event.time+'</span></div>\n';
-						}
+						//if (event.time) {
+							ehtml += '			<div class="event-subtext"><span>'+event.timestamp+'</span><span>'+(event.time||'')+'</span></div>\n';
+						//}
 						ehtml += '		</div>';
 						//
 						html += ehtml;
