@@ -51,7 +51,6 @@ body {
 .my-content {
 	font-family: "Bodoni 72", Bodoni, Times, serif;
 	position: fixed;
-	z-index:1;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -83,7 +82,7 @@ body {
 [scrollable-right],
 [scrollable-left] {
 	position: absolute;
-	top: calc( 20vh + 40px );
+	top: calc( 156px + 40px );
 	right: 0;
 	text-indent:0;
 	width:24px;
@@ -91,7 +90,7 @@ body {
 	font-size: 155px;
 	text-align: left;
 	cursor:pointer;
-	color:#FFBE00;
+	color:orange;
 	padding:7.5vh 0 7.5vh;
 	z-index:1000;
 }
@@ -147,7 +146,7 @@ body {
 			}
 			&.item-select,
 			select {
-				color:#FFBE00;
+				color:orange;
 				text-transform:uppercase;
 			}
 			&:hover select {
@@ -162,7 +161,7 @@ body {
 			}
 		}
 		.select-submit {
-			color:#FFBE00;
+			color:orange;
 			width:auto;
 			.uui-text {
 				margin-left: -5px;
@@ -183,7 +182,6 @@ body {
 	.my-top {
 		margin: 0;
 		padding: 15px 20px 18px;
-		border-bottom: solid 1px #ccc;
 		.top-logo {
 			display:block;
 			margin: 0 auto;
@@ -201,7 +199,7 @@ body {
 				display:block;
 				border:none;
 				background:transparent;
-				color:#FFBE00;
+				color:orange;
 				span:before,
 				select,
 				input {
@@ -213,7 +211,7 @@ body {
 					height: 20px;
 					overflow: hidden;
 					text-transform:uppercase;
-					color:#FFBE00;
+					color:orange;
 					padding: 0 1px;
 				}
 				&.select-what select {
@@ -260,19 +258,19 @@ body {
 				&.active span:before,
 				&.active select,
 				&.active input {
-					color:#F9A021;
+					color:orange;
 				}
 				&.active input::-webkit-input-placeholder {  
-					color:#F9A021;
+					color:orange;
 				}
 				&.active input:-moz-placeholder {  
-					color:#F9A021;
+					color:orange;
 				}
 				&.active input::-moz-placeholder {  
-					color:#F9A021;
+					color:orange;
 				}
 				&.active input:-ms-input-placeholder {  
-					color:#F9A021;
+					color:orange;
 				}
 
 
@@ -297,7 +295,6 @@ body {
 		*/
 		&.top-mobile {
 			padding: 10px 0 0;
-			border-bottom: solid 1px #ccc;
 			.top-logo {
 				height: 31px;
 				margin: -4px auto 6px;
@@ -308,16 +305,27 @@ body {
 				left: 1px;
 				top: 9px;
 				span:first-child {
-					color:#FFBE00;
+					color:orange;
 				}
+
 				.ion-search {
-					margin: 0 0 0 -14px;
+					margin: 0 -14px;
 					font-size: 27px;
 					color: #ccc;
 				}
 				.ion-search:before {
 					line-height:1em;
 				}
+				.tt-left {
+					color:orange;
+					margin: 0 7px 0 -5px;
+					font-weight: bold;
+				}
+				.tt-right {
+					color:#ccc;
+					margin: 0 0 0 2px;
+				}
+
 			}
 			.top-right {
 				font-size:20px;
@@ -326,6 +334,14 @@ body {
 				top: 8px;
 				.ion-unlocked {
 					margin: 1px -9px 0 0;
+				}
+				.tt-left {
+					color:#ccc;
+					margin: 0 -7px 0 0;
+				}
+				.tt-right {
+					color:#ccc;
+					margin: 0 -6px 0 6px;
 				}
 			}
 		}
@@ -372,7 +388,7 @@ body {
 					width:100%;
 					font-size:21px;
 					margin:0;
-					color:#FFBE00;
+					color:orange;
 					text-transform:uppercase;
 					padding: 0;
 					@include background(linear-gradient(to bottom, #ffffff, #ffffff 85%, rgba(255,255,255,0.0)));
@@ -425,26 +441,13 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 	}
 }
 
-
 /*
-	COMPONENTS
+	EVENTS
 */
-.events {
-	font-family:serif;
-}
-.events-timestamp {
-	font-weight:bold;
-	text-transform: uppercase;
-	margin:10px 0 0px;
-	color:#8291A0;
-	// span.fragment {
-	// 	font-weight:normal;
-	// }
-}
 .events-event {
+	line-height: 115%;
 	font-weight:normal;
 	text-transform:lowercase;
-	margin: 0;
 	.event-image {
 		display:none;
 		background-position:center;
@@ -455,39 +458,74 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 		padding-bottom:46%;
 	}
 	.event-text {
+		max-height: 64px;
+		overflow: hidden;
 		> span {
 			display:block;
 		}
 		> span:first-child {
 			font-weight:bold;
+			text-transform:none;
+		}
+	}
+	.event-subtext {
+		> span {
+			display:block;
+			text-transform:capitalize;
+			color:#ccc;
 		}
 	}
 }
 
+/*
+	LIST EVENTS
+*/
+.my-events {
+	font-family:serif;
+	.events-event {
+		margin: 5px 0 10px;
+	}
+}
+.events-timestamp {
+	font-weight:bold;
+	text-transform: uppercase;
+	margin:10px 0 0px;
+	color:#FFBE00;
+	// span.fragment {
+	// 	font-weight:normal;
+	// }
+}
+
 
 /*
-	FEATURED SECTION
+	FEATURED EVENTS
 */
 .my-featured {
-	height: 20vh;
+	height: 156px;
 	width: 100%;
 	overflow: hidden;
 	white-space: nowrap;
-	border-bottom: solid 1px #ccc;
 	padding: 5px 0;
 	box-sizing: content-box;
 	overflow-x: auto;
+	background:#555;
 	> div {
 		display:inline-block;
 		max-width:33.33%;
-		.event-text {
-			display:none;
-		}
-		.event-image {
-			display: inline-block;
-			width: 180px;
-			height: 20vh;
-			max-width:100%;
+		vertical-align:top;
+		.events-event {
+			div {
+				display:none;
+			}
+			div.event-text {
+				display:none;
+			}
+			div.event-image {
+				display: inline-block;
+				width: 208px;
+				height: 156px;
+				max-width:100%;
+			}
 		}
 	}
 

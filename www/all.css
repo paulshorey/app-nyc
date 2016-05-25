@@ -9581,7 +9581,6 @@ body {
 .my-content {
   font-family: "Bodoni 72", Bodoni, Times, serif;
   position: fixed;
-  z-index: 1;
   top: 0;
   left: 0;
   width: 100%;
@@ -9616,7 +9615,7 @@ body {
 [scrollable-right],
 [scrollable-left] {
   position: absolute;
-  top: calc( 20vh + 40px);
+  top: calc( 156px + 40px);
   right: 0;
   text-indent: 0;
   width: 24px;
@@ -9624,7 +9623,7 @@ body {
   font-size: 155px;
   text-align: left;
   cursor: pointer;
-  color: #FFBE00;
+  color: orange;
   padding: 7.5vh 0 7.5vh;
   z-index: 1000; }
 
@@ -9672,7 +9671,7 @@ body {
     background: #fff; }
   .mobile-options.mobile-select > label.item-select,
   .mobile-options.mobile-select > label select {
-    color: #FFBE00;
+    color: orange;
     text-transform: uppercase; }
   .mobile-options.mobile-select > label:hover select {
     color: #82BE78; }
@@ -9682,7 +9681,7 @@ body {
   .mobile-options.mobile-select > label.select-search {
     color: #ccc; }
   .mobile-options.mobile-select .select-submit {
-    color: #FFBE00;
+    color: orange;
     width: auto; }
     .mobile-options.mobile-select .select-submit .uui-text {
       margin-left: -5px; }
@@ -9697,7 +9696,6 @@ body {
 .my-top {
   margin: 0;
   padding: 15px 20px 18px;
-  border-bottom: solid 1px #ccc;
   /*
 			TOP: mobile
 		*/
@@ -9720,7 +9718,7 @@ body {
       display: block;
       border: none;
       background: transparent;
-      color: #FFBE00; }
+      color: orange; }
       .my-top .top-left label span:before,
       .my-top .top-left label select,
       .my-top .top-left label input {
@@ -9732,7 +9730,7 @@ body {
         height: 20px;
         overflow: hidden;
         text-transform: uppercase;
-        color: #FFBE00;
+        color: orange;
         padding: 0 1px; }
       .my-top .top-left label.select-what select {
         font-weight: bold;
@@ -9765,15 +9763,15 @@ body {
       .my-top .top-left label.active span:before,
       .my-top .top-left label.active select,
       .my-top .top-left label.active input {
-        color: #F9A021; }
+        color: orange; }
       .my-top .top-left label.active input::-webkit-input-placeholder {
-        color: #F9A021; }
+        color: orange; }
       .my-top .top-left label.active input:-moz-placeholder {
-        color: #F9A021; }
+        color: orange; }
       .my-top .top-left label.active input::-moz-placeholder {
-        color: #F9A021; }
+        color: orange; }
       .my-top .top-left label.active input:-ms-input-placeholder {
-        color: #F9A021; }
+        color: orange; }
   .my-top .top-right {
     position: absolute;
     right: 2px;
@@ -9786,8 +9784,7 @@ body {
     .my-top .top-right > a {
       display: block; }
   .my-top.top-mobile {
-    padding: 10px 0 0;
-    border-bottom: solid 1px #ccc; }
+    padding: 10px 0 0; }
     .my-top.top-mobile .top-logo {
       height: 31px;
       margin: -4px auto 6px; }
@@ -9797,13 +9794,20 @@ body {
       left: 1px;
       top: 9px; }
       .my-top.top-mobile .top-left span:first-child {
-        color: #FFBE00; }
+        color: orange; }
       .my-top.top-mobile .top-left .ion-search {
-        margin: 0 0 0 -14px;
+        margin: 0 -14px;
         font-size: 27px;
         color: #ccc; }
       .my-top.top-mobile .top-left .ion-search:before {
         line-height: 1em; }
+      .my-top.top-mobile .top-left .tt-left {
+        color: orange;
+        margin: 0 7px 0 -5px;
+        font-weight: bold; }
+      .my-top.top-mobile .top-left .tt-right {
+        color: #ccc;
+        margin: 0 0 0 2px; }
     .my-top.top-mobile .top-right {
       font-size: 20px;
       position: absolute;
@@ -9811,6 +9815,12 @@ body {
       top: 8px; }
       .my-top.top-mobile .top-right .ion-unlocked {
         margin: 1px -9px 0 0; }
+      .my-top.top-mobile .top-right .tt-left {
+        color: #ccc;
+        margin: 0 -7px 0 0; }
+      .my-top.top-mobile .top-right .tt-right {
+        color: #ccc;
+        margin: 0 -6px 0 6px; }
   .my-top.top-statement {
     margin: -10px 0 15px;
     padding: 4px 0;
@@ -9845,7 +9855,7 @@ body {
         width: 100%;
         font-size: 21px;
         margin: 0;
-        color: #FFBE00;
+        color: orange;
         text-transform: uppercase;
         padding: 0;
         background: -owg-linear-gradient(to bottom, #ffffff, #ffffff 85%, rgba(255, 255, 255, 0));
@@ -9879,21 +9889,12 @@ body {
     width: 25%; } }
 
 /*
-	COMPONENTS
+	EVENTS
 */
-.events {
-  font-family: serif; }
-
-.events-timestamp {
-  font-weight: bold;
-  text-transform: uppercase;
-  margin: 10px 0 0px;
-  color: #8291A0; }
-
 .events-event {
+  line-height: 115%;
   font-weight: normal;
-  text-transform: lowercase;
-  margin: 0; }
+  text-transform: lowercase; }
   .events-event .event-image {
     display: none;
     background-position: center;
@@ -9902,32 +9903,57 @@ body {
     width: 100%;
     height: 0;
     padding-bottom: 46%; }
-  .events-event .event-text > span {
-    display: block; }
-  .events-event .event-text > span:first-child {
-    font-weight: bold; }
+  .events-event .event-text {
+    max-height: 64px;
+    overflow: hidden; }
+    .events-event .event-text > span {
+      display: block; }
+    .events-event .event-text > span:first-child {
+      font-weight: bold;
+      text-transform: none; }
+  .events-event .event-subtext > span {
+    display: block;
+    text-transform: capitalize;
+    color: #ccc; }
 
 /*
-	FEATURED SECTION
+	LIST EVENTS
+*/
+.my-events {
+  font-family: serif; }
+  .my-events .events-event {
+    margin: 5px 0 10px; }
+
+.events-timestamp {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 10px 0 0px;
+  color: #FFBE00; }
+
+/*
+	FEATURED EVENTS
 */
 .my-featured {
-  height: 20vh;
+  height: 156px;
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
-  border-bottom: solid 1px #ccc;
   padding: 5px 0;
   box-sizing: content-box;
-  overflow-x: auto; }
+  overflow-x: auto;
+  background: #555; }
   .my-featured > div {
     display: inline-block;
-    max-width: 33.33%; }
-    .my-featured > div .event-text {
+    max-width: 33.33%;
+    vertical-align: top; }
+    .my-featured > div .events-event div {
       display: none; }
-    .my-featured > div .event-image {
+    .my-featured > div .events-event div.event-text {
+      display: none; }
+    .my-featured > div .events-event div.event-image {
       display: inline-block;
-      width: 180px;
-      height: 20vh;
+      width: 208px;
+      height: 156px;
       max-width: 100%; }
 
 /*

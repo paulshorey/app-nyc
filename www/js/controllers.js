@@ -309,22 +309,25 @@ angular.module('ionicApp.controllers', [])
 					list.sources = {};
 
 					// <html>
-					var html = '		<div class="events">\n';
+					var html = '		<div class="my-events">\n';
 					for (var each in events) {
 						var event = events[each];
-						event.timestamp = Date.create(event.timestamp).long();
+						event.timestamp = Date.create(event.timestamp).short();
 						event.timestamp = event.timestamp.replace(' 12:00am','');
+						var timeHour = cutOldBeginning(old_timestamp, event.timestamp);
 						if (event.timestamp != old_timestamp) {
-							var timeString = cutOldBeginning(old_timestamp, event.timestamp);
-							html += '	<div class="events-timestamp"><span>' + timeString + '</span></div>\n';
+							html += '	<div class="events-timestamp"><span>' + timeHour + '</span></div>\n';
 						}
 						// html += '		<div class="events-event event-link" onClick="window.open(\'' + event.link + '\', \'_system\')" style="background-image:url(' + event.image + ');">\n';
 						var ehtml = '';
 						ehtml += '		<div class="events-event">';
 						if (event.image) {
-							ehtml += '			<div class="event-image" style="background-image:url(\'' + event.image + '\');"></div>\n';
+							ehtml += '		<div class="event-image" style="background-image:url(\'' + event.image + '\');"></div>\n';
 						}
 						ehtml += '			<div class="event-text">' + event.text + '</div>\n';
+						if (event.time) {
+							ehtml += '			<div class="event-subtext"><span>'+event.time+'</span></div>\n';
+						}
 						ehtml += '		</div>';
 						//
 						html += ehtml;
@@ -408,7 +411,7 @@ angular.module('ionicApp.controllers', [])
 				target.scrollLeftLast = target.scrollLeft;
 			};
 			scope.$watch(
-				function () { return Object.keys(scope.$parent.vm.lists).length ? element[0].firstElementChild.childElementCount : false; },
+				function () { if (!element[0].firstElementChild) { return false; } return Object.keys(scope.$parent.vm.lists).length ? element[0].firstElementChild.childElementCount : false; },
 				function (newValue, oldValue) {
 					// scroll to beginning
 					if (oldValue > 0 && newValue > oldValue) {

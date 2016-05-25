@@ -55,16 +55,21 @@
 			</div>
 			<div class="top-left">
 				<span class="uui-icon icon-plus" ng-click="modals.mobileSelect.show()"></span>
+				<span class="uui-text tt-left" ng-click="modals.mobileSelect.show()">Find</span>
 				<span class="uui-icon ion-search" ng-click="modals.mobileSelect.show()"></span>
+				<span class="uui-text tt-right" ng-click="modals.mobileSelect.show()">Search</span>
 			</div>
 			<div class="top-right">
+				<span class="uui-text tt-left" ng-click="modals.mobileOptions.show()">Save</span>
 				<span class="uui-icon ion-unlocked" ng-click="modals.mobileOptions.show()"></span>
+				<span class="uui-text tt-right" ng-click="modals.mobileOptions.show()">About</span>
 				<span class="uui-icon icon-options-large" ng-click="modals.mobileOptions.show()"></span>
 			</div>
 		</div>
 
-		<div class="my-featured">
+		<div class="my-featured" scrollable>
 			<div class="" ng-repeat="event in vm.featuredEvents | orderObjectBy:'random':true" ng-bind-html="event.html">
+				<div></div>
 			</div> 
 		</div>
 
