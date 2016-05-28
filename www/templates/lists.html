@@ -1,4 +1,4 @@
-<ion-view ng-class="{ 'isMobile': client.isMobile }">
+<ion-view ng-class="{ 'isMobile': client.isMobile }" data-tap-disabled="true">
 	<div class="my-content">
 	<span scrollable-left class="icon-column-arrow-left a"></span>
 	<span scrollable-right class="icon-column-arrow-right a"></span>
@@ -54,23 +54,31 @@
 			<div class="top-logo" ng-class="{ 'isMobile': client.isMobile }" ng-style="{ 'background-image': 'url(\'/gfx/logo/'+client.host+'.png\')' }">
 			</div>
 			<div class="top-left">
-				<span class="uui-icon icon-plus" ng-click="modals.mobileSelect.show()"></span>
-				<span class="uui-text tt-left" ng-click="modals.mobileSelect.show()">Find</span>
-				<span class="uui-icon ion-search" ng-click="modals.mobileSelect.show()"></span>
-				<span class="uui-text tt-right" ng-click="modals.mobileSelect.show()">Search</span>
+				<span ng-click="modals.mobileSelect.show()">
+					<span class="uui-icon icon-plus"></span>
+					<span class="uui-text tt-left">Find</span>
+				</span>
+				<span ng-click="modals.mobileSelect.show()">
+					<span class="uui-icon ion-search"></span>
+					<span class="uui-text tt-right">Search</span>
+				</span>
 			</div>
 			<div class="top-right">
-				<span class="uui-text tt-left" ng-click="modals.mobileOptions.show()">Save</span>
-				<span class="uui-icon ion-unlocked" ng-click="modals.mobileOptions.show()"></span>
-				<span class="uui-text tt-right" ng-click="modals.mobileOptions.show()">More</span>
-				<span class="uui-icon icon-options-large" ng-click="modals.mobileOptions.show()"></span>
+				<span ng-click="modals.mobileOptions.show()">
+					<span class="uui-text tt-left">Save</span>
+					<span class="uui-icon ion-unlocked"></span>
+				</span>
+				<span ng-click="modals.mobileOptions.show()">
+					<span class="uui-text tt-right">More</span>
+					<span class="uui-icon icon-options-large"></span>
+				</span>
 			</div>
 		</div>
 
 		<div class="my-featured" scrollable>
-			<div class="" ng-repeat="event in vm.featuredEvents | orderObjectBy:'random':true" ng-bind-html="event.html">
-				<div></div>
-			</div> 
+			<a class="featured-li" ng-repeat="event in vm.featuredEvents | orderObjectBy:'random':true" ng-href="{{event.link}}" target="_blank" prevent-default>
+				<div ng-bind-html="event.html"></div>
+			</a> 
 		</div>
 
 

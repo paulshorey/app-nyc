@@ -5,7 +5,7 @@
 	</ion-header-bar>
 	<ion-content>
 
-		<div class="mobile-options" ng-if="client.isMobile" ng-class="{ 'hidden': ! client.mobileOptions }">
+		<div class="mobile-options" ng-if="client.isMobile">
 			<a href="/" prevent-default ng-click="vm.clearActive(); vm.addList()">
 				<span class="uui-icon icon-hipster2"></span> <span class="uui-text">about us / get involved </span>
 			</a>

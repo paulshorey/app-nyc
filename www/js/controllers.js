@@ -25,7 +25,7 @@ angular.module('ionicApp.controllers', [])
 	vm.list = {data:{}};
 	vm.lists = {};
 	vm.lists_new = {};
-	vm.featuredEvents = [];
+	vm.featuredEvents = {};
 
 
 	$scope.modals = {};
@@ -299,6 +299,7 @@ angular.module('ionicApp.controllers', [])
 			.then(function (response) {
 				var events = response.data.data;
 				var old_timestring = '';
+				var old_event_featured_images = [];
 				var old_date = '';
 				if (events.length) {
 
@@ -347,11 +348,11 @@ angular.module('ionicApp.controllers', [])
 						ev += '			</div>\n';
 						ev += '			<div class="event-subtext">\n';
 							if (timestring.indexOf('week')!=-1 || timestring.indexOf('month')!=-1) {
-								ev += '		<span><span class="ion-calendar"></span> '+Date.create(event.timestamp).long()+'</span>\n';
+								ev += '		<span><span class="ion-calendar"></span> '+moment(event.timestamp).format('MMM D, h:mma')+'</span>\n';
 							} else if (event.time) {
 								ev += '		<span><span class="ion-calendar"></span> '+moment(event.timestamp).format('h:mma')+'</span>\n';
 							}
-							ev += '			<span class="subtext-source"><span class="icon-link"></span><!-- '+event.source_host+'--></span>\n';
+							ev += '			<span class="subtext-source"><span class="icon-link"></span> '+(event.source_host.substr(0,event.source_host.indexOf('.')))+'</span>\n';
 							ev += '			<span><span class="icon-star-outline"></span></span>\n';
 						ev += '			</div>\n';
 						ev += '		</div>';
@@ -361,7 +362,12 @@ angular.module('ionicApp.controllers', [])
 
 						// <featured></featured>
 						if (event.image) {
-							vm.featuredEvents.push({html:$sce.trustAsHtml(ev),image:event.image,random:event.random});
+							var event_featured = JSON.parse(JSON.stringify(event));
+							if ( old_event_featured_images.indexOf( event_featured.image )==-1 ) {
+								event_featured.html = $sce.trustAsHtml(ev);
+								vm.featuredEvents[ event.random ] = event_featured;
+								old_event_featured_images.push(event_featured.image);
+							}
 						}
 
 					}

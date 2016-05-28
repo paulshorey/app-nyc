@@ -4,6 +4,12 @@
 body {
   margin: 0; }
 
+[data-tab-disabled] {
+  user-select: auto;
+  -moz-user-select: auto;
+  -webkit-user-select: auto;
+  -ms-user-select: auto; }
+
 /*
 	GENERAL
 */
@@ -14,14 +20,14 @@ a {
 a:hover,
 a:hover *, .a:hover,
 .a:hover * {
-  color: #82BE78;
+  color: #4BAFE1;
   cursor: pointer; }
 
 [ng-click] {
   cursor: pointer; }
   [ng-click]:hover,
   [ng-click]:hover * {
-    color: #82BE78;
+    color: #4BAFE1 !important;
     cursor: pointer; }
 
 @font-face {
@@ -75,7 +81,7 @@ body {
 [scrollable-right],
 [scrollable-left] {
   position: absolute;
-  top: calc( 156px + 40px);
+  top: 210px;
   right: 0;
   text-indent: 0;
   width: 24px;
@@ -85,7 +91,8 @@ body {
   cursor: pointer;
   color: orange;
   padding: 7.5vh 0 7.5vh;
-  z-index: 1000; }
+  z-index: 1000;
+  background: #fff; }
 
 [scrollable-left] {
   right: auto;
@@ -134,10 +141,10 @@ body {
     color: orange;
     text-transform: uppercase; }
   .mobile-options.mobile-select > label:hover select {
-    color: #82BE78; }
+    color: #4BAFE1; }
   .mobile-options.mobile-select > label.active select,
   .mobile-options.mobile-select > label.active span:before {
-    color: #82BE78; }
+    color: #4BAFE1; }
   .mobile-options.mobile-select > label.select-search {
     color: #ccc; }
   .mobile-options.mobile-select .select-submit {
@@ -212,15 +219,15 @@ body {
       .my-top .top-left label:hover span:before,
       .my-top .top-left label:hover select,
       .my-top .top-left label:hover input {
-        color: #82BE78; }
+        color: #4BAFE1; }
       .my-top .top-left label:hover input::-webkit-input-placeholder {
-        color: #82BE78; }
+        color: #4BAFE1; }
       .my-top .top-left label:hover input:-moz-placeholder {
-        color: #82BE78; }
+        color: #4BAFE1; }
       .my-top .top-left label:hover input::-moz-placeholder {
-        color: #82BE78; }
+        color: #4BAFE1; }
       .my-top .top-left label:hover input:-ms-input-placeholder {
-        color: #82BE78; }
+        color: #4BAFE1; }
       .my-top .top-left label.active span:before,
       .my-top .top-left label.active select,
       .my-top .top-left label.active input {
@@ -254,7 +261,7 @@ body {
       position: absolute;
       left: 1px;
       top: 9px; }
-      .my-top.top-mobile .top-left span:first-child {
+      .my-top.top-mobile .top-left .icon-plus {
         color: orange; }
       .my-top.top-mobile .top-left .ion-search {
         margin: 0 -14px;
@@ -264,7 +271,7 @@ body {
         line-height: 1em; }
       .my-top.top-mobile .top-left .tt-left {
         color: orange;
-        margin: 0 7px 0 -5px;
+        margin: 0 8px 0 -5px;
         font-weight: bold; }
       .my-top.top-mobile .top-left .tt-right {
         color: #ccc;
@@ -275,7 +282,7 @@ body {
       right: 2px;
       top: 8px; }
       .my-top.top-mobile .top-right .ion-unlocked {
-        margin: 1px -9px 0 0; }
+        margin: 1px -7px 0 0; }
       .my-top.top-mobile .top-right .tt-left {
         color: #ccc;
         margin: 0 -6px 0 0; }
@@ -321,7 +328,7 @@ body {
         -pie-background: -pie-linear-gradient(to bottom, #ffffff, #ffffff 85%, rgba(255, 255, 255, 0));
         background: linear-gradient(to bottom, #ffffff, #ffffff 85%, rgba(255, 255, 255, 0)); }
         .my-lists .my-lis .my-li .my-li-header .active {
-          color: #82BE78; }
+          color: #4BAFE1; }
         .my-lists .my-lis .my-li .my-li-header .my-li-title {
           display: inline-block;
           vertical-align: middle; }
@@ -419,15 +426,15 @@ body {
   box-sizing: content-box;
   overflow-x: auto;
   background: #555; }
-  .my-featured > div {
+  .my-featured .featured-li {
     display: inline-block;
     max-width: 33.33%;
     vertical-align: top; }
-    .my-featured > div .events-event div {
+    .my-featured .featured-li .events-event div {
       display: none; }
-    .my-featured > div .events-event div.event-text {
+    .my-featured .featured-li .events-event div.event-text {
       display: none; }
-    .my-featured > div .events-event div.event-image {
+    .my-featured .featured-li .events-event div.event-image {
       display: inline-block;
       width: 244px;
       height: 156px;

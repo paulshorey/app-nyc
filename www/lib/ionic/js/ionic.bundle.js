@@ -5407,6 +5407,8 @@ ionic.views.Scroll = ionic.views.View.inherit({
       var mousedown = false;
 
       self.mouseDown = function(e) {
+        return;
+
         if ( ionic.tap.ignoreScrollStart(e) || e.target.tagName === 'SELECT' ) {
           return;
         }

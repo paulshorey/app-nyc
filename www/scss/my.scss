@@ -5,6 +5,12 @@
 body {
 	margin:0;
 }
+[data-tab-disabled] {
+	user-select: auto;
+	-moz-user-select: auto;
+	-webkit-user-select: auto;
+	-ms-user-select: auto;
+}
 
 
 /*
@@ -17,7 +23,7 @@ a {
 a, .a {
 	&:hover,
 	&:hover * {
-		color:#82BE78;
+		color:#4BAFE1;
 		cursor:pointer;
 	}
 }
@@ -25,7 +31,7 @@ a, .a {
 	cursor:pointer;
 	&:hover,
 	&:hover * {
-		color:#82BE78;
+		color:#4BAFE1 !important;
 		cursor:pointer;
 	}
 }
@@ -82,7 +88,7 @@ body {
 [scrollable-right],
 [scrollable-left] {
 	position: absolute;
-	top: calc( 156px + 40px );
+	top: 210px;
 	right: 0;
 	text-indent:0;
 	width:24px;
@@ -93,6 +99,7 @@ body {
 	color:orange;
 	padding:7.5vh 0 7.5vh;
 	z-index:1000;
+	background:#fff;
 }
 [scrollable-left] {
 	right:auto;
@@ -150,11 +157,11 @@ body {
 				text-transform:uppercase;
 			}
 			&:hover select {
-				color:#82BE78;
+				color:#4BAFE1;
 			}
 			&.active select,
 			&.active span:before {
-				color:#82BE78;
+				color:#4BAFE1;
 			}
 			&.select-search {
 				color:#ccc;
@@ -241,19 +248,19 @@ body {
 				&:hover span:before,
 				&:hover select,
 				&:hover input {
-					color:#82BE78;
+					color:#4BAFE1;
 				}
 				&:hover input::-webkit-input-placeholder {  
-					color:#82BE78;
+					color:#4BAFE1;
 				}
 				&:hover input:-moz-placeholder {  
-					color:#82BE78;
+					color:#4BAFE1;
 				}
 				&:hover input::-moz-placeholder {  
-					color:#82BE78;
+					color:#4BAFE1;
 				}
 				&:hover input:-ms-input-placeholder {  
-					color:#82BE78;
+					color:#4BAFE1;
 				}
 
 				&.active span:before,
@@ -305,7 +312,7 @@ body {
 				position: absolute;
 				left: 1px;
 				top: 9px;
-				span:first-child {
+				.icon-plus {
 					color:orange;
 				}
 
@@ -319,7 +326,7 @@ body {
 				}
 				.tt-left {
 					color:orange;
-					margin: 0 7px 0 -5px;
+					margin: 0 8px 0 -5px;
 					font-weight: bold;
 				}
 				.tt-right {
@@ -334,7 +341,7 @@ body {
 				right: 2px;
 				top: 8px;
 				.ion-unlocked {
-					margin: 1px -9px 0 0;
+					margin: 1px -7px 0 0;
 				}
 				.tt-left {
 					color:#ccc;
@@ -392,7 +399,7 @@ body {
 					padding: 0;
 					@include background(linear-gradient(to bottom, #ffffff, #ffffff 85%, rgba(255,255,255,0.0)));
 					.active {
-						color:#82BE78;
+						color:#4BAFE1;
 					}
 					.my-li-title {
 						display:inline-block;
@@ -531,7 +538,7 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 	box-sizing: content-box;
 	overflow-x: auto;
 	background:#555;
-	> div {
+	.featured-li {
 		display:inline-block;
 		max-width:33.33%;
 		vertical-align:top;
