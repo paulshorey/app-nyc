@@ -313,6 +313,9 @@ angular.module('ionicApp.controllers', [])
 					var html = '		<div class="my-events">\n';
 					for (var each in events) {
 						var event = events[each];
+						if (!event.texts) {
+							continue;
+						}
 						var today = moment().startOf('day');
 						var timestring = Date.create(event.timestamp).short();
 						if (event.timestamp < today.add(1, 'days').format('x')) {
