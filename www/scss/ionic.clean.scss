@@ -1,8 +1,35 @@
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family:inherit;
+}
 input, button, select, textarea {
     font-family: inherit;
 }
+
+.bar {
+	background:none;
+}
+.bar .title {
+	font-family: "Bodoni 72", Bodoni, serif;
+}
 .item-select:after {
 	content:none;
+}
+.bar .title + .button:last-child, .bar > .button + .button:last-child, .bar > .button.pull-right, .bar .buttons.pull-right, .bar .title + .buttons {
+	position: absolute;
+	top: 7px;
+	right: 7px;
+	bottom: 5px;
+	background: orange;
+	color: white;
+	width: 32px;
+	border-radius: 5px;
+	height: 30px;
+	line-height: 30px;
+	&:hover,
+	&:hover * {
+		color:white !important;
+		font-weight:bold;
+	}
 }
 
 .item-select {

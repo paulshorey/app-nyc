@@ -116,7 +116,9 @@ body {
 .mobile-options {
 	color:#ccc;
 	font-size:17px;
-	padding: 5px 1px 4px;
+	padding: 4px 0 3px;
+	width:200px;
+	margin:0 auto;
 	> a,
 	> label {
 		display:block;
@@ -126,7 +128,7 @@ body {
 		padding: 0;
 		font-size: 100%;
 		line-height: 100%;
-		margin: 0 3px 0 1px;
+		margin: 4px auto;
 		.uui-text {
 			color:#666;
 		}
@@ -168,8 +170,23 @@ body {
 			}
 		}
 		.select-submit {
-			color:orange;
-			width:auto;
+			color:white;
+			background:orange;
+			border-radius: 5px;
+			&:hover,
+			&:hover * {
+				color:white !important;
+				font-weight:bold;
+				background:lightorange;
+			}
+			span {
+				color:white;
+			}
+			span:before {
+				color:white;
+				background:orange;
+				border-radius: 5px;
+			}
 			.uui-text {
 				margin-left: -5px;
 			}
@@ -328,10 +345,16 @@ body {
 					color:orange;
 					margin: 0 8px 0 -5px;
 					font-weight: bold;
+					@media screen and (max-width: 600px) {
+						display:none;
+					}
 				}
 				.tt-right {
 					color:#ccc;
 					margin: 0 0 0 2px;
+					@media screen and (max-width: 600px) {
+						display:none;
+					}
 				}
 
 			}
@@ -346,10 +369,16 @@ body {
 				.tt-left {
 					color:#ccc;
 					margin: 0 -6px 0 0;
+					@media screen and (max-width: 600px) {
+						display:none;
+					}
 				}
 				.tt-right {
 					color:#ccc;
 					margin: 0 -5px 0 5px;
+					@media screen and (max-width: 600px) {
+						display:none;
+					}
 				}
 			}
 		}

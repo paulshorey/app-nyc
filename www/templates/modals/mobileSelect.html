@@ -1,12 +1,11 @@
-<ion-modal-view>
+<ion-modal-view ng-class="{ 'isMobile': client.isMobile }" data-tap-disabled="true">
 	<ion-header-bar>
-		<h1 class="title">Do what?...</h1>
+		<h1 class="title"></h1>
 		<button class="button button-clear button-primary" ng-click="vm.closeModals()">X</button>
 	</ion-header-bar>
 	<ion-content>
 
 		<div class="mobile-options mobile-select" id="top-mobile-select" ng-if="client.isMobile">
-
 			<label class="item item-input item-select a select-what" ng-class="{ 'active': vm.list.data.category }">
 				<span class="uui-icon icon-select"></span>
 				<select class="uui-text" ng-model="vm.list.data.category">
@@ -30,12 +29,13 @@
 				<span class="uui-icon ion-search"></span>
 				<input class="uui-text" type="text" ng-model="vm.list.data.search" placeholder="SEARCH" />
 			</label>
+		</div>
 
+		<div class="mobile-options mobile-select mobile-buttons">
 			<label class="select-submit" ng-click="vm.listAdd();vm.listReset();">
 				<span class="uui-icon ion-play"></span>
 				<span class="uui-text">GO</span>
 			</label>
-
 		</div>
 
 	</ion-content>

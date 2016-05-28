@@ -330,7 +330,7 @@ angular.module('ionicApp.controllers', [])
 						//event.timestamp = event.timestamp.replace(' 12:00am','');
 						if (timestring != old_timestring) {
 							//var timeUnique = cutOldBeginning(old_timestamp, event.timestamp);
-							html += '	<div class="events-timestamp"><span>' + timestring + '</span></div>\n';
+							html += '<div class="events-timestamp"><span>' + timestring + '</span></div>\n';
 						}
 						// html += '		<div class="events-event event-link" onClick="window.open(\'' + event.link + '\', \'_system\')" style="background-image:url(' + event.image + ');">\n';
 						var ev = '';

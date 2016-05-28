@@ -108,7 +108,9 @@ body {
 .mobile-options {
   color: #ccc;
   font-size: 17px;
-  padding: 5px 1px 4px;
+  padding: 4px 0 3px;
+  width: 200px;
+  margin: 0 auto;
   /*
 		MODAL mobile select
 	*/ }
@@ -121,7 +123,7 @@ body {
     padding: 0;
     font-size: 100%;
     line-height: 100%;
-    margin: 0 3px 0 1px; }
+    margin: 4px auto; }
     .mobile-options > a .uui-text,
     .mobile-options > label .uui-text {
       color: #666; }
@@ -148,8 +150,20 @@ body {
   .mobile-options.mobile-select > label.select-search {
     color: #ccc; }
   .mobile-options.mobile-select .select-submit {
-    color: orange;
-    width: auto; }
+    color: white;
+    background: orange;
+    border-radius: 5px; }
+    .mobile-options.mobile-select .select-submit:hover,
+    .mobile-options.mobile-select .select-submit:hover * {
+      color: white !important;
+      font-weight: bold;
+      background: lightorange; }
+    .mobile-options.mobile-select .select-submit span {
+      color: white; }
+    .mobile-options.mobile-select .select-submit span:before {
+      color: white;
+      background: orange;
+      border-radius: 5px; }
     .mobile-options.mobile-select .select-submit .uui-text {
       margin-left: -5px; }
   .mobile-options.mobile-select .select-cancel {
@@ -273,9 +287,15 @@ body {
         color: orange;
         margin: 0 8px 0 -5px;
         font-weight: bold; }
+        @media screen and (max-width: 600px) {
+          .my-top.top-mobile .top-left .tt-left {
+            display: none; } }
       .my-top.top-mobile .top-left .tt-right {
         color: #ccc;
         margin: 0 0 0 2px; }
+        @media screen and (max-width: 600px) {
+          .my-top.top-mobile .top-left .tt-right {
+            display: none; } }
     .my-top.top-mobile .top-right {
       font-size: 20px;
       position: absolute;
@@ -286,9 +306,15 @@ body {
       .my-top.top-mobile .top-right .tt-left {
         color: #ccc;
         margin: 0 -6px 0 0; }
+        @media screen and (max-width: 600px) {
+          .my-top.top-mobile .top-right .tt-left {
+            display: none; } }
       .my-top.top-mobile .top-right .tt-right {
         color: #ccc;
         margin: 0 -5px 0 5px; }
+        @media screen and (max-width: 600px) {
+          .my-top.top-mobile .top-right .tt-right {
+            display: none; } }
   .my-top.top-statement {
     margin: -10px 0 15px;
     padding: 4px 0;
