@@ -135,7 +135,8 @@ a.uui-icon:before {
 	}
 }
 .uui-hover-orange:hover {
-	&:before {
+	&:before,
+	span:before {
 		color:orange;
 		text-shadow:none;
 	}

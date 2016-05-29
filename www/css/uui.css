@@ -120,6 +120,7 @@ a.uui-icon:before {
   color: #fff;
   text-shadow: 0 0 1px orange; }
 
-.uui-hover-orange:hover:before {
+.uui-hover-orange:hover:before,
+.uui-hover-orange:hover span:before {
   color: orange;
   text-shadow: none; }

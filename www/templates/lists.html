@@ -1,8 +1,5 @@
 <ion-view ng-class="{ 'isMobile': client.isMobile }" data-tap-disabled="true">
 	<div class="my-content">
-	<span scrollable-left class="icon-column-arrow-left a"></span>
-	<span scrollable-right class="icon-column-arrow-right a"></span>
-	
 
 		<div class="my-top top-desktop" ng-if="1==2 && ! client.isMobile">
 			<div class="top-logo">
@@ -76,6 +73,8 @@
 		</div>
 
 		<div class="my-featured" scrollable>
+			<span scrollable-left class="icon-column-arrow-left a"></span>
+			<span scrollable-right class="icon-column-arrow-right a"></span>
 			<a class="featured-li" ng-repeat="event in vm.featuredEvents | orderObjectBy:'random':true" ng-href="{{event.link}}" target="_blank" prevent-default>
 				<div ng-bind-html="event.html"></div>
 			</a> 
@@ -83,19 +82,19 @@
 
 
 		<div class="my-lists" scrollable>
+			<span scrollable-left class="icon-column-arrow-left a"></span>
+			<span scrollable-right class="icon-column-arrow-right a"></span>
  			<div class="my-lis">
 				<div class="my-li" ng-repeat="list in vm.lists | orderObjectBy:'sortorder':true">
 
-					<div class="my-li-header">
+					<div class="my-li-header uui-hover-orange" ng-click="vm.listAdd(list)">
 						<span class="my-li-title">
 							<span class="uui-title a" ng-class="{ 'active': ( vm.list.data.category && vm.list.data.category==list.data.uid ) }">{{ list.data.category || 'Anything' }} </span>
 							<span class="uui-subtitle a" ng-if="list.data.search">{{ list.data.time || 'Anytime' }} </span>
 							<span class="uui-subtitle a" ng-if="list.data.search">{{ list.data.scene || 'Any' }} </span>
 							<span class="uui-subtitle a" ng-if="list.data.search">{{ list.data.search || 'Any' }} </span>
 						</span>
-						<span class="my-li-buttons my-li-buttons-left">
-							<button class="uui-icon icon-star uui-hover-orange uui-hollow-orange" ng-click="vm.listAdd(list)"></button>
-						</span>
+						<span class="my-li-buttons my-li-buttons-left uui-icon icon-star uui-hollow-orange"></span>
 					</div>
 
 					<div class="my-li-events" ng-bind-html="list.html"></div>

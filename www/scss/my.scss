@@ -87,7 +87,7 @@ body {
 }
 [scrollable-right],
 [scrollable-left] {
-	position: absolute;
+	position: fixed;
 	top: 217px;
 	right: 0;
 	text-indent:0;
@@ -326,6 +326,10 @@ body {
 					text-transform:uppercase;
 					padding: 0;
 					@include background(linear-gradient(to bottom, #ffffff, #ffffff 85%, rgba(255,255,255,0.0)));
+					&:hover,
+					&:hover span {
+						color:orange;
+					}
 					.active {
 						color:#4BAFE1;
 					}
@@ -415,6 +419,8 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 		word-wrap:nowrap;
 		width:100%;
 		overflow:hidden;
+		white-space:nowrap !important;
+		color:#ccc;
 		> span {
 			display:inline-block;
 			text-transform:capitalize;
@@ -422,14 +428,15 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 			font-weight:bold;
 			margin: 0 5px 0 0;
 		}
-		> span:first-child {
-		}
 		.subtext-source {
 			text-transform:lowercase;
 			.icon-link {
 				font-size:80%;
 				margin:0 -1px 0 0;
 			}
+		}
+		.subtext-fave {
+			margin:0 3px;
 		}
 	}
 }
@@ -441,6 +448,7 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 	font-family:"Times New Roman", serif;
 	.events-event {
 		margin: 6px 0 12px;
+		background:none !important;
 	}
 }
 .events-timestamp {
@@ -461,29 +469,75 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 	height: 162px;
 	width: 100%;
 	overflow: hidden;
-	white-space: nowrap;
 	padding: 5px 0;
 	box-sizing: content-box;
 	overflow-x: auto;
 	background:#555;
+	white-space:nowrap;
 	.featured-li {
 		display:inline-block;
 		max-width:33.33%;
 		vertical-align:top;
+		white-space:normal;
 		.events-event {
-			div {
+			position:relative;
+			display: block;
+			width: 251px;
+			height: 162px;
+			max-width:100%;
+			> * {
 				display:none;
 			}
-			div.event-text {
-				display:none;
+			.event-text,
+			.event-subtext {
+				display:block;
+				opacity:0;
+				position: absolute;
+				top: 0;
+				left: 0;
+				color: white;
+				width: 100%;
+				height: 100%;
+				padding:10px 20px;
+				max-height:100%;
+				transition:opacity 0.5s;
+				background:rgba(0,0,0,0.66);
+				color:white;
+				font-family: "Arial Narrow", "Helvetica Neue", sans-serif;
+				line-height: 1.5;
 			}
-			div.event-image {
-				display: inline-block;
-				width: 251px;
-				height: 162px;
-				max-width:100%;
+			.event-subtext {
+				height:auto;
+				top:auto;
+				bottom:0;
+				padding:1px 20px;
+			}
+			&:hover * {
+				opacity:1;
+				color:white;
+				* {
+					color:white;
+				}
 			}
 		}
 	}
-
+	[scrollable-right],
+	[scrollable-left] {
+		position: fixed;
+		top: 54px;
+		right: 0;
+		width: 24px;
+		overflow: hidden;
+		font-size: 92px;
+		text-align: left;
+		cursor: pointer;
+		color: white;
+		padding: 7px 0;
+		z-index: 1000000;
+		background: rgba(0, 0, 0, 0.01);
+		text-indent: 7px;
+	}
+	[scrollable-left] {
+		text-indent:-35px;
+	}
 }

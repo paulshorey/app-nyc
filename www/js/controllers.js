@@ -334,13 +334,10 @@ angular.module('ionicApp.controllers', [])
 						}
 						// html += '		<div class="events-event event-link" onClick="window.open(\'' + event.link + '\', \'_system\')" style="background-image:url(' + event.image + ');">\n';
 						var ev = '';
-						ev += '		<div class="events-event">';
-							if (event.image) {
-								ev += '	<div class="event-image" style="background-image:url(\'' + event.image + '\');"></div>\n';
-							}
+						ev += '		<div class="events-event" style="background-image:url(\'' + event.image + '\');">';
 						ev += '			<div class="event-text">\n';
 						if ( event.texts[0] ) {
-							ev += '			<span><a class="event-link" href="' + event.link + '" target="_blank" prevent-default onClick="window.open(\'' + event.link + '\', \'_system\')">'+event.texts[0]+'</a></span>\n';
+							ev += '			<span><a class="event-link" href="' + event.link + '" target="_blank" prevent-default ng-click="window.open(\'' + event.link + '\', \'_system\')">'+event.texts[0]+'</a></span>\n';
 						}
 						if ( event.texts[1] ) {
 							ev += '			<span>'+event.texts[1]+'</span>\n';
@@ -351,12 +348,12 @@ angular.module('ionicApp.controllers', [])
 						ev += '			</div>\n';
 						ev += '			<div class="event-subtext">\n';
 							if (timestring.indexOf('week')!=-1 || timestring.indexOf('month')!=-1) {
-								ev += '		<span><span class="ion-calendar"></span> '+moment(event.timestamp).format('MMM D, h:mma')+'</span>\n';
+								ev += '		<span ng-click><span class="ion-calendar"></span> <span>'+moment(event.timestamp).format('MMM D, h:mma')+'</span></span>\n';
 							} else if (event.time) {
-								ev += '		<span><span class="ion-calendar"></span> '+moment(event.timestamp).format('h:mma')+'</span>\n';
+								ev += '		<span ng-click><span class="ion-calendar"></span> <span>'+moment(event.timestamp).format('h:mma')+'</span></span>\n';
 							}
-							ev += '			<span class="subtext-source"><span class="icon-link"></span> '+(event.source_host.substr(0,event.source_host.indexOf('.')))+'</span>\n';
-							ev += '			<span><span class="icon-star-outline"></span></span>\n';
+							ev += '			<a class="subtext-source" href="'+event.source_link+'" prevent-default ng-click="window.open(\'' + event.link + '\', \'_system\')"><span class="icon-link"></span> '+(event.source_host.substr(0,event.source_host.indexOf('.')))+'</a>\n';
+							ev += '			<span class="subtext-fave" ng-click=""><span class="icon-star-outline"></span></span>\n';
 						ev += '			</div>\n';
 						ev += '		</div>';
 						//
@@ -471,7 +468,7 @@ angular.module('ionicApp.controllers', [])
 				}
 			);
 
-			$('[scrollable-left]').click(function(){
+			$(element).find('[scrollable-left]').click(function(){
 					var target = element[0];
 					var duration = target.clientWidth / 2;
 
@@ -484,7 +481,7 @@ angular.module('ionicApp.controllers', [])
 						duration
 					);
 			});
-			$('[scrollable-right]').click(function(){
+			$(element).find('[scrollable-right]').click(function(){
 					var target = element[0];
 					var duration = target.clientWidth / 2;
 

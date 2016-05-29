@@ -9646,7 +9646,7 @@ body {
 
 [scrollable-right],
 [scrollable-left] {
-  position: absolute;
+  position: fixed;
   top: 217px;
   right: 0;
   text-indent: 0;
@@ -9783,6 +9783,8 @@ body {
     height: 23px; }
     .my-top .top-right .ion-unlocked {
       margin: 1px -7px 0 0; }
+    .my-top .top-right .icon-happy {
+      margin: 0.1em 0 0 0.1em; }
     .my-top .top-right .tr-left {
       margin: 0 -6px 0 0; }
       @media screen and (max-width: 600px) {
@@ -9838,6 +9840,9 @@ body {
         background: -owg-linear-gradient(to bottom, #ffffff, #ffffff 85%, rgba(255, 255, 255, 0));
         -pie-background: -pie-linear-gradient(to bottom, #ffffff, #ffffff 85%, rgba(255, 255, 255, 0));
         background: linear-gradient(to bottom, #ffffff, #ffffff 85%, rgba(255, 255, 255, 0)); }
+        .my-lists .my-lis .my-li .my-li-header:hover,
+        .my-lists .my-lis .my-li .my-li-header:hover span {
+          color: auto; }
         .my-lists .my-lis .my-li .my-li-header .active {
           color: #4BAFE1; }
         .my-lists .my-lis .my-li .my-li-header .my-li-title {
@@ -9898,7 +9903,9 @@ body {
   .events-event .event-subtext {
     word-wrap: nowrap;
     width: 100%;
-    overflow: hidden; }
+    overflow: hidden;
+    white-space: nowrap !important;
+    color: #ccc; }
     .events-event .event-subtext > span {
       display: inline-block;
       text-transform: capitalize;
@@ -9910,6 +9917,8 @@ body {
       .events-event .event-subtext .subtext-source .icon-link {
         font-size: 80%;
         margin: 0 -1px 0 0; }
+    .events-event .event-subtext .subtext-fave {
+      margin: 0 3px; }
 
 /*
 	LIST EVENTS
@@ -9917,7 +9926,8 @@ body {
 .my-events {
   font-family: "Times New Roman", serif; }
   .my-events .events-event {
-    margin: 6px 0 12px; }
+    margin: 6px 0 12px;
+    background: none !important; }
 
 .events-timestamp {
   font-weight: bold;
@@ -9932,24 +9942,68 @@ body {
   height: 162px;
   width: 100%;
   overflow: hidden;
-  white-space: nowrap;
   padding: 5px 0;
   box-sizing: content-box;
   overflow-x: auto;
-  background: #555; }
+  background: #555;
+  white-space: nowrap; }
   .my-featured .featured-li {
     display: inline-block;
     max-width: 33.33%;
-    vertical-align: top; }
-    .my-featured .featured-li .events-event div {
-      display: none; }
-    .my-featured .featured-li .events-event div.event-text {
-      display: none; }
-    .my-featured .featured-li .events-event div.event-image {
-      display: inline-block;
+    vertical-align: top;
+    white-space: normal; }
+    .my-featured .featured-li .events-event {
+      position: relative;
+      display: block;
       width: 251px;
       height: 162px;
       max-width: 100%; }
+      .my-featured .featured-li .events-event > * {
+        display: none; }
+      .my-featured .featured-li .events-event .event-text,
+      .my-featured .featured-li .events-event .event-subtext {
+        display: block;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: white;
+        width: 100%;
+        height: 100%;
+        padding: 10px 20px;
+        max-height: 100%;
+        transition: opacity 0.5s;
+        background: rgba(0, 0, 0, 0.66);
+        color: white;
+        font-family: "Arial Narrow", "Helvetica Neue", sans-serif;
+        line-height: 1.5; }
+      .my-featured .featured-li .events-event .event-subtext {
+        height: auto;
+        top: auto;
+        bottom: 0;
+        padding: 1px 20px; }
+      .my-featured .featured-li .events-event:hover * {
+        opacity: 1;
+        color: white; }
+        .my-featured .featured-li .events-event:hover * * {
+          color: white; }
+  .my-featured [scrollable-right],
+  .my-featured [scrollable-left] {
+    position: fixed;
+    top: 54px;
+    right: 0;
+    width: 24px;
+    overflow: hidden;
+    font-size: 92px;
+    text-align: left;
+    cursor: pointer;
+    color: white;
+    padding: 7px 0;
+    z-index: 1000000;
+    background: rgba(0, 0, 0, 0.01);
+    text-indent: 7px; }
+  .my-featured [scrollable-left] {
+    text-indent: -35px; }
 
 /*
 	RESET
@@ -10073,6 +10127,7 @@ a.uui-icon:before {
   color: #fff;
   text-shadow: 0 0 1px orange; }
 
-.uui-hover-orange:hover:before {
+.uui-hover-orange:hover:before,
+.uui-hover-orange:hover span:before {
   color: orange;
   text-shadow: none; }
