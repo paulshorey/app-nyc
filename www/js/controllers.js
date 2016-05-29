@@ -29,19 +29,19 @@ angular.module('ionicApp.controllers', [])
 
 
 	$scope.modals = {};
-	$ionicModal.fromTemplateUrl('templates/modals/mobileOptions.html', {
+	$ionicModal.fromTemplateUrl('templates/modals/options.html', {
 			scope: $scope,
 			animation: 'slide-in-right'
 		})
 		.then(function (modal) {
-			$scope.modals['mobileOptions'] = modal;
+			$scope.modals['modalOptions'] = modal;
 		});
-	$ionicModal.fromTemplateUrl('templates/modals/mobileSelect.html', {
+	$ionicModal.fromTemplateUrl('templates/modals/select.html', {
 			scope: $scope,
 			animation: 'slide-in-left'
 		})
 		.then(function (modal) {
-			$scope.modals['mobileSelect'] = modal;
+			$scope.modals['modalSelect'] = modal;
 		});
 	$scope.$on('modal.shown', function() {
 		$('.my-content').addClass('blurry');

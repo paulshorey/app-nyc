@@ -1,5 +1,18 @@
 /*
-	UI
+	RESET
+*/
+[class^="icon-"],
+[class*=" icon-"] {
+	position:relative;
+	line-height:1.5em;
+	font-size:1em;
+	display:inline-block;
+	vertical-align:middle;
+}
+
+
+/*
+	ELEMENTS
 */
 [class^="uui-"],
 [class*=" uui-"] {
@@ -8,7 +21,6 @@
 	font-size:1em;
 	display:inline-block;
 	vertical-align:middle;
-	color:inherit;
 }
 .uui-title {
 	position:relative;
@@ -18,7 +30,6 @@
 	display:inline-block;
 	vertical-align:middle;
 	padding:0;
-	color:inherit;
 }
 .uui-text {
 	position:relative;
@@ -27,7 +38,6 @@
 	display:inline-block;
 	vertical-align:middle;
 	padding:0;
-	color:inherit;
 }
 textarea.uui-text, input[type].uui-text {
 	position:relative;
@@ -36,10 +46,9 @@ textarea.uui-text, input[type].uui-text {
 	display:inline-block;
 	vertical-align:middle;
 	padding:0;
-	color:inherit;
 }
 .uui-icon,
-.uui-button {
+.uui-icon-button {
 	width:1.5em;
 	padding:0;
 	text-align:center;
@@ -48,7 +57,7 @@ textarea.uui-text, input[type].uui-text {
 	border:none;
 	background:transparent;
 }
-.uui-button {
+.uui-icon-button {
 	border:none;
 	background:transparent;
 	&.uui-circle {
@@ -59,20 +68,49 @@ textarea.uui-text, input[type].uui-text {
 	}
 }
 .uui-icon,
+.uui-icon-button,
 .uui-button {
-	&:before {
-		vertical-align: middle;
-		position: static;
-		color: inherit;
-		display: block;
-		top: 0.35em;
-		font-size: 0.9em;
-		line-height:1.5em;
-	}
+	display:inline-block;
+	vertical-align: middle;
+	position: static;
+	font-size: 0.9em;
+	line-height:1.5em;
 }
 a.uui-icon:before {
 	vertical-align:middle;
 }
+.uui-button,
+.uui-icon-button,
+.bar .title + .button:last-child, .bar > .button + .button:last-child, .bar > .button.pull-right, .bar .buttons.pull-right, .bar .title + .buttons {
+	background: orange;
+	color: white;
+	border-radius: 5px;
+}
+.uui-button,
+.uui-icon-button {
+	&:hover,
+	&:hover *,
+	&:hover span:before {
+		background:#ffc14d;
+		color:white !important;
+		font-weight:bold;
+	}
+}
+.uui-button {
+	text-align:center;
+	padding:0.236em 0;
+}
+.uui-icon-button {
+	padding: 0.29em 0.24em 0.24em 0.266em;
+	min-width: 0.9em;
+	box-sizing: content-box;
+	font-size: 100%;
+}
+
+
+/*
+	STYLES / EFFECTS
+*/
 .uui-hollow {
 	&:before {
 		text-shadow:0 0 1px #000;
@@ -90,8 +128,6 @@ a.uui-icon:before {
 		color:#ccc;
 	}
 }
-
-
 .uui-hollow-orange {
 	&:before {
 		color:#fff;
@@ -104,3 +140,5 @@ a.uui-icon:before {
 		text-shadow:none;
 	}
 }
+
+

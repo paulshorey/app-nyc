@@ -9496,8 +9496,14 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 input, button, select, textarea {
   font-family: inherit; }
 
+.scroll {
+  height: 100%; }
+
 .bar {
   background: none; }
+
+.bar-header {
+  border-bottom-width: 0; }
 
 .bar .title {
   font-family: "Bodoni 72", Bodoni, serif; }
@@ -9510,20 +9516,7 @@ input, button, select, textarea {
   top: 7px;
   right: 7px;
   bottom: 5px;
-  background: orange;
-  color: white;
-  width: 32px;
-  border-radius: 5px;
-  height: 30px;
-  line-height: 30px; }
-  .bar .title + .button:last-child:hover,
-  .bar .title + .button:last-child:hover *, .bar > .button + .button:last-child:hover,
-  .bar > .button + .button:last-child:hover *, .bar > .button.pull-right:hover,
-  .bar > .button.pull-right:hover *, .bar .buttons.pull-right:hover,
-  .bar .buttons.pull-right:hover *, .bar .title + .buttons:hover,
-  .bar .title + .buttons:hover * {
-    color: white !important;
-    font-weight: bold; }
+  width: 1.55em; }
 
 .item-select {
   padding: 0;
@@ -9533,7 +9526,11 @@ input, button, select, textarea {
     position: relative;
     padding: 0 10px 0 0px;
     direction: ltr;
-    max-width: 100%; }
+    max-width: 100%;
+    font-size: inherit; }
+
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] {
+  font-size: inherit; }
 
 .slide-in-right {
   -webkit-transform: translateX(100%);
@@ -9596,7 +9593,7 @@ a:hover *, .a:hover,
   cursor: pointer; }
   [ng-click]:hover,
   [ng-click]:hover * {
-    color: #4BAFE1 !important;
+    color: #4BAFE1;
     cursor: pointer; }
 
 @font-face {
@@ -9650,7 +9647,7 @@ body {
 [scrollable-right],
 [scrollable-left] {
   position: absolute;
-  top: 210px;
+  top: 217px;
   right: 0;
   text-indent: 0;
   width: 24px;
@@ -9660,7 +9657,7 @@ body {
   cursor: pointer;
   color: orange;
   padding: 7.5vh 0 7.5vh;
-  z-index: 1000;
+  z-index: 100000;
   background: #fff; }
 
 [scrollable-left] {
@@ -9674,219 +9671,150 @@ body {
 /*
 	MODAL mobile options
 */
-.mobile-options {
+.modal-options {
   color: #ccc;
   font-size: 17px;
   padding: 4px 0 3px;
-  width: 200px;
-  margin: 0 auto;
+  /*
+		MODAL links
+	*/
+  /*
+		MODAL bottom links
+	*/
   /*
 		MODAL mobile select
 	*/ }
-  .mobile-options > a,
-  .mobile-options > label {
-    display: block;
+  .modal-options > * {
     border: 0;
     margin: 0 2px 0 5px;
     vertical-align: middle;
-    padding: 0;
     font-size: 100%;
     line-height: 100%;
-    margin: 4px auto; }
-    .mobile-options > a .uui-text,
-    .mobile-options > label .uui-text {
-      color: #666; }
-    .mobile-options > a:hover .uui-text,
-    .mobile-options > label:hover .uui-text {
-      color: inherit; }
-  .mobile-options > a:last-child {
-    position: absolute;
-    top: 8px;
-    right: 0; }
-  .mobile-options.mobile-select > label span:before {
-    font-size: 1.25em;
-    line-height: 1.5em;
-    background: #fff; }
-  .mobile-options.mobile-select > label.item-select,
-  .mobile-options.mobile-select > label select {
-    color: orange;
-    text-transform: uppercase; }
-  .mobile-options.mobile-select > label:hover select {
-    color: #4BAFE1; }
-  .mobile-options.mobile-select > label.active select,
-  .mobile-options.mobile-select > label.active span:before {
-    color: #4BAFE1; }
-  .mobile-options.mobile-select > label.select-search {
-    color: #ccc; }
-  .mobile-options.mobile-select .select-submit {
+    margin: 4px auto;
     color: white;
-    background: orange;
+    white-space: nowrap; }
+  .modal-options .options-options {
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(0, 162, 240, 0.5); }
+    .modal-options .options-options .options-icons {
+      font-size: 115%;
+      margin: 5px 0; }
+  .modal-options .options-links {
+    margin: 30px auto 20px; }
+  .modal-options.modal-links > * {
+    display: block;
+    width: 280px;
+    text-align: center;
+    margin: 10px auto;
     border-radius: 5px; }
-    .mobile-options.mobile-select .select-submit:hover,
-    .mobile-options.mobile-select .select-submit:hover * {
-      color: white !important;
-      font-weight: bold;
-      background: lightorange; }
-    .mobile-options.mobile-select .select-submit span {
-      color: white; }
-    .mobile-options.mobile-select .select-submit span:before {
-      color: white;
-      background: orange;
-      border-radius: 5px; }
-    .mobile-options.mobile-select .select-submit .uui-text {
-      margin-left: -5px; }
-  .mobile-options.mobile-select .select-cancel {
-    color: #ccc;
-    width: auto;
-    padding-left: 10px; }
+  .modal-options.modal-bottom-links {
+    position: absolute;
+    bottom: 90px;
+    width: 100%; }
+  .modal-options.modal-select > * {
+    width: 280px;
+    margin: 5px auto;
+    display: block; }
+    .modal-options.modal-select > *.item-select {
+      padding: 2px 0 0 7px; }
+    .modal-options.modal-select > *.item-select span:before {
+      font-size: 1.25em;
+      line-height: 1.5em;
+      background: #fff; }
+    .modal-options.modal-select > *.item-select,
+    .modal-options.modal-select > * select {
+      color: orange;
+      text-transform: uppercase;
+      background: white; }
+    .modal-options.modal-select > *:hover select {
+      color: #4BAFE1; }
+    .modal-options.modal-select > *.active select,
+    .modal-options.modal-select > *.active span:before {
+      color: #4BAFE1; }
+    .modal-options.modal-select > *.select-search {
+      color: #ccc; }
 
 /*
 		TOP: all
 	*/
 .my-top {
   margin: 0;
-  padding: 15px 20px 18px;
-  /*
-			TOP: mobile
-		*/
-  /*
-			TOP: statement
-		*/ }
+  padding: 10px 0 0; }
   .my-top .top-logo {
     display: block;
-    margin: 0 auto;
+    margin: -4px auto 6px;
     width: 50%;
-    height: 62px;
+    height: 31px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
     position: relative; }
   .my-top .top-left {
     position: absolute;
-    left: 7px;
-    top: 11px; }
-    .my-top .top-left label {
-      display: block;
-      border: none;
-      background: transparent;
+    left: 1px;
+    top: 2px;
+    font-size: 19.5px; }
+    .my-top .top-left .icon-plus {
       color: orange; }
-      .my-top .top-left label span:before,
-      .my-top .top-left label select,
-      .my-top .top-left label input {
-        font-size: 17px;
-        line-height: 17px;
-        padding: 0;
-        background: transparent;
-        display: inline-block;
-        height: 20px;
-        overflow: hidden;
-        text-transform: uppercase;
-        color: orange;
-        padding: 0 1px; }
-      .my-top .top-left label.select-what select {
-        font-weight: bold;
-        letter-spacing: 0.5px; }
-      .my-top .top-left label.select-search span:before,
-      .my-top .top-left label.select-search select,
-      .my-top .top-left label.select-search input {
-        color: #cccccc;
-        cursor: text; }
-      .my-top .top-left label input::-webkit-input-placeholder {
-        color: #cccccc; }
-      .my-top .top-left label input:-moz-placeholder {
-        color: #cccccc; }
-      .my-top .top-left label input::-moz-placeholder {
-        color: #cccccc; }
-      .my-top .top-left label input:-ms-input-placeholder {
-        color: #cccccc; }
-      .my-top .top-left label:hover span:before,
-      .my-top .top-left label:hover select,
-      .my-top .top-left label:hover input {
-        color: #4BAFE1; }
-      .my-top .top-left label:hover input::-webkit-input-placeholder {
-        color: #4BAFE1; }
-      .my-top .top-left label:hover input:-moz-placeholder {
-        color: #4BAFE1; }
-      .my-top .top-left label:hover input::-moz-placeholder {
-        color: #4BAFE1; }
-      .my-top .top-left label:hover input:-ms-input-placeholder {
-        color: #4BAFE1; }
-      .my-top .top-left label.active span:before,
-      .my-top .top-left label.active select,
-      .my-top .top-left label.active input {
-        color: orange; }
-      .my-top .top-left label.active input::-webkit-input-placeholder {
-        color: orange; }
-      .my-top .top-left label.active input:-moz-placeholder {
-        color: orange; }
-      .my-top .top-left label.active input::-moz-placeholder {
-        color: orange; }
-      .my-top .top-left label.active input:-ms-input-placeholder {
-        color: orange; }
+    .my-top .top-left .ion-search {
+      margin: 0 -14px;
+      font-size: 27px; }
+    .my-top .top-left .ion-search:before {
+      line-height: 1em; }
+    .my-top .top-left .tl-left {
+      margin: 0 8px 0 -5px;
+      font-weight: bold; }
+      @media screen and (max-width: 600px) {
+        .my-top .top-left .tl-left {
+          display: none; } }
+    .my-top .top-left .tl-right {
+      margin: 0 0 0 2px; }
+      @media screen and (max-width: 600px) {
+        .my-top .top-left .tl-right {
+          display: none; } }
   .my-top .top-right {
     position: absolute;
     right: 2px;
-    top: 9px;
+    top: 6px;
     text-align: right;
-    color: #ccc;
     padding: 0 0 0 15px;
-    font-size: 17px;
+    font-size: 20px;
     height: 23px; }
-    .my-top .top-right > a {
-      display: block; }
-  .my-top.top-mobile {
-    padding: 10px 0 0; }
-    .my-top.top-mobile .top-logo {
-      height: 31px;
-      margin: -4px auto 6px; }
-    .my-top.top-mobile .top-left {
-      font-size: 19.5px;
-      position: absolute;
-      left: 1px;
-      top: 9px; }
-      .my-top.top-mobile .top-left .icon-plus {
-        color: orange; }
-      .my-top.top-mobile .top-left .ion-search {
-        margin: 0 -14px;
-        font-size: 27px;
-        color: #ccc; }
-      .my-top.top-mobile .top-left .ion-search:before {
-        line-height: 1em; }
-      .my-top.top-mobile .top-left .tt-left {
-        color: orange;
-        margin: 0 8px 0 -5px;
-        font-weight: bold; }
-      .my-top.top-mobile .top-left .tt-right {
-        color: #ccc;
-        margin: 0 0 0 2px; }
-    .my-top.top-mobile .top-right {
-      font-size: 20px;
-      position: absolute;
-      right: 2px;
-      top: 8px; }
-      .my-top.top-mobile .top-right .ion-unlocked {
-        margin: 1px -7px 0 0; }
-      .my-top.top-mobile .top-right .tt-left {
-        color: #ccc;
-        margin: 0 -6px 0 0; }
-      .my-top.top-mobile .top-right .tt-right {
-        color: #ccc;
-        margin: 0 -5px 0 5px; }
-  .my-top.top-statement {
-    margin: -10px 0 15px;
-    padding: 4px 0;
-    text-align: center; }
+    .my-top .top-right .ion-unlocked {
+      margin: 1px -7px 0 0; }
+    .my-top .top-right .tr-left {
+      margin: 0 -6px 0 0; }
+      @media screen and (max-width: 600px) {
+        .my-top .top-right .tr-left {
+          display: none; } }
+    .my-top .top-right .tr-right {
+      margin: 0 -5px 0 5px; }
+      @media screen and (max-width: 600px) {
+        .my-top .top-right .tr-right {
+          display: none; } }
+  .my-top .uui-icon {
+    width: 1.66em; }
+  .my-top span {
+    color: #ccc; }
+    .my-top span.tl-left {
+      color: orange; }
+      .my-top span.tl-left:hover {
+        color: inherit; }
+  .my-top span:hover,
+  .my-top span:hover *,
+  .my-top span:hover span:before {
+    color: #4BAFE1; }
 
 /*
 		MAIN: LISTS
 	*/
 .my-lists {
   position: relative;
-  z-index: 1;
   overflow: hidden;
   overflow-x: auto;
-  margin: 13px 0 0 25px;
-  height: 100%; }
+  margin: 13px 0 5px 25px;
+  height: calc(100% - 10px); }
   .my-lists .my-lis {
     white-space: nowrap;
     height: 100%; }
@@ -9923,7 +9851,7 @@ body {
         height: 100%;
         overflow: hidden;
         overflow-y: auto;
-        padding: 3px 0 0 0; }
+        padding: 3px 0 20px 0; }
 
 /*
 	RESPONSIVE GRID
@@ -10001,7 +9929,7 @@ body {
 	FEATURED EVENTS
 */
 .my-featured {
-  height: 156px;
+  height: 162px;
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
@@ -10019,12 +9947,23 @@ body {
       display: none; }
     .my-featured .featured-li .events-event div.event-image {
       display: inline-block;
-      width: 244px;
-      height: 156px;
+      width: 251px;
+      height: 162px;
       max-width: 100%; }
 
 /*
-	UI
+	RESET
+*/
+[class^="icon-"],
+[class*=" icon-"] {
+  position: relative;
+  line-height: 1.5em;
+  font-size: 1em;
+  display: inline-block;
+  vertical-align: middle; }
+
+/*
+	ELEMENTS
 */
 [class^="uui-"],
 [class*=" uui-"] {
@@ -10032,8 +9971,7 @@ body {
   line-height: 1.5em;
   font-size: 1em;
   display: inline-block;
-  vertical-align: middle;
-  color: inherit; }
+  vertical-align: middle; }
 
 .uui-title {
   position: relative;
@@ -10042,8 +9980,7 @@ body {
   font-weight: bold;
   display: inline-block;
   vertical-align: middle;
-  padding: 0;
-  color: inherit; }
+  padding: 0; }
 
 .uui-text {
   position: relative;
@@ -10051,8 +9988,7 @@ body {
   line-height: 1.5em;
   display: inline-block;
   vertical-align: middle;
-  padding: 0;
-  color: inherit; }
+  padding: 0; }
 
 textarea.uui-text, input[type].uui-text {
   position: relative;
@@ -10060,11 +9996,10 @@ textarea.uui-text, input[type].uui-text {
   line-height: 1.5em;
   display: inline-block;
   vertical-align: middle;
-  padding: 0;
-  color: inherit; }
+  padding: 0; }
 
 .uui-icon,
-.uui-button {
+.uui-icon-button {
   width: 1.5em;
   padding: 0;
   text-align: center; }
@@ -10073,27 +10008,56 @@ textarea.uui-text, input[type].uui-text {
   border: none;
   background: transparent; }
 
-.uui-button {
+.uui-icon-button {
   border: none;
   background: transparent; }
-  .uui-button.uui-circle {
+  .uui-icon-button.uui-circle {
     border-radius: 50%; }
-  .uui-button.uui-square {
+  .uui-icon-button.uui-square {
     border-radius: 2px; }
 
-.uui-icon:before,
-.uui-button:before {
+.uui-icon,
+.uui-icon-button,
+.uui-button {
+  display: inline-block;
   vertical-align: middle;
   position: static;
-  color: inherit;
-  display: block;
-  top: 0.35em;
   font-size: 0.9em;
   line-height: 1.5em; }
 
 a.uui-icon:before {
   vertical-align: middle; }
 
+.uui-button,
+.uui-icon-button,
+.bar .title + .button:last-child, .bar > .button + .button:last-child, .bar > .button.pull-right, .bar .buttons.pull-right, .bar .title + .buttons {
+  background: orange;
+  color: white;
+  border-radius: 5px; }
+
+.uui-button:hover,
+.uui-button:hover *,
+.uui-button:hover span:before,
+.uui-icon-button:hover,
+.uui-icon-button:hover *,
+.uui-icon-button:hover span:before {
+  background: #ffc14d;
+  color: white !important;
+  font-weight: bold; }
+
+.uui-button {
+  text-align: center;
+  padding: 0.236em 0; }
+
+.uui-icon-button {
+  padding: 0.29em 0.24em 0.24em 0.266em;
+  min-width: 0.9em;
+  box-sizing: content-box;
+  font-size: 100%; }
+
+/*
+	STYLES / EFFECTS
+*/
 .uui-hollow:before {
   text-shadow: 0 0 1px #000;
   color: #fff; }

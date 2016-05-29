@@ -5,24 +5,22 @@
 	</ion-header-bar>
 	<ion-content>
 
-		<div class="mobile-options mobile-select" id="top-mobile-select" ng-if="client.isMobile">
+		<div class="modal-options modal-select" id="top-modal-select">
 			<label class="item item-input item-select a select-what" ng-class="{ 'active': vm.list.data.category }">
 				<span class="uui-icon icon-select"></span>
 				<select class="uui-text" ng-model="vm.list.data.category">
-					<option selected value="">WHAT TO DO ?</option>
-					<option selected value="any">anything</option>
+					<option selected value="">anything</option>
 					<option ng-repeat="cat in vm.categories" value="{{cat.title}}">{{cat.title}}</option>
 				</select>
 			</label>
 			<label class="item item-input item-select a select-when" ng-class="{ 'active': vm.list.data.time }">
 				<span class="uui-icon icon-select"></span>
 				<select class="uui-text" ng-model="vm.list.data.time">
-					<option selected value="">THIS WEEK</option>
-					<option selected value="anytime">anytime</option>
-					<option selected value="today">today</option>
-					<option selected value="tomorrow">tomorrow</option>
-					<option selected value="this week">this week</option>
-					<option selected value="this month">this month</option>
+					<option selected value="">anytime</option>
+					<option value="today">today</option>
+					<option value="tomorrow">tomorrow</option>
+					<option value="this week">this week</option>
+					<option value="this month">this month</option>
 				</select>
 			</label>
 			<label class="item item-input item-select a select-search" hoverfocus ng-class="{ 'active': vm.list.data.search }">
@@ -31,11 +29,17 @@
 			</label>
 		</div>
 
-		<div class="mobile-options mobile-select mobile-buttons">
-			<label class="select-submit" ng-click="vm.listAdd();vm.listReset();">
+		<div class="modal-options modal-select modal-buttons">
+			<label class="uui-button" ng-click="vm.listAdd();vm.listReset();">
 				<span class="uui-icon ion-play"></span>
-				<span class="uui-text">GO</span>
+				<span class="uui-text">GO &nbsp; </span>
 			</label>
+		</div>
+
+		<div class="modal-options modal-links modal-bottom-links">
+			<a class="options-links" href="" prevent-default>
+				<span class="uui-icon ion-plus"></span> <span class="uui-text">submit a site / source</span>
+			</a>
 		</div>
 
 	</ion-content>
