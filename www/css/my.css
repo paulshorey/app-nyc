@@ -217,6 +217,8 @@ body {
     height: 23px; }
     .my-top .top-right .ion-unlocked {
       margin: 1px -7px 0 0; }
+    .my-top .top-right .icon-happy {
+      margin: 0.1em 0 0 0.1em; }
     .my-top .top-right .tr-left {
       margin: 0 -6px 0 0; }
       @media screen and (max-width: 600px) {
