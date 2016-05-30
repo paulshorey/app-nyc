@@ -113,14 +113,17 @@ a.uui-icon:before {
   text-shadow: #fff;
   color: #000; }
 
-.uui-muted:before {
+.uui-muted:before,
+.uui-muted span:before {
   color: #ccc; }
 
-.uui-hollow-orange:before {
+.uui-hollow-orange span, .uui-hollow-orange:before,
+.uui-hollow-orange span:before {
   color: #fff;
-  text-shadow: 0 0 1px orange; }
+  text-shadow: 0 0 1px orange;
+  transition: text-shadow 1s, color 1s; }
 
-.uui-hover-orange:hover:before,
+.uui-hover-orange:hover span, .uui-hover-orange:hover:before,
 .uui-hover-orange:hover span:before {
   color: orange;
   text-shadow: none; }

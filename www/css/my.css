@@ -30,6 +30,12 @@ a:hover *, .a:hover,
     color: #4BAFE1;
     cursor: pointer; }
 
+.bold-a {
+  color: orange;
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 100%; }
+
 @font-face {
   font-family: "Robinson";
   src: url("../gfx/fonts/robinson.otf");
@@ -210,7 +216,7 @@ body {
   .my-top .top-right {
     position: absolute;
     right: 2px;
-    top: 6px;
+    top: 5px;
     text-align: right;
     padding: 0 0 0 15px;
     font-size: 20px;
@@ -218,7 +224,9 @@ body {
     .my-top .top-right .ion-unlocked {
       margin: 1px -7px 0 0; }
     .my-top .top-right .icon-happy {
-      margin: 0.1em 0 0 0.1em; }
+      margin: 0.24em 0 0 0.1em; }
+    .my-top .top-right .icon-options-large {
+      margin: 0.123em 0 0 0; }
     .my-top .top-right .tr-left {
       margin: 0 -6px 0 0; }
       @media screen and (max-width: 600px) {
@@ -317,7 +325,9 @@ body {
 .events-event {
   line-height: 115%;
   font-weight: normal;
-  text-transform: lowercase; }
+  text-transform: lowercase;
+  background-size: cover;
+  background-position: center; }
   .events-event .event-image {
     display: none;
     background-position: center;

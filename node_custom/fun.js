@@ -55,3 +55,27 @@ exports.stripslashes = function(str) {
 	// str = str.replace(/\\\\/g, '\\');
 	return str;
 };
+
+// var cutOldBeginning = function(oldWhole, newWhole) {
+// 	if (!newWhole) {
+// 		return false;
+// 	}
+// 	if (!oldWhole) {
+// 		return newWhole;
+// 	}
+// 	var output = newWhole;
+// 	var oldWholeArray = oldWhole.split(' ');
+// 	for (var ea in oldWholeArray) {
+// 		ea = parseInt(ea);
+// 		var oldStart = oldWholeArray.slice(0,ea+1).join(' ');
+// 		if (ea==0) {
+// 			continue;
+// 		}
+// 		if (newWhole.startsWith(oldStart)) {
+// 			output = '<span class="fragment">'+newWhole.replace(oldStart,'')+'</span>';
+// 		} else {
+// 			break;
+// 		}
+// 	}
+// 	return output;
+// };

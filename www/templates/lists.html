@@ -73,17 +73,15 @@
 		</div>
 
 		<div class="my-featured" scrollable>
-			<span scrollable-left class="icon-column-arrow-left a"></span>
-			<span scrollable-right class="icon-column-arrow-right a"></span>
 			<a class="featured-li" ng-repeat="event in vm.featuredEvents | orderObjectBy:'random':true" ng-href="{{event.link}}" target="_blank" prevent-default>
 				<div ng-bind-html="event.html"></div>
 			</a> 
+			<span scrollable-left class="icon-column-arrow-left a"></span>
+			<span scrollable-right class="icon-column-arrow-right a"></span>
 		</div>
 
 
 		<div class="my-lists" scrollable>
-			<span scrollable-left class="icon-column-arrow-left a"></span>
-			<span scrollable-right class="icon-column-arrow-right a"></span>
  			<div class="my-lis">
 				<div class="my-li" ng-repeat="list in vm.lists | orderObjectBy:'sortorder':true">
 
@@ -94,13 +92,18 @@
 							<span class="uui-subtitle a" ng-if="list.data.search">{{ list.data.scene || 'Any' }} </span>
 							<span class="uui-subtitle a" ng-if="list.data.search">{{ list.data.search || 'Any' }} </span>
 						</span>
-						<span class="my-li-buttons my-li-buttons-left uui-icon icon-star uui-hollow-orange"></span>
+						<span ng-class="{'uui-hollow-orange': !list.justAdded }" class="my-li-buttons my-li-buttons-left uui-icon icon-star"></span>
 					</div>
 
-					<div class="my-li-events" ng-bind-html="list.html"></div>
+					<div class="my-li-events" ng-bind-html="list.html" ng-if="list.eventsCount"></div>
+					<div class="my-li-events" ng-if="!list.eventsCount">
+						<div>Nothing found...</div> <span class="a bold-a" ng-click="modals.modalSelect.show()">Try again &raquo;</span>
+					</div>
 
 				</div>
 			</div>
+			<span scrollable-left class="icon-column-arrow-left a"></span>
+			<span scrollable-right class="icon-column-arrow-right a"></span>
 		</div>
 
 

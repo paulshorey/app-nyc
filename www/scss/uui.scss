@@ -124,17 +124,22 @@ a.uui-icon:before {
 	}
 }
 .uui-muted {
-	&:before {
+	&:before,
+	span:before {
 		color:#ccc;
 	}
 }
 .uui-hollow-orange {
-	&:before {
+	span,
+	&:before,
+	span:before {
 		color:#fff;
 		text-shadow:0 0 1px orange;
+		transition:text-shadow 1s, color 1s;
 	}
 }
 .uui-hover-orange:hover {
+	span,
 	&:before,
 	span:before {
 		color:orange;

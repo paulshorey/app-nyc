@@ -10,7 +10,7 @@ angular.module('ionicApp.controllers', [])
 })
 
 
-.controller('ListController', ["AccountService", "ListService", "EventService", "ContentService", "$ionicLoading", "$ionicPopup", "$ionicModal", "$window", "$scope", "$rootScope", "$state", "$timeout", "$stateParams", "$sce", function (AccountService, ListService, EventService, ContentService, $ionicLoading, $ionicPopup, $ionicModal, $window, $scope, $rootScope, $state, $timeout, $stateParams, $sce) {
+.controller('ListController', ["AccountService", "ListService", "EventService", "ContentService", "$ionicLoading", "$ionicPopup", "$ionicModal", "$window", "$scope", "$rootScope", "$state", "$timeout", "$stateParams", "$sce", "$compile", "$interpolate", "$parse", function (AccountService, ListService, EventService, ContentService, $ionicLoading, $ionicPopup, $ionicModal, $window, $scope, $rootScope, $state, $timeout, $stateParams, $sce, $compile, $interpolate, $parse) {
 	//window.ListController = this;
 	$rootScope.client = window.client;
 	var vm = this;
@@ -96,9 +96,10 @@ angular.module('ionicApp.controllers', [])
 	$scope.$on('$destroy', vm.syncLocal);
 	window.onbeforeunload =  vm.syncLocal;
 	vm.syncLocal = function(){
-		// if (vm.lists.userLists.length) {
-		// 	window.localStorage.lists = JSON.stringify(vm.lists);
-		// }
+		window.localStorage.lists = JSON.stringify(vm.lists);
+	};
+	vm.syncRemote = function(){
+		//window.localStorage.lists = JSON.stringify(vm.lists);
 	};
 
 	vm.setUser = function () {
@@ -141,7 +142,7 @@ angular.module('ionicApp.controllers', [])
 								category: array[id].title,
 								scene: '',
 								text: '',
-								likes: 1
+								likes: array[id].likes
 							},
 							sortorder: array.length - id,
 							type: 'default'
@@ -223,73 +224,43 @@ angular.module('ionicApp.controllers', [])
 			.then(function (list) {}, function (error) {})
 			// [/data]
 	}
-	vm.listKey = function (list, whatList) {
-
-	}
-	vm.listReset = function (list) {
-		vm.list = {data:{}};
-	}
+	// vm.listReset = function (list) {
+	// }
 	vm.listAdd = function (list) {
-		if (list) {
-			vm.listsClean(list);
-		}
-
+		vm.closeModals();
 		// <lists>
-		if (vm.list.data.category || vm.list.data.time || vm.list.data.scene || vm.list.data.search) {
-			if (vm.list.data.category == 'any') {
-				vm.list.data.category = '';
-			}
-			if (vm.list.data.time == 'any') {
-				vm.list.data.time = '';
-			}
-			$timeout(function () {
-				if (list) {
-					vm.list.data = list.data;
+		// if (vm.list.data.category == 'any') {
+		// 	vm.list.data.category = '';
+		// }
+		// if (vm.list.data.time == 'any') {
+		// 	vm.list.data.time = '';
+		// }
+		if (list) {
+			vm.list.data = list.data;
+		}
+		//if (vm.list.data.category || vm.list.data.time || vm.list.data.scene || vm.list.data.search) {
+			vm.list.data.uid = vm.list.data.category;
+			function removeJustAdded(){
+				for (var li in vm.lists) {
+					vm.lists[li].justAdded = false;
 				}
-				// vm.list.data.uid = 'userLists'+Date.now() + vm.list.data.uid;
-				vm.list.data.uid = vm.list.data.category;
-				if (!vm.lists[ vm.list.data.uid ]) {
-					vm.lists[ vm.list.data.uid ] = vm.list;
-				}
+			}
+			vm.list.justAdded = true;
+			$timeout(function(){
+				removeJustAdded();
+			},1500);
+			//$scope.$applyAsync(function(){
+				vm.lists[ vm.list.data.uid ] = vm.list;
 				vm.lists[ vm.list.data.uid ].sortorder = Date.now();
 				vm.listsReady -= 1;
 				vm.listEvents(vm.list);
 				var listsIds = Object.keys(vm.lists).sort(function(a, b) {return (vm.lists[b].sortorder - vm.lists[a].sortorder)});
-				if (vm.list.data.category==listsIds[0]) {
-				} else {
-					vm.list = {data:{}};
-				}
-			});
-		}
+				vm.list = {data:{}};
+				vm.syncLocal();
+			//});
+		//}
 		// </lists>
-
-		// [data]
-		// [/data]
-
 	}
-	var cutOldBeginning = function(oldWhole, newWhole) {
-		if (!newWhole) {
-			return false;
-		}
-		if (!oldWhole) {
-			return newWhole;
-		}
-		var output = newWhole;
-		var oldWholeArray = oldWhole.split(' ');
-		for (var ea in oldWholeArray) {
-			ea = parseInt(ea);
-			var oldStart = oldWholeArray.slice(0,ea+1).join(' ');
-			if (ea==0) {
-				continue;
-			}
-			if (newWhole.startsWith(oldStart)) {
-				output = '<span class="fragment">'+newWhole.replace(oldStart,'')+'</span>';
-			} else {
-				break;
-			}
-		}
-		return output;
-	};
 	vm.listEvents = function (list) {
 		var query = {};
 		query.category = list.data.category;
@@ -375,6 +346,7 @@ angular.module('ionicApp.controllers', [])
 					// </html>
 
 					$timeout(function () {
+						list.eventsCount = events.length;
 						list.html = $sce.trustAsHtml(html);
 					});
 					// </events>
@@ -443,20 +415,21 @@ angular.module('ionicApp.controllers', [])
 				target.scrollLeftLast = target.scrollLeft;
 			};
 			scope.$watch(
-				function () { if (!element[0].firstElementChild) { return false; } return Object.keys(scope.$parent.vm.lists).length ? element[0].firstElementChild.childElementCount : false; },
+				function () { if (element[0].firstElementChild.firstElementChild) { return element[0].firstElementChild.firstElementChild.innerText; } },
 				function (newValue, oldValue) {
 					// scroll to beginning
-					if (oldValue > 0 && newValue > oldValue) {
+					if (newValue != oldValue) {
 						var target = element[0];
 						var duration = target.clientWidth / 2;
 
 						var scrollTo = 0;
 						target.doNotScroll = 'scroll--changed';
 						$ionicLoading.show();
-						target.scrollLeft = target.scrollLeft + target.firstElementChild.firstElementChild.scrollWidth;
+						//console.log(target.firstElementChild);
+						//target.scrollLeft = target.scrollLeft + target.firstElementChild.firstElementChild.scrollWidth;
 						$timeout(function(){
 							$ionicLoading.hide();
-							$(target).animate({ scrollLeft: scrollTo }, { duration: duration });
+							$(target).animate({ scrollLeft: 0 }, { duration: duration });
 
 							$timeout(
 								scope.scroll_enable,
@@ -510,13 +483,14 @@ angular.module('ionicApp.controllers', [])
 					}
 					var pages = Math[round]( target.scrollLeft / target.firstElementChild.clientWidth );
 					var scrollTo = target.firstElementChild.clientWidth * pages;
-					// go to column (if real close)
-					var columns = Math.round( target.scrollLeft / target.firstElementChild.firstElementChild.clientWidth );
-					var scrollToColumn = target.firstElementChild.firstElementChild.clientWidth * columns;
-					if ( Math.abs( target.scrollLeft - scrollToColumn ) < 60 ) {
-						scrollTo = scrollToColumn;
+					// go to column (if manually scrolled to it)
+					if (target.firstElementChild.firstElementChild) {
+						var columns = Math.round( target.scrollLeft / target.firstElementChild.firstElementChild.clientWidth );
+						var scrollToColumn = target.firstElementChild.firstElementChild.clientWidth * columns;
+						if ( Math.abs( target.scrollLeft - scrollToColumn ) < 60 ) {
+							scrollTo = scrollToColumn;
+						}
 					}
-
 					// ok go
 					$(target).animate({ scrollLeft: scrollTo }, { duration: duration });
 					// done
