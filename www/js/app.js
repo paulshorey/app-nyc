@@ -1,7 +1,6 @@
 angular.module('ionicApp', ['ionic', 'ionicApp.controllers', 'ionicApp.services'])
 
-.run(function ($ionicPlatform, $rootScope, AccountService) {
-
+.run(function ($ionicPlatform, $rootScope, AccountService, $injector) {
 	$ionicPlatform.ready(function () {
 		// hide accessory bar
 		if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
@@ -13,10 +12,11 @@ angular.module('ionicApp', ['ionic', 'ionicApp.controllers', 'ionicApp.services'
 			StatusBar.styleDefault(); // org.apache.cordova.statusbar required
 		}
 	});
-
-	AccountService.currentUser().then(function (data) {
-		$rootScope.user = data;
-	})
+	window.inject = function(who){
+		return $injector.get([who]);
+	};
+	// init stuff for all controllers
+	// here...
 })
 
 .constant('$ionicLoadingConfig', {
@@ -39,27 +39,6 @@ angular.module('ionicApp', ['ionic', 'ionicApp.controllers', 'ionicApp.services'
 		cache: false,
 		url: '/',
 		templateUrl: 'templates/lists.html',
-		controller: "ListController",
-		controllerAs: "vm"
-	})
-	.state('about', {
-		cache: false,
-		url: '/about',
-		templateUrl: 'templates/about.html',
-		controller: "ListController",
-		controllerAs: "vm"
-	})
-	.state('addList', {
-		cache: false,
-		url: '/addList',
-		templateUrl: 'templates/modals/addList.html',
-		controller: "ListController",
-		controllerAs: "vm"
-	})
-	.state('editList', {
-		cache: false,
-		url: '/editList/:id',
-		templateUrl: 'templates/modals/editList.html',
 		controller: "ListController",
 		controllerAs: "vm"
 	})

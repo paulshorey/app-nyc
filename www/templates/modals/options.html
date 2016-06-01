@@ -8,11 +8,11 @@
 		<div class="modal-options modal-links">
 			
 			<label class="options-options" ng-if="!user.displayName">
-				<span class="uui-icon icon-pushpin"></span> <span class="uui-text">login to save your lists: </span>
+				<span class="uui-icon icon-pushpin"></span> <span class="uui-text">login to sync your lists: </span>
 				<div class="options-icons">
-					<a class="uui-button uui-icon-button ion-social-facebook" href="/" prevent-default ng-click="vm.logout()"></a>
-					<a class="uui-button uui-icon-button ion-social-google" href="/" prevent-default ng-click="vm.logout()"></a>
-					<a class="uui-button uui-icon-button ion-social-github" href="/" prevent-default ng-click="vm.logout()"></a>
+					<a class="uui-button uui-icon-button ion-social-facebook" href="/" prevent-default ng-click="vm.login('facebook')"></a>
+					<a class="uui-button uui-icon-button ion-social-google" href="/" prevent-default ng-click="vm.login('google')"></a>
+					<a class="uui-button uui-icon-button ion-social-github" href="/" prevent-default ng-click="vm.login('github')"></a>
 				</div>
 			</label>
 
@@ -23,7 +23,7 @@
 				<span class="uui-icon icon-link"></span> <span class="uui-text">add / remove a source </span>
 			</a>
 			<a class="uui-button" ng-if="user.displayName" href="/" prevent-default ng-click="vm.logout()">
-				<span class="uui-text">welcome, {{ user.displayName }}</span>
+				<span class="uui-text">logout, {{ user.displayName }}</span>
 			</a>
 		</div>
 

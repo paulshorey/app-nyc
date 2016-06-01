@@ -26,12 +26,15 @@ angular.module('ionicApp.services', [])
 .factory('AccountService', ["$q", function ($q) {
 	return {
 
+		logout: function() {
+			Stamplay.User.logout();
+		},
 		currentUser: function () {
 			var def = $q.defer();
 			Stamplay.User.currentUser()
 				.then(function (response) {
 					if (response.user === undefined) {
-						def.resolve(false);
+						def.reject(false);
 					} else {
 						def.resolve(response.user);
 					}
@@ -74,7 +77,6 @@ angular.module('ionicApp.services', [])
 	return {
 
 		getGuestLists: function (query) {
-			console.log('get GUEST lists');
 			var deffered = $q.defer();
 			Stamplay.Query("object", "list")
 				.notExists("owner")
@@ -87,8 +89,7 @@ angular.module('ionicApp.services', [])
 			return deffered.promise;
 		},
 
-		getUsersLists: function (query) {
-			console.log('get USER lists');
+		getUserLists: function (query) {
 			var deffered = $q.defer();
 
 			Stamplay.Object("list")
@@ -126,6 +127,19 @@ angular.module('ionicApp.services', [])
 					deffered.reject(err);
 				})
 			return deffered.promise
+		},
+		deleteAll: function () {
+			var deffered = $q.defer();
+			Stamplay.Object("list")
+				.findByCurrentUser(["owner"])
+				.then(function (response) {
+					for (var d in response.data) {
+						Stamplay.Object("list")
+							.remove(response.data[d].id)
+							.then(function (response) {
+							});
+					}
+				});
 		},
 		deleteList: function (id) {
 			var deffered = $q.defer();

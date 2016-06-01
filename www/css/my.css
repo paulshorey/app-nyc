@@ -290,6 +290,12 @@ body {
         .my-lists .my-lis .my-li .my-li-header .my-li-title {
           display: inline-block;
           vertical-align: middle; }
+          .my-lists .my-lis .my-li .my-li-header .my-li-title .title-time {
+            font-size: 85%; }
+          .my-lists .my-lis .my-li .my-li-header .my-li-title .title-scene {
+            font-size: 85%; }
+          .my-lists .my-lis .my-li .my-li-header .my-li-title .title-search {
+            font-size: 85%; }
           .my-lists .my-lis .my-li .my-li-header .my-li-title span {
             display: block;
             height: 1em;
