@@ -326,19 +326,19 @@ body {
 /*
 	RESPONSIVE GRID
 */
-@media (min-width: 0px) and (max-width: 600px) {
+@media (min-width: 0px) and (max-width: 650px) {
   .my-li {
     width: 100%; } }
 
-@media (min-width: 601px) and (max-width: 900px) {
+@media (min-width: 651px) and (max-width: 975px) {
   .my-li {
     width: 50%; } }
 
-@media (min-width: 901px) and (max-width: 1200px) {
+@media (min-width: 976px) and (max-width: 1300px) {
   .my-li {
     width: 33.33%; } }
 
-@media (min-width: 1201px) {
+@media (min-width: 1301px) {
   .my-li {
     width: 25%; } }
 
@@ -425,7 +425,6 @@ body {
     height: 110%; }
   .my-featured .featured-li {
     display: inline-block;
-    max-width: 33.33%;
     vertical-align: top;
     white-space: normal; }
     .my-featured .featured-li .events-event {

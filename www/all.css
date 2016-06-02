@@ -9892,19 +9892,19 @@ body {
 /*
 	RESPONSIVE GRID
 */
-@media (min-width: 0px) and (max-width: 500px) {
+@media (min-width: 0px) and (max-width: 650px) {
   .my-li {
     width: 100%; } }
 
-@media (min-width: 501px) and (max-width: 800px) {
+@media (min-width: 651px) and (max-width: 975px) {
   .my-li {
     width: 50%; } }
 
-@media (min-width: 801px) and (max-width: 1280px) {
+@media (min-width: 976px) and (max-width: 1300px) {
   .my-li {
     width: 33.33%; } }
 
-@media (min-width: 1281px) {
+@media (min-width: 1301px) {
   .my-li {
     width: 25%; } }
 

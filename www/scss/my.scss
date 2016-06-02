@@ -393,9 +393,9 @@ body {
 /*
 	RESPONSIVE GRID
 */
-$c1-upto: 600px;
-$c2-upto: 900px;
-$c3-upto: 1200px;
+$c1-upto: 650px;
+$c2-upto: 975px;
+$c3-upto: 1300px;
 $c4-upto: 10000px;
 
 $media-one:  "(min-width:0px) and (max-width:#{$c1-upto})" !default;
@@ -525,7 +525,6 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 	}
 	.featured-li {
 		display:inline-block;
-		max-width:33.33%;
 		vertical-align:top;
 		white-space:normal;
 		.events-event {
