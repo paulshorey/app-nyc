@@ -10023,7 +10023,7 @@ body {
     color: white;
     padding: 22px 0 11px;
     z-index: 1000000;
-    background: rgba(0, 0, 0, 0.01);
+    background: rgba(0, 0, 0, 0.1);
     text-indent: 7px; }
   .my-featured [scrollable-left] {
     text-indent: -35px; }
