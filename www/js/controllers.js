@@ -112,12 +112,10 @@ angular.module('ionicApp.controllers', [])
 					};
 					list.data.uid = list.data.category;
 					vm.listsReady -= 1;
-					if (vm.lists[list.data.uid] && vm.lists[list.data.uid].data && vm.lists[list.data.uid].data.addedOn > list.data.addedOn) {
-						vm.lists[list.data.uid] = vm.lists[list.data.uid];
-					} else {
+					if (vm.lists[list.data.uid] && vm.lists[list.data.uid].data && vm.lists[list.data.uid].data.addedOn < list.data.addedOn) {
 						vm.lists[list.data.uid] = list;
+						vm.listEvents(list);
 					}
-					vm.listEvents(list);
 				});
 				vm.syncLists();
 				// content
@@ -148,8 +146,8 @@ angular.module('ionicApp.controllers', [])
 						vm.listsReady -= 1;
 						if (!vm.lists[list.data.uid] || list.data.addedOn > vm.lists[list.data.uid].data.addedOn) {
 							vm.lists[list.data.uid] = list;
+							vm.listEvents(list);
 						}
-						vm.listEvents(list);
 					}
 				});
 				if (Object.keys(vm.lists).length) {
@@ -270,7 +268,7 @@ angular.module('ionicApp.controllers', [])
 						ev += '		<div class="events-event" style="background-image:url(\'' + event.image + '\');">';
 						ev += '			<div class="event-text">\n';
 						if (event.texts[0]) {
-							ev += '			<span><a class="event-link" href="' + event.link + '" target="_blank" prevent-default ng-click="window.open(\'' + event.link + '\', \'_system\')">' + event.texts[0] + '</a></span>\n';
+							ev += '			<span><a class="event-link" href="' + event.link + '" target="_blank" prevent-default onClick="window.open(\'' + event.link + '\', \'_system\')">' + event.texts[0] + '</a></span>\n';
 						}
 						if (event.texts[1]) {
 							ev += '			<span>' + event.texts[1] + '</span>\n';
@@ -287,7 +285,7 @@ angular.module('ionicApp.controllers', [])
 							ev += '		<span ng-click><span class="ion-calendar"></span> <span>' + moment(event.timestamp)
 								.format('h:mma') + '</span></span>\n';
 						}
-						ev += '			<a class="subtext-source" href="' + event.source_link + '" prevent-default ng-click="window.open(\'' + event.link + '\', \'_system\')"><span class="icon-link"></span> ' + (event.source_host.substr(0, event.source_host.indexOf('.'))) + '</a>\n';
+						ev += '			<a class="subtext-source" href="' + event.source_link + '" prevent-default onClick="window.open(\'' + event.link + '\', \'_system\')"><span class="icon-link"></span> ' + (event.source_host.substr(0, event.source_host.indexOf('.'))) + '</a>\n';
 						ev += '			<span class="subtext-fave" ng-click=""><span class="icon-star-outline"></span></span>\n';
 						ev += '			</div>\n';
 						ev += '		</div>';
@@ -299,7 +297,7 @@ angular.module('ionicApp.controllers', [])
 						if (event.image) {
 							var event_featured = JSON.parse(JSON.stringify(event));
 							if (old_event_featured_images.indexOf(event_featured.image) == -1) {
-								event_featured.html = $sce.trustAsHtml(ev);
+								event_featured.eventsHTML = $sce.trustAsHtml(ev);
 								vm.featuredEvents[event.random] = event_featured;
 								old_event_featured_images.push(event_featured.image);
 							}
@@ -311,7 +309,7 @@ angular.module('ionicApp.controllers', [])
 
 					$timeout(function () {
 						list.eventsCount = events.length;
-						list.html = $sce.trustAsHtml(html);
+						list.eventsHTML = $sce.trustAsHtml(html);
 					});
 					// </events>
 				}
@@ -361,7 +359,6 @@ angular.module('ionicApp.controllers', [])
 				listData[li] = {data:vm.lists[li].data};
 			}
 		}
-		console.log('addNew',listData);
 		if (Object.keys(vm.lists).length) {
 			ListService.deleteAll();
 			ListService.addNew({data:listData})
@@ -411,7 +408,7 @@ angular.module('ionicApp.controllers', [])
 				window.localStorage.clear();
 				vm.lists = {};
 				$rootScope.user = responseData;
-				vm.listsGetDefault();
+				vm.listsGetDefault(true);
 				$ionicLoading.hide();
 				vm.closeModals();
 			}, function (error) {

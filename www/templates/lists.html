@@ -29,7 +29,7 @@
 
 		<div class="my-featured" scrollable>
 			<a class="featured-li" ng-repeat="event in vm.featuredEvents | orderObjectBy:'random':true" ng-href="{{event.link}}" target="_blank" prevent-default>
-				<div ng-bind-html="event.html"></div>
+				<div ng-bind-html="event.eventsHTML"></div>
 			</a> 
 			<span scrollable-left class="icon-column-arrow-left a"></span>
 			<span scrollable-right class="icon-column-arrow-right a"></span>
@@ -50,7 +50,7 @@
 						<span ng-class="{'uui-hollow-orange': !list.justAdded }" class="my-li-buttons my-li-buttons-left uui-icon icon-star"></span>
 					</div>
 
-					<div class="my-li-events" ng-bind-html="list.html" ng-if="list.eventsCount"></div>
+					<div class="my-li-events" ng-if="list.eventsCount" ng-bind-html="list.eventsHTML"></div>
 					<div class="my-li-events" ng-if="!list.eventsCount">
 						<div>Nothing found...</div> <span class="a bold-a" ng-click="modals.modalSelect.show()">Try again &raquo;</span>
 					</div>
