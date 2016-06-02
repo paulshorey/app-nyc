@@ -111,7 +111,7 @@ body {
 	cursor:pointer;
 	color:orange;
 	padding:2.5vh 0 7.5vh;
-	z-index:100000;
+	z-index:1000000;
 	background:#fff;
 	&.scrollZero {
 		color:#ccc;
@@ -235,21 +235,21 @@ body {
 			position:relative;
 			background-image:url("../gfx/logo/allevents.nyc.png");
 		}
+		.top-you,
+		.top-search {
+			span {
+				color:orange;
+			}
+		}
 		.top-left {
 			position: absolute;
 			left: 1px;
 			top: 2px;
 			font-size:19.5px;
-			.icon-plus {
-				color:orange;
-			}
 
 			.ion-search {
-				margin: 0 -14px;
+				margin: 0px -16px 0 -15px;
 				font-size: 27px;
-			}
-			.ion-search:before {
-				line-height:1em;
 			}
 			.tl-left {
 				margin: 0 8px 0 -5px;
@@ -277,7 +277,7 @@ body {
 				margin: 1px -7px 0 0;
 			}
 			.icon-happy {
-				margin: 0.24em 0 0 0.1em;
+				margin: 3px -7px 0 0;
 			}
 			.icon-options-large {
 				margin: 0.123em 0 0 0;
@@ -434,7 +434,7 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 	background-size: cover;
 	background-position: center;
 	.event-image {
-		display:none;
+		display:none !important;
 		background-position:center;
 		background-repeat:no-repeat;
 		background-size:cover;
@@ -611,7 +611,8 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 		span {
 			color:#999;
 		}
-		span.tl-left {
+		.top-search span,
+		.top-you span {
 			color: orange;
 		}
 		.top-logo {

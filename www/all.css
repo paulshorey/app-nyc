@@ -9508,8 +9508,15 @@ input, button, select, textarea {
 .bar .title {
   font-family: "Bodoni 72", Bodoni, serif; }
 
+.item-select select {
+  width: 100%;
+  max-width: 100%; }
+
 .item-select:after {
   content: none; }
+
+.item-select.disabled {
+  opacity: 0.5; }
 
 .bar .title + .button:last-child, .bar > .button + .button:last-child, .bar > .button.pull-right, .bar .buttons.pull-right, .bar .title + .buttons {
   position: absolute;
@@ -9671,7 +9678,7 @@ body {
   cursor: pointer;
   color: orange;
   padding: 2.5vh 0 7.5vh;
-  z-index: 100000;
+  z-index: 1000000;
   background: #fff; }
   [scrollable-right].scrollZero,
   [scrollable-left].scrollZero {
@@ -9769,18 +9776,17 @@ body {
     background-size: contain;
     position: relative;
     background-image: url("../gfx/logo/allevents.nyc.png"); }
+  .my-top .top-you span,
+  .my-top .top-search span {
+    color: orange; }
   .my-top .top-left {
     position: absolute;
     left: 1px;
     top: 2px;
     font-size: 19.5px; }
-    .my-top .top-left .icon-plus {
-      color: orange; }
     .my-top .top-left .ion-search {
-      margin: 0 -14px;
+      margin: 0px -16px 0 -15px;
       font-size: 27px; }
-    .my-top .top-left .ion-search:before {
-      line-height: 1em; }
     .my-top .top-left .tl-left {
       margin: 0 8px 0 -5px;
       font-weight: bold; }
@@ -9803,7 +9809,7 @@ body {
     .my-top .top-right .ion-unlocked {
       margin: 1px -7px 0 0; }
     .my-top .top-right .icon-happy {
-      margin: 0.24em 0 0 0.1em; }
+      margin: 3px -7px 0 0; }
     .my-top .top-right .icon-options-large {
       margin: 0.123em 0 0 0; }
     .my-top .top-right .tr-left {
@@ -9918,7 +9924,7 @@ body {
   background-size: cover;
   background-position: center; }
   .events-event .event-image {
-    display: none;
+    display: none !important;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -10061,7 +10067,8 @@ body {
   background: #666; }
   .scrolled .my-top span {
     color: #999; }
-  .scrolled .my-top span.tl-left {
+  .scrolled .my-top .top-search span,
+  .scrolled .my-top .top-you span {
     color: orange; }
   .scrolled .my-top .top-logo {
     background-image: url("../gfx/logo/allevents.nyc-flipped.png"); }

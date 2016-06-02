@@ -1,38 +1,140 @@
 <ion-view ng-class="{ 'isMobile': client.isMobile }" data-tap-disabled="true">
 	<div class="my-content" scroll-top>
-		<!-- <div ng-if="user" log-scope></div>
-		<script id="templates/modals/options.html" type="text/ng-template" src="./templates/modals/options.html"></script>
-		<script id="templates/modals/select.html" type="text/ng-template" src="./templatesmodals/select.html"></script> -->
+		
+		<!-- MODALS - Ionic Lab can't use include paths! -->
+		<script id="templates/modals/options.html" type="text/ng-template">
+			<ion-modal-view ng-class="{ 'isMobile': client.isMobile }" data-tap-disabled="true">
+				<ion-header-bar>
+					<h1 class="title"></h1>
+					<button class="button button-clear button-primary" ng-click="vm.closeModals()">X</button>
+				</ion-header-bar>
+				<ion-content>
 
-		<ng-include src="'templates/partials/featured.html'" ng-if="client.isMobile"></ng-include>
+					<div class="modal-options modal-links">
+						
+						<label class="options-options" ng-if="!user.displayName">
+							<span class="uui-icon icon-pushpin"></span> <span class="uui-text">login to sync your lists: </span>
+							<div class="options-icons">
+								<a class="uui-button uui-icon-button ion-social-facebook" href="/" prevent-default ng-click="vm.login('facebook')"></a>
+								<a class="uui-button uui-icon-button ion-social-google" href="/" prevent-default ng-click="vm.login('google')"></a>
+								<a class="uui-button uui-icon-button ion-social-github" href="/" prevent-default ng-click="vm.login('github')"></a>
+							</div>
+						</label>
 
+						<a class="uui-button" href="/" prevent-default ng-click="vm.clearActive(); vm.addList()">
+							<span class="uui-icon icon-hipster2"></span> <span class="uui-text">about us / get involved </span>
+						</a>
+						<a class="uui-button" href="/" prevent-default ng-click="vm.clearActive(); vm.addList()">
+							<span class="uui-icon icon-link"></span> <span class="uui-text">add / remove a source </span>
+						</a>
+						<a class="uui-button" ng-if="user.displayName" href="/" prevent-default ng-click="vm.logout()">
+							<span class="uui-text">logout, {{ user.displayName }}</span>
+						</a>
+					</div>
+
+				</ion-content>
+			</ion-modal-view>
+		</script>
+		<script id="templates/modals/select.html" type="text/ng-template">
+			<ion-modal-view ng-class="{ 'isMobile': client.isMobile }" data-tap-disabled="true">
+				<ion-header-bar>
+					<h1 class="title"></h1>
+					<button class="button button-clear button-primary" ng-click="vm.closeModals()">X</button>
+				</ion-header-bar>
+				<ion-content>
+
+					<div class="modal-options modal-select" id="top-modal-select">
+						<label class="item item-input item-select a select-what" ng-class="{ 'active': vm.list.data.category }">
+							<span class="uui-icon icon-select"></span>
+							<select class="uui-text" ng-model="vm.list.data.category">
+								<option selected value="">anything</option>
+								<option ng-repeat="cat in vm.categories" value="{{cat.title}}">{{cat.title}}</option>
+							</select>
+						</label>
+						<label class="item item-input item-select a select-when" ng-class="{ 'active': vm.list.data.time }" disabled>
+							<span class="uui-icon icon-select"></span>
+							<select class="uui-text" ng-model="vm.list.data.time" disabled>
+								<option selected value="">anytime</option>
+								<option value="today">today</option>
+								<option value="tomorrow">tomorrow</option>
+								<option value="this week">this week</option>
+								<option value="this month">this month</option>
+							</select>
+						</label>
+						<label class="item item-input item-select a select-search" hoverfocus ng-class="{ 'active': vm.list.data.search }" disabled>
+							<span class="uui-icon ion-search"></span>
+							<input class="uui-text" type="text" ng-model="vm.list.data.search" placeholder="SEARCH" disabled />
+						</label>
+					</div>
+
+					<div class="modal-options modal-select modal-buttons">
+						<label class="uui-button" ng-click="vm.listAdd();">
+							<span class="uui-icon ion-play"></span>
+							<span class="uui-text">GO &nbsp; </span>
+						</label>
+					</div>
+
+					<div class="modal-options modal-links">
+						<span class="uui-text" style="white-space:normal;text-align:left;font-size:0.85em;line-height:1.2em;">* Search and time filters temporarily disabled, while I add and automate event listings and refinement options <span style="float:right;">- <a href="mailto:ps@artspaces.net" style="text-decoration:underline;">Paul Shorey</a></span> </span>
+					</div>
+
+					<div class="modal-options modal-links modal-bottom-links">
+						<a class="options-links" href="" prevent-default>
+							<span class="uui-icon ion-plus"></span> <span class="uui-text">submit a site / source</span>
+						</a>
+					</div>
+
+				</ion-content>
+			</ion-modal-view>
+		</script>
+
+		<!-- FEATURED - Ionic Lab can't use include paths -->
+		<div class="my-featured" ng-class="{'isMobile':client.isMobile}" ng-if="client.isMobile">
+			<div scrollable>
+				<a class="featured-li" ng-repeat="event in vm.featuredEvents | orderObjectBy:'random':true" ng-href="{{event.link}}" target="_blank" prevent-default>
+					<div ng-bind-html="event.eventsHTML"></div>
+				</a> 
+			</div>
+			<span scrollable-left class="icon-column-arrow-left a"></span>
+			<span scrollable-right class="icon-column-arrow-right a"></span>
+		</div>
+
+		<!-- TOP NAV -->
 		<div class="my-top top-mobile">
 			<div class="top-logo" ng-class="{ 'isMobile': client.isMobile }">
 			</div>
 			<div class="top-left">
 				<span ng-click="modals.modalSelect.show()">
 					<span class="uui-icon icon-plus"></span>
-					<span class="uui-text tl-left">Find</span>
 				</span>
-				<span ng-click="modals.modalSelect.show()">
+				<span ng-click="modals.modalSelect.show()" class="top-search">
 					<span class="uui-icon ion-search"></span>
 					<span class="uui-text tl-right">Search</span>
 				</span>
 			</div>
 			<div class="top-right">
-				<span ng-click="modals.modalOptions.show()">
+				<span ng-click="modals.modalOptions.show()" class="top-you">
 					<span class="uui-text tr-left">You</span>
 					<span class="uui-icon icon-happy"></span>
 				</span>
 				<span ng-click="modals.modalOptions.show()">
-					<span class="uui-text tr-right">More</span>
 					<span class="uui-icon icon-options-large"></span>
 				</span>
 			</div>
 		</div>
 
-		<ng-include src="'templates/partials/featured.html'" ng-if="!client.isMobile"></ng-include>
+		<!-- FEATURED - Ionic Lab can't use include paths -->
+		<div class="my-featured" ng-class="{'isMobile':client.isMobile}" ng-if="!client.isMobile">
+			<div scrollable>
+				<a class="featured-li" ng-repeat="event in vm.featuredEvents | orderObjectBy:'random':true" ng-href="{{event.link}}" target="_blank" prevent-default>
+					<div ng-bind-html="event.eventsHTML"></div>
+				</a> 
+			</div>
+			<span scrollable-left class="icon-column-arrow-left a"></span>
+			<span scrollable-right class="icon-column-arrow-right a"></span>
+		</div>
 
+		<!-- MAIN CONTENT -->
 		<div class="my-lists">
 			<div scrollable>
 	 			<div class="my-lis">
@@ -48,7 +150,7 @@
 							<span ng-class="{'uui-hollow-orange': !list.justAdded }" class="my-li-buttons my-li-buttons-left uui-icon icon-star"></span>
 						</div>
 
-						<div class="my-li-events" ng-if="list.eventsCount" ng-bind-html="list.eventsHTML"></div>
+						<div class="my-li-events" ng-if="list.eventsCount" ng-bind-html="list.eventsHTML" scroll-top-helper></div>
 						<div class="my-li-events" ng-if="!list.eventsCount">
 							<div class="notin"><span>Nothing found...</span><br /> <span class="a bold-a" ng-click="modals.modalSelect.show()">Try again &raquo;</span></div>
 						</div>

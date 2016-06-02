@@ -263,12 +263,14 @@ angular.module('ionicApp.controllers', [])
 							//var timeUnique = cutOldBeginning(old_timestamp, event.timestamp);
 							html += '<div class="events-timestamp"><span>' + timestring + '</span></div>\n';
 						}
-						// html += '		<div class="events-event event-link" onClick="window.open(\'' + event.link + '\', \'_system\')" style="background-image:url(' + event.image + ');">\n';
 						var ev = '';
-						ev += '		<div class="events-event" style="background-image:url(\'' + event.image + '\');">';
+						ev += '		<div class="events-event '+ (event.featured?'event-featured':'') +'" style="background-image:url(\'' + event.featured + '\');">';
 						ev += '			<div class="event-text">\n';
 						if (event.texts[0]) {
 							ev += '			<span><a class="event-link" href="' + event.link + '" target="_blank" prevent-default onClick="window.open(\'' + event.link + '\', \'_system\')">' + event.texts[0] + '</a></span>\n';
+						}
+						if (event.image) {
+							ev += '			<span class="event-image"><img src="' + event.image + '" /></span>\n';
 						}
 						if (event.texts[1]) {
 							ev += '			<span>' + event.texts[1] + '</span>\n';
@@ -294,7 +296,7 @@ angular.module('ionicApp.controllers', [])
 						old_timestring = timestring;
 
 						// <featured></featured>
-						if (event.image) {
+						if (event.featured) {
 							var event_featured = JSON.parse(JSON.stringify(event));
 							if (old_event_featured_images.indexOf(event_featured.image) == -1) {
 								event_featured.eventsHTML = $sce.trustAsHtml(ev);
@@ -506,6 +508,20 @@ angular.module('ionicApp.controllers', [])
 					$(element).addClass('scrolled');
 				} else {
 					$(element).removeClass('scrolled');
+				}
+			});
+		}
+	}
+})
+.directive('scrollTopHelper', function ($rootScope) {
+	return {
+		restrict: 'A',
+		link: function (scope, element, attrs) {
+			$(element).scroll(function(){
+				if (element[0].scrollTop) {
+					$('[scroll-top]').addClass('scrolled');
+				} else {
+					$('[scroll-top]').removeClass('scrolled');
 				}
 			});
 		}
