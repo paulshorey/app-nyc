@@ -278,8 +278,11 @@ angular.module('ionicApp.controllers', [])
 							ev += '		<span ng-click><span class="ion-calendar"></span> <span>' + moment(event.timestamp)
 								.format('h:mma') + '</span></span>\n';
 						}
+						if (event.price) {
+							ev += '			<span class="subtext-price"><span class="ion-pricetag"></span> <span>'+event.price+'</span></span>\n';
+						}
 						ev += '			<a class="subtext-source" href="' + event.source_link + '" prevent-default onClick="window.open(\'' + event.link + '\', \'_system\')"><span class="icon-link"></span> ' + (event.source_host.substr(0, event.source_host.indexOf('.'))) + '</a>\n';
-						ev += '			<span class="subtext-fave" ng-click=""><span class="icon-star-outline"></span></span>\n';
+						// ev += '			<span class="subtext-fave" ng-click=""><span class="icon-star-outline"></span></span>\n';
 						ev += '			</div>\n';
 						ev += '		</div>';
 						//
