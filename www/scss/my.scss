@@ -590,6 +590,13 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 	}
 }
 
+.isMobile {
+	.my-featured {
+		[scrollable-left], [scrollable-right] {
+			display:none;
+		}
+	}
+}
 .scrolled {
 	.my-lists {
 		padding-top: 49px;

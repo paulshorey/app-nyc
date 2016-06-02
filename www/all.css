@@ -9991,7 +9991,6 @@ body {
     height: 110%; }
   .my-featured .featured-li {
     display: inline-block;
-    max-width: 33.33%;
     vertical-align: top;
     white-space: normal; }
     .my-featured .featured-li .events-event {

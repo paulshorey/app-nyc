@@ -480,6 +480,9 @@ body {
   .my-featured [scrollable-left] {
     text-indent: -35px; }
 
+.isMobile .my-featured [scrollable-left], .isMobile .my-featured [scrollable-right] {
+  display: none; }
+
 .scrolled .my-lists {
   padding-top: 49px; }
 

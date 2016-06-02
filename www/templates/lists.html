@@ -2,7 +2,10 @@
 	<div class="my-content" scroll-top>
 		<div ng-if="user" log-scope></div>
 
-		<ng-include src="'templates/partials/featured.html'" ng-if="client.isMobile"></ng-include>
+			<script id="options.html" type="text/ng-template" src="options.html"></script>
+			<script id="templates/modals/select.html" type="text/ng-template" src="templates/modals/select.html"></script>
+
+		<ng-include src="'templates/partials/featured.html'" ng-hide="!client.isMobile"></ng-include>
 
 		<div class="my-top top-mobile">
 			<div class="top-logo" ng-class="{ 'isMobile': client.isMobile }">
