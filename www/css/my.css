@@ -281,7 +281,7 @@ body {
       vertical-align: top;
       white-space: normal;
       padding: 0 4px 0 6px;
-      height: 100%; }
+      height: calc(100vh - 60px); }
       .my-lists .my-lis .my-li .my-li-buttons {
         margin: 1px -3px;
         display: inline-block;

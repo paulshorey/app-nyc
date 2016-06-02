@@ -43,8 +43,9 @@ angular.module('ionicApp.controllers', [])
 	/*
 		MODALS
 	*/
+	$rootScope.filepath = document.getElementsByTagName("script");
 	$scope.modals = {};
-	$ionicModal.fromTemplateUrl('options.html', {
+	$ionicModal.fromTemplateUrl('templates/modals/options.html', {
 			scope: $scope,
 			animation: 'slide-in-right'
 		})

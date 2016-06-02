@@ -9847,7 +9847,7 @@ body {
       vertical-align: top;
       white-space: normal;
       padding: 0 4px 0 6px;
-      height: 100%; }
+      height: calc(100vh - 60px); }
       .my-lists .my-lis .my-li .my-li-buttons {
         margin: 1px -3px;
         display: inline-block;
@@ -10045,6 +10045,9 @@ body {
     text-indent: 7px; }
   .my-featured [scrollable-left] {
     text-indent: -35px; }
+
+.isMobile .my-featured [scrollable-left], .isMobile .my-featured [scrollable-right] {
+  display: none; }
 
 .scrolled .my-lists {
   padding-top: 49px; }
