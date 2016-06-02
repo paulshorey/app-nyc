@@ -27,7 +27,9 @@ angular.module('ionicApp.services', [])
 	return {
 
 		logout: function() {
-			Stamplay.User.logout();
+			var jwt = window.location.origin + "-jwt";
+			window.localStorage.removeItem(jwt);
+			//Stamplay.User.logout();
 		},
 		currentUser: function () {
 			var def = $q.defer();
