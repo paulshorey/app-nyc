@@ -39,7 +39,7 @@
 		}
 	}
 	// quickDial
-	window.isMobile = window.document ? false : true;//!(/localhost|stamplay|allevents/.test(window.location.host));
+	window.isMobile = window.location ? false : true;//!(/localhost|stamplay|allevents/.test(window.location.host));
 	window.isLocalhost = window.location.hostname.indexOf('localhost')!=-1;
 	// important
 	window.system.api.host = 'http'+(isMobile || isLocalhost?'':'s')+'://'+(isMobile || isLocalhost?'localhost:1080':'api.allevents.nyc');
@@ -47,7 +47,7 @@
 	window.system.app.host = 'http'+(isMobile || isLocalhost?'':'s')+'://'+(isMobile || isLocalhost?'localhost:3080':'allevents.nyc');
 	// client (nothin to do with ionic/stamplay, just for the end user)
 	window.client = {};
-	window.client.host = window.location.hostname || 'undefined';
+	window.client.host = window.location.hostname || 'ionic';
 	window.client.ua = window.navigator.userAgent.toLowerCase();
 	window.client.isAndroid = window.client.ua.indexOf("android") > -1; // or tablet
 	window.client.isIphone = window.client.ua.indexOf("iP") > -1; // or iPad

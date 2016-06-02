@@ -9595,6 +9595,10 @@ a:hover *, .a:hover,
   [ng-click]:hover * {
     color: #4BAFE1;
     cursor: pointer; }
+    [ng-click]:hover:active,
+    [ng-click]:hover *:active {
+      color: inherit;
+      cursor: inherit; }
 
 .bold-a {
   color: orange;
@@ -9652,7 +9656,7 @@ body {
 [scrollable-right],
 [scrollable-left] {
   position: absolute;
-  top: 0;
+  top: 5vh;
   right: 0;
   text-indent: 0;
   width: 24px;
@@ -9661,9 +9665,12 @@ body {
   text-align: left;
   cursor: pointer;
   color: orange;
-  padding: 7.5vh 0 7.5vh;
+  padding: 2.5vh 0 7.5vh;
   z-index: 100000;
   background: #fff; }
+  [scrollable-right].scrollZero,
+  [scrollable-left].scrollZero {
+    color: #ccc; }
 
 [scrollable-left] {
   right: auto;
@@ -9755,7 +9762,8 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    position: relative; }
+    position: relative;
+    background-image: url("../gfx/logo/allevents.nyc.png"); }
   .my-top .top-left {
     position: absolute;
     left: 1px;
@@ -9836,9 +9844,10 @@ body {
       padding: 0 4px 0 6px;
       height: 100%; }
       .my-lists .my-lis .my-li .my-li-buttons {
-        margin: 0 -3px 0 -3px;
+        margin: 1px -3px;
         display: inline-block;
-        vertical-align: middle; }
+        vertical-align: top;
+        line-height: 1em; }
       .my-lists .my-lis .my-li .my-li-header {
         width: 100%;
         font-size: 21px;
@@ -9846,6 +9855,8 @@ body {
         color: orange;
         text-transform: uppercase;
         padding: 0;
+        vertical-align: top;
+        line-height: 1em;
         background: -owg-linear-gradient(to bottom, #ffffff, #ffffff 85%, rgba(255, 255, 255, 0));
         -pie-background: -pie-linear-gradient(to bottom, #ffffff, #ffffff 85%, rgba(255, 255, 255, 0));
         background: linear-gradient(to bottom, #ffffff, #ffffff 85%, rgba(255, 255, 255, 0)); }
@@ -9856,7 +9867,7 @@ body {
           color: #4BAFE1; }
         .my-lists .my-lis .my-li .my-li-header .my-li-title {
           display: inline-block;
-          vertical-align: middle; }
+          vertical-align: top; }
           .my-lists .my-lis .my-li .my-li-header .my-li-title .title-time {
             font-size: 85%; }
           .my-lists .my-lis .my-li .my-li-header .my-li-title .title-scene {
@@ -9871,7 +9882,7 @@ body {
         height: 100%;
         overflow: hidden;
         overflow-y: auto;
-        padding: 3px 0 20px 0; }
+        padding: 0 0 20px 0; }
 
 /*
 	RESPONSIVE GRID
@@ -9949,8 +9960,11 @@ body {
 .events-timestamp {
   font-weight: bold;
   text-transform: uppercase;
-  margin: 10px 0 0px;
+  margin: 15px 0 0;
   color: #FFBE00; }
+
+.notin {
+  margin: 13px 0 0 0; }
 
 /*
 	FEATURED EVENTS
@@ -10023,10 +10037,30 @@ body {
     color: white;
     padding: 22px 0 11px;
     z-index: 1000000;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.05);
     text-indent: 7px; }
   .my-featured [scrollable-left] {
     text-indent: -35px; }
+
+.scrolled .my-lists {
+  padding-top: 49px; }
+
+.scrolled .my-top {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: #666; }
+  .scrolled .my-top span {
+    color: #999; }
+  .scrolled .my-top span.tl-left {
+    color: orange; }
+  .scrolled .my-top .top-logo {
+    background-image: url("../gfx/logo/allevents.nyc-flipped.png"); }
+
+.scrolled .my-featured {
+  display: none; }
 
 /*
 	RESET

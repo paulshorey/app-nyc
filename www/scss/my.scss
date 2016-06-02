@@ -25,6 +25,10 @@ a, .a {
 	&:hover * {
 		color:#4BAFE1;
 		cursor:pointer;
+		&:active {
+			color:inherit;
+			cursor:inherit;
+		}
 	}
 }
 [ng-click] {
@@ -33,6 +37,10 @@ a, .a {
 	&:hover * {
 		color:#4BAFE1;
 		cursor:pointer;
+		&:active {
+			color:inherit;
+			cursor:inherit;
+		}
 	}
 }
 .bold-a {
@@ -93,7 +101,7 @@ body {
 [scrollable-right],
 [scrollable-left] {
 	position: absolute;
-	top: 0;
+	top: 5vh;
 	right: 0;
 	text-indent:0;
 	width:24px;
@@ -102,9 +110,12 @@ body {
 	text-align: left;
 	cursor:pointer;
 	color:orange;
-	padding:7.5vh 0 7.5vh;
+	padding:2.5vh 0 7.5vh;
 	z-index:100000;
 	background:#fff;
+	&.scrollZero {
+		color:#ccc;
+	}
 }
 [scrollable-left] {
 	right:auto;
@@ -222,6 +233,7 @@ body {
 			background-repeat: no-repeat;
 			background-size: contain;
 			position:relative;
+			background-image:url("../gfx/logo/allevents.nyc.png");
 		}
 		.top-left {
 			position: absolute;
@@ -324,9 +336,10 @@ body {
 				padding:0 4px 0 6px;
 				height:100%;
 				.my-li-buttons {
-					margin: 0 -3px 0 -3px;
+					margin: 1px -3px;
 					display: inline-block;
-					vertical-align: middle;
+					vertical-align: top;
+					line-height:1em;
 				}
 				.my-li-header {
 					width:100%;
@@ -335,6 +348,8 @@ body {
 					color:orange;
 					text-transform:uppercase;
 					padding: 0;
+					vertical-align:top;
+					line-height:1em;
 					@include background(linear-gradient(to bottom, #ffffff, #ffffff 85%, rgba(255,255,255,0.0)));
 					&:hover,
 					&:hover span {
@@ -345,7 +360,7 @@ body {
 					}
 					.my-li-title {
 						display:inline-block;
-						vertical-align:middle;
+						vertical-align:top;
 						.title-category {
 						}
 						.title-time {
@@ -368,7 +383,7 @@ body {
 					height: 100%;
 					overflow: hidden;
 					overflow-y: auto;
-					padding: 3px 0 20px 0;
+					padding: 0 0 20px 0;
 				}
 			}
 		}
@@ -477,11 +492,14 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 .events-timestamp {
 	font-weight:bold;
 	text-transform: uppercase;
-	margin:10px 0 0px;
+	margin:15px 0 0;
 	color:#FFBE00;
 	// span.fragment {
 	// 	font-weight:normal;
 	// }
+}
+.notin {
+	margin:13px 0 0 0;
 }
 
 
@@ -570,5 +588,31 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 	}
 	[scrollable-left] {
 		text-indent:-35px;
+	}
+}
+
+.scrolled {
+	.my-lists {
+		padding-top: 49px;
+	}	
+	.my-top {
+		position:fixed;
+		width:100%;
+		top:0;
+		left:0;
+		z-index:1000;
+		background:#666;
+		span {
+			color:#999;
+		}
+		span.tl-left {
+			color: orange;
+		}
+		.top-logo {
+			background-image:url("../gfx/logo/allevents.nyc-flipped.png");
+		}
+	}
+	.my-featured {
+		display:none;
 	}
 }

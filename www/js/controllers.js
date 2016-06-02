@@ -18,7 +18,6 @@ angular.module('ionicApp.controllers', [])
 
 .controller('ListController', ["AccountService", "ListService", "EventService", "ContentService", "$ionicLoading", "$ionicPopup", "$ionicModal", "$window", "$scope", "$rootScope", "$state", "$timeout", "$stateParams", "$sce", "$compile", "$interpolate", "$parse", function (AccountService, ListService, EventService, ContentService, $ionicLoading, $ionicPopup, $ionicModal, $window, $scope, $rootScope, $state, $timeout, $stateParams, $sce, $compile, $interpolate, $parse) {
 	window.ListController = this;
-	$rootScope.client = window.client;
 	var errorHandler = function (options) {
 		var errorAlert = $ionicPopup.alert({
 			title: options.title,
@@ -26,6 +25,7 @@ angular.module('ionicApp.controllers', [])
 			okText: "Try Again"
 		});
 	}
+	$rootScope.client = window.client;
 
 	/*
 		MODELS
@@ -496,6 +496,21 @@ angular.module('ionicApp.controllers', [])
 	}
 })
 
+.directive('scrollTop', function ($rootScope) {
+	return {
+		restrict: 'A',
+		link: function (scope, element, attrs) {
+			$(element).scroll(function(){
+				if (element[0].scrollTop) {
+					$(element).addClass('scrolled');
+				} else {
+					$(element).removeClass('scrolled');
+				}
+			});
+		}
+	}
+})
+
 .directive('scrollable', function ($timeout, $ionicLoading) {
 	return {
 		restrict: 'A',
@@ -507,6 +522,16 @@ angular.module('ionicApp.controllers', [])
 				var target = element[0];
 				target.doNotScroll = false;
 				target.scrollLeftLast = target.scrollLeft;
+				if (target.scrollLeft<10) {
+					$(element).siblings('[scrollable-left]').addClass('scrollZero');
+				} else {
+					$(element).siblings('[scrollable-left]').removeClass('scrollZero');
+				}
+				if (target.scrollLeft > ( target.scrollWidth - document.body.scrollWidth - 10 ) ) {
+					$(element).siblings('[scrollable-right]').addClass('scrollZero');
+				} else {
+					$(element).siblings('[scrollable-right]').removeClass('scrollZero');
+				}
 			};
 			scope.$watch(
 				function () {
