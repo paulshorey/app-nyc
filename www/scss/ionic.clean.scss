@@ -76,3 +76,16 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 .slide-in-left.ng-leave, .slide-in-left > .ng-leave {
   -webkit-transition: all ease-in-out 250ms;
   transition: all ease-in-out 250ms; }
+
+.slide-in-top {
+  -webkit-transform: translateY(-100%);
+    transform: translateY(-100%); }
+.slide-in-top.ng-enter, .slide-in-top > .ng-enter {
+  -webkit-transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 400ms;
+  transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 400ms; }
+.slide-in-top.ng-enter-active, .slide-in-top > .ng-enter-active {
+  -webkit-transform: translateY(0);
+    transform: translateY(0); }
+.slide-in-top.ng-leave, .slide-in-top > .ng-leave {
+  -webkit-transition: all ease-in-out 250ms;
+  transition: all ease-in-out 250ms; }

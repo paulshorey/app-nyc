@@ -62,6 +62,13 @@ angular.module('ionicApp.controllers', [])
 		.then(function (modal) {
 			$scope.modals['modalSelect'] = modal;
 		});
+	$ionicModal.fromTemplateUrl('templates/modals/contribute.html', {
+			scope: $scope,
+			animation: 'slide-in-top'
+		})
+		.then(function (modal) {
+			$scope.modals['modalContribute'] = modal;
+		});
 	$scope.$on('modal.shown', function () {
 		$('.my-content')
 			.addClass('blurry');

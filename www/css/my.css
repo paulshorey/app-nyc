@@ -122,6 +122,16 @@ body {
 /*
 	MODAL mobile options
 */
+.modal-text {
+  color: white;
+  background: orange;
+  font-size: 1.25em;
+  line-height: 1.5em;
+  padding: 10px;
+  margin: 10px auto;
+  width: 66%;
+  min-width: 280px; }
+
 .modal-options {
   color: #ccc;
   font-size: 17px;
