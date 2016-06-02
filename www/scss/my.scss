@@ -101,7 +101,7 @@ body {
 [scrollable-right],
 [scrollable-left] {
 	position: absolute;
-	top: 5vh;
+	top: 7.5vh;
 	right: 0;
 	text-indent:0;
 	width:24px;
@@ -110,7 +110,7 @@ body {
 	text-align: left;
 	cursor:pointer;
 	color:orange;
-	padding:2.5vh 0 7.5vh;
+	padding:0 0 7.5vh;
 	z-index:1000000;
 	background:#fff;
 	&.scrollZero {
@@ -244,11 +244,11 @@ body {
 		.top-left {
 			position: absolute;
 			left: 1px;
-			top: 2px;
+			top: 0px;
 			font-size:19.5px;
 
 			.ion-search {
-				margin: 0px -16px 0 -15px;
+				margin: 2px -16px 0 -16px;
 				font-size: 27px;
 			}
 			.tl-left {

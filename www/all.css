@@ -9515,7 +9515,7 @@ input, button, select, textarea {
 .item-select:after {
   content: none; }
 
-.item-select.disabled {
+.item-select[disabled] {
   opacity: 0.5; }
 
 .bar .title + .button:last-child, .bar > .button + .button:last-child, .bar > .button.pull-right, .bar .buttons.pull-right, .bar .title + .buttons {
@@ -9782,10 +9782,10 @@ body {
   .my-top .top-left {
     position: absolute;
     left: 1px;
-    top: 2px;
+    top: 0px;
     font-size: 19.5px; }
     .my-top .top-left .ion-search {
-      margin: 0px -16px 0 -15px;
+      margin: 2px -16px 0 -16px;
       font-size: 27px; }
     .my-top .top-left .tl-left {
       margin: 0 8px 0 -5px;

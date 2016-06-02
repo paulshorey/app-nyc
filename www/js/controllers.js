@@ -562,7 +562,7 @@ angular.module('ionicApp.controllers', [])
 					// scroll to beginning
 					if (newValue != oldValue) {
 						var target = element[0];
-						var duration = target.clientWidth / 2;
+						var duration = 400; // target.clientWidth / 2;
 
 						var scrollTo = 0;
 						target.doNotScroll = 'scroll--changed';
@@ -593,7 +593,7 @@ angular.module('ionicApp.controllers', [])
 				if (target.doNotScroll) {
 					return;
 				}
-				var duration = target.clientWidth / 2;
+				var duration = 400;
 
 				var scrollTo = target.scrollLeft - target.clientWidth;
 				$(target)
@@ -616,7 +616,7 @@ angular.module('ionicApp.controllers', [])
 				if (target.doNotScroll) {
 					return;
 				}
-				var duration = target.clientWidth / 2;
+				var duration = 400;
 
 				var scrollTo = target.scrollLeft + target.clientWidth;
 				$(target)
@@ -634,10 +634,10 @@ angular.module('ionicApp.controllers', [])
 			});
 			$(element).scroll(
 				$.debounce(
-					(element[0].clientWidth / 2) + 100, // this should be more than animation duration, or it will trigger itself
+					222, // this should be more than animation duration, or it will trigger itself
 					function (event) {
 						var target = event.target;
-						var duration = target.clientWidth / 4;
+						var duration = 200;
 						if (target.doNotScroll) {
 							return;
 						}
