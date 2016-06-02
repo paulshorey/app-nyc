@@ -9668,7 +9668,7 @@ body {
 [scrollable-right],
 [scrollable-left] {
   position: absolute;
-  top: 5vh;
+  top: 7.5vh;
   right: 0;
   text-indent: 0;
   width: 24px;
@@ -9677,7 +9677,7 @@ body {
   text-align: left;
   cursor: pointer;
   color: orange;
-  padding: 2.5vh 0 7.5vh;
+  padding: 0 0 7.5vh;
   z-index: 1000000;
   background: #fff; }
   [scrollable-right].scrollZero,
@@ -9992,7 +9992,11 @@ body {
   white-space: nowrap; }
   .my-featured.isMobile {
     padding: 0;
-    margin: 0 0 13px; }
+    margin: 0 0 13px;
+    height: 122px; }
+    .my-featured.isMobile .events-event {
+      height: 122px;
+      width: 191px; }
   .my-featured > [scrollable] {
     height: 110%; }
   .my-featured .featured-li {

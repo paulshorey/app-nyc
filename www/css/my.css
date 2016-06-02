@@ -419,7 +419,11 @@ body {
   white-space: nowrap; }
   .my-featured.isMobile {
     padding: 0;
-    margin: 0 0 13px; }
+    margin: 0 0 13px;
+    height: 122px; }
+    .my-featured.isMobile .events-event {
+      height: 122px !important;
+      width: 191px !important; }
   .my-featured > [scrollable] {
     height: 110%; }
   .my-featured .featured-li {

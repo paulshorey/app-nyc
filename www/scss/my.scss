@@ -519,6 +519,11 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 	&.isMobile {
 		padding:0;
 		margin:0 0 13px;
+		height:122px;
+		.events-event {
+			height:122px !important;
+			width:191px !important;
+		}
 	}
 	> [scrollable] {
 		height:110%;
