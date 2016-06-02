@@ -89,12 +89,11 @@ body {
 	position:relative;
 	overflow:hidden;
 	overflow-x:auto;
-	height:calc( 100% - 40px );
 }
 [scrollable-right],
 [scrollable-left] {
-	position: fixed;
-	top: 217px;
+	position: absolute;
+	top: 0;
 	right: 0;
 	text-indent:0;
 	width:24px;
@@ -213,6 +212,7 @@ body {
 	.my-top {
 		margin: 0;
 		padding: 10px 0 0;
+		position:relative;
 		.top-logo {
 			display:block;
 			margin: -4px auto 6px;
@@ -311,8 +311,9 @@ body {
 		position: relative;
 		overflow: hidden;
 		overflow-x: auto;
-		margin: 13px 0 5px 25px;
-		height:calc(100% - 10px);
+		margin: 13px 0 5px 0;
+		height: calc(100% - 10px);
+		padding: 0 0 0 25px;
 		.my-lis {
 			white-space:nowrap;
 			height:100%;
@@ -488,6 +489,7 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 	FEATURED EVENTS
 */
 .my-featured {
+	position:relative;
 	height: 162px;
 	width: 100%;
 	overflow: hidden;
@@ -496,6 +498,13 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 	overflow-x: auto;
 	background:#555;
 	white-space:nowrap;
+	&.isMobile {
+		padding:0;
+		margin:0 0 13px;
+	}
+	> [scrollable] {
+		height:110%;
+	}
 	.featured-li {
 		display:inline-block;
 		max-width:33.33%;
@@ -545,8 +554,8 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 	}
 	[scrollable-right],
 	[scrollable-left] {
-		position: fixed;
-		top: 54px;
+		position: absolute;
+		top: 0;
 		right: 0;
 		width: 24px;
 		overflow: hidden;
@@ -554,7 +563,7 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 		text-align: left;
 		cursor: pointer;
 		color: white;
-		padding: 7px 0;
+		padding: 22px 0 11px;
 		z-index: 1000000;
 		background: rgba(0, 0, 0, 0.01);
 		text-indent: 7px;

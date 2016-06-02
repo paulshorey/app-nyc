@@ -2,8 +2,11 @@
 	<div class="my-content">
 		<div ng-if="user" log-scope></div>
 
-		<div class="my-top top-mobile" ng-if="1==1 || client.isMobile">
+		<ng-include src="'templates/partials/featured.html'" ng-if="client.isMobile"></ng-include>
+
+		<div class="my-top top-mobile">
 			<div class="top-logo" ng-class="{ 'isMobile': client.isMobile }" ng-style="{ 'background-image': 'url(\'/gfx/logo/'+client.host+'.png\')' }">
+				{{client.host}}
 			</div>
 			<div class="top-left">
 				<span ng-click="modals.modalSelect.show()">
@@ -27,34 +30,29 @@
 			</div>
 		</div>
 
-		<div class="my-featured" scrollable>
-			<a class="featured-li" ng-repeat="event in vm.featuredEvents | orderObjectBy:'random':true" ng-href="{{event.link}}" target="_blank" prevent-default>
-				<div ng-bind-html="event.eventsHTML"></div>
-			</a> 
-			<span scrollable-left class="icon-column-arrow-left a"></span>
-			<span scrollable-right class="icon-column-arrow-right a"></span>
-		</div>
+		<ng-include src="'templates/partials/featured.html'" ng-if="!client.isMobile"></ng-include>
 
+		<div class="my-lists">
+			<div scrollable>
+	 			<div class="my-lis">
+					<div class="my-li" ng-repeat="list in vm.lists | orderObjectBy:'data.addedOn':true">
 
-		<div class="my-lists" scrollable>
- 			<div class="my-lis">
-				<div class="my-li" ng-repeat="list in vm.lists | orderObjectBy:'data.addedOn':true">
+						<div class="my-li-header uui-hover-orange" ng-click="vm.listAdd(list)">
+							<span class="my-li-title">
+								<span class="uui-title a title-category" ng-class="{ 'active': ( vm.list.data.category && vm.list.data.category==list.data.uid ) }">{{ list.data.category || 'Anything' }} </span>
+								<span class="uui-subtitle a title-time" ng-if="list.data.time">{{ list.data.time || 'Anytime' }} </span>
+								<span class="uui-subtitle a title-scene" ng-if="list.data.scene">{{ list.data.scene || 'Any' }} </span>
+								<span class="uui-subtitle a title-search" ng-if="list.data.search">{{ list.data.search || 'Any' }} </span>
+							</span>
+							<span ng-class="{'uui-hollow-orange': !list.justAdded }" class="my-li-buttons my-li-buttons-left uui-icon icon-star"></span>
+						</div>
 
-					<div class="my-li-header uui-hover-orange" ng-click="vm.listAdd(list)">
-						<span class="my-li-title">
-							<span class="uui-title a title-category" ng-class="{ 'active': ( vm.list.data.category && vm.list.data.category==list.data.uid ) }">{{ list.data.category || 'Anything' }} </span>
-							<span class="uui-subtitle a title-time" ng-if="list.data.time">{{ list.data.time || 'Anytime' }} </span>
-							<span class="uui-subtitle a title-scene" ng-if="list.data.scene">{{ list.data.scene || 'Any' }} </span>
-							<span class="uui-subtitle a title-search" ng-if="list.data.search">{{ list.data.search || 'Any' }} </span>
-						</span>
-						<span ng-class="{'uui-hollow-orange': !list.justAdded }" class="my-li-buttons my-li-buttons-left uui-icon icon-star"></span>
+						<div class="my-li-events" ng-if="list.eventsCount" ng-bind-html="list.eventsHTML"></div>
+						<div class="my-li-events" ng-if="!list.eventsCount">
+							<div>Nothing found...</div> <span class="a bold-a" ng-click="modals.modalSelect.show()">Try again &raquo;</span>
+						</div>
+
 					</div>
-
-					<div class="my-li-events" ng-if="list.eventsCount" ng-bind-html="list.eventsHTML"></div>
-					<div class="my-li-events" ng-if="!list.eventsCount">
-						<div>Nothing found...</div> <span class="a bold-a" ng-click="modals.modalSelect.show()">Try again &raquo;</span>
-					</div>
-
 				</div>
 			</div>
 			<span scrollable-left class="icon-column-arrow-left a"></span>

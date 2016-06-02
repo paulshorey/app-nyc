@@ -9516,7 +9516,7 @@ input, button, select, textarea {
   top: 7px;
   right: 7px;
   bottom: 5px;
-  width: 1.55em; }
+  width: 1.75em; }
 
 .item-select {
   padding: 0;
@@ -9647,13 +9647,12 @@ body {
 [scrollable] {
   position: relative;
   overflow: hidden;
-  overflow-x: auto;
-  height: calc( 100% - 40px); }
+  overflow-x: auto; }
 
 [scrollable-right],
 [scrollable-left] {
-  position: fixed;
-  top: 217px;
+  position: absolute;
+  top: 0;
   right: 0;
   text-indent: 0;
   width: 24px;
@@ -9746,7 +9745,8 @@ body {
 	*/
 .my-top {
   margin: 0;
-  padding: 10px 0 0; }
+  padding: 10px 0 0;
+  position: relative; }
   .my-top .top-logo {
     display: block;
     margin: -4px auto 6px;
@@ -9823,8 +9823,9 @@ body {
   position: relative;
   overflow: hidden;
   overflow-x: auto;
-  margin: 13px 0 5px 25px;
-  height: calc(100% - 10px); }
+  margin: 13px 0 5px 0;
+  height: calc(100% - 10px);
+  padding: 0 0 0 25px; }
   .my-lists .my-lis {
     white-space: nowrap;
     height: 100%; }
@@ -9856,6 +9857,12 @@ body {
         .my-lists .my-lis .my-li .my-li-header .my-li-title {
           display: inline-block;
           vertical-align: middle; }
+          .my-lists .my-lis .my-li .my-li-header .my-li-title .title-time {
+            font-size: 85%; }
+          .my-lists .my-lis .my-li .my-li-header .my-li-title .title-scene {
+            font-size: 85%; }
+          .my-lists .my-lis .my-li .my-li-header .my-li-title .title-search {
+            font-size: 85%; }
           .my-lists .my-lis .my-li .my-li-header .my-li-title span {
             display: block;
             height: 1em;
@@ -9949,6 +9956,7 @@ body {
 	FEATURED EVENTS
 */
 .my-featured {
+  position: relative;
   height: 162px;
   width: 100%;
   overflow: hidden;
@@ -9957,6 +9965,11 @@ body {
   overflow-x: auto;
   background: #555;
   white-space: nowrap; }
+  .my-featured.isMobile {
+    padding: 0;
+    margin: 0 0 13px; }
+  .my-featured > [scrollable] {
+    height: 110%; }
   .my-featured .featured-li {
     display: inline-block;
     max-width: 33.33%;
@@ -9999,8 +10012,8 @@ body {
           color: white; }
   .my-featured [scrollable-right],
   .my-featured [scrollable-left] {
-    position: fixed;
-    top: 54px;
+    position: absolute;
+    top: 0;
     right: 0;
     width: 24px;
     overflow: hidden;
@@ -10008,7 +10021,7 @@ body {
     text-align: left;
     cursor: pointer;
     color: white;
-    padding: 7px 0;
+    padding: 22px 0 11px;
     z-index: 1000000;
     background: rgba(0, 0, 0, 0.01);
     text-indent: 7px; }

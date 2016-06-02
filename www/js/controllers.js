@@ -27,7 +27,6 @@ angular.module('ionicApp.controllers', [])
 		});
 	}
 
-
 	/*
 		MODELS
 	*/
@@ -511,9 +510,11 @@ angular.module('ionicApp.controllers', [])
 			};
 			scope.$watch(
 				function () {
-					if (element[0].firstElementChild.firstElementChild) {
-						return element[0].firstElementChild.firstElementChild.innerText;
-					}
+					//console.log(element[0]);
+					return element[0].innerText;
+					// if (element[0].firstElementChild.firstElementChild) {
+					// 	return element[0].firstElementChild.firstElementChild.innerText;
+					// }
 				},
 				function (newValue, oldValue) {
 					// scroll to beginning
@@ -524,7 +525,6 @@ angular.module('ionicApp.controllers', [])
 						var scrollTo = 0;
 						target.doNotScroll = 'scroll--changed';
 						$ionicLoading.show();
-						//target.scrollLeft = target.scrollLeft + target.firstElementChild.firstElementChild.scrollWidth;
 						$timeout(function () {
 							$ionicLoading.hide();
 							$(target)
@@ -536,57 +536,63 @@ angular.module('ionicApp.controllers', [])
 
 							$timeout(
 								scope.scroll_enable,
-								duration + 100
+								duration + 10
 							);
 
-						}, 500);
+						}, 100);
 					}
 				}
 			);
 
 			$(element)
-				.find('[scrollable-left]')
-				.click(function () {
-					var target = element[0];
-					var duration = target.clientWidth / 2;
+			.siblings('[scrollable-left]')
+			.click(function () {
+				var target = element[0];
+				if (target.doNotScroll) {
+					return;
+				}
+				var duration = target.clientWidth / 2;
 
-					var scrollTo = target.scrollLeft - target.clientWidth;
-					$(target)
-						.animate({
-							scrollLeft: scrollTo
-						}, {
-							duration: duration
-						});
+				var scrollTo = target.scrollLeft - target.clientWidth;
+				$(target)
+					.animate({
+						scrollLeft: scrollTo
+					}, {
+						duration: duration
+					});
 
-					target.doNotScroll = 'scrollable-left';
-					$timeout(
-						scope.scroll_enable,
-						duration
-					);
-				});
+				target.doNotScroll = 'scrollable-left';
+				$timeout(
+					scope.scroll_enable,
+					duration
+				);
+			});
 			$(element)
-				.find('[scrollable-right]')
-				.click(function () {
-					var target = element[0];
-					var duration = target.clientWidth / 2;
+			.siblings('[scrollable-right]')
+			.click(function () {
+				var target = element[0];
+				if (target.doNotScroll) {
+					return;
+				}
+				var duration = target.clientWidth / 2;
 
-					var scrollTo = target.scrollLeft + target.clientWidth;
-					$(target)
-						.animate({
-							scrollLeft: scrollTo
-						}, {
-							duration: duration
-						});
+				var scrollTo = target.scrollLeft + target.clientWidth;
+				$(target)
+					.animate({
+						scrollLeft: scrollTo
+					}, {
+						duration: duration
+					});
 
-					target.doNotScroll = 'scrollable-right';
-					$timeout(
-						scope.scroll_enable,
-						duration
-					);
-				});
-			$(element)
-				.scroll($.debounce(
-					(element[0].clientWidth / 4) + 10, // this should be less than animation duration, or it will trigger itself
+				target.doNotScroll = 'scrollable-right';
+				$timeout(
+					scope.scroll_enable,
+					duration
+				);
+			});
+			$(element).scroll(
+				$.debounce(
+					(element[0].clientWidth / 2) + 100, // this should be more than animation duration, or it will trigger itself
 					function (event) {
 						var target = event.target;
 						var duration = target.clientWidth / 4;
@@ -610,12 +616,11 @@ angular.module('ionicApp.controllers', [])
 							}
 						}
 						// ok go
-						$(target)
-							.animate({
-								scrollLeft: scrollTo
-							}, {
-								duration: duration
-							});
+						$(target).animate({
+							scrollLeft: scrollTo
+						}, {
+							duration: duration
+						});
 						// done
 						target.doNotScroll = true;
 						$timeout(
@@ -624,7 +629,8 @@ angular.module('ionicApp.controllers', [])
 						);
 
 					}
-				));
+				)
+			);
 		}
 	}
 })
