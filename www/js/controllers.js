@@ -44,7 +44,7 @@ angular.module('ionicApp.controllers', [])
 		MODALS
 	*/
 	$scope.modals = {};
-	$ionicModal.fromTemplateUrl('templates/modals/options.html', {
+	$ionicModal.fromTemplateUrl('options.html', {
 			scope: $scope,
 			animation: 'slide-in-right'
 		})

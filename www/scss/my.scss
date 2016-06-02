@@ -393,9 +393,9 @@ body {
 /*
 	RESPONSIVE GRID
 */
-$c1-upto: 500px;
-$c2-upto: 800px;
-$c3-upto: 1280px;
+$c1-upto: 600px;
+$c2-upto: 900px;
+$c3-upto: 1200px;
 $c4-upto: 10000px;
 
 $media-one:  "(min-width:0px) and (max-width:#{$c1-upto})" !default;

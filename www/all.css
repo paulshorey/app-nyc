@@ -9588,6 +9588,11 @@ a:hover *, .a:hover,
 .a:hover * {
   color: #4BAFE1;
   cursor: pointer; }
+  a:hover:active,
+  a:hover *:active, .a:hover:active,
+  .a:hover *:active {
+    color: inherit;
+    cursor: inherit; }
 
 [ng-click] {
   cursor: pointer; }
