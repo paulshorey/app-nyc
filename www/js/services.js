@@ -29,7 +29,7 @@ angular.module('ionicApp.services', [])
 		logout: function() {
 			var jwt = window.location.origin + "-jwt";
 			window.localStorage.removeItem(jwt);
-			//Stamplay.User.logout();
+			window.location.href = window.location.origin;
 		},
 		currentUser: function () {
 			var def = $q.defer();
