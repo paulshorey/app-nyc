@@ -9571,6 +9571,22 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 .slide-in-left.ng-leave, .slide-in-left > .ng-leave {
   transition: all ease-in-out 250ms; }
 
+.slide-in-top {
+  -webkit-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  transform: translateY(-100%); }
+
+.slide-in-top.ng-enter, .slide-in-top > .ng-enter {
+  transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 400ms; }
+
+.slide-in-top.ng-enter-active, .slide-in-top > .ng-enter-active {
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0); }
+
+.slide-in-top.ng-leave, .slide-in-top > .ng-leave {
+  transition: all ease-in-out 250ms; }
+
 /*
 	RESET
 */
@@ -9680,8 +9696,8 @@ body {
   padding: 0 0 7.5vh;
   z-index: 1000000;
   background: #fff; }
-  [scrollable-right].scrollZero,
-  [scrollable-left].scrollZero {
+  [scrollable-right].scrollEnd,
+  [scrollable-left].scrollEnd {
     color: #ccc; }
 
 [scrollable-left] {
@@ -10063,6 +10079,9 @@ body {
     z-index: 1000000;
     background: rgba(0, 0, 0, 0.05);
     text-indent: 7px; }
+    .my-featured [scrollable-right].scrollEnd,
+    .my-featured [scrollable-left].scrollEnd {
+      color: #ccc; }
   .my-featured [scrollable-left] {
     text-indent: -35px; }
 

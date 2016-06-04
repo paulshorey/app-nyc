@@ -279,16 +279,14 @@ angular.module('ionicApp.controllers', [])
 						ev += '			</div>\n';
 						ev += '			<div class="event-subtext">\n';
 						if (timestring.indexOf('week') != -1 || timestring.indexOf('month') != -1) {
-							ev += '		<span ng-click><span class="ion-calendar"></span> <span>' + moment(event.timestamp)
-								.format('MMM D, h:mma') + '</span></span>\n';
+							ev += '		<span ng-click><span class="ion-calendar"></span> <span>' + moment(event.timestamp).format('MMM D') + '</span></span>\n';
 						} else if (event.time) {
-							ev += '		<span ng-click><span class="ion-calendar"></span> <span>' + moment(event.timestamp)
-								.format('h:mma') + '</span></span>\n';
+							//ev += '		<span ng-click><span class="ion-calendar"></span> <span>' + moment(event.timestamp).format('h:mma') + '</span></span>\n';
 						}
-						if (event.price) {
-							ev += '			<span class="subtext-price"><span class="ion-pricetag"></span> <span>'+event.price+'</span></span>\n';
-						}
-						ev += '			<a class="subtext-source" href="' + event.source_link + '" prevent-default onClick="window.open(\'' + event.link + '\', \'_system\')"><span class="icon-link"></span> ' + (event.source_host.substr(0, event.source_host.indexOf('.'))) + '</a>\n';
+						// if (event.price) {
+						// 	ev += '			<span class="subtext-price"><span class="ion-pricetag"></span> <span>'+event.price+'</span></span>\n';
+						// }
+						ev += '			<a class="subtext-source" href="' + event.source_link + '" target="_blank" prevent-default onClick="window.open(\'' + event.link + '\', \'_system\')"><span class="icon-link"></span> ' + (event.source_host.substr(0, event.source_host.indexOf('.'))) + '</a>\n';
 						// ev += '			<span class="subtext-fave" ng-click=""><span class="icon-star-outline"></span></span>\n';
 						ev += '			</div>\n';
 						ev += '		</div>';
@@ -296,7 +294,7 @@ angular.module('ionicApp.controllers', [])
 						html += ev;
 						old_timestring = timestring;
 
-						// <featured></featured>
+						// <event>
 						if (event.featured) {
 							var event_featured = JSON.parse(JSON.stringify(event));
 							if (old_event_featured_images.indexOf(event_featured.image) == -1) {
@@ -305,6 +303,7 @@ angular.module('ionicApp.controllers', [])
 								old_event_featured_images.push(event_featured.image);
 							}
 						}
+						// </event>
 
 					}
 					html += '		</div>\n';
@@ -454,7 +453,6 @@ angular.module('ionicApp.controllers', [])
 		return filtered;
 	};
 })
-
 .directive('preventDefault', function () {
 	return function (scope, element, attrs) {
 		$(element)
@@ -474,14 +472,12 @@ angular.module('ionicApp.controllers', [])
 					.bind('keypress', function (e) {
 						var code = (e.keyCode ? e.keyCode : e.which);
 						if (code == 13) {
-							$(this)
-								.blur();
+							$(this).blur();
 						}
 					});
 			});
 	}
 })
-
 .directive('logScope', function () {
 	return {
 		restrict: 'A',
@@ -541,14 +537,14 @@ angular.module('ionicApp.controllers', [])
 				target.doNotScroll = false;
 				target.scrollLeftLast = target.scrollLeft;
 				if (target.scrollLeft<10) {
-					$(element).siblings('[scrollable-left]').addClass('scrollZero');
+					$(element).siblings('[scrollable-left]').addClass('scrollEnd');
 				} else {
-					$(element).siblings('[scrollable-left]').removeClass('scrollZero');
+					$(element).siblings('[scrollable-left]').removeClass('scrollEnd');
 				}
 				if (target.scrollLeft > ( target.scrollWidth - document.body.scrollWidth - 10 ) ) {
-					$(element).siblings('[scrollable-right]').addClass('scrollZero');
+					$(element).siblings('[scrollable-right]').addClass('scrollEnd');
 				} else {
-					$(element).siblings('[scrollable-right]').removeClass('scrollZero');
+					$(element).siblings('[scrollable-right]').removeClass('scrollEnd');
 				}
 			};
 			scope.$watch(
@@ -638,30 +634,22 @@ angular.module('ionicApp.controllers', [])
 			});
 			$(element).scroll(
 				$.debounce(
-					222, // this should be more than animation duration, or it will trigger itself
+					333, // this should be more than animation duration, or it will trigger itself
 					function (event) {
 						var target = event.target;
 						var duration = 200;
 						if (target.doNotScroll) {
 							return;
 						}
-
-						// goto page
+						// what direction?
 						var round = 'ceil';
 						if (target.scrollLeft < target.scrollLeftLast) {
 							round = 'floor';
 						}
-						var pages = Math[round](target.scrollLeft / target.firstElementChild.clientWidth);
-						var scrollTo = target.firstElementChild.clientWidth * pages;
-						// go to column (if manually scrolled to it)
-						if (target.firstElementChild.firstElementChild) {
-							var columns = Math.round(target.scrollLeft / target.firstElementChild.firstElementChild.clientWidth);
-							var scrollToColumn = target.firstElementChild.firstElementChild.clientWidth * columns;
-							if (Math.abs(target.scrollLeft - scrollToColumn) < 60) {
-								scrollTo = scrollToColumn;
-							}
-						}
-						// ok go
+						// finish scrolling - to closest column
+						var columns = Math[round](target.scrollLeft / target.firstElementChild.firstElementChild.clientWidth);
+						var scrollTo = target.firstElementChild.firstElementChild.clientWidth * columns;
+						// go
 						$(target).animate({
 							scrollLeft: scrollTo
 						}, {

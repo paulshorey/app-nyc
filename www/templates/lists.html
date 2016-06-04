@@ -1,4 +1,4 @@
-<ion-view ng-class="{ 'isMobile': client.isMobile }" data-tap-disabled="true">
+<ion-view ng-class="{ 'isMobile': client.isMobile }" data-tap-disabled="true" overflow-scroll="true">
 	<div class="my-content" scroll-top>
 
 		<!-- MODALS - Ionic Lab can't use include paths! -->
@@ -30,6 +30,12 @@
 				<ion-content>
 
 					<div class="modal-options modal-links">
+						<label class="options-options" ng-if="user.displayName">
+							<span class="uui-icon icon-pushpin"></span> <span class="uui-text">Welcome back {{ user.displayName }}! <br />Login on any other device the same news you see now. </span>
+							<a class="uui-button" ng-if="user.displayName" href="/" prevent-default ng-click="vm.logout()">
+								<span class="uui-text">logout</span>
+							</a>
+						</label>
 						<label class="options-options" ng-if="!user.displayName">
 							<span class="uui-icon icon-pushpin"></span> <span class="uui-text">login to sync your lists: </span>
 							<div class="options-icons">
@@ -43,9 +49,6 @@
 						</a>
 						<a class="uui-button" href="/" prevent-default ng-click="modals.modalOptions.hide();modals.modalContribute.show()">
 							<span class="uui-icon icon-link"></span> <span class="uui-text">add / remove a source </span>
-						</a>
-						<a class="uui-button" ng-if="user.displayName" href="/" prevent-default ng-click="vm.logout()">
-							<span class="uui-text">logout, {{ user.displayName }}</span>
 						</a>
 					</div>
 
@@ -129,7 +132,7 @@
 			</div>
 			<div class="top-right">
 				<span ng-click="modals.modalOptions.show()" class="top-you">
-					<span class="uui-text tr-left">You</span>
+					<span class="uui-text tr-left">Save</span>
 					<span class="uui-icon icon-happy"></span>
 				</span>
 				<span ng-click="modals.modalOptions.show()">
@@ -165,7 +168,7 @@
 							<span ng-class="{'uui-hollow-orange': !list.justAdded }" class="my-li-buttons my-li-buttons-left uui-icon icon-star"></span>
 						</div>
 
-						<div class="my-li-events" ng-if="list.eventsCount" ng-bind-html="list.eventsHTML" scroll-top-helper></div>
+						<div class="my-li-events" ng-if="list.eventsCount" ng-bind-html="list.eventsHTML" scroll-top-helper data-tap-disabled="true"></div>
 						<div class="my-li-events" ng-if="!list.eventsCount">
 							<div class="notin"><span>Nothing found...</span><br /> <span class="a bold-a" ng-click="modals.modalSelect.show()">Try again &raquo;</span></div>
 						</div>

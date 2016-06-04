@@ -92,6 +92,7 @@ angular.module('ionicApp.services', [])
 		},
 
 		getUserLists: function (query) {
+			console.log('getUserLists ',query);
 			var deffered = $q.defer();
 
 			Stamplay.Object("list")

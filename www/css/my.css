@@ -4,7 +4,7 @@
 body {
   margin: 0; }
 
-[data-tab-disabled] {
+* {
   user-select: auto;
   -moz-user-select: auto;
   -webkit-user-select: auto;
@@ -107,8 +107,8 @@ body {
   padding: 0 0 7.5vh;
   z-index: 1000000;
   background: #fff; }
-  [scrollable-right].scrollZero,
-  [scrollable-left].scrollZero {
+  [scrollable-right].scrollEnd,
+  [scrollable-left].scrollEnd {
     color: #ccc; }
 
 [scrollable-left] {
@@ -490,6 +490,9 @@ body {
     z-index: 1000000;
     background: rgba(0, 0, 0, 0.05);
     text-indent: 7px; }
+    .my-featured [scrollable-right].scrollEnd,
+    .my-featured [scrollable-left].scrollEnd {
+      color: #ccc; }
   .my-featured [scrollable-left] {
     text-indent: -35px; }
 
