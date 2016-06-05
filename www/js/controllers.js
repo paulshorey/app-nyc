@@ -239,21 +239,15 @@ angular.module('ionicApp.controllers', [])
 						if (!event.texts) {
 							continue;
 						}
-						var today = moment()
-							.startOf('day');
-						var timestring = Date.create(event.timestamp)
-							.short();
-						if (event.timestamp < today.add(1, 'days')
-							.format('x')) {
+						var timestring = Date.create(event.timestamp).short();
+						var todayEnd = moment().endOf('day').format('x');
+						if (event.timestamp < todayEnd - 1) { // party must end before midnight, because we don't know when exactly tomorrow's dates are, most come in as 12:00am
 							timestring = 'today';
-						} else if (event.timestamp < today.add(2, 'days')
-							.format('x')) {
+						} else if (event.timestamp < todayEnd - 1 + 1000*60*60*24) {
 							timestring = 'tomorrow';
-						} else if (event.timestamp < today.add(7, 'days')
-							.format('x')) {
+						} else if (event.timestamp < todayEnd - 1 + 1000*60*60*24 *6) {
 							timestring = 'this week';
-						} else if (event.timestamp < today.add(30, 'days')
-							.format('x')) {
+						} else if (event.timestamp < todayEnd - 1 + 1000*60*60*24 *30) {
 							timestring = 'this month';
 						}
 						//event.timestamp = event.timestamp.replace(' 12:00am','');
@@ -278,15 +272,20 @@ angular.module('ionicApp.controllers', [])
 						}
 						ev += '			</div>\n';
 						ev += '			<div class="event-subtext">\n';
+
+						var time = moment(event.timestamp).format('h:mma');
+						if (time=='12:00am') {
+							time = '';
+						}
 						if (timestring.indexOf('week') != -1 || timestring.indexOf('month') != -1) {
-							ev += '		<span ng-click><span class="ion-calendar"></span> <span>' + moment(event.timestamp).format('MMM D') + '</span></span>\n';
-						} else if (event.time) {
-							//ev += '		<span ng-click><span class="ion-calendar"></span> <span>' + moment(event.timestamp).format('h:mma') + '</span></span>\n';
+							ev += '		<span ng-click><span class="ion-calendar"></span> <span>' + moment(event.timestamp).format('MMM D') +' '+time+ '</span></span>\n';
+						} else if (time!='12:00am') {
+							ev += '		<span ng-click><span class="ion-calendar"></span> <span>' + time + '</span></span>\n';
 						}
 						// if (event.price) {
 						// 	ev += '			<span class="subtext-price"><span class="ion-pricetag"></span> <span>'+event.price+'</span></span>\n';
 						// }
-						ev += '			<a class="subtext-source" href="' + event.source_link + '" target="_blank" prevent-default onClick="window.open(\'' + event.link + '\', \'_system\')"><span class="icon-link"></span> ' + (event.source_host.substr(0, event.source_host.indexOf('.'))) + '</a>\n';
+						ev += '			<a class="subtext-source" href="' + event.source_link + '" target="_blank" prevent-default onClick="window.open(\'' + event.source_link + '\', \'_system\')"><span class="icon-link"></span> ' + (event.source_host.substr(0, event.source_host.indexOf('.'))) + '</a>\n';
 						// ev += '			<span class="subtext-fave" ng-click=""><span class="icon-star-outline"></span></span>\n';
 						ev += '			</div>\n';
 						ev += '		</div>';
