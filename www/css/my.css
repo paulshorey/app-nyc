@@ -163,6 +163,13 @@ body {
       margin: 5px 0; }
   .modal-options .options-links {
     margin: 30px auto 20px; }
+  .modal-options .options-welcomeback {
+    white-space: normal; }
+    .modal-options .options-welcomeback > span {
+      margin: 0 0 10px;
+      display: block; }
+    .modal-options .options-welcomeback .uui-button {
+      display: block; }
   .modal-options.modal-links > * {
     display: block;
     width: 280px;

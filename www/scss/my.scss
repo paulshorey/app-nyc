@@ -166,6 +166,17 @@ body {
 	.options-links {
 		margin:30px auto 20px;
 	}
+	
+	.options-welcomeback {
+		white-space:normal;
+		> span {
+			margin: 0 0 10px;
+			display: block;
+		}
+		.uui-button {
+			display:block;
+		}
+	}
 
 	/*
 		MODAL links

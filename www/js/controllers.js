@@ -93,6 +93,7 @@ angular.module('ionicApp.controllers', [])
 		LISTS
 	*/
 	vm.listsGet = function() {
+		vm.listsGetDefault(); // if user has saved lists, they will override, so this will be just to get categories/sites/scenes
 		vm.listsGetUser();
 	};
 	vm.listsGetDefault = function() {
@@ -150,8 +151,6 @@ angular.module('ionicApp.controllers', [])
 				});
 				if (Object.keys(vm.lists).length) {
 					vm.syncLists();
-				} else {
-					vm.listsGetDefault();
 				}
 				$ionicLoading.hide();
 			},
@@ -429,6 +428,13 @@ angular.module('ionicApp.controllers', [])
 
 
 }])
+
+.filter('firstWord', function () {
+	return function (string) {
+		var all = string.split(' ');
+		return all[0];
+	};
+})
 
 .filter('orderObjectBy', function () {
 	return function (items, field, reverse) {

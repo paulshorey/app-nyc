@@ -26,11 +26,14 @@
 				<ion-content>
 
 					<div class="modal-options modal-links">
-						<label class="options-options" ng-if="user.displayName">
-							<span class="uui-icon icon-pushpin"></span> <span class="uui-text">Welcome back {{ user.displayName }}! <br />Login on any other device the same news you see now. </span>
-							<a class="uui-button" ng-if="user.displayName" href="/" prevent-default ng-click="vm.logout()">
-								<span class="uui-text">logout</span>
-							</a>
+						<label class="options-options options-welcomeback" ng-if="user.displayName">
+							<span>Welcome back {{ user.displayName }}!</span>
+							<span>Login on any other device the same news you see now. </span>
+							<span>
+								<a class="uui-button" ng-if="user.displayName" href="/" prevent-default ng-click="vm.logout()">
+									<span class="uui-text">logout</span>
+								</a>
+							</span>
 						</label>
 						<label class="options-options" ng-if="!user.displayName">
 							<span class="uui-icon icon-pushpin"></span> <span class="uui-text">login to sync your lists: </span>
@@ -128,7 +131,7 @@
 			</div>
 			<div class="top-right">
 				<span ng-click="modals.modalOptions.show()" class="top-you">
-					<span class="uui-text tr-left">Save</span>
+					<span class="uui-text tr-left">{{ (user.firstName || user.displayName) || 'Save' | firstWord}}</span>
 					<span class="uui-icon icon-happy"></span>
 				</span>
 				<span ng-click="modals.modalOptions.show()">
