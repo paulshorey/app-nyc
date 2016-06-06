@@ -507,11 +507,27 @@ angular.module('ionicApp.controllers', [])
 		link: function (scope, element, attrs) {
 			$(element).scroll(function(){
 				if (element[0].scrollTop) {
+					scope.scrolled = true;
 					$(element).addClass('scrolled');
 				} else {
+					scope.scrolled = false;
 					$(element).removeClass('scrolled');
 				}
 			});
+			$(element).bind('mousewheel', function(e) {
+				if (scope.scrolled) {
+					if (e.originalEvent.wheelDelta /120 > 0) {
+						if (element[0].scrollTop===0) {
+							scope.scrolled = false;
+							$(element).removeClass('scrolled');
+						}
+					}
+				}
+			});
+			scope.$on('$destroy',function(){
+				$(element).unbind('scroll');
+				$(element).unbind('mousewheel');
+			})
 		}
 	}
 })
@@ -526,6 +542,9 @@ angular.module('ionicApp.controllers', [])
 					$('[scroll-top]').removeClass('scrolled');
 				}
 			});
+			scope.$on('$destroy',function(){
+				$(element).unbind('scroll');
+			})
 		}
 	}
 })
