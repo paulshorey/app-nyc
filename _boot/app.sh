@@ -1,5 +1,12 @@
-iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3080
+#!/bin/bash
+
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/ps1-git
 cd /www/app-nyc
+git reset HEAD -\-hard;
+git pull
+
+iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3080
 # i=0;
 # while true; do
 # 	i=$[$i+1]
