@@ -12,8 +12,7 @@ Most recently, added ReactJS, and better Gulp automation.
 Paul Shorey  
 http://paulshorey.com
 
-  
-  
+---  
    
 Latest changes, and files to look at:  
 
