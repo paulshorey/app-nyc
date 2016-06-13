@@ -1,0 +1,80 @@
+<ion-view ng-class="{ 'isMobile': client.isMobile }" data-tap-disabled="true" overflow-scroll="true">
+	<div class="my-content" scroll-top>
+
+		<!-- FEATURED - Ionic Lab can't use include paths -->
+		<!-- <div class="my-featured" ng-class="{'isMobile':client.isMobile}" ng-if="client.isMobile">
+			<div scrollable>
+				<a class="featured-li" ng-repeat="event in vm.featuredEvents | orderObjectBy:'random':true" ng-href="{{event.link}}" target="_blank" prevent-default>
+					<div ng-bind-html="event.eventsHTML"></div>
+				</a> 
+			</div>
+		</div> -->
+
+		<!-- TOP NAV -->
+		<div class="my-top top-mobile">
+			<div class="top-logo" ng-class="{ 'isMobile': client.isMobile }" ng-click="modals.modalContribute.show()">
+			</div>
+			<div class="top-left">
+				<span ng-click="modals.modalSelect.show()">
+					<span class="uui-icon icon-plus"></span>
+				</span>
+				<span ng-click="modals.modalSelect.show()" class="top-search">
+					<span class="uui-icon ion-search"></span>
+					<span class="uui-text tl-right">Search</span>
+				</span>
+			</div>
+			<div class="top-right">
+				<span ng-click="modals.modalOptions.show()" class="top-you">
+					<span class="uui-text tr-left">{{ (user.firstName || user.displayName) || 'Save' | firstWord}}</span>
+					<span class="uui-icon icon-happy"></span>
+				</span>
+				<span ng-click="modals.modalOptions.show()">
+					<span class="uui-icon icon-options-large"></span>
+				</span>
+			</div>
+		</div>
+
+		<!-- FEATURED - Ionic Lab can't use include paths -->
+		<!-- <div class="my-featured" ng-class="{'isMobile':client.isMobile}" ng-if="!client.isMobile">
+			<div scrollable>
+				<a class="featured-li" ng-repeat="event in vm.featuredEvents | orderObjectBy:'random':true" ng-href="{{event.link}}" target="_blank" prevent-default>
+					<div ng-bind-html="event.eventsHTML"></div>
+				</a> 
+			</div>
+			<span scrollable-left class="icon-column-arrow-left a"></span>
+			<span scrollable-right class="icon-column-arrow-right a"></span>
+		</div> -->
+
+		<!-- MAIN CONTENT -->
+		<div class="my-lists">
+			<div scrollable>
+	 			<div class="my-lis">
+					<div class="my-li" ng-repeat="list in vm.lists | orderObjectBy:'data.addedOn':true" ng-if="list.events || (list.category!='' && list.category==vm.list.category)">
+
+						<div class="my-li-header uui-hover-orange" ng-click="vm.listAdd(list)">
+							<span class="my-li-title">
+								<span class="uui-title a title-category" ng-class="{ 'active': ( vm.list.data.category && vm.list.data.category==list.data.uid ) }">{{ list.data.category || 'Anything' }} </span>
+								<span class="uui-subtitle a title-time" ng-if="list.data.time">{{ list.data.time || 'Anytime' }} </span>
+								<span class="uui-subtitle a title-scene" ng-if="list.data.scene">{{ list.data.scene || 'Any' }} </span>
+								<span class="uui-subtitle a title-search" ng-if="list.data.search">"{{ list.data.search || 'Any' }}" </span>
+							</span>
+							<span ng-class="{'uui-hollow-orange': !list.justAdded }" class="my-li-buttons my-li-buttons-left uui-icon icon-star"></span>
+						</div>
+						
+						<div class="my-li-events" react-events events="list.events" ng-if="list.events.length"></div>
+
+						<div class="my-li-events" ng-if="list.events && !list.events.length">
+							<div class="notin"><span>Nothing found...</span><br /> <span class="a bold-a" ng-click="modals.modalSelect.show()">Try again &raquo;</span></div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<span scrollable-left class="icon-column-arrow-left a"></span>
+			<span scrollable-right class="icon-column-arrow-right a"></span>
+		</div>
+
+
+	</div>
+
+</ion-view>

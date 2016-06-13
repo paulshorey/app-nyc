@@ -1,0 +1,654 @@
+@import "../lib/compass-sass-mixins/lib/compass";
+/*
+	RESET
+*/
+body {
+	margin:0;  
+}
+* { 
+	user-select: auto;
+	-moz-user-select: auto;
+	-webkit-user-select: auto; 
+	-ms-user-select: auto;
+}
+
+
+/*
+	GENERAL
+*/
+a {
+	text-decoration:none;
+	color:inherit;
+}
+a, .a {
+	&:hover,
+	&:hover * {
+		color:#4BAFE1;
+		cursor:pointer;
+		&:active {
+			color:inherit;
+			cursor:inherit;
+		}
+	}
+}
+[ng-click] {
+	cursor:pointer;
+	&:hover,
+	&:hover * {
+		color:#4BAFE1;
+		cursor:pointer;
+		&:active {
+			color:inherit;
+			cursor:inherit;
+		}
+	}
+}
+.bold-a {
+	color:orange;
+	font-weight:bold;
+	font-family: sans-serif;
+	font-size:100%;
+}
+@font-face {font-family: "Robinson";
+    src: url("../gfx/fonts/robinson.otf");
+    src: url("../gfx/fonts/robinson.woff2") format("woff2"),
+    url("../gfx/fonts/robinson.woff") format("woff"),
+    url("../gfx/fonts/robinson.ttf") format("truetype"),
+    url("../gfx/fonts/robinson.svg#Robinson") format("svg");
+}
+@font-face {font-family: "Bodoni";
+    src: url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.eot");
+    src: url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.eot?#iefix") format("embedded-opentype"),
+    url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.woff2") format("woff2"),
+    url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.woff") format("woff"),
+    url("http://db.onlinewebfonts.com/t/7c4e4fcaeefb49b065a55b7853f4279f.ttf") format("truetype"),
+    url("http://db.onlinewebfonts.com/t/1e129bd49263cbc8354756df5045168f.svg#Bodoni") format("svg");
+}
+body {
+	font-family:Arial, Helvetica, sans-serif;
+	color:#666;
+}
+.my-content {
+	font-family: "Bodoni 72", Bodoni, Times, serif;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	transition:filter 0.5s;
+	> * {
+		display:block;
+		clear:both;
+	}
+	&.blurry {
+		@include filter(grayscale(50%));
+		@include filter(blur(5px));
+	}
+}
+.modal {
+	background:rgba(255,255,255,0.66);
+}
+
+/*
+	SPECIFIC
+*/
+[scrollable] {
+	position:relative;
+	overflow:hidden;
+	overflow-x:auto;
+}
+[scrollable-right],
+[scrollable-left] {
+	position: absolute;
+	top: 7.5vh;
+	right: 0;
+	text-indent:0;
+	width:24px;
+	overflow:hidden;
+	font-size: 155px;
+	text-align: left;
+	cursor:pointer;
+	color:orange;
+	padding:0 0 7.5vh;
+	z-index:1000000;
+	background:#fff;
+	&.scrollEnd {
+		color:#ccc;
+	}
+}
+[scrollable-left] {
+	right:auto;
+	left:0;
+	text-indent:-63px;
+}
+[scrollable-right] {
+	width:20px;
+}
+
+/*
+	MODAL mobile options
+*/
+.modal-text {
+	color:white;
+	background:orange;
+	font-size:1.25em;
+	line-height:1.5em;
+	padding:10px;
+	margin:10px auto;
+	width:66%;
+	min-width:280px;
+}
+.modal-options {
+	color:#ccc;
+	font-size:17px;
+	padding: 4px 0 3px;
+	> * {
+		border: 0;
+		margin: 0 2px 0 5px;
+		vertical-align:middle;
+		font-size: 100%;
+		line-height: 100%;
+		margin: 4px auto;
+		color:white;
+		white-space:nowrap;
+	}
+
+	.options-options {
+		margin:20px auto;
+		padding:20px;
+		background:rgba(0,162,240,0.5);
+		.options-icons {
+			font-size:115%;
+			margin:5px 0;
+		}
+	}
+	.options-links {
+		margin:30px auto 20px;
+	}
+	
+	.options-welcomeback {
+		white-space:normal;
+		> span {
+			margin: 0 0 10px;
+			display: block;
+		}
+		.uui-button {
+			display:block;
+		}
+	}
+
+	/*
+		MODAL links
+	*/
+	&.modal-links {
+		> * {
+			display:block;
+			width:280px;
+			text-align:center;
+			margin:10px auto;
+			border-radius:5px;
+		}
+	}
+
+	/*
+		MODAL bottom links
+	*/
+	&.modal-bottom-links {
+		position: absolute;
+		bottom: 90px;
+		width: 100%;
+	}
+	
+	/*
+		MODAL mobile select
+	*/
+	&.modal-select {
+		// font-family: "Bodoni 72", Bodoni, serif;
+		> * {
+			width:280px;
+			margin:5px auto;
+			display:block;
+			&.item-select {
+				padding:2px 0 0 7px;
+			}
+			&.item-select span:before {
+				font-size: 1.25em;
+				line-height: 1.5em;
+				background:#fff;
+			}
+			&.item-select,
+			select {
+				color:orange;
+				text-transform:uppercase;
+				background:white;
+			}
+			&:hover select {
+				color:#4BAFE1;
+			}
+			&.active select,
+			&.active span:before {
+				color:#4BAFE1;
+			}
+			&.select-search {
+				color:#ccc;
+			}
+		}
+	}
+}
+
+
+	/*
+		TOP: all
+	*/
+	.my-top {
+		margin: 0;
+		padding: 10px 0 0;
+		position:relative;
+		.top-logo {
+			display:block;
+			margin: -4px auto 6px;
+			width: 50%;
+			height: 31px;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			position:relative;
+			background-image:url("../gfx/logo/allevents.nyc.png");
+		}
+		.top-you,
+		.top-search {
+			span {
+				color:orange;
+			}
+		}
+		.top-left {
+			position: absolute;
+			left: 1px;
+			top: 0px;
+			font-size:19.5px;
+
+			.ion-search {
+				margin: 2px -16px 0 -16px;
+				font-size: 27px;
+			}
+			.tl-left {
+				margin: 0 8px 0 -5px;
+				font-weight: bold;
+				@media screen and (max-width: 600px) {
+					display:none;
+				}
+			}
+			.tl-right {
+				margin: 0 0 0 2px;
+				@media screen and (max-width: 600px) {
+					display:none;
+				}
+			}
+		}
+		.top-right {
+			position:absolute;
+			right:2px;
+			top:5px;
+			text-align:right;
+			padding:0 0 0 15px;
+			font-size:20px;
+			height:23px;
+			.ion-unlocked {
+				margin: 1px -7px 0 0;
+			}
+			.icon-happy {
+				margin: 3px -7px 0 0;
+			}
+			.icon-options-large {
+				margin: 0.123em 0 0 0;
+			}
+			.tr-left {
+				margin: 0 -6px 0 0;
+				@media screen and (max-width: 600px) {
+					display:none;
+				}
+			}
+			.tr-right {
+				margin: 0 -5px 0 5px;
+				@media screen and (max-width: 600px) {
+					display:none;
+				}
+			}
+		}
+		.uui-icon {
+			width: 1.66em;
+		}
+		span {
+			color:#ccc;
+			&.tl-left {
+				color:orange;
+				&:hover {
+					color:inherit;
+				}
+			}
+		}
+		span:hover,
+		span:hover *,
+		span:hover span:before {
+			color:#4BAFE1;
+		}
+
+	}
+
+
+	/*
+		MAIN: LISTS
+	*/
+	.my-lists {
+		position: relative;
+		overflow: hidden;
+		overflow-x: auto;
+		margin: 13px 0 5px 0;
+		height: calc(100% - 10px);
+		padding: 0 0 0 25px;
+		.my-lis {
+			white-space:nowrap;
+			height:100%;
+			.my-li {
+				display:inline-block;
+				vertical-align:top;
+				white-space:normal;
+				padding:0 4px 0 6px;
+				height:calc(100vh - 60px);
+				.my-li-buttons {
+					margin: 1px -3px;
+					display: inline-block;
+					vertical-align: top;
+					line-height:1em;
+				}
+				.my-li-header {
+					width:100%;
+					font-size:21px;
+					margin:1px 0 0 0;
+					color:orange;
+					text-transform:uppercase;
+					padding: 0;
+					vertical-align:top;
+					line-height:1em;
+					@include background(linear-gradient(to bottom, #ffffff, #ffffff 85%, rgba(255,255,255,0.0)));
+					&:hover,
+					&:hover span {
+						color:orange;
+					}
+					.active {
+						color:#4BAFE1;
+					}
+					.my-li-title {
+						display:inline-block;
+						vertical-align:top;
+						.title-category {
+						}
+						.title-time {
+							font-size:85%;
+						}
+						.title-scene {
+							font-size:85%;
+						}
+						.title-search {
+							font-size:85%;
+						}
+						span {
+							display: block;
+							height:1em;
+							line-height:1em;
+						}
+					}
+				}
+				.my-li-events {
+					height: 100%;
+					overflow: hidden;
+					overflow-y: auto;
+					padding: 0 0 20px 0;
+				}
+			}
+		}
+	}
+
+
+/*
+	RESPONSIVE GRID
+*/
+$c1-upto: 650px;
+$c2-upto: 975px;
+$c3-upto: 1300px;
+$c4-upto: 10000px;
+
+$media-one:  "(min-width:0px) and (max-width:#{$c1-upto})" !default;
+$media-two: "(min-width:#{$c1-upto + 1}) and (max-width:#{$c2-upto})" !default;
+$media-three: "(min-width:#{$c2-upto + 1}) and (max-width:#{$c3-upto})" !default;
+$media-all: "(min-width:#{$c3-upto + 1})" !default;
+
+@media #{$media-one} {
+	.my-li {
+		width:100%;
+	}
+}
+@media #{$media-two} {
+	.my-li {
+		width:50%;
+	}
+}
+@media #{$media-three} {
+	.my-li {
+		width:33.33%;
+	}
+}
+@media #{$media-all} {
+	.my-li {
+		width:25%;
+	}
+}
+
+/*
+	EVENTS
+*/
+.events-event {
+	line-height: 115%;
+	font-weight:normal;
+	text-transform:lowercase;
+	background-size: cover;
+	background-position: center;
+	.event-image {
+		display:none !important;
+		background-position:center;
+		background-repeat:no-repeat;
+		background-size:cover;
+		width:100%;
+		height:0;
+		padding-bottom:46%;
+	}
+	.event-text {
+		max-height: 64px;
+		overflow: hidden;
+		> span {
+			display:block;
+		}
+		> span:first-child {
+			font-weight:bold;
+			text-transform:none;
+		}
+	}
+	.event-subtext {
+		word-wrap:nowrap;
+		width:100%;
+		overflow:hidden;
+		white-space:nowrap !important;
+		color:#ccc;
+		> span {
+			display:inline-block;
+			text-transform:capitalize;
+			color:#ccc;
+			font-weight:bold;
+			margin: 0 5px 0 0;
+		}
+		.subtext-source {
+			text-transform:lowercase;
+			.icon-link {
+				font-size:80%;
+				margin:0 -1px 0 0;
+			}
+		}
+		.subtext-fave {
+			margin:0 3px;
+		}
+	}
+}
+
+/*
+	LIST EVENTS
+*/
+.my-events {
+	font-family:"Times New Roman", serif;
+	.events-event {
+		margin: 6px 0 12px;
+		background:none !important;
+	}
+}
+.events-timestamp {
+	font-weight:bold;
+	text-transform: uppercase;
+	margin:15px 0 0;
+	color:#FFBE00;
+	// span.fragment {
+	// 	font-weight:normal;
+	// }
+}
+.notin {
+	margin:13px 0 0 0;
+} 
+
+
+/*
+	FEATURED EVENTS
+*/
+.my-featured {
+	position:relative;
+	height: 162px;
+	width: 100%; 
+	overflow: hidden;
+	padding: 5px 0;
+	box-sizing: content-box;
+	overflow-x: auto;
+	background:#555;
+	white-space:nowrap;
+	&.isMobile {
+		padding:0;
+		margin:0 0 13px;
+		height:122px;
+		.events-event {
+			height:122px !important;
+			width:191px !important;
+		}
+	}
+	> [scrollable] {
+		height:110%;
+	}
+	.featured-li {
+		display:inline-block;
+		vertical-align:top;
+		white-space:normal;
+		.events-event {
+			position:relative;
+			display: block;
+			width: 251px;
+			height: 162px;
+			max-width:100%;
+			> * {
+				display:none;
+			}
+			.event-text,
+			.event-subtext {
+				display:block;
+				opacity:0;
+				position: absolute;
+				top: 0;
+				left: 0;
+				color: white;
+				width: 100%;
+				height: 100%;
+				padding:10px 20px;
+				max-height:100%;
+				transition:opacity 0.5s;
+				background:rgba(0,0,0,0.66);
+				color:white;
+				font-family: "Arial Narrow", "Helvetica Neue", sans-serif;
+				line-height: 1.5;
+			}
+			.event-subtext {
+				height:auto;
+				top:auto;
+				bottom:0;
+				padding:1px 20px;
+			}
+			&:hover * {
+				opacity:1;
+				color:white;
+				* {
+					color:white;
+				}
+			}
+		}
+	}
+	[scrollable-right],
+	[scrollable-left] {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 24px;
+		overflow: hidden;
+		font-size: 92px;
+		text-align: left;
+		cursor: pointer;
+		color: white;
+		padding: 22px 0 11px;
+		z-index: 1000000;
+		background: rgba(0, 0, 0, 0.05);
+		text-indent: 7px;
+		&.scrollEnd {
+			color:#ccc;
+		}
+	}
+	[scrollable-left] {
+		text-indent:-35px;
+	}
+}
+
+.isMobile {
+	.my-featured {
+		[scrollable-left], [scrollable-right] {
+			display:none;
+		}
+	}
+}
+.scrolled {
+	.my-lists {
+		padding-top: 49px;
+	}	
+	.my-top {
+		position:fixed;
+		width:100%;
+		top:0;
+		left:0;
+		z-index:1000;
+		background:#666;
+		span {
+			color:#999;
+		}
+		.top-search span,
+		.top-you span {
+			color: orange;
+		}
+		.top-logo {
+			background-image:url("../gfx/logo/allevents.nyc-flipped.png");
+		}
+	}
+	.my-featured {
+		display:none;
+	}
+}

@@ -1,0 +1,46 @@
+<ion-modal-view ng-class="{ 'isMobile': client.isMobile }" data-tap-disabled="true">
+	<ion-header-bar>
+		<h1 class="title"></h1>
+		<button class="button button-clear button-primary" ng-click="modalsClose()">X</button>
+	</ion-header-bar>
+	<ion-content>
+
+		<div class="modal-options modal-select" id="top-modal-select">
+			<label class="item item-input item-select a select-what" ng-class="{ 'active': vm.list.data.category }">
+				<span class="uui-icon icon-select"></span>
+				<select class="uui-text" ng-model="vm.list.data.category">
+					<option selected value="">anything</option>
+					<option ng-repeat="cat in vm.categories" value="{{cat.title}}">{{cat.title}}</option>
+				</select>
+			</label>
+			<label class="item item-input item-select a select-when" ng-class="{ 'active': vm.list.data.time }">
+				<span class="uui-icon icon-select"></span>
+				<select class="uui-text" ng-model="vm.list.data.time">
+					<option selected value="">anytime</option>
+					<option value="today">today</option>
+					<option value="tomorrow">tomorrow</option>
+					<option value="this week">this week</option>
+					<option value="this month">this month</option>
+				</select>
+			</label>
+			<label class="item item-input item-select a select-search" hoverfocus ng-class="{ 'active': vm.list.data.search }">
+				<span class="uui-icon ion-search"></span>
+				<input class="uui-text" type="text" ng-model="vm.list.data.search" placeholder="SEARCH" />
+			</label>
+		</div>
+
+		<div class="modal-options modal-select modal-buttons">
+			<label class="uui-button" ng-click="vm.listAdd();">
+				<span class="uui-icon ion-play"></span>
+				<span class="uui-text">GO &nbsp; </span>
+			</label>
+		</div>
+
+		<div class="modal-options modal-links modal-bottom-links">
+			<a class="options-links" href="" prevent-default ng-click="modals.modalSelect.hide();modals.modalContribute.show();">
+				<span class="uui-icon ion-plus"></span> <span class="uui-text">submit a site / source</span>
+			</a>
+		</div>
+
+	</ion-content>
+</ion-modal-view>
