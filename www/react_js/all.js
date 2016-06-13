@@ -59,7 +59,7 @@ React.html['eventslist'] = React.createClass({
 				subtext.push(React.createElement(
 					'span',
 					{ 'ng-click': true },
-					React.createElement('span', { 'class': 'ion-calendar' }),
+					React.createElement('span', { className: 'ion-calendar' }),
 					' ',
 					React.createElement(
 						'span',
@@ -71,7 +71,7 @@ React.html['eventslist'] = React.createClass({
 				subtext.push(React.createElement(
 					'span',
 					{ 'ng-click': true },
-					React.createElement('span', { 'class': 'ion-calendar' }),
+					React.createElement('span', { className: 'ion-calendar' }),
 					' ',
 					React.createElement(
 						'span',
@@ -80,6 +80,12 @@ React.html['eventslist'] = React.createClass({
 					)
 				));
 			}
+			subtext.push(React.createElement(
+				'a',
+				{ className: 'subtext-source', href: event.source_link, target: '_blank' },
+				React.createElement('span', { className: 'icon-link' }),
+				event.source_host.substr(0, event.source_host.indexOf('.'))
+			));
 
 			// <row>
 			rows.push(React.createElement(
@@ -110,7 +116,7 @@ React.html['eventslist'] = React.createClass({
 				),
 				React.createElement(
 					'div',
-					{ className: 'events-subtext' },
+					{ className: 'event-subtext' },
 					subtext
 				)
 			));
@@ -118,7 +124,7 @@ React.html['eventslist'] = React.createClass({
 
 		return React.createElement(
 			'div',
-			{ 'class': 'my-events' },
+			{ className: 'my-events' },
 			rows
 		);
 	}
