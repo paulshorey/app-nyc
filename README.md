@@ -19,5 +19,5 @@ Latest changes, and files to look at:
 https://github.com/paulshorey/app-nyc/blob/master/gulpfile.js (updated gulp file to build JSX templates for ReactJS, and manage the other parts of the app better)
 https://github.com/paulshorey/app-nyc/tree/master/www (app structure)
 https://github.com/paulshorey/app-nyc/tree/master/_boot (cron jobs, ssh, port config)
-https://github.com/paulshorey/app-nyc/blob/master/www/react_jsx/eventslist.jsx (React template, not finished)
+https://github.com/paulshorey/app-nyc/blob/master/www/react_jsx/eventslist.jsx (React template)
 https://github.com/paulshorey/app-nyc/blob/master/www/angular_js/components.js (AngularJS directive to use ReactJS component inside app)
