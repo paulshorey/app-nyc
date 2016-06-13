@@ -61,7 +61,7 @@
 							<span ng-class="{'uui-hollow-orange': !list.justAdded }" class="my-li-buttons my-li-buttons-left uui-icon icon-star"></span>
 						</div>
 						
-						<div class="my-li-events" react-events events="list.events" ng-if="list.events.length"></div>
+						<div class="my-li-events" react-eventslist events="list.events" ng-if="list.events.length"></div>
 
 						<div class="my-li-events" ng-if="list.events && !list.events.length">
 							<div class="notin"><span>Nothing found...</span><br /> <span class="a bold-a" ng-click="modals.modalSelect.show()">Try again &raquo;</span></div>

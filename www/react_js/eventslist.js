@@ -3,18 +3,11 @@
 if (!React.html) {
 	React.html = {};
 }
-React.html['events'] = React.createClass({
-	bindClick: function bindClick(link) {
-		console.log('clickLink', link);
-		//window.open(link, '_system');
-		return false;
-	},
-	handleTouchTap: function handleTouchTap(e) {
-		console.log('clickLink', link);
-		(function (e) {
-			return e.preventDefault();
-		});
-		return false;
+React.html['eventslist'] = React.createClass({
+	bindClick: function bindClick(e, link) {
+		// Ionic opens href links in its own browser, this is to escape that. However, thinking of ditching Ionic for something faster like famo.us
+		window.open(link, '_system');
+		e.preventDefault();
 	},
 
 	render: function render(events) {
@@ -53,19 +46,56 @@ React.html['events'] = React.createClass({
 						timestring
 					)
 				));
+				old_timestring = timestring;
 			}
 
-			// <event>
+			// <subtext>
+			var time = moment(event.timestamp).format('h:mma');
+			if (time == '12:00am') {
+				time = '';
+			}
+			var subtext = [];
+			if (timestring.indexOf('week') != -1 || timestring.indexOf('month') != -1) {
+				subtext.push(React.createElement(
+					'span',
+					{ 'ng-click': true },
+					React.createElement('span', { 'class': 'ion-calendar' }),
+					' ',
+					React.createElement(
+						'span',
+						null,
+						moment(event.timestamp).format('MMM D') + ' ' + time
+					)
+				));
+			} else if (time && time != '12:00am') {
+				subtext.push(React.createElement(
+					'span',
+					{ 'ng-click': true },
+					React.createElement('span', { 'class': 'ion-calendar' }),
+					' ',
+					React.createElement(
+						'span',
+						null,
+						time
+					)
+				));
+			}
+
+			// <row>
 			rows.push(React.createElement(
 				'div',
 				{ className: 'events-event' },
 				React.createElement(
-					'span',
+					'div',
 					{ className: 'event-text' },
 					React.createElement(
-						'a',
-						{ className: 'event-link', href: event.link, target: '_blank', onClick: this.bindClick.bind(this, event.link), onTouchTap: this.handleTouchTap },
-						event.texts[0]
+						'span',
+						null,
+						React.createElement(
+							'a',
+							{ className: 'event-link', href: event.link, target: '_blank' },
+							event.texts[0]
+						)
 					),
 					React.createElement(
 						'span',
@@ -77,6 +107,11 @@ React.html['events'] = React.createClass({
 						null,
 						event.texts[2]
 					)
+				),
+				React.createElement(
+					'div',
+					{ className: 'events-subtext' },
+					subtext
 				)
 			));
 		}

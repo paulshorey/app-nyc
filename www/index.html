@@ -17,7 +17,7 @@
 	};
 	window.client = {};
 	// quickDial
-	window.isLive = true; // manual override to test ... use isLocalhost to programmatically determine if dev or live 
+	window.isLive = false; // manual override to test ... use isLocalhost to programmatically determine if dev or live 
 	window.isMobile = window.location ? false : true; // !(/localhost|stamplay|allevents/.test(window.location.host));
 	window.isLocalhost = window.location.hostname.indexOf('localhost')!=-1;
 	/*
@@ -96,7 +96,7 @@
 	<script>
 	window.react_jsVersion  = 0.01;
 	if ( window.isLocalhost && !window.isLive) {
-		document.write('<script src="react_js/events.js?'+Math.random()+'"><\/script>\n');
+		document.write('<script src="react_js/eventslist.js?'+Math.random()+'"><\/script>\n');
 	} else {
 		document.write('<script src="react_js/all.js?'+window.appVersion+'"><\/script>\n');
 	}

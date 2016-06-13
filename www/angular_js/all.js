@@ -91,7 +91,7 @@ angular.module('appNyc', ['ionic', 'react', 'appNyc.components', 'appNyc.filters
 angular.module('appNyc.components', [])
 
 
-.directive('reactEvents', function (reactDirective) {
+.directive('reactEventslist', function (reactDirective) {
 	return {
 		restrict: 'A',
 		scope: {
@@ -99,7 +99,7 @@ angular.module('appNyc.components', [])
 		},
 		link: function (scope, element, attrs) {
 			ReactDOM.render(  
-			  React.createElement(React.html.events, {events:scope.events}), 
+			  React.createElement(React.html.eventslist, {events:scope.events}), 
 			  angular.element(element)[0]
 			);
 		}

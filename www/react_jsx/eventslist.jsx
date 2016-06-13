@@ -1,12 +1,11 @@
 if (!React.html) {
 	React.html = {};
 }
-React.html['events'] = React.createClass({
-	bindClick(link) {
+React.html['eventslist'] = React.createClass({
+	bindClick(e, link) {
+		// Ionic opens href links in its own browser, this is to escape that. However, thinking of ditching Ionic for something faster like famo.us
 		window.open(link, '_system');
-	},
-	handleTouchTap(e) {
-		e=>e.preventDefault();
+		e.preventDefault();
 	},
 	render: function (events) {
 
@@ -35,17 +34,33 @@ React.html['events'] = React.createClass({
 			if (timestring != old_timestring) {
 				//var timeUnique = cutOldBeginning(old_timestamp, event.timestamp);
 				rows.push(<div className="events-timestamp"><span>{timestring}</span></div>);
+				old_timestring = timestring;
 			}
 
-			// <event>
+			// <subtext>
+			var time = moment(event.timestamp).format('h:mma');
+			if (time=='12:00am') {
+				time = '';
+			}
+			var subtext = [];
+			if (timestring.indexOf('week') != -1 || timestring.indexOf('month') != -1) {
+				subtext.push(<span ng-click><span class="ion-calendar"></span> <span>{moment(event.timestamp).format('MMM D') +' '+time}</span></span>);
+			} else if (time && time!='12:00am') {
+				subtext.push(<span ng-click><span class="ion-calendar"></span> <span>{time}</span></span>);
+			}
+
+			// <row>
 			rows.push(
 			<div className="events-event">
 
-				<span className="event-text">
-					<a className="event-link" href={event.link} target="_blank" onClick={this.bindClick.bind(this,event.link)} onTouchTap={this.handleTouchTap}>{event.texts[0]}</a>
+				<div className="event-text">
+					<span><a className="event-link" href={event.link} target="_blank">{event.texts[0]}</a></span>
 					<span>{event.texts[1]}</span>
 					<span>{event.texts[2]}</span>
-				</span>
+				</div>
+				<div className="events-subtext">
+					{subtext}
+				</div>
 
 			</div>
 			);
