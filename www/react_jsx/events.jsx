@@ -3,14 +3,10 @@ if (!React.html) {
 }
 React.html['events'] = React.createClass({
 	bindClick(link) {
-		console.log('clickLink',link);
-		//window.open(link, '_system');
-		return false;
+		window.open(link, '_system');
 	},
 	handleTouchTap(e) {
-		console.log('clickLink',link);
 		e=>e.preventDefault();
-		return false;
 	},
 	render: function (events) {
 
