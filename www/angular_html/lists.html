@@ -1,19 +1,6 @@
 <ion-view ng-class="{ 'isMobile': client.isMobile }" data-tap-disabled="true" overflow-scroll="true">
 	<div class="my-content" scroll-top>
 
-		<div class="my-featured" ng-class="{'isMobile':client.isMobile}">
-			<div scrollable react-featured events="vm.featuredEvents" ng-if="vm.featuredEvents.length"></div>
-		</div>
-
-		<!-- FEATURED - Ionic Lab can't use include paths -->
-		<div class="my-featured" ng-class="{'isMobile':client.isMobile}" ng-if="client.isMobile">
-			<div scrollable>
-				<a class="featured-li" ng-repeat="event in vm.featuredEvents | orderObjectBy:'random':true" ng-href="{{event.link}}" target="_blank" prevent-default>
-					<div ng-bind-html="event.eventsHTML"></div>
-				</a> 
-			</div>
-		</div>
-
 		<!-- TOP NAV -->
 		<div class="my-top top-mobile">
 			<div class="top-logo" ng-class="{ 'isMobile': client.isMobile }" ng-click="modals.modalContribute.show()">
@@ -37,17 +24,6 @@
 				</span>
 			</div>
 		</div>
-
-		<!-- FEATURED - Ionic Lab can't use include paths -->
-		<!-- <div class="my-featured" ng-class="{'isMobile':client.isMobile}" ng-if="!client.isMobile">
-			<div scrollable>
-				<a class="featured-li" ng-repeat="event in vm.featuredEvents | orderObjectBy:'random':true" ng-href="{{event.link}}" target="_blank" prevent-default>
-					<div ng-bind-html="event.eventsHTML"></div>
-				</a> 
-			</div>
-			<span scrollable-left class="icon-column-arrow-left a"></span>
-			<span scrollable-right class="icon-column-arrow-right a"></span>
-		</div> -->
 
 		<!-- MAIN CONTENT -->
 		<div class="my-lists">
