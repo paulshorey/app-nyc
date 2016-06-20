@@ -1,6 +1,6 @@
 angular.module('appNyc.controllers', [])
 
-.controller('ListController', ["AccountService", "ListService", "EventService", "ContentService", "$ionicLoading", "$ionicPopup", "$ionicModal", "$window", "$scope", "$rootScope", "$state", "$timeout", "$stateParams", "$sce", "$compile", "$interpolate", "$parse", function (AccountService, ListService, EventService, ContentService, $ionicLoading, $ionicPopup, $ionicModal, $window, $scope, $rootScope, $state, $timeout, $stateParams, $sce, $compile, $interpolate, $parse) {
+.controller('ListController', ["AccountService", "ListService", "EventService", "ContentService", "$ionicPopup", "$ionicModal", "$window", "$scope", "$rootScope", "$state", "$timeout", "$stateParams", "$sce", "$compile", "$interpolate", "$parse", function (AccountService, ListService, EventService, ContentService, $ionicPopup, $ionicModal, $window, $scope, $rootScope, $state, $timeout, $stateParams, $sce, $compile, $interpolate, $parse) {
 	window.ListController = this;
 	var errorHandler = function (options) {
 		var errorAlert = $ionicPopup.alert({
@@ -27,7 +27,9 @@ angular.module('appNyc.controllers', [])
 	vm.featuredEvents = {};
 
 
-
+	/*
+		MODALS
+	*/
 	$ionicModal.fromTemplateUrl('angular_html/modals/select.html', {
 		scope: $scope, 
 		animation: 'slide-in-left'
@@ -71,10 +73,10 @@ angular.module('appNyc.controllers', [])
 				vm.scenes = all.scenes;
 				vm.sites = all.sites;
 				vm.eventsCount = all.eventsCount;
-				$ionicLoading.hide();
+				//$ionicLoading.hide();
 			},
 			function (error) {
-				$ionicLoading.hide();
+				//$ionicLoading.hide();
 			}
 		);
 	}
@@ -100,7 +102,7 @@ angular.module('appNyc.controllers', [])
 				if (Object.keys(vm.lists).length) {
 					vm.syncLists();
 				}
-				$ionicLoading.hide();
+				//$ionicLoading.hide();
 			},
 			function (error) {
 				vm.listsGetDefault();
@@ -245,16 +247,16 @@ angular.module('appNyc.controllers', [])
 		AccountService.currentUser()
 			.then(function (responseData) {
 				$rootScope.user = responseData;
-				$ionicLoading.hide();
+				//$ionicLoading.hide();
 				vm.listsGetUser();
 			}, function (error) {
 				console.error(error);
-				$ionicLoading.hide();
+				//$ionicLoading.hide();
 			})
 	}
 	vm.logout = function () {
 		vm.syncListsUp();
-		$ionicLoading.show();
+		//$ionicLoading.show();
 		window.localStorage.clear();
 		AccountService.logout();
 		AccountService.currentUser()
@@ -263,11 +265,11 @@ angular.module('appNyc.controllers', [])
 				vm.lists = {};
 				$rootScope.user = responseData;
 				vm.listsGetDefault(true);
-				$ionicLoading.hide();
+				//$ionicLoading.hide();
 				$rootScope.modalsClose();
 			}, function (error) {
 				console.error(error);
-				$ionicLoading.hide();
+				//$ionicLoading.hide();
 				$rootScope.modalsClose();
 			})
 	}

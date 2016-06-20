@@ -198,39 +198,40 @@ angular.module('appNyc.directives', [])
 					duration
 				);
 			});
-			$(element).scroll(
-				$.debounce(
-					333, // this should be more than animation duration, or it will trigger itself
-					function (event) {
-						var target = event.target;
-						var duration = 200;
-						if (target.doNotScroll) {
-							return;
-						}
-						// what direction?
-						var round = 'ceil';
-						if (target.scrollLeft < target.scrollLeftLast) {
-							round = 'floor';
-						}
-						// finish scrolling - to closest column
-						var columns = Math[round](target.scrollLeft / target.firstElementChild.firstElementChild.clientWidth);
-						var scrollTo = target.firstElementChild.firstElementChild.clientWidth * columns;
-						// go
-						$(target).animate({
-							scrollLeft: scrollTo
-						}, {
-							duration: duration
-						});
-						// done
-						target.doNotScroll = true;
-						$timeout(
-							scope.scroll_enable,
-							duration
-						);
-
-					}
-				)
-			);
+			// finish scroll position to nearest column or page
+			scope.scrollfix = function(){
+				var target = element[0];
+				var duration = 200;
+				if (target.doNotScroll) {
+					return;
+				}
+				// what direction?
+				var round = 'ceil';
+				if (target.scrollLeft < target.scrollLeftLast) {
+					round = 'floor';
+				}
+				// finish scrolling - to closest column
+				var columns = Math[round](target.scrollLeft / target.firstElementChild.firstElementChild.clientWidth);
+				var scrollTo = target.firstElementChild.firstElementChild.clientWidth * columns;
+				// go
+				$(target).animate({
+					scrollLeft: scrollTo
+				}, {
+					duration: duration
+				});
+				// done
+				target.doNotScroll = true;
+				$timeout(
+					scope.scroll_enable,
+					duration
+				);
+			};
+			$(element).scroll(function(){
+				window.clearTimeout(scope.scrollfix_timeout);
+				scope.scrollfix_timeout = window.setTimeout(function(){
+					scope.scrollfix();
+				},222); // timeout must be greater than duration of 
+			});
 		}
 	}
 })

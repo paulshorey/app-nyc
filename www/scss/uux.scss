@@ -242,9 +242,10 @@ body {
 		TOP: all
 	*/
 	.my-top {
-		margin: 0;
-		padding: 10px 0 0;
-		position:relative;
+		margin: 0 0 2px;
+		padding: 10px 0 0px;
+		position: relative;
+		border-bottom: solid 1px #ccc;
 		.top-logo {
 			display:block;
 			margin: -4px auto 6px;

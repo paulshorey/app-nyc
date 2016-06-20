@@ -15,7 +15,6 @@
     "moment": "^2.13.0",
     "ngReact": "^0.3.0",
     "sugar": "^1.4.1",
-    "jquery-debounce": "^1.0.6",
     "compass-sass-mixins": "*"
   }
 }
