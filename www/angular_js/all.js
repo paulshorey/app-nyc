@@ -209,7 +209,7 @@ angular.module('appNyc.components', [])
 // }
 angular.module('appNyc.controllers', [])
 
-.controller('ListController', ["AccountService", "ListService", "EventService", "ContentService", "$ionicLoading", "$ionicPopup", "$ionicModal", "$window", "$scope", "$rootScope", "$state", "$timeout", "$stateParams", "$sce", "$compile", "$interpolate", "$parse", function (AccountService, ListService, EventService, ContentService, $ionicLoading, $ionicPopup, $ionicModal, $window, $scope, $rootScope, $state, $timeout, $stateParams, $sce, $compile, $interpolate, $parse) {
+.controller('ListController', ["AccountService", "ListService", "EventService", "ContentService", "$ionicPopup", "$ionicModal", "$window", "$scope", "$rootScope", "$state", "$timeout", "$stateParams", "$sce", "$compile", "$interpolate", "$parse", function (AccountService, ListService, EventService, ContentService, $ionicPopup, $ionicModal, $window, $scope, $rootScope, $state, $timeout, $stateParams, $sce, $compile, $interpolate, $parse) {
 	window.ListController = this;
 	var errorHandler = function (options) {
 		var errorAlert = $ionicPopup.alert({
@@ -236,7 +236,9 @@ angular.module('appNyc.controllers', [])
 	vm.featuredEvents = {};
 
 
-
+	/*
+		MODALS
+	*/
 	$ionicModal.fromTemplateUrl('angular_html/modals/select.html', {
 		scope: $scope, 
 		animation: 'slide-in-left'
@@ -280,10 +282,10 @@ angular.module('appNyc.controllers', [])
 				vm.scenes = all.scenes;
 				vm.sites = all.sites;
 				vm.eventsCount = all.eventsCount;
-				$ionicLoading.hide();
+				//$ionicLoading.hide();
 			},
 			function (error) {
-				$ionicLoading.hide();
+				//$ionicLoading.hide();
 			}
 		);
 	}
@@ -309,7 +311,7 @@ angular.module('appNyc.controllers', [])
 				if (Object.keys(vm.lists).length) {
 					vm.syncLists();
 				}
-				$ionicLoading.hide();
+				//$ionicLoading.hide();
 			},
 			function (error) {
 				vm.listsGetDefault();
@@ -454,16 +456,16 @@ angular.module('appNyc.controllers', [])
 		AccountService.currentUser()
 			.then(function (responseData) {
 				$rootScope.user = responseData;
-				$ionicLoading.hide();
+				//$ionicLoading.hide();
 				vm.listsGetUser();
 			}, function (error) {
 				console.error(error);
-				$ionicLoading.hide();
+				//$ionicLoading.hide();
 			})
 	}
 	vm.logout = function () {
 		vm.syncListsUp();
-		$ionicLoading.show();
+		//$ionicLoading.show();
 		window.localStorage.clear();
 		AccountService.logout();
 		AccountService.currentUser()
@@ -472,11 +474,11 @@ angular.module('appNyc.controllers', [])
 				vm.lists = {};
 				$rootScope.user = responseData;
 				vm.listsGetDefault(true);
-				$ionicLoading.hide();
+				//$ionicLoading.hide();
 				$rootScope.modalsClose();
 			}, function (error) {
 				console.error(error);
-				$ionicLoading.hide();
+				//$ionicLoading.hide();
 				$rootScope.modalsClose();
 			})
 	}
@@ -692,39 +694,40 @@ angular.module('appNyc.directives', [])
 					duration
 				);
 			});
-			$(element).scroll(
-				$.debounce(
-					333, // this should be more than animation duration, or it will trigger itself
-					function (event) {
-						var target = event.target;
-						var duration = 200;
-						if (target.doNotScroll) {
-							return;
-						}
-						// what direction?
-						var round = 'ceil';
-						if (target.scrollLeft < target.scrollLeftLast) {
-							round = 'floor';
-						}
-						// finish scrolling - to closest column
-						var columns = Math[round](target.scrollLeft / target.firstElementChild.firstElementChild.clientWidth);
-						var scrollTo = target.firstElementChild.firstElementChild.clientWidth * columns;
-						// go
-						$(target).animate({
-							scrollLeft: scrollTo
-						}, {
-							duration: duration
-						});
-						// done
-						target.doNotScroll = true;
-						$timeout(
-							scope.scroll_enable,
-							duration
-						);
-
-					}
-				)
-			);
+			// finish scroll position to nearest column or page
+			scope.scrollfix = function(){
+				var target = element[0];
+				var duration = 200;
+				if (target.doNotScroll) {
+					return;
+				}
+				// what direction?
+				var round = 'ceil';
+				if (target.scrollLeft < target.scrollLeftLast) {
+					round = 'floor';
+				}
+				// finish scrolling - to closest column
+				var columns = Math[round](target.scrollLeft / target.firstElementChild.firstElementChild.clientWidth);
+				var scrollTo = target.firstElementChild.firstElementChild.clientWidth * columns;
+				// go
+				$(target).animate({
+					scrollLeft: scrollTo
+				}, {
+					duration: duration
+				});
+				// done
+				target.doNotScroll = true;
+				$timeout(
+					scope.scroll_enable,
+					duration
+				);
+			};
+			$(element).scroll(function(){
+				window.clearTimeout(scope.scrollfix_timeout);
+				scope.scrollfix_timeout = window.setTimeout(function(){
+					scope.scrollfix();
+				},222); // timeout must be greater than duration of 
+			});
 		}
 	}
 })
