@@ -21,6 +21,8 @@ React.html['eventslist'] = React.createClass({
 			if (!event.texts) {
 				break;
 			}
+			// console.log(event.texts[0]);
+			// console.log(moment(event.timestamp).format('MMM D @ h:mma'));
 			var timestring = Date.create(event.timestamp).short();
 			var todayEnd = moment().endOf('day').format('x');
 			if (event.timestamp < todayEnd - 1) {
