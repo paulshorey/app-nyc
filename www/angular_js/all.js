@@ -1,81 +1,24 @@
-angular.module('appNyc', ['ionic', 'react', 'appNyc.components', 'appNyc.filters', 'appNyc.directives', 'appNyc.controllers', 'appNyc.services'])
+angular.module('appNyc', ['react', 'ui.router', 'appNyc.components', 'appNyc.filters', 'appNyc.directives', 'appNyc.controllers', 'appNyc.services'])
 
-.run(function ($ionicPlatform, $rootScope, AccountService, $injector, $ionicModal) {
-	$ionicPlatform.ready(function () {
-		// hide accessory bar
-		if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-			cordova.plugins.Keyboard.disableScroll(true);
-		}
-		// modify status bar
-		if (window.StatusBar) {
-			StatusBar.styleDefault(); // org.apache.cordova.statusbar required
-		}
-	});
-	window.inject = function(who){
-		return $injector.get([who]);
-	};
-	// init stuff for all controllers
+// .run(function ($rootScope, AccountService, $injector) {
+// 	window.inject = function(who){
+// 		return $injector.get([who]);
+// 	};
+// })
 
-
-	/*
-		MODALS
-	*/
-	$rootScope.filepath = document.getElementsByTagName("script");
-	$rootScope.modals = {};
-	$ionicModal.fromTemplateUrl('angular_html/modals/options.html', {
-			scope: $rootScope,
-			animation: 'slide-in-right'
-		})
-		.then(function (modal) {
-			$rootScope.modals['modalOptions'] = modal;
-		});
-	$ionicModal.fromTemplateUrl('angular_html/modals/contribute.html', {
-			scope: $rootScope,
-			animation: 'slide-in-top'
-		})
-		.then(function (modal) {
-			$rootScope.modals['modalContribute'] = modal;
-		});
-	$rootScope.$on('modal.shown', function () {
-		$('.my-content')
-			.addClass('blurry');
-	});
-	$rootScope.$on('modal.hidden', function () {
-		$('.my-content')
-			.removeClass('blurry');
-	});
-	$rootScope.modalsClose = function () {
-		for (var m in $rootScope.modals) {
-			$rootScope.modals[m].hide();
-		}
-	};
-	$rootScope.$on('$destroy', function () {
-		for (var m in $rootScope.modals) {
-			$rootScope.modals[m].remove();
-		}
-	});
-
-
-})
-
-.constant('$ionicLoadingConfig', {
-	template: "<ion-spinner></ion-spinner>",
-	hideOnStateChange: false
-})
-
-.config(function ($ionicConfigProvider, $stateProvider, $httpProvider, $locationProvider, $urlRouterProvider) {
+.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
 	$locationProvider.html5Mode({
 		enabled: true,
 		requireBase: false
 	});
 	$httpProvider.defaults.headers.post['Cache-Control'] = 'no-cache';
 	$httpProvider.defaults.headers.post['Pragma'] = 'no-cache';
-	$ionicConfigProvider.views.maxCache(0);
 	delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
+	$urlRouterProvider.otherwise('/');
+
 	$stateProvider
-	.state('lists', {
+	.state('home', {
 		cache: false,
 		url: '/',
 		templateUrl: 'angular_html/lists.html',
@@ -83,7 +26,6 @@ angular.module('appNyc', ['ionic', 'react', 'appNyc.components', 'appNyc.filters
 		controllerAs: "vm"
 	});
 
-	$urlRouterProvider.otherwise('/');
 })
 
 ;
@@ -209,14 +151,10 @@ angular.module('appNyc.components', [])
 // }
 angular.module('appNyc.controllers', [])
 
-.controller('ListController', ["AccountService", "ListService", "EventService", "ContentService", "$ionicPopup", "$ionicModal", "$window", "$scope", "$rootScope", "$state", "$timeout", "$stateParams", "$sce", "$compile", "$interpolate", "$parse", function (AccountService, ListService, EventService, ContentService, $ionicPopup, $ionicModal, $window, $scope, $rootScope, $state, $timeout, $stateParams, $sce, $compile, $interpolate, $parse) {
+.controller('ListController', ["AccountService", "ListService", "EventService", "ContentService", "$window", "$scope", "$rootScope", "$state", "$timeout", "$stateParams", "$sce", "$compile", "$interpolate", "$parse", function (AccountService, ListService, EventService, ContentService, $window, $scope, $rootScope, $state, $timeout, $stateParams, $sce, $compile, $interpolate, $parse) {
 	window.ListController = this;
 	var errorHandler = function (options) {
-		var errorAlert = $ionicPopup.alert({
-			title: options.title,
-			okType: 'button-assertive',
-			okText: "Try Again"
-		});
+		console.warn(options);
 	}
 	$rootScope.client = window.client;
 
@@ -234,18 +172,6 @@ angular.module('appNyc.controllers', [])
 	vm.lists = {};
 	vm.lists_new = {};
 	vm.featuredEvents = {};
-
-
-	/*
-		MODALS
-	*/
-	$ionicModal.fromTemplateUrl('angular_html/modals/select.html', {
-		scope: $scope, 
-		animation: 'slide-in-left'
-	})
-	.then(function (modal) {
-		$rootScope.modals['modalSelect'] = modal;
-	});
 
 
 	/*
@@ -587,7 +513,7 @@ angular.module('appNyc.directives', [])
 	}
 })
 
-.directive('scrollable', function ($timeout, $ionicLoading) {
+.directive('scrollable', function ($timeout) {
 	return {
 		restrict: 'A',
 		scope: {
@@ -628,9 +554,7 @@ angular.module('appNyc.directives', [])
 
 						var scrollTo = 0;
 						target.doNotScroll = 'scroll--changed';
-						$ionicLoading.show();
 						$timeout(function () {
-							$ionicLoading.hide();
 							$(target)
 								.animate({
 									scrollLeft: 0
