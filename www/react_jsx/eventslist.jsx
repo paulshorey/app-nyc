@@ -22,13 +22,13 @@ React.html['eventslist'] = React.createClass({
 			// console.log(moment(event.timestamp).format('MMM D @ h:mma'));
 			var timestring = Date.create(event.timestamp).short();
 			var todayEnd = moment().endOf('day').format('x');
-			if (event.timestamp < todayEnd - 1) { // party must end before midnight, because we don't know when exactly tomorrow's dates are, most come in as 12:00am
+			if (event.timestamp < (todayEnd - 1)) { // party must end before midnight, because we don't know when exactly tomorrow's dates are, most come in as 12:00am
 				timestring = 'today';
-			} else if (event.timestamp < todayEnd - 1 + 1000*60*60*24) {
+			} else if (event.timestamp < (todayEnd - 1 + 1000*60*60*24)) {
 				timestring = 'tomorrow';
-			} else if (event.timestamp < todayEnd - 1 + 1000*60*60*24 *6) {
+			} else if (event.timestamp < (todayEnd - 1 + 1000*60*60*24 *6)) {
 				timestring = 'this week';
-			} else if (event.timestamp < todayEnd - 1 + 1000*60*60*24 *30) {
+			} else if (event.timestamp < (todayEnd - 1 + 1000*60*60*24 *30)) {
 				timestring = 'this month';
 			}
 
