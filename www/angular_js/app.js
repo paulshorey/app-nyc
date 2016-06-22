@@ -1,10 +1,17 @@
-angular.module('appNyc', ['react', 'ui.router', 'appNyc.components', 'appNyc.filters', 'appNyc.directives', 'appNyc.controllers', 'appNyc.services'])
+angular.module('ListModule', ['react', 'ui.router', 'angularModalService', 'ListModule.components', 'ListModule.filters', 'ListModule.directives', 'ListModule.controllers', 'ListModule.services'])
 
 // .run(function ($rootScope, AccountService, $injector) {
 // 	window.inject = function(who){
 // 		return $injector.get([who]);
 // 	};
 // })
+
+.controller('Modal', function($scope, close, scope) {
+	$scope.vm = scope.vm;
+	$scope.close = function(result) {
+		close(result, 500);
+	};
+})
 
 .config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
 	$locationProvider.html5Mode({

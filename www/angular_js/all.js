@@ -1,4 +1,4 @@
-angular.module('appNyc', ['react', 'ui.router', 'appNyc.components', 'appNyc.filters', 'appNyc.directives', 'appNyc.controllers', 'appNyc.services'])
+angular.module('ListModule', ['react', 'ui.router', 'ListModule.components', 'ListModule.filters', 'ListModule.directives', 'ListModule.controllers', 'ListModule.services'])
 
 // .run(function ($rootScope, AccountService, $injector) {
 // 	window.inject = function(who){
@@ -30,7 +30,7 @@ angular.module('appNyc', ['react', 'ui.router', 'appNyc.components', 'appNyc.fil
 
 ;
 
-angular.module('appNyc.components', [])
+angular.module('ListModule.components', [])
 
 
 .directive('reactEventslist', function (reactDirective) {
@@ -149,7 +149,7 @@ angular.module('appNyc.components', [])
 // 	});
 // 	// </events>
 // }
-angular.module('appNyc.controllers', [])
+angular.module('ListModule.controllers', [])
 
 .controller('ListController', ["AccountService", "ListService", "EventService", "ContentService", "$window", "$scope", "$rootScope", "$state", "$timeout", "$stateParams", "$sce", "$compile", "$interpolate", "$parse", function (AccountService, ListService, EventService, ContentService, $window, $scope, $rootScope, $state, $timeout, $stateParams, $sce, $compile, $interpolate, $parse) {
 	window.ListController = this;
@@ -401,7 +401,7 @@ angular.module('appNyc.controllers', [])
 				$rootScope.user = responseData;
 				vm.listsGetDefault(true);
 				//$ionicLoading.hide();
-				$rootScope.modalsClose();
+				$rootScope.modals.close();
 			}, function (error) {
 				console.error(error);
 				//$ionicLoading.hide();
@@ -420,7 +420,7 @@ angular.module('appNyc.controllers', [])
 
 }])
 ;
-angular.module('appNyc.directives', [])
+angular.module('ListModule.directives', [])
 
 .directive('preventDefault', function () {
 	return function (scope, element, attrs) {
@@ -657,7 +657,7 @@ angular.module('appNyc.directives', [])
 })
 
 ;
-angular.module('appNyc.filters', [])
+angular.module('ListModule.filters', [])
 
 .filter('firstWord', function () {
 	return function (string) {
@@ -690,7 +690,7 @@ angular.module('appNyc.filters', [])
 })
 
 ;
-angular.module('appNyc.services', [])
+angular.module('ListModule.services', [])
 
 .factory('ContentService', ["$q", "$http", function ($q, $http) {
 	return {

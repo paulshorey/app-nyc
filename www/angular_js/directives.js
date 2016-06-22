@@ -1,4 +1,4 @@
-angular.module('appNyc.directives', [])
+angular.module('ListModule.directives', [])
 
 .directive('preventDefault', function () {
 	return function (scope, element, attrs) {

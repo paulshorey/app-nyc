@@ -1,4 +1,4 @@
-angular.module('appNyc.filters', [])
+angular.module('ListModule.filters', [])
 
 .filter('firstWord', function () {
 	return function (string) {

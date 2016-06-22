@@ -120,7 +120,7 @@ a.uui-icon:before {
 .uui-hollow-orange span, .uui-hollow-orange:before,
 .uui-hollow-orange span:before {
   color: #fff;
-  text-shadow: 0 0 10px orange;
+  text-shadow: 0 0 3px orange;
   transition: text-shadow 1s, color 1s; }
 
 .uui-hover-orange:hover span, .uui-hover-orange:hover:before,

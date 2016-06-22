@@ -17,7 +17,7 @@
 	};
 	window.client = {};
 	// quickDial
-	window.isLive = true; // manual override to test ... use isLocalhost to programmatically determine if dev or live 
+	window.isLive = false; // manual override to test ... use isLocalhost to programmatically determine if dev or live 
 	window.isMobile = window.location ? false : true; // !(/localhost|stamplay|allevents/.test(window.location.host));
 	window.isLocalhost = window.location.hostname.indexOf('localhost')!=-1;
 	/*
@@ -60,10 +60,8 @@
 	</script>
 
 	<!-- lib -->
-	<script>
-	window.libVersion  = 0.01;
-	document.write('<script src="lib/all.js?'+window.libVersion+'"><\/script>\n');
-	</script>
+	<script src="lib/all.js"></script>
+	<script src="https://rawgit.com/dwmkerr/angular-modal-service/master/dst/angular-modal-service.js"></script>
 
 	<!-- angular_js -->
 	<script>
@@ -94,7 +92,7 @@
 	<link href="gfx/icomoon/style.css" rel="stylesheet">
 
 </head>
-<body ng-app="appNyc">
+<body ng-app="ListModule">
 
 	<ui-view></ui-view>
 	

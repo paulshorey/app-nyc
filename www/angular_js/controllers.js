@@ -1,11 +1,10 @@
-angular.module('appNyc.controllers', [])
+angular.module('ListModule.controllers', [])
 
-.controller('ListController', ["AccountService", "ListService", "EventService", "ContentService", "$window", "$scope", "$rootScope", "$state", "$timeout", "$stateParams", "$sce", "$compile", "$interpolate", "$parse", function (AccountService, ListService, EventService, ContentService, $window, $scope, $rootScope, $state, $timeout, $stateParams, $sce, $compile, $interpolate, $parse) {
+.controller('ListController', ["ModalService", "AccountService", "ListService", "EventService", "ContentService", "$window", "$scope", "$rootScope", "$state", "$timeout", "$stateParams", "$sce", "$compile", "$interpolate", "$parse", "$q", function (ModalService, AccountService, ListService, EventService, ContentService, $window, $scope, $rootScope, $state, $timeout, $stateParams, $sce, $compile, $interpolate, $parse, $q) {
 	window.ListController = this;
 	var errorHandler = function (options) {
 		console.warn(options);
 	}
-	$rootScope.client = window.client;
 
 	/*
 		MODELS
@@ -21,6 +20,38 @@ angular.module('appNyc.controllers', [])
 	vm.lists = {};
 	vm.lists_new = {};
 	vm.featuredEvents = {};
+
+
+	/*
+		MODALS
+	*/
+	var modal_timeout = 0;
+	$rootScope.modals = {opened:[]};
+	$rootScope.modals.close = function() {
+		for (var mo in $rootScope.modals.opened) {
+			$rootScope.modals.opened[ mo ].scope.close();
+			delete $rootScope.modals.opened[ mo ];
+			modal_timeout = 1000;
+		}
+	}
+	$rootScope.modals.show = function(name) {
+		$rootScope.modals.close();
+		$timeout(function(){
+			console.log('modal_timeout',modal_timeout);
+			ModalService.showModal({
+				templateUrl: name,
+				controller: "Modal",
+				inputs: {
+					scope: $scope
+				}
+			}).then(function(modal) {
+				$rootScope.modals.opened.push( modal );
+				modal.close.then(function(result) {
+					$scope.message = "You said " + result;
+				});
+			});
+		},modal_timeout);
+	};
 
 
 	/*
@@ -57,10 +88,8 @@ angular.module('appNyc.controllers', [])
 				vm.scenes = all.scenes;
 				vm.sites = all.sites;
 				vm.eventsCount = all.eventsCount;
-				//$ionicLoading.hide();
 			},
 			function (error) {
-				//$ionicLoading.hide();
 			}
 		);
 	}
@@ -86,7 +115,6 @@ angular.module('appNyc.controllers', [])
 				if (Object.keys(vm.lists).length) {
 					vm.syncLists();
 				}
-				//$ionicLoading.hide();
 			},
 			function (error) {
 				vm.listsGetDefault();
@@ -119,7 +147,7 @@ angular.module('appNyc.controllers', [])
 				vm.lists[li].justAdded = false;
 			}
 		}
-		$rootScope.modalsClose();
+		$rootScope.modals.close();
 		// <lists>
 		if (list) {
 			vm.list.data = list.data;
@@ -231,16 +259,13 @@ angular.module('appNyc.controllers', [])
 		AccountService.currentUser()
 			.then(function (responseData) {
 				$rootScope.user = responseData;
-				//$ionicLoading.hide();
 				vm.listsGetUser();
 			}, function (error) {
 				console.error(error);
-				//$ionicLoading.hide();
 			})
 	}
 	vm.logout = function () {
 		vm.syncListsUp();
-		//$ionicLoading.show();
 		window.localStorage.clear();
 		AccountService.logout();
 		AccountService.currentUser()
@@ -249,12 +274,10 @@ angular.module('appNyc.controllers', [])
 				vm.lists = {};
 				$rootScope.user = responseData;
 				vm.listsGetDefault(true);
-				//$ionicLoading.hide();
-				$rootScope.modalsClose();
+				$rootScope.modals.close();
 			}, function (error) {
 				console.error(error);
-				//$ionicLoading.hide();
-				$rootScope.modalsClose();
+				$rootScope.modals.close();
 			})
 	}
 	$scope.$on('$destroy', vm.syncLists);

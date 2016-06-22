@@ -1,7 +1,7 @@
 <ion-modal-view ng-class="{ 'isMobile': client.isMobile }" data-tap-disabled="true">
 	<ion-header-bar>
 		<h1 class="title"></h1>
-		<button class="button button-clear button-primary" ng-click="modalsClose()">X</button>
+		<button class="button button-clear button-primary">X</button>
 	</ion-header-bar>
 	<ion-content>
 
@@ -37,7 +37,7 @@
 		</div>
 
 		<div class="modal-options modal-links modal-bottom-links">
-			<a class="options-links" href="" prevent-default ng-click="modals.modalSelect.hide();modals.modalContribute.show();">
+			<a class="options-links" href="" prevent-default ng-click="modals.show('angular_html/modals/contribute.html');">
 				<span class="uui-icon ion-plus"></span> <span class="uui-text">submit a site / source</span>
 			</a>
 		</div>
