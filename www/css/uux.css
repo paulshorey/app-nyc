@@ -74,9 +74,6 @@ body {
     display: block;
     clear: both; }
 
-.modal {
-  background: rgba(255, 255, 255, 0.66); }
-
 /*
 	SPECIFIC
 */
@@ -115,86 +112,112 @@ body {
 /*
 	MODAL mobile options
 */
-.modal-text {
-  color: white;
-  background: orange;
-  font-size: 1.25em;
-  line-height: 1.5em;
-  padding: 10px;
-  margin: 10px auto;
-  width: 66%;
-  min-width: 280px; }
-
-.modal-options {
-  color: #ccc;
-  font-size: 17px;
-  padding: 4px 0 3px;
-  /*
-		MODAL links
-	*/
-  /*
-		MODAL bottom links
-	*/
-  /*
-		MODAL mobile select
-	*/ }
-  .modal-options > * {
-    border: 0;
-    margin: 0 2px 0 5px;
-    vertical-align: middle;
-    font-size: 100%;
-    line-height: 100%;
-    margin: 4px auto;
-    color: white;
-    white-space: nowrap; }
-  .modal-options .options-options {
-    margin: 20px auto;
-    padding: 20px;
-    background: rgba(0, 162, 240, 0.5); }
-    .modal-options .options-options .options-icons {
-      font-size: 115%;
-      margin: 5px 0; }
-  .modal-options .options-links {
-    margin: 30px auto 20px; }
-  .modal-options .options-welcomeback {
-    white-space: normal; }
-    .modal-options .options-welcomeback > span {
-      margin: 0 0 10px;
-      display: block; }
-    .modal-options .options-welcomeback .uui-button {
-      display: block; }
-  .modal-options.modal-links > * {
-    display: block;
-    width: 280px;
-    text-align: center;
-    margin: 10px auto;
-    border-radius: 5px; }
-  .modal-options.modal-bottom-links {
-    position: absolute;
-    bottom: 90px;
-    width: 100%; }
-  .modal-options.modal-select > * {
-    width: 280px;
-    margin: 5px auto;
-    display: block; }
-    .modal-options.modal-select > *.item-select {
-      padding: 2px 0 0 7px; }
-    .modal-options.modal-select > *.item-select span:before {
+.my-modal {
+  position: fixed;
+  z-index: 1000000;
+  width: 100%;
+  height: 100%; }
+  .my-modal .modal-backdrop {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55); }
+    .my-modal .modal-backdrop .modal-close {
+      margin: 0.5em 1em;
+      height: 1.33em;
+      width: 1.25em;
+      font-size: 2em;
+      line-height: 1.33em;
+      padding: 0;
+      color: #fff; }
+    .my-modal .modal-backdrop:hover .modal-close {
+      font-weight: bold; }
+  .my-modal .modal-content {
+    position: relative;
+    z-index: 1000000;
+    width: 600px;
+    top: 6.66vh;
+    margin: 0 auto; }
+    .my-modal .modal-content .modal-text {
+      color: white;
+      background: orange;
       font-size: 1.25em;
       line-height: 1.5em;
-      background: #fff; }
-    .modal-options.modal-select > *.item-select,
-    .modal-options.modal-select > * select {
-      color: orange;
-      text-transform: uppercase;
-      background: white; }
-    .modal-options.modal-select > *:hover select {
-      color: #4BAFE1; }
-    .modal-options.modal-select > *.active select,
-    .modal-options.modal-select > *.active span:before {
-      color: #4BAFE1; }
-    .modal-options.modal-select > *.select-search {
-      color: #ccc; }
+      padding: 10px;
+      margin: 10px auto;
+      width: 66%;
+      min-width: 280px; }
+    .my-modal .modal-content .modal-options {
+      color: #ccc;
+      font-size: 17px;
+      padding: 4px 0 3px;
+      /*
+				MODAL links
+			*/
+      /*
+				MODAL bottom links
+			*/
+      /*
+				MODAL mobile select
+			*/ }
+      .my-modal .modal-content .modal-options > * {
+        border: 0;
+        margin: 0 2px 0 5px;
+        vertical-align: middle;
+        font-size: 100%;
+        line-height: 100%;
+        margin: 4px auto;
+        color: white;
+        white-space: nowrap; }
+      .my-modal .modal-content .modal-options .options-options {
+        margin: 20px auto;
+        padding: 20px;
+        background: #fff;
+        color: orange; }
+        .my-modal .modal-content .modal-options .options-options .options-icons {
+          font-size: 115%;
+          margin: 5px 0; }
+      .my-modal .modal-content .modal-options .options-links {
+        margin: 30px auto 20px; }
+      .my-modal .modal-content .modal-options .options-welcomeback {
+        white-space: normal; }
+        .my-modal .modal-content .modal-options .options-welcomeback > span {
+          margin: 0 0 10px;
+          display: block; }
+        .my-modal .modal-content .modal-options .options-welcomeback .uui-button {
+          display: block; }
+      .my-modal .modal-content .modal-options.modal-links > * {
+        display: block;
+        width: 280px;
+        text-align: center;
+        margin: 10px auto;
+        border-radius: 5px; }
+      .my-modal .modal-content .modal-options.modal-bottom-links {
+        position: absolute;
+        bottom: 90px;
+        width: 100%; }
+      .my-modal .modal-content .modal-options.modal-select > * {
+        width: 280px;
+        margin: 5px auto;
+        display: block; }
+        .my-modal .modal-content .modal-options.modal-select > *.item-select {
+          padding: 2px 0 0 7px; }
+        .my-modal .modal-content .modal-options.modal-select > *.item-select span:before {
+          font-size: 1.25em;
+          line-height: 1.5em;
+          background: #fff; }
+        .my-modal .modal-content .modal-options.modal-select > *.item-select,
+        .my-modal .modal-content .modal-options.modal-select > * select {
+          color: orange;
+          text-transform: uppercase;
+          background: white; }
+        .my-modal .modal-content .modal-options.modal-select > *:hover select {
+          color: #4BAFE1; }
+        .my-modal .modal-content .modal-options.modal-select > *.active select,
+        .my-modal .modal-content .modal-options.modal-select > *.active span:before {
+          color: #4BAFE1; }
+        .my-modal .modal-content .modal-options.modal-select > *.select-search {
+          color: #ccc; }
 
 /*
 		TOP: all

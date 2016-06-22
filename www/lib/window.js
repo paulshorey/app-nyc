@@ -1,3 +1,25 @@
+// this should be in index.html if decide to use variables from NodeJS server
+	// local
+	window.env = {
+		api:{},
+		stamplay:{},
+		app:{}
+	};
+	window.client = {};
+	// quickDial
+	window.isLive = false; // manual override to test ... use isLocalhost to programmatically determine if dev or live 
+	window.isMobile = window.location ? false : true; // !(/localhost|stamplay|allevents/.test(window.location.host));
+	window.isLocalhost = window.location.hostname.indexOf('localhost')!=-1;
+	/*
+	// remote 
+	<%- '\n\t window.nodejs = '+JSON.stringify(process.window.env,null,'\t')+';\n' %>
+	// merge local/remote
+	if (window.nodejs) {
+		for (var env in nodejs) {
+			window.env[env] = window.nodejs[env];
+		}
+	}
+	*/
 
 // url (for login / data api)
 window.env.api.host = 'http'+(isMobile || isLocalhost?'':'s')+'://'+(isMobile || isLocalhost?'localhost:1080':'api.allevents.nyc');
@@ -17,3 +39,10 @@ window.reset = function(){
 window.extendSorted = function(one, two) {
 	return $.extend(one,two);
 };
+
+
+Stamplay.init("ionic-nyc", {
+	isMobile: window.isMobile,
+	absoluteUrl : true,
+	autorefreshSocialLogin : false
+});

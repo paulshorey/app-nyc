@@ -85,9 +85,6 @@ body {
 	// 	@include filter(blur(5px));
 	// }
 }
-.modal {
-	background:rgba(255,255,255,0.66);
-}
 
 /*
 	SPECIFIC
@@ -128,109 +125,141 @@ body {
 /*
 	MODAL mobile options
 */
-.modal-text {
-	color:white;
-	background:orange;
-	font-size:1.25em;
-	line-height:1.5em;
-	padding:10px;
-	margin:10px auto;
-	width:66%;
-	min-width:280px;
-}
-.modal-options {
-	color:#ccc;
-	font-size:17px;
-	padding: 4px 0 3px;
-	> * {
-		border: 0;
-		margin: 0 2px 0 5px;
-		vertical-align:middle;
-		font-size: 100%;
-		line-height: 100%;
-		margin: 4px auto;
-		color:white;
-		white-space:nowrap;
-	}
-
-	.options-options {
-		margin:20px auto;
-		padding:20px;
-		background:rgba(0,162,240,0.5);
-		.options-icons {
-			font-size:115%;
-			margin:5px 0;
+.my-modal {
+	position: fixed;
+	z-index: 1000000;
+	width: 100%;
+	height: 100%;
+	.modal-backdrop {
+		position:fixed;
+		width:100%;
+		height:100%;
+		background: rgba(0,0,0,0.55);
+		.modal-close {
+			margin: 0.5em 1em;
+			height: 1.33em;
+			width: 1.25em;
+			font-size: 2em;
+			line-height: 1.33em;
+			padding: 0;
+			color:#fff;
+		}
+		&:hover .modal-close {
+			font-weight:bold;
 		}
 	}
-	.options-links {
-		margin:30px auto 20px;
-	}
-	
-	.options-welcomeback {
-		white-space:normal;
-		> span {
-			margin: 0 0 10px;
-			display: block;
-		}
-		.uui-button {
-			display:block;
-		}
-	}
-
-	/*
-		MODAL links
-	*/
-	&.modal-links {
-		> * {
-			display:block;
-			width:280px;
-			text-align:center;
+	.modal-content {
+		position:relative;
+		z-index:1000000;
+		width:600px;
+		top:6.66vh;
+		margin:0 auto;
+		.modal-text {
+			color:white;
+			background:orange;
+			font-size:1.25em;
+			line-height:1.5em;
+			padding:10px;
 			margin:10px auto;
-			border-radius:5px;
+			width:66%;
+			min-width:280px;
 		}
-	}
+		.modal-options {
+			color:#ccc;
+			font-size:17px;
+			padding: 4px 0 3px;
+			> * {
+				border: 0;
+				margin: 0 2px 0 5px;
+				vertical-align:middle;
+				font-size: 100%;
+				line-height: 100%;
+				margin: 4px auto;
+				color:white;
+				white-space:nowrap;
+			}
 
-	/*
-		MODAL bottom links
-	*/
-	&.modal-bottom-links {
-		position: absolute;
-		bottom: 90px;
-		width: 100%;
-	}
-	
-	/*
-		MODAL mobile select
-	*/
-	&.modal-select {
-		// font-family: "Bodoni 72", Bodoni, serif;
-		> * {
-			width:280px;
-			margin:5px auto;
-			display:block;
-			&.item-select {
-				padding:2px 0 0 7px;
-			}
-			&.item-select span:before {
-				font-size: 1.25em;
-				line-height: 1.5em;
+			.options-options {
+				margin:20px auto;
+				padding:20px;
 				background:#fff;
-			}
-			&.item-select,
-			select {
 				color:orange;
-				text-transform:uppercase;
-				background:white;
+				.options-icons {
+					font-size:115%;
+					margin:5px 0;
+				}
 			}
-			&:hover select {
-				color:#4BAFE1;
+			.options-links {
+				margin:30px auto 20px;
 			}
-			&.active select,
-			&.active span:before {
-				color:#4BAFE1;
+			
+			.options-welcomeback {
+				white-space:normal;
+				> span {
+					margin: 0 0 10px;
+					display: block;
+				}
+				.uui-button {
+					display:block;
+				}
 			}
-			&.select-search {
-				color:#ccc;
+
+			/*
+				MODAL links
+			*/
+			&.modal-links {
+				> * {
+					display:block;
+					width:280px;
+					text-align:center;
+					margin:10px auto;
+					border-radius:5px;
+				}
+			}
+
+			/*
+				MODAL bottom links
+			*/
+			&.modal-bottom-links {
+				position: absolute;
+				bottom: 90px;
+				width: 100%;
+			}
+			
+			/*
+				MODAL mobile select
+			*/
+			&.modal-select {
+				// font-family: "Bodoni 72", Bodoni, serif;
+				> * {
+					width:280px;
+					margin:5px auto;
+					display:block;
+					&.item-select {
+						padding:2px 0 0 7px;
+					}
+					&.item-select span:before {
+						font-size: 1.25em;
+						line-height: 1.5em;
+						background:#fff;
+					}
+					&.item-select,
+					select {
+						color:orange;
+						text-transform:uppercase;
+						background:white;
+					}
+					&:hover select {
+						color:#4BAFE1;
+					}
+					&.active select,
+					&.active span:before {
+						color:#4BAFE1;
+					}
+					&.select-search {
+						color:#ccc;
+					}
+				}
 			}
 		}
 	}

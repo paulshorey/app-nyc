@@ -1,10 +1,19 @@
-angular.module('ListModule', ['react', 'ui.router', 'ListModule.components', 'ListModule.filters', 'ListModule.directives', 'ListModule.controllers', 'ListModule.services'])
+angular.module('ListModule', ['react', 'ui.router', 'angularModalService', 'ListModule.components', 'ListModule.filters', 'ListModule.directives', 'ListModule.controllers', 'ListModule.services'])
 
 // .run(function ($rootScope, AccountService, $injector) {
 // 	window.inject = function(who){
 // 		return $injector.get([who]);
 // 	};
 // })
+
+.controller('Modal', function($scope, close, vm) {
+	if (vm) {
+		$scope.vm = vm;
+	}
+	$scope.close = function(result) {
+		close(result, 500);
+	};
+})
 
 .config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
 	$locationProvider.html5Mode({
@@ -49,114 +58,13 @@ angular.module('ListModule.components', [])
 })
 
 ;
-
-// THIS DIRECTIVE ABOVE ALLOWS THE ENTIRE MESS BELOW TO BE REPLACED WITH THIS ONE LINE:
-// list.events = response.data.data;
-// (the rest contained in a nice neat template: /www/react_jsx/eventslist.jsx)
-
-// I SOMETIMES BUILD A MESSY LOOKING SOURCE CODE TO GET A PROTOTYPE UP AND RUNNING, then REFACTOR asap:
-// var events = response.data.data;
-// var old_timestring = '';
-// var old_event_featured_images = [];
-// var old_date = '';
-// if (events.length) {
-
-
-// 	// ALL
-// 	// <events>
-// 	list.count = events.length;
-// 	list.sources = {};
-
-// 	// <html>
-// 	var html = '		<div class="my-events">\n';
-// 	for (var each in events) {
-// 		var event = events[each];
-// 		if (!event.texts) {
-// 			continue;
-// 		}
-// 		var timestring = Date.create(event.timestamp).short();
-// 		var todayEnd = moment().endOf('day').format('x');
-// 		if (event.timestamp < todayEnd - 1) { // party must end before midnight, because we don't know when exactly tomorrow's dates are, most come in as 12:00am
-// 			timestring = 'today';
-// 		} else if (event.timestamp < todayEnd - 1 + 1000*60*60*24) {
-// 			timestring = 'tomorrow';
-// 		} else if (event.timestamp < todayEnd - 1 + 1000*60*60*24 *6) {
-// 			timestring = 'this week';
-// 		} else if (event.timestamp < todayEnd - 1 + 1000*60*60*24 *30) {
-// 			timestring = 'this month';
-// 		}
-// 		//event.timestamp = event.timestamp.replace(' 12:00am','');
-// 		if (timestring != old_timestring) {
-// 			//var timeUnique = cutOldBeginning(old_timestamp, event.timestamp);
-// 			html += '<div class="events-timestamp"><span>' + timestring + '</span></div>\n';
-// 		}
-// 		var ev = '';
-// 		ev += '		<div class="events-event '+ (event.featured?'event-featured':'') +'" style="background-image:url(\'' + event.featured + '\');">';
-// 		ev += '			<div class="event-text">\n';
-// 		if (event.texts[0]) {
-// 			ev += '			<span><a class="event-link" href="' + event.link + '" target="_blank" prevent-default onClick="window.open(\'' + event.link + '\', \'_system\')">' + event.texts[0] + '</a></span>\n';
-// 		}
-// 		if (event.image) {
-// 			ev += '			<span class="event-image"><img src="' + event.image + '" /></span>\n';
-// 		}
-// 		if (event.texts[1]) {
-// 			ev += '			<span>' + event.texts[1] + '</span>\n';
-// 		}
-// 		if (event.texts[2]) {
-// 			ev += '			<span>' + event.texts[2] + '</span>\n';
-// 		}
-// 		ev += '			</div>\n';
-// 		ev += '			<div class="event-subtext">\n';
-
-// 		var time = moment(event.timestamp).format('h:mma');
-// 		if (time=='12:00am') {
-// 			time = '';
-// 		}
-// 		if (timestring.indexOf('week') != -1 || timestring.indexOf('month') != -1) {
-// 			ev += '		<span ng-click><span class="ion-calendar"></span> <span>' + moment(event.timestamp).format('MMM D') +' '+time+ '</span></span>\n';
-// 		} else if (time && time!='12:00am') {
-// 			ev += '		<span ng-click><span class="ion-calendar"></span> <span>' + time + '</span></span>\n';
-// 		}
-// 		// if (event.price) {
-// 		// 	ev += '			<span class="subtext-price"><span class="ion-pricetag"></span> <span>'+event.price+'</span></span>\n';
-// 		// }
-// 		ev += '			<a class="subtext-source" href="' + event.source_link + '" target="_blank" prevent-default onClick="window.open(\'' + event.source_link + '\', \'_system\')"><span class="icon-link"></span> ' + (event.source_host.substr(0, event.source_host.indexOf('.'))) + '</a>\n';
-// 		// ev += '			<span class="subtext-fave" ng-click=""><span class="icon-star-outline"></span></span>\n';
-// 		ev += '			</div>\n';
-// 		ev += '		</div>';
-// 		//
-// 		html += ev;
-// 		old_timestring = timestring;
-
-// 		// <event>
-// 		if (event.featured) {
-// 			var event_featured = JSON.parse(JSON.stringify(event));
-// 			if (old_event_featured_images.indexOf(event_featured.image) == -1) {
-// 				event_featured.eventsHTML = $sce.trustAsHtml(ev);
-// 				vm.featuredEvents[event.random] = event_featured;
-// 				old_event_featured_images.push(event_featured.image);
-// 			}
-// 		}
-// 		// </event>
-
-// 	}
-// 	html += '		</div>\n';
-// 	// </html>
-
-// 	$timeout(function () {
-// 		list.eventsCount = events.length;
-// 		list.eventsHTML = $sce.trustAsHtml(html);
-// 	});
-// 	// </events>
-// }
 angular.module('ListModule.controllers', [])
 
-.controller('ListController', ["AccountService", "ListService", "EventService", "ContentService", "$window", "$scope", "$rootScope", "$state", "$timeout", "$stateParams", "$sce", "$compile", "$interpolate", "$parse", function (AccountService, ListService, EventService, ContentService, $window, $scope, $rootScope, $state, $timeout, $stateParams, $sce, $compile, $interpolate, $parse) {
+.controller('ListController', ["ModalService", "AccountService", "ListService", "EventService", "ContentService", "$window", "$scope", "$rootScope", "$state", "$timeout", "$stateParams", "$sce", "$compile", "$interpolate", "$parse", "$q", function (ModalService, AccountService, ListService, EventService, ContentService, $window, $scope, $rootScope, $state, $timeout, $stateParams, $sce, $compile, $interpolate, $parse, $q) {
 	window.ListController = this;
 	var errorHandler = function (options) {
 		console.warn(options);
 	}
-	$rootScope.client = window.client;
 
 	/*
 		MODELS
@@ -172,6 +80,38 @@ angular.module('ListModule.controllers', [])
 	vm.lists = {};
 	vm.lists_new = {};
 	vm.featuredEvents = {};
+
+
+	/*
+		MODALS
+	*/
+	var modal_timeout = 0;
+	$rootScope.modals = {opened:[]};
+	$rootScope.modals.close = function() {
+		for (var mo in $rootScope.modals.opened) {
+			$rootScope.modals.opened[ mo ].scope.close();
+			delete $rootScope.modals.opened[ mo ];
+			modal_timeout = 1000;
+		}
+	}
+	$rootScope.modals.show = function(name) {
+		$rootScope.modals.close();
+		$timeout(function(){
+			console.log('modal_timeout',modal_timeout);
+			ModalService.showModal({
+				templateUrl: name,
+				controller: "Modal",
+				inputs: {
+					vm: vm
+				}
+			}).then(function(modal) {
+				$rootScope.modals.opened.push( modal );
+				modal.close.then(function(result) {
+					$scope.message = "You said " + result;
+				});
+			});
+		},modal_timeout);
+	};
 
 
 	/*
@@ -208,10 +148,8 @@ angular.module('ListModule.controllers', [])
 				vm.scenes = all.scenes;
 				vm.sites = all.sites;
 				vm.eventsCount = all.eventsCount;
-				//$ionicLoading.hide();
 			},
 			function (error) {
-				//$ionicLoading.hide();
 			}
 		);
 	}
@@ -237,7 +175,6 @@ angular.module('ListModule.controllers', [])
 				if (Object.keys(vm.lists).length) {
 					vm.syncLists();
 				}
-				//$ionicLoading.hide();
 			},
 			function (error) {
 				vm.listsGetDefault();
@@ -270,7 +207,7 @@ angular.module('ListModule.controllers', [])
 				vm.lists[li].justAdded = false;
 			}
 		}
-		$rootScope.modalsClose();
+		$rootScope.modals.close();
 		// <lists>
 		if (list) {
 			vm.list.data = list.data;
@@ -382,16 +319,13 @@ angular.module('ListModule.controllers', [])
 		AccountService.currentUser()
 			.then(function (responseData) {
 				$rootScope.user = responseData;
-				//$ionicLoading.hide();
 				vm.listsGetUser();
 			}, function (error) {
 				console.error(error);
-				//$ionicLoading.hide();
 			})
 	}
 	vm.logout = function () {
 		vm.syncListsUp();
-		//$ionicLoading.show();
 		window.localStorage.clear();
 		AccountService.logout();
 		AccountService.currentUser()
@@ -400,12 +334,10 @@ angular.module('ListModule.controllers', [])
 				vm.lists = {};
 				$rootScope.user = responseData;
 				vm.listsGetDefault(true);
-				//$ionicLoading.hide();
 				$rootScope.modals.close();
 			}, function (error) {
 				console.error(error);
-				//$ionicLoading.hide();
-				$rootScope.modalsClose();
+				$rootScope.modals.close();
 			})
 	}
 	$scope.$on('$destroy', vm.syncLists);
@@ -748,9 +680,8 @@ angular.module('ListModule.services', [])
 		getEvents: function (query) {
 			var deffered = $q.defer();
 			$http({
-				url: window.env.api.host+'/events',
-				method: "POST",
-				data: query,
+				url: window.env.api.host+'/events?'+$.param(query),
+				method: "GET",
 				headers: {
 					'Content-Type': 'application/json; charset=utf-8',
 					'X-Host': window.location.host

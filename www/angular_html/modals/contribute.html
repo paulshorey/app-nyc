@@ -1,13 +1,12 @@
-<ion-modal-view ng-class="{ 'isMobile': client.isMobile }" data-tap-disabled="true">
-	<ion-header-bar>
-		<h1 class="title"></h1>
-		<button class="button button-clear button-primary">X</button>
-	</ion-header-bar>
-	<ion-content>
+<div class="my-modal" ng-class="{ 'isMobile': client.isMobile }" data-tap-disabled="true">
+	<div class="modal-backdrop" ng-click="close()">
+		<button class="modal-close uui-icon-button">&times;</button>
+	</div>
+	<div class="modal-content">
 
 		<div class="modal-text">
 			<span>Thanks for your interest and support! Big improvements coming soon. <br /> <br />For now, please email me a link to an event site you would like to see here. I would really appreciate it, and will send you a personal confirmation. <div style="text-align:right;">- <a href="mailto:ps@artspaces.net" style="text-decoration:underline;">ps@artspaces.net</a></div> </span>
 		</div>
 
-	</ion-content>
-</ion-modal-view>
+	</div>
+</div>

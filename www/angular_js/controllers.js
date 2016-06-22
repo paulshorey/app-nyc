@@ -42,7 +42,7 @@ angular.module('ListModule.controllers', [])
 				templateUrl: name,
 				controller: "Modal",
 				inputs: {
-					scope: $scope
+					vm: vm
 				}
 			}).then(function(modal) {
 				$rootScope.modals.opened.push( modal );

@@ -1,9 +1,8 @@
-<ion-modal-view ng-class="{ 'isMobile': client.isMobile }" data-tap-disabled="true">
-	<ion-header-bar>
-		<h1 class="title"></h1>
-		<button class="button button-clear button-primary">X</button>
-	</ion-header-bar>
-	<ion-content>
+<div class="my-modal" ng-class="{ 'isMobile': client.isMobile }" data-tap-disabled="true">
+	<div class="modal-backdrop" ng-click="close()">
+		<button class="modal-close uui-icon-button">&times;</button>
+	</div>
+	<div class="modal-content">
 
 		<div class="modal-options modal-select" id="top-modal-select">
 			<label class="item item-input item-select a select-what" ng-class="{ 'active': vm.list.data.category }">
@@ -42,5 +41,5 @@
 			</a>
 		</div>
 
-	</ion-content>
-</ion-modal-view>
+	</div>
+</div>

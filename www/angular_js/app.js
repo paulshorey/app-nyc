@@ -6,8 +6,10 @@ angular.module('ListModule', ['react', 'ui.router', 'angularModalService', 'List
 // 	};
 // })
 
-.controller('Modal', function($scope, close, scope) {
-	$scope.vm = scope.vm;
+.controller('Modal', function($scope, close, vm) {
+	if (vm) {
+		$scope.vm = vm;
+	}
 	$scope.close = function(result) {
 		close(result, 500);
 	};

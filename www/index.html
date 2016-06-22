@@ -7,44 +7,14 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
-	<!-- Client -->
-	<script>
-	// local
-	window.env = {
-		api:{},
-		stamplay:{},
-		app:{}
-	};
-	window.client = {};
-	// quickDial
-	window.isLive = false; // manual override to test ... use isLocalhost to programmatically determine if dev or live 
-	window.isMobile = window.location ? false : true; // !(/localhost|stamplay|allevents/.test(window.location.host));
-	window.isLocalhost = window.location.hostname.indexOf('localhost')!=-1;
-	/*
-	// remote 
-	<%- '\n\t window.nodejs = '+JSON.stringify(process.window.env,null,'\t')+';\n' %>
-	// merge local/remote
-	if (window.nodejs) {
-		for (var env in nodejs) {
-			window.env[env] = window.nodejs[env];
-		}
-	}
-	*/
-	</script>
-	<script src="lib/window.js"></script>
-
-	<!-- Cordova - is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
-	<!-- <script src="cordova.js"></script> -->
-
-	<!-- Stamplay backend -->
+	<!-- lib -->
 	<script src="https://drrjhlchpvi7e.cloudfront.net/libs/stamplay-js-sdk/2.0.5/stamplay.min.js"></script>
-	<script>
-	Stamplay.init("ionic-nyc", {
-		isMobile: window.isMobile,
-		absoluteUrl : true,
-		autorefreshSocialLogin : false
-	});
-	</script>
+	<script src="lib/all.js"></script>
+	<script src="https://rawgit.com/dwmkerr/angular-modal-service/master/dst/angular-modal-service.js"></script>
+
+	<!-- js -->
+	<script src="angular_js/all.js"></script>
+	<script src="react_js/all.js"></script>
 
 	<!-- css -->
 	<script>
@@ -58,37 +28,6 @@
 		document.write('<link href="css/all.css?'+cssVersion+'" rel="stylesheet" />\n');
 	}
 	</script>
-
-	<!-- lib -->
-	<script src="lib/all.js"></script>
-	<script src="https://rawgit.com/dwmkerr/angular-modal-service/master/dst/angular-modal-service.js"></script>
-
-	<!-- angular_js -->
-	<script>
-	window.angular_jsVersion  = 0.01;
-	if ( window.isLocalhost && !window.isLive) {
-		document.write('<script src="angular_js/app.js?'+Math.random()+'"><\/script>\n');
-		document.write('<script src="angular_js/services.js?'+Math.random()+'"><\/script>\n');
-		document.write('<script src="angular_js/controllers.js?'+Math.random()+'"><\/script>\n');
-		document.write('<script src="angular_js/filters.js?'+Math.random()+'"><\/script>\n');
-		document.write('<script src="angular_js/directives.js?'+Math.random()+'"><\/script>\n');
-		document.write('<script src="angular_js/components.js?'+Math.random()+'"><\/script>\n');
-	} else {
-		document.write('<script src="angular_js/all.js?'+window.appVersion+'"><\/script>\n');
-	}
-	</script>
-
-	<!-- react_js -->
-	<script>
-	window.react_jsVersion  = 0.01;
-	if ( window.isLocalhost && !window.isLive) {
-		document.write('<script src="react_js/eventslist.js?'+Math.random()+'"><\/script>\n');
-	} else {
-		document.write('<script src="react_js/all.js?'+window.appVersion+'"><\/script>\n');
-	}
-	</script>
-
-	<!-- etc -->
 	<link href="gfx/icomoon/style.css" rel="stylesheet">
 
 </head>
