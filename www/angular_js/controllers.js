@@ -1,13 +1,9 @@
 angular.module('appNyc.controllers', [])
 
-.controller('ListController', ["AccountService", "ListService", "EventService", "ContentService", "$ionicPopup", "$ionicModal", "$window", "$scope", "$rootScope", "$state", "$timeout", "$stateParams", "$sce", "$compile", "$interpolate", "$parse", function (AccountService, ListService, EventService, ContentService, $ionicPopup, $ionicModal, $window, $scope, $rootScope, $state, $timeout, $stateParams, $sce, $compile, $interpolate, $parse) {
+.controller('ListController', ["AccountService", "ListService", "EventService", "ContentService", "$window", "$scope", "$rootScope", "$state", "$timeout", "$stateParams", "$sce", "$compile", "$interpolate", "$parse", function (AccountService, ListService, EventService, ContentService, $window, $scope, $rootScope, $state, $timeout, $stateParams, $sce, $compile, $interpolate, $parse) {
 	window.ListController = this;
 	var errorHandler = function (options) {
-		var errorAlert = $ionicPopup.alert({
-			title: options.title,
-			okType: 'button-assertive',
-			okText: "Try Again"
-		});
+		console.warn(options);
 	}
 	$rootScope.client = window.client;
 
@@ -25,18 +21,6 @@ angular.module('appNyc.controllers', [])
 	vm.lists = {};
 	vm.lists_new = {};
 	vm.featuredEvents = {};
-
-
-	/*
-		MODALS
-	*/
-	$ionicModal.fromTemplateUrl('angular_html/modals/select.html', {
-		scope: $scope, 
-		animation: 'slide-in-left'
-	})
-	.then(function (modal) {
-		$rootScope.modals['modalSelect'] = modal;
-	});
 
 
 	/*

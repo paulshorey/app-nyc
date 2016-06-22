@@ -91,7 +91,7 @@ angular.module('appNyc.directives', [])
 	}
 })
 
-.directive('scrollable', function ($timeout, $ionicLoading) {
+.directive('scrollable', function ($timeout) {
 	return {
 		restrict: 'A',
 		scope: {
@@ -132,9 +132,7 @@ angular.module('appNyc.directives', [])
 
 						var scrollTo = 0;
 						target.doNotScroll = 'scroll--changed';
-						$ionicLoading.show();
 						$timeout(function () {
-							$ionicLoading.hide();
 							$(target)
 								.animate({
 									scrollLeft: 0

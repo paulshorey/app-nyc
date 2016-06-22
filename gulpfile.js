@@ -1,7 +1,6 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var bower = require('bower');
-var compass = require('gulp-compass');
 var babel = require('gulp-babel');
 var scss = require('gulp-sass');
 var sh = require('shelljs');
@@ -51,9 +50,7 @@ gulp.task('watch', function () {
 
 gulp.task('scss', function (done) {
 	gulp.src(path.scss.src)
-		.pipe(scss({
-			compass: true
-		}))
+		.pipe(scss())
 		.on('error', scss.logError)
 		.pipe(autoprefixer({
 			browsers: ['last 4 versions'],

@@ -64,7 +64,7 @@
 	window.libVersion  = 0.01;
 	if ( window.isLocalhost && !window.isLive) {
 		document.write('<script src="lib/angular/angular.min.js?'+Math.random()+'"><\/script>\n');
-		document.write('<script src="lib/ionic/js/ionic.min.js?'+Math.random()+'"><\/script>\n');
+		document.write('<script src="lib/angular-ui-router/release/angular-ui-router.min.js?'+Math.random()+'"><\/script>\n');
 		document.write('<script src="lib/sugar.js?'+Math.random()+'"><\/script>\n');
 		document.write('<script src="lib/jquery/dist/jquery.js?'+Math.random()+'"><\/script>\n');
 		document.write('<script src="lib/react/react.js?'+Math.random()+'"><\/script>\n');
@@ -72,7 +72,6 @@
 		document.write('<script src="lib/ngReact/ngReact.js?'+Math.random()+'"><\/script>\n');
 		document.write('<script src="lib/moment/moment.js?'+Math.random()+'"><\/script>\n');
 	} else {
-		document.write('<script src="lib/ionic/js/ionic.min.js?'+Math.random()+'"><\/script>\n');
 		document.write('<script src="lib/all.js?'+window.libVersion+'"><\/script>\n');
 	}
 	</script>
@@ -108,7 +107,7 @@
 </head>
 <body ng-app="appNyc">
 
-	<ion-nav-view></ion-nav-view>
+	<ui-view></ui-view>
 	
 </body>
 </html>
