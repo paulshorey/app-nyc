@@ -58,17 +58,17 @@ angular.module('ListModule.components', [])
 				if (element) {
 					$(element).removeClass('ready');
 				}
-			},10000);
+			},12500);
 			$timeout(function(){
 				if (element) {
 					$(element).addClass('ready');
 				}
-			},15000);
+			},17500);
 			$timeout(function(){
 				if (element) {
 					$(element).removeClass('ready');
 				}
-			},25000);
+			},27500);
 
 			// create or destroy
 			// var middle = (window.innerHeight || document.documentElement.clientHeight) * (2/5);
@@ -99,6 +99,7 @@ angular.module('ListModule.components', [])
 					console.error(error);
 				});
 			}
+			create_scope();
 
 			// destroy
 			var destroy_scope = function(){
