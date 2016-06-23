@@ -42,17 +42,40 @@ angular.module('ListModule', ['react', 'ui.router', 'angularModalService', 'List
 angular.module('ListModule.components', [])
 
 
-.directive('reactEventslist', function (reactDirective) {
+.directive('reactEventslist', function (reactDirective, EventService) {
 	return {
 		restrict: 'A',
 		scope: {
-			events: '='
+			data: '='
 		},
 		link: function (scope, element, attrs) {
-			ReactDOM.render(  
-			  React.createElement(React.html.eventslist, {events:scope.events}), 
-			  angular.element(element)[0]
-			);
+
+			// var middle = (window.innerHeight || document.documentElement.clientHeight) * (2/5);
+			// var rect = video.getBoundingClientRect();
+			// if (
+			// 	rect.top < middle && 
+			// 	rect.top+video.clientHeight >= middle
+			// ) {
+			// 	return true;
+			// }
+
+			var query = {};
+			query.category = scope.data.category;
+			query.scene = scope.data.scene;
+			query.time = scope.data.time;
+			EventService.getEvents(query)
+				.then(function (response) {
+					scope.events = response.data.data;
+
+					ReactDOM.render(  
+					  React.createElement(React.html.eventslist, {events:scope.events}), 
+					  angular.element(element)[0]
+					);
+
+				}, function (error) {
+					console.error(error);
+				});
+
 		}
 	}
 })
@@ -134,6 +157,11 @@ angular.module('ListModule.controllers', [])
 							text: '',
 							likes: array[i].likes,
 							addedOn: array.length - i
+						},
+						query: {
+							category: array[i].title,
+							scene: '',
+							text: ''
 						}
 					};
 					list.data.uid = list.data.category;
@@ -234,23 +262,23 @@ angular.module('ListModule.controllers', [])
 		// </lists>
 	}
 	vm.listEvents = function (list) {
-		vm.listsReady -= 1;
-		var query = {};
-		query.category = list.data.category;
-		query.scene = list.data.scene;
-		query.time = list.data.time;
-		EventService.getEvents(query)
-			.then(function (response) {
-				list.events = response.data.data;
-				$timeout(function () {
-					vm.listsReady += 1;
-				},10);
-			}, function (error) {
-				$timeout(function () {
-					vm.listsReady += 1;
-				},10);
-				console.error(error);
-			});
+		// vm.listsReady -= 1;
+		// var query = {};
+		// query.category = list.data.category;
+		// query.scene = list.data.scene;
+		// query.time = list.data.time;
+		// EventService.getEvents(query)
+		// 	.then(function (response) {
+		// 		list.events = response.data.data;
+		// 		$timeout(function () {
+		// 			vm.listsReady += 1;
+		// 		},10);
+		// 	}, function (error) {
+		// 		$timeout(function () {
+		// 			vm.listsReady += 1;
+		// 		},10);
+		// 		console.error(error);
+		// 	});
 	}
 
 
