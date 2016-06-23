@@ -6,20 +6,20 @@
 			<div class="top-logo" ng-class="{ 'isMobile': client.isMobile }" ng-click="modals.show('angular_html/modals/contribute.html')">
 			</div>
 			<div class="top-left">
-				<span ng-click="modals.show('angular_html/modals/select.html')">
+				<span ng-click="modals.show('angular_html/modals/select.html')" class="top-find">
 					<span class="uui-icon icon-plus"></span>
 				</span>
 				<span ng-click="modals.show('angular_html/modals/select.html')" class="top-search">
 					<span class="uui-icon ion-search"></span>
-					<span class="uui-text tl-right">Search</span>
+					<span class="uui-text top-search-text">Search</span>
 				</span>
 			</div>
 			<div class="top-right">
-				<span ng-click="modals.show('angular_html/modals/options.html')" class="top-you">
-					<span class="uui-text tr-left">{{ (user.firstName || user.displayName) || 'Save' | firstWord}}</span>
+				<span ng-click="modals.show('angular_html/modals/options.html')" class="top-user">
+					<span class="uui-text top-user-save">{{ (user.firstName || user.displayName) || 'Save' | firstWord}}</span>
 					<span class="uui-icon icon-happy"></span>
 				</span>
-				<span ng-click="modals.show('angular_html/modals/options.html')">
+				<span ng-click="modals.show('angular_html/modals/options.html')" class="top-options">
 					<span class="uui-icon icon-options-large"></span>
 				</span>
 			</div>

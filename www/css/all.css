@@ -9990,19 +9990,14 @@ body {
     left: 1px;
     top: 0px;
     font-size: 19.5px; }
-    .my-top .top-left .ion-search {
+    .my-top .top-left .top-search .ion-search {
       margin: 2px -16px 0 -16px;
       font-size: 27px; }
-    .my-top .top-left .tl-left {
+    .my-top .top-left .top-search .top-search-text {
       margin: 0 8px 0 -5px;
       font-weight: bold; }
       @media screen and (max-width: 600px) {
-        .my-top .top-left .tl-left {
-          display: none; } }
-    .my-top .top-left .tl-right {
-      margin: 0 0 0 2px; }
-      @media screen and (max-width: 600px) {
-        .my-top .top-left .tl-right {
+        .my-top .top-left .top-search .top-search-text {
           display: none; } }
   .my-top .top-right {
     position: absolute;
@@ -10012,22 +10007,15 @@ body {
     padding: 0 0 0 15px;
     font-size: 20px;
     height: 23px; }
-    .my-top .top-right .ion-unlocked {
-      margin: 1px -7px 0 0; }
-    .my-top .top-right .icon-happy {
+    .my-top .top-right .top-user .icon-happy {
       margin: 3px -7px 0 0; }
-    .my-top .top-right .icon-options-large {
-      margin: 0.123em 0 0 0; }
-    .my-top .top-right .tr-left {
+    .my-top .top-right .top-user .top-user-text {
       margin: 0 -6px 0 0; }
       @media screen and (max-width: 600px) {
-        .my-top .top-right .tr-left {
+        .my-top .top-right .top-user .top-user-text {
           display: none; } }
-    .my-top .top-right .tr-right {
-      margin: 0 -5px 0 5px; }
-      @media screen and (max-width: 600px) {
-        .my-top .top-right .tr-right {
-          display: none; } }
+    .my-top .top-right .top-options .icon-options-large {
+      margin: 0.123em 0 0 0; }
   .my-top .uui-icon {
     width: 1.66em; }
   .my-top span {
@@ -10041,11 +10029,11 @@ body {
   .my-top span:hover span:before {
     color: #4BAFE1; }
 
+.isMobile .my-top .top-left .top-find {
+  margin-top: 2px; }
+
 .isMobile .my-top .top-right {
   top: 10px; }
-
-.isMobile .my-top .top-left .tl-left {
-  margin-top: 2px; }
 
 /*
 	MAIN: LISTS

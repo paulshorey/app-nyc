@@ -38,7 +38,9 @@ var path = {
 };
 
 
-gulp.task('default', ['concat_css','concat_angular_js','concat_lib','concat_react_js']);
+gulp.task('default', ['scss','react_jsx','concat_css','concat_angular_js','concat_lib','concat_react_js']);
+
+gulp.task('css', ['scss','concat_css']);
 
 gulp.task('lint', ['lint_angular_js']);
 
