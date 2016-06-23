@@ -31,16 +31,16 @@
 	}
 	*/
 	window.loadStart = Date.now();
+	window.buildVersion  = 0.02;
 	</script>
 
 	<!-- lib -->
 	<script src="https://drrjhlchpvi7e.cloudfront.net/libs/stamplay-js-sdk/2.0.5/stamplay.min.js"></script>
-	<script src="lib/all.js"></script>
+	<script src="lib/all.js?0.02"></script>
 	<script src="https://rawgit.com/dwmkerr/angular-modal-service/master/dst/angular-modal-service.js"></script>
 
 	<!-- angular_js -->
 	<script>
-	window.angular_jsVersion  = 0.01;
 	if ( window.isLocalhost && !window.isLive) {
 		document.write('<script src="angular_js/app.js?'+Math.random()+'"><\/script>\n');
 		document.write('<script src="angular_js/services.js?'+Math.random()+'"><\/script>\n');
@@ -49,30 +49,28 @@
 		document.write('<script src="angular_js/directives.js?'+Math.random()+'"><\/script>\n');
 		document.write('<script src="angular_js/components.js?'+Math.random()+'"><\/script>\n');
 	} else {
-		document.write('<script src="angular_js/all.js?'+window.appVersion+'"><\/script>\n');
+		document.write('<script src="angular_js/all.js?'+window.buildVersion+'"><\/script>\n');
 	}
 	</script>
 
 	<!-- react_js -->
 	<script>
-	window.react_jsVersion  = 0.01;
 	if ( window.isLocalhost && !window.isLive) {
 		document.write('<script src="react_js/eventslist.js?'+Math.random()+'"><\/script>\n');
 	} else {
-		document.write('<script src="react_js/all.js?'+window.appVersion+'"><\/script>\n');
+		document.write('<script src="react_js/all.js?'+window.buildVersion+'"><\/script>\n');
 	}
 	</script>
 
 	<!-- css -->
 	<script>
-	window.cssVersion  = 0.01;
 	if ( window.isLocalhost && !window.isLive) {
 		document.write('<link href="css/ionic.app.css?'+Math.random()+'" rel="stylesheet" />\n');
 		document.write('<link href="css/ionic.clean.css?'+Math.random()+'" rel="stylesheet" />\n');
 		document.write('<link href="css/uui.css?'+Math.random()+'" rel="stylesheet" />\n');
 		document.write('<link href="css/uux.css?'+Math.random()+'" rel="stylesheet" />\n');
 	} else {
-		document.write('<link href="css/all.css?'+cssVersion+'" rel="stylesheet" />\n');
+		document.write('<link href="css/all.css?'+window.buildVersion+'" rel="stylesheet" />\n');
 	}
 	</script>
 	<link href="gfx/icomoon/style.css" rel="stylesheet">
