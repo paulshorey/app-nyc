@@ -11,13 +11,15 @@ React.html['eventslist'] = React.createClass({
 
 		var rows = [];
 		var old_timestring = '';
+		var old_event_title = ' :) ';
 		var old_event_featured_images = [];
 		var old_date = '';
 		for (var i=0; i < this.props.events.length; i++) {
 			var event = this.props.events[i];
-			if (!event.texts) {
-				break;
+			if (!event.texts || (old_event_title==event.texts[0])) {
+				continue;
 			}
+			old_event_title = event.texts[0];
 			// console.log(event.texts[0]);
 			// console.log(moment(event.timestamp).format('MMM D @ h:mma'));
 			var timestring = Date.create(event.timestamp).short();

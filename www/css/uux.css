@@ -19,7 +19,8 @@ body {
     display: inline-block;
     text-align: center;
     background: #fff;
-    color: #ccc; }
+    color: #ccc;
+    padding: 0 3px; }
 
 /*
 	GENERAL
@@ -91,7 +92,8 @@ body {
 [scrollable] {
   position: relative;
   overflow: hidden;
-  overflow-x: auto; }
+  overflow-x: auto;
+  z-index: 100000; }
 
 [scrollable-right],
 [scrollable-left] {
@@ -106,7 +108,7 @@ body {
   cursor: pointer;
   color: orange;
   padding: 0 0 7.5vh;
-  z-index: 1000000;
+  z-index: 100001;
   background: #fff; }
   [scrollable-right].scrollEnd,
   [scrollable-left].scrollEnd {

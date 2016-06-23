@@ -38,9 +38,30 @@
 	<script src="lib/all.js"></script>
 	<script src="https://rawgit.com/dwmkerr/angular-modal-service/master/dst/angular-modal-service.js"></script>
 
-	<!-- js -->
-	<script src="angular_js/all.js"></script>
-	<script src="react_js/all.js"></script>
+	<!-- angular_js -->
+	<script>
+	window.angular_jsVersion  = 0.01;
+	if ( window.isLocalhost && !window.isLive) {
+		document.write('<script src="angular_js/app.js?'+Math.random()+'"><\/script>\n');
+		document.write('<script src="angular_js/services.js?'+Math.random()+'"><\/script>\n');
+		document.write('<script src="angular_js/controllers.js?'+Math.random()+'"><\/script>\n');
+		document.write('<script src="angular_js/filters.js?'+Math.random()+'"><\/script>\n');
+		document.write('<script src="angular_js/directives.js?'+Math.random()+'"><\/script>\n');
+		document.write('<script src="angular_js/components.js?'+Math.random()+'"><\/script>\n');
+	} else {
+		document.write('<script src="angular_js/all.js?'+window.appVersion+'"><\/script>\n');
+	}
+	</script>
+
+	<!-- react_js -->
+	<script>
+	window.react_jsVersion  = 0.01;
+	if ( window.isLocalhost && !window.isLive) {
+		document.write('<script src="react_js/eventslist.js?'+Math.random()+'"><\/script>\n');
+	} else {
+		document.write('<script src="react_js/all.js?'+window.appVersion+'"><\/script>\n');
+	}
+	</script>
 
 	<!-- css -->
 	<script>
