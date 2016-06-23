@@ -74,6 +74,11 @@ angular.module('ListModule.controllers', [])
 							text: '',
 							likes: array[i].likes,
 							addedOn: array.length - i
+						},
+						query: {
+							category: array[i].title,
+							scene: '',
+							text: ''
 						}
 					};
 					list.data.uid = list.data.category;
@@ -174,23 +179,23 @@ angular.module('ListModule.controllers', [])
 		// </lists>
 	}
 	vm.listEvents = function (list) {
-		vm.listsReady -= 1;
-		var query = {};
-		query.category = list.data.category;
-		query.scene = list.data.scene;
-		query.time = list.data.time;
-		EventService.getEvents(query)
-			.then(function (response) {
-				list.events = response.data.data;
-				$timeout(function () {
-					vm.listsReady += 1;
-				},10);
-			}, function (error) {
-				$timeout(function () {
-					vm.listsReady += 1;
-				},10);
-				console.error(error);
-			});
+		// vm.listsReady -= 1;
+		// var query = {};
+		// query.category = list.data.category;
+		// query.scene = list.data.scene;
+		// query.time = list.data.time;
+		// EventService.getEvents(query)
+		// 	.then(function (response) {
+		// 		list.events = response.data.data;
+		// 		$timeout(function () {
+		// 			vm.listsReady += 1;
+		// 		},10);
+		// 	}, function (error) {
+		// 		$timeout(function () {
+		// 			vm.listsReady += 1;
+		// 		},10);
+		// 		console.error(error);
+		// 	});
 	}
 
 
