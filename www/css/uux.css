@@ -268,7 +268,7 @@ body {
     color: orange; }
   .my-top .top-left {
     position: absolute;
-    left: 1px;
+    left: 2px;
     top: 0px;
     font-size: 19.5px; }
     .my-top .top-left .top-search .ion-search {
@@ -310,7 +310,7 @@ body {
   .my-top span:hover span:before {
     color: #4BAFE1; }
 
-.isMobile .my-top .top-left .top-find {
+.isMobile .my-top .top-left .icon-plus {
   margin-top: 2px; }
 
 .isMobile .my-top .top-right {
