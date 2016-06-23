@@ -9,23 +9,43 @@ angular.module('ListModule.components', [])
 		},
 		link: function (scope, element, attrs) {
 			$timeout(function(){
-				$(element).addClass('ready');
+				if (element) {
+					$(element).addClass('ready');
+				}
 			},1000);
+			$timeout(function(){
+				if (element) {
+					$(element).removeClass('ready');
+				}
+			},10000);
+			$timeout(function(){
+				if (element) {
+					$(element).addClass('ready');
+				}
+			},15000);
+			$timeout(function(){
+				if (element) {
+					$(element).removeClass('ready');
+				}
+			},25000);
 
-			// var middle = (window.innerHeight || document.documentElement.clientHeight) * (2/5);
-			// var rect = video.getBoundingClientRect();
-			// if (
-			// 	rect.top < middle && 
-			// 	rect.top+video.clientHeight >= middle
-			// ) {
-			// 	return true;
-			// }
+			// create or destroy
+			var middle = (window.innerHeight || document.documentElement.clientHeight) * (2/5);
+			var rect = video.getBoundingClientRect();
+			if (
+				rect.top < middle && 
+				rect.top+video.clientHeight >= middle
+			) {
+				return true;
+			}
 
-			var query = {};
-			query.category = scope.data.category;
-			query.scene = scope.data.scene;
-			query.time = scope.data.time;
-			EventService.getEvents(query)
+			// create
+			var create_scope = function(){
+				var query = {};
+				query.category = scope.data.category;
+				query.scene = scope.data.scene;
+				query.time = scope.data.time;
+				EventService.getEvents(query)
 				.then(function (response) {
 					scope.events = response.data.data;
 
@@ -37,6 +57,12 @@ angular.module('ListModule.components', [])
 				}, function (error) {
 					console.error(error);
 				});
+			}
+
+			// destroy
+			var destroy_scope = function(){
+
+			}
 
 		}
 	}

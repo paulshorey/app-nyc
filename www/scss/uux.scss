@@ -99,16 +99,17 @@ body {
 	// }
 }
 .loading-dance {
-	display:inline-block;
+	display:block;
 	margin:3.33vh auto;
-	width:10%;
+	width:16.66%;
 	height:auto;
 	opacity:0;
-	transition:opacity 11s linear 0s, width 10s linear 1s, height 10s linear 1s;
+	transition:opacity 5s, width 5s, height 5s;
 }
 .ready .loading-dance {
 	opacity:1;
 	width:33.33%;
+	transition:opacity 5s, width 5s, height 5s;
 }
 
 /*
