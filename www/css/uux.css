@@ -246,8 +246,8 @@ body {
           color: #ccc; }
 
 /*
-		TOP: all
-	*/
+	TOP: all
+*/
 .my-top {
   margin: 0 0 2px;
   padding: 10px 0 0px;
@@ -323,8 +323,8 @@ body {
     color: #4BAFE1; }
 
 /*
-		MAIN: LISTS
-	*/
+	MAIN: LISTS
+*/
 .my-lists {
   position: relative;
   overflow: hidden;

@@ -10,29 +10,9 @@
 
 	<!-- ini -->
 	<script>
-	// local
-	window.env = {
-		api:{},
-		stamplay:{},
-		app:{}
-	};
-	window.client = {};
-	// quickDial
-	window.isLive = false; // manual override to test ... use isLocalhost to programmatically determine if dev or live 
-	window.isMobile = window.location ? false : true; // !(/localhost|stamplay|allevents/.test(window.location.host));
-	window.isLocalhost = window.location.hostname.indexOf('localhost')!=-1;
-	/*
-	// remote 
-	<%- '\n\t window.nodejs = '+JSON.stringify(process.window.env,null,'\t')+';\n' %>
-	// merge local/remote
-	if (window.nodejs) {
-		for (var env in nodejs) {
-			window.env[env] = window.nodejs[env];
-		}
-	}
-	*/
+	//<%- '\n\t window.env = '+JSON.stringify(process.window.env,null,'\t')+';\n' %>
 	window.loadStart = Date.now();
-	window.buildVersion  = 0.03;
+	window.buildVersion  = 0.04;
 	</script>
 
 	<!-- lib -->

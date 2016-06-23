@@ -293,177 +293,177 @@ body {
 }
 
 
-	/*
-		TOP: all
-	*/
-	.my-top {
-		margin: 0 0 2px;
-		padding: 10px 0 0px;
-		position: relative;
-		border-bottom: solid 1px #ccc;
-		.top-logo {
-			display:block;
-			margin: -4px auto 6px;
-			width: 50%;
-			height: 31px;
-			background-position: center;
-			background-repeat: no-repeat;
-			background-size: contain;
-			position:relative;
-			background-image:url("../gfx/logo/allevents.nyc.png");
-		}
-		.top-you,
-		.top-search {
-			span {
-				color:orange;
-			}
-		}
-		.top-left {
-			position: absolute;
-			left: 1px;
-			top: 0px;
-			font-size:19.5px;
-
-			.ion-search {
-				margin: 2px -16px 0 -16px;
-				font-size: 27px;
-			}
-			.tl-left {
-				margin: 0 8px 0 -5px;
-				font-weight: bold;
-				@media screen and (max-width: 600px) {
-					display:none;
-				}
-			}
-			.tl-right {
-				margin: 0 0 0 2px;
-				@media screen and (max-width: 600px) {
-					display:none;
-				}
-			}
-		}
-		.top-right {
-			position:absolute;
-			right:2px;
-			top:5px;
-			text-align:right;
-			padding:0 0 0 15px;
-			font-size:20px;
-			height:23px;
-			.ion-unlocked {
-				margin: 1px -7px 0 0;
-			}
-			.icon-happy {
-				margin: 3px -7px 0 0;
-			}
-			.icon-options-large {
-				margin: 0.123em 0 0 0;
-			}
-			.tr-left {
-				margin: 0 -6px 0 0;
-				@media screen and (max-width: 600px) {
-					display:none;
-				}
-			}
-			.tr-right {
-				margin: 0 -5px 0 5px;
-				@media screen and (max-width: 600px) {
-					display:none;
-				}
-			}
-		}
-		.uui-icon {
-			width: 1.66em;
-		}
+/*
+	TOP: all
+*/
+.my-top {
+	margin: 0 0 2px;
+	padding: 10px 0 0px;
+	position: relative;
+	border-bottom: solid 1px #ccc;
+	.top-logo {
+		display:block;
+		margin: -4px auto 6px;
+		width: 50%;
+		height: 31px;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+		position:relative;
+		background-image:url("../gfx/logo/allevents.nyc.png");
+	}
+	.top-you,
+	.top-search {
 		span {
-			color:#ccc;
-			&.tl-left {
+			color:orange;
+		}
+	}
+	.top-left {
+		position: absolute;
+		left: 1px;
+		top: 0px;
+		font-size:19.5px;
+
+		.ion-search {
+			margin: 2px -16px 0 -16px;
+			font-size: 27px;
+		}
+		.tl-left {
+			margin: 0 8px 0 -5px;
+			font-weight: bold;
+			@media screen and (max-width: 600px) {
+				display:none;
+			}
+		}
+		.tl-right {
+			margin: 0 0 0 2px;
+			@media screen and (max-width: 600px) {
+				display:none;
+			}
+		}
+	}
+	.top-right {
+		position:absolute;
+		right:2px;
+		top:5px;
+		text-align:right;
+		padding:0 0 0 15px;
+		font-size:20px;
+		height:23px;
+		.ion-unlocked {
+			margin: 1px -7px 0 0;
+		}
+		.icon-happy {
+			margin: 3px -7px 0 0;
+		}
+		.icon-options-large {
+			margin: 0.123em 0 0 0;
+		}
+		.tr-left {
+			margin: 0 -6px 0 0;
+			@media screen and (max-width: 600px) {
+				display:none;
+			}
+		}
+		.tr-right {
+			margin: 0 -5px 0 5px;
+			@media screen and (max-width: 600px) {
+				display:none;
+			}
+		}
+	}
+	.uui-icon {
+		width: 1.66em;
+	}
+	span {
+		color:#ccc;
+		&.tl-left {
+			color:orange;
+			&:hover {
+				color:inherit;
+			}
+		}
+	}
+	span:hover,
+	span:hover *,
+	span:hover span:before {
+		color:#4BAFE1;
+	}
+
+}
+
+
+/*
+	MAIN: LISTS
+*/
+.my-lists {
+	position: relative;
+	overflow: hidden;
+	overflow-x: auto;
+	margin: 13px 0 5px 0;
+	padding: 0 0 0 25px;
+	.my-lis {
+		white-space:nowrap;
+		height:100%;
+		.my-li {
+			display:inline-block;
+			vertical-align:top;
+			white-space:normal;
+			padding:0 4px 0 6px;
+			height:calc(100vh - 60px);
+			.my-li-buttons {
+				margin: 1px -3px;
+				display: inline-block;
+				vertical-align: top;
+				line-height:1em;
+			}
+			.my-li-header {
+				width:100%;
+				font-size:21px;
+				margin:1px 0 0 0;
 				color:orange;
-				&:hover {
-					color:inherit;
-				}
-			}
-		}
-		span:hover,
-		span:hover *,
-		span:hover span:before {
-			color:#4BAFE1;
-		}
-
-	}
-
-
-	/*
-		MAIN: LISTS
-	*/
-	.my-lists {
-		position: relative;
-		overflow: hidden;
-		overflow-x: auto;
-		margin: 13px 0 5px 0;
-		padding: 0 0 0 25px;
-		.my-lis {
-			white-space:nowrap;
-			height:100%;
-			.my-li {
-				display:inline-block;
+				text-transform:uppercase;
+				padding: 0;
 				vertical-align:top;
-				white-space:normal;
-				padding:0 4px 0 6px;
-				height:calc(100vh - 60px);
-				.my-li-buttons {
-					margin: 1px -3px;
-					display: inline-block;
-					vertical-align: top;
-					line-height:1em;
-				}
-				.my-li-header {
-					width:100%;
-					font-size:21px;
-					margin:1px 0 0 0;
+				line-height:1em;
+				// @include background(linear-gradient(to bottom, #ffffff, #ffffff 85%, rgba(255,255,255,0.0)));
+				&:hover,
+				&:hover span {
 					color:orange;
-					text-transform:uppercase;
-					padding: 0;
+				}
+				.active {
+					color:#4BAFE1;
+				}
+				.my-li-title {
+					display:inline-block;
 					vertical-align:top;
-					line-height:1em;
-					// @include background(linear-gradient(to bottom, #ffffff, #ffffff 85%, rgba(255,255,255,0.0)));
-					&:hover,
-					&:hover span {
-						color:orange;
+					.title-category {
 					}
-					.active {
-						color:#4BAFE1;
+					.title-time {
+						font-size:85%;
 					}
-					.my-li-title {
-						display:inline-block;
-						vertical-align:top;
-						.title-category {
-						}
-						.title-time {
-							font-size:85%;
-						}
-						.title-scene {
-							font-size:85%;
-						}
-						.title-search {
-							font-size:85%;
-						}
-						span {
-							display: block;
-							height:1em;
-							line-height:1em;
-						}
+					.title-scene {
+						font-size:85%;
+					}
+					.title-search {
+						font-size:85%;
+					}
+					span {
+						display: block;
+						height:1em;
+						line-height:1em;
 					}
 				}
-				.my-li-events {
-					height: 100%;
-					overflow: hidden;
-					overflow-y: auto;
-					padding: 0 0 20px 0;
-				}
+			}
+			.my-li-events {
+				height: 100%;
+				overflow: hidden;
+				overflow-y: auto;
+				padding: 0 0 20px 0;
 			}
 		}
 	}
+}
 
 
 /*

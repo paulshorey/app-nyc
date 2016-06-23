@@ -1,10 +1,11 @@
 angular.module('ListModule', ['react', 'ui.router', 'angularModalService', 'ListModule.components', 'ListModule.filters', 'ListModule.directives', 'ListModule.controllers', 'ListModule.services'])
 
-// .run(function ($rootScope, AccountService, $injector) {
-// 	window.inject = function(who){
-// 		return $injector.get([who]);
-// 	};
-// })
+.run(function ($rootScope, $injector) {
+	window.inject = function(who){
+		return $injector.get([who]);
+	};
+	$rootScope.client = window.client;
+})
 
 .controller('Modal', function($scope, close, vm) {
 	if (vm) {
