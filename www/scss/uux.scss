@@ -99,17 +99,22 @@ body {
 	// }
 }
 .loading-dance {
-	display:block;
-	margin:3.33vh auto;
-	width:16.66%;
-	height:auto;
-	opacity:0;
-	transition:opacity 5s, width 5s, height 5s;
+	text-align:center;
+	img {
+		display:inline-block;
+		margin:3.33vh auto;
+		width:16.66%;
+		height:auto;
+		opacity:0;
+		transition:opacity 5s, width 5s, height 5s;
+	}
 }
 .ready .loading-dance {
-	opacity:1;
-	width:33.33%;
-	transition:opacity 5s, width 5s, height 5s;
+	img {
+		opacity:1;
+		width:41%;
+		transition:opacity 5s, width 5s, height 5s;
+	}
 }
 
 /*

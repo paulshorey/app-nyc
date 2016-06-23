@@ -5,7 +5,11 @@ if (!React.html) {
 }
 React.html['eventslist_loading'] = React.createClass({
 	render: function render(events) {
-		return React.createElement("img", { "class": "loading-dance", src: "gfx/gif/dance.gif" });
+		return React.createElement(
+			"div",
+			{ className: "loading-dance" },
+			React.createElement("img", { src: "gfx/gif/dance.gif" })
+		);
 	}
 });
 React.html['eventslist'] = React.createClass({

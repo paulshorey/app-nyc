@@ -76,29 +76,24 @@ angular.module('ListModule.components', [])
 					React.createElement(React.html.eventslist_loading, {}), 
 					angular.element(element)[0]
 				);
+				// animate the loading animation
+				$timeout(function(){
+					if (element) {
+						$(element).addClass('ready');
+					}
+				},1000);
+				$timeout(function(){
+					if (element) {
+						$(element).removeClass('ready');
+					}
+				},10000);
+				$timeout(function(){
+					if (element) {
+						$(element).addClass('ready');
+					}
+				},15000);
 			}
 			scope.list_reset();
-			// animate the animation
-			$timeout(function(){
-				if (element) {
-					$(element).addClass('ready');
-				}
-			},1000);
-			$timeout(function(){
-				if (element) {
-					$(element).removeClass('ready');
-				}
-			},12500);
-			$timeout(function(){
-				if (element) {
-					$(element).addClass('ready');
-				}
-			},17500);
-			$timeout(function(){
-				if (element) {
-					$(element).removeClass('ready');
-				}
-			},27500);
 
 			// lazyload
 			if (!$rootScope.lazyLoadedLists) {
