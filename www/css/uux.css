@@ -288,7 +288,7 @@ body {
   .my-top .top-right {
     position: absolute;
     right: 2px;
-    top: 5px;
+    top: 6px;
     text-align: right;
     padding: 0 0 0 15px;
     font-size: 20px;
@@ -321,6 +321,12 @@ body {
   .my-top span:hover *,
   .my-top span:hover span:before {
     color: #4BAFE1; }
+
+.isMobile .my-top .top-right {
+  top: 10px; }
+
+.isMobile .my-top .top-left .tl-left {
+  margin-top: 2px; }
 
 /*
 	MAIN: LISTS
