@@ -30,14 +30,14 @@ angular.module('ListModule.components', [])
 			},25000);
 
 			// create or destroy
-			var middle = (window.innerHeight || document.documentElement.clientHeight) * (2/5);
-			var rect = video.getBoundingClientRect();
-			if (
-				rect.top < middle && 
-				rect.top+video.clientHeight >= middle
-			) {
-				return true;
-			}
+			// var middle = (window.innerHeight || document.documentElement.clientHeight) * (2/5);
+			// var rect = video.getBoundingClientRect();
+			// if (
+			// 	rect.top < middle && 
+			// 	rect.top+video.clientHeight >= middle
+			// ) {
+			// 	return true;
+			// }
 
 			// create
 			var create_scope = function(){
