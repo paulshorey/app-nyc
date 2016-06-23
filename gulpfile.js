@@ -82,7 +82,7 @@ gulp.task('concat_angular_js', function () {
 		.pipe(gulp.dest(path.angular_js.dst));
 });
 gulp.task('concat_lib', function (done) {
-	gulp.src(['./www/lib/window.js','./www/lib/angular/angular.min.js','./www/lib/angular-ui-router/release/angular-ui-router.min.js','./www/lib/sugar.js','./www/lib/jquery/dist/jquery.js','./www/lib/react/react.js','./www/lib/react/react-dom.js','./www/lib/ngReact/ngReact.js','./www/lib/moment/moment.js'])
+	gulp.src(['./www/lib/window.js','./www/lib/angular/angular.min.js','./www/lib/angular-ui-router/release/angular-ui-router.min.js','./www/lib/sugar.js','./www/lib/angular-modal-service.js','./www/lib/jquery/dist/jquery.js','./www/lib/react/react.js','./www/lib/react/react-dom.js','./www/lib/ngReact/ngReact.js','./www/lib/moment/moment.js'])
 		.pipe(concat('all.js'))
 		.pipe(uglify())
 		.pipe(gulp.dest(path.lib.dst))

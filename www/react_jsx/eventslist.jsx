@@ -1,6 +1,11 @@
 if (!React.html) {
 	React.html = {};
 }
+React.html['eventslist_loading'] = React.createClass({
+	render: function (events) {
+		return <img class="loading-dance" src="gfx/gif/dance.gif" />;
+	}
+});
 React.html['eventslist'] = React.createClass({
 	bindClick(e, link) {
 		// Ionic opens href links in its own browser, this is to escape that. However, thinking of ditching Ionic for something faster like famo.us

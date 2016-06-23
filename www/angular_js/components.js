@@ -1,13 +1,42 @@
 angular.module('ListModule.components', [])
 
 
-.directive('reactEventslist', function (reactDirective, EventService,$timeout) {
+.directive('reactEventslist', function (reactDirective, EventService,$timeout, $rootScope) {
 	return {
 		restrict: 'A',
 		scope: {
 			data: '='
 		},
 		link: function (scope, element, attrs) {
+
+			// template
+			scope.list_ready = function(){
+				var query = {};
+				query.category = scope.data.category;
+				query.scene = scope.data.scene;
+				query.time = scope.data.time;
+				EventService.getEvents(query)
+				.then(function (response) {
+					scope.events = response.data.data;
+
+					ReactDOM.render(  
+					  React.createElement(React.html.eventslist, {events:scope.events}), 
+					  angular.element(element)[0]
+					);
+
+				}, function (error) {
+					console.error(error);
+				});
+			}
+			// loading
+			scope.list_reset = function(){
+				ReactDOM.render( 
+					React.createElement(React.html.eventslist_loading, {}), 
+					angular.element(element)[0]
+				);
+			}
+			scope.list_reset();
+			// animate the animation
 			$timeout(function(){
 				if (element) {
 					$(element).addClass('ready');
@@ -29,41 +58,30 @@ angular.module('ListModule.components', [])
 				}
 			},27500);
 
-			// create or destroy
-			// var middle = (window.innerHeight || document.documentElement.clientHeight) * (2/5);
-			// var rect = video.getBoundingClientRect();
-			// if (
-			// 	rect.top < middle && 
-			// 	rect.top+video.clientHeight >= middle
-			// ) {
-			// 	return true;
-			// }
-
-			// create
-			var create_scope = function(){
-				var query = {};
-				query.category = scope.data.category;
-				query.scene = scope.data.scene;
-				query.time = scope.data.time;
-				EventService.getEvents(query)
-				.then(function (response) {
-					scope.events = response.data.data;
-
-					ReactDOM.render(  
-					  React.createElement(React.html.eventslist, {events:scope.events}), 
-					  angular.element(element)[0]
-					);
-
-				}, function (error) {
-					console.error(error);
-				});
+			// lazyload
+			if (!$rootScope.lazyLoadedLists) {
+				$rootScope.lazyLoadedLists = {};
 			}
-			create_scope();
+			scope.element = element;
+			scope.$watch(
+			function( scope ) {
+				element = scope.element;
+				var window_width = (window.innerWidth || document.documentElement.clientWidth);
+				var rect = element[0].getBoundingClientRect();
+				if (rect.left > 0 && rect.left < window_width) {
 
-			// destroy
-			var destroy_scope = function(){
+					if (!$rootScope.lazyLoadedLists[ scope.data.category ]) {
+						$rootScope.lazyLoadedLists[ scope.data.category ] = scope;
+						console.log('listing ',scope.data.category);
+						scope.list_ready()
+					}
 
-			}
+				} else {
+					if ($rootScope.lazyLoadedLists[ scope.data.category ]) {
+						scope.list_reset();
+					}
+				}
+			});
 
 		}
 	}
