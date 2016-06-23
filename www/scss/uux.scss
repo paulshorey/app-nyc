@@ -98,6 +98,18 @@ body {
 	// 	@include filter(blur(5px));
 	// }
 }
+.loading-dance {
+	display:inline-block;
+	margin:3.33vh auto;
+	width:10%;
+	height:auto;
+	opacity:0;
+	transition:opacity 11s linear 0s, width 10s linear 1s, height 10s linear 1s;
+}
+.ready .loading-dance {
+	opacity:1;
+	width:33.33%;
+}
 
 /*
 	SPECIFIC

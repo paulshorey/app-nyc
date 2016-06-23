@@ -1,13 +1,16 @@
 angular.module('ListModule.components', [])
 
 
-.directive('reactEventslist', function (reactDirective, EventService) {
+.directive('reactEventslist', function (reactDirective, EventService,$timeout) {
 	return {
 		restrict: 'A',
 		scope: {
 			data: '='
 		},
 		link: function (scope, element, attrs) {
+			$timeout(function(){
+				$(element).addClass('ready');
+			},1000);
 
 			// var middle = (window.innerHeight || document.documentElement.clientHeight) * (2/5);
 			// var rect = video.getBoundingClientRect();
