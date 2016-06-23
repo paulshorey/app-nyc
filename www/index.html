@@ -7,6 +7,32 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
+	<!-- ini -->
+	<script>
+	// local
+	window.env = {
+		api:{},
+		stamplay:{},
+		app:{}
+	};
+	window.client = {};
+	// quickDial
+	window.isLive = false; // manual override to test ... use isLocalhost to programmatically determine if dev or live 
+	window.isMobile = window.location ? false : true; // !(/localhost|stamplay|allevents/.test(window.location.host));
+	window.isLocalhost = window.location.hostname.indexOf('localhost')!=-1;
+	/*
+	// remote 
+	<%- '\n\t window.nodejs = '+JSON.stringify(process.window.env,null,'\t')+';\n' %>
+	// merge local/remote
+	if (window.nodejs) {
+		for (var env in nodejs) {
+			window.env[env] = window.nodejs[env];
+		}
+	}
+	*/
+	window.loadStart = Date.now();
+	</script>
+
 	<!-- lib -->
 	<script src="https://drrjhlchpvi7e.cloudfront.net/libs/stamplay-js-sdk/2.0.5/stamplay.min.js"></script>
 	<script src="lib/all.js"></script>
@@ -34,6 +60,7 @@
 <body ng-app="ListModule">
 
 	<ui-view></ui-view>
+	<div id="stats"></div>
 	
 </body>
 </html>

@@ -10,6 +10,14 @@ body {
   -webkit-user-select: auto;
   -ms-user-select: auto; }
 
+#stats {
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  color: #ccc;
+  text-shadow: 0 0 1px #fff;
+  width: 100%; }
+
 /*
 	GENERAL
 */

@@ -124,6 +124,8 @@ React.html['eventslist'] = React.createClass({
 			));
 		}
 
+		document.getElementById('stats').innerHTML = 'app loaded in ' + (Date.now() - window.loadStart) / 1000 + 's';
+
 		return React.createElement(
 			'div',
 			{ className: 'my-events' },
