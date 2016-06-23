@@ -9988,13 +9988,13 @@ body {
   .my-top .top-left {
     position: absolute;
     left: 2px;
-    top: 0px;
+    top: 1px;
     font-size: 19.5px; }
     .my-top .top-left .top-search .ion-search {
-      margin: 2px -16px 0 -16px;
+      margin: 3px -16px 0 -16px;
       font-size: 27px; }
     .my-top .top-left .top-search .top-search-text {
-      margin: 0 8px 0 -5px;
+      margin: 0 0 0 4px;
       font-weight: bold; }
       @media screen and (max-width: 600px) {
         .my-top .top-left .top-search .top-search-text {
@@ -10010,7 +10010,7 @@ body {
     .my-top .top-right .top-user .icon-happy {
       margin: 3px -7px 0 0; }
     .my-top .top-right .top-user .top-user-text {
-      margin: 0 -6px 0 0; }
+      margin: 0 -4px 0 0; }
       @media screen and (max-width: 600px) {
         .my-top .top-right .top-user .top-user-text {
           display: none; } }
@@ -10029,11 +10029,11 @@ body {
   .my-top span:hover span:before {
     color: #4BAFE1; }
 
-.isMobile .my-top .top-left .top-find {
-  margin-top: 2px; }
+.isMobile .my-top .top-left .icon-plus {
+  margin-top: 3px; }
 
 .isMobile .my-top .top-right {
-  top: 7px; }
+  top: 8px; }
 
 /*
 	MAIN: LISTS

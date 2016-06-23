@@ -33,7 +33,7 @@
 
 						<div class="my-li-header uui-hover-orange" ng-click="vm.listAdd(list)">
 							<span class="my-li-title">
-								<span class="uui-title a title-category" ng-class="{ 'active': ( vm.list.data.category && vm.list.data.category==list.data.uid ) }">{{ list.data.category || 'Anything' }} </span>
+								<span class="uui-title a title-category">{{ list.data.category || 'Anything' }} </span>
 								<span class="uui-subtitle a title-time" ng-if="list.data.time">{{ list.data.time || 'Anytime' }} </span>
 								<span class="uui-subtitle a title-scene" ng-if="list.data.scene">{{ list.data.scene || 'Any' }} </span>
 								<span class="uui-subtitle a title-search" ng-if="list.data.search">"{{ list.data.search || 'Any' }}" </span>
