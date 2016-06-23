@@ -16,7 +16,7 @@ var path = {
 		dst: './www/css'
 	},
 	css: {
-		src: ['./www/css/*.css', '!./www/scss/all.css'],
+		src: ['./www/css/*.css', '!./www/css/all.css'],
 		dst: './www/css'
 	},
 	react_jsx: {
