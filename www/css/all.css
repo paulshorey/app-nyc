@@ -9817,7 +9817,7 @@ body {
 
 .ready .loading-dance img {
   opacity: 1;
-  width: 40%;
+  width: 41%;
   transition: opacity 5s, width 5s, height 5s; }
 
 /*

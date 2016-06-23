@@ -4,7 +4,7 @@ if (!React.html) {
 	React.html = {};
 }
 React.html['eventslist_loading'] = React.createClass({
-	render: function render(events) {
+	render: function render() {
 		return React.createElement(
 			"div",
 			{ className: "loading-dance" },
@@ -19,15 +19,26 @@ React.html['eventslist'] = React.createClass({
 		e.preventDefault();
 	},
 
-	render: function render(events) {
+	render: function render() {
+		if (!this.props.vm || !this.props.vm.events) {
+			return React.createElement(
+				"div",
+				{ className: "loading-error" },
+				React.createElement(
+					"b",
+					null,
+					"Nothing found"
+				)
+			);
+		}
 
 		var rows = [];
 		var old_timestring = '';
 		var old_event_title = ' :) ';
 		var old_event_featured_images = [];
 		var old_date = '';
-		for (var i = 0; i < this.props.events.length; i++) {
-			var event = this.props.events[i];
+		for (var i = 0; i < this.props.vm.events.length; i++) {
+			var event = this.props.vm.events[i];
 			if (!event.texts || old_event_title == event.texts[0]) {
 				continue;
 			}

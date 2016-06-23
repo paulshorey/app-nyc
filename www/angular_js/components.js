@@ -8,6 +8,7 @@ angular.module('ListModule.components', [])
 			data: '='
 		},
 		link: function (scope, element, attrs) {
+			scope.vm = {};
 
 			// template
 			scope.list_ready = function(){
@@ -17,10 +18,10 @@ angular.module('ListModule.components', [])
 				query.time = scope.data.time;
 				EventService.getEvents(query)
 				.then(function (response) {
-					scope.events = response.data.data;
+					scope.vm.events = response.data.data;
 
 					ReactDOM.render(  
-					  React.createElement(React.html.eventslist, {events:scope.events}), 
+					  React.createElement(React.html.eventslist, {vm:scope.vm}), 
 					  angular.element(element)[0]
 					);
 
@@ -30,8 +31,10 @@ angular.module('ListModule.components', [])
 			}
 			// loading
 			scope.list_reset = function(){
+				scope.vm = {};
+
 				ReactDOM.render( 
-					React.createElement(React.html.eventslist_loading, {}), 
+					React.createElement(React.html.eventslist_loading, scope.vm), 
 					angular.element(element)[0]
 				);
 				// animate the loading animation
