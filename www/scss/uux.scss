@@ -12,11 +12,15 @@ body {
 }
 #stats {
 	position: fixed;
+	width: 100%;
 	bottom: 0;
 	text-align: center;
-	color: #ccc;
-	text-shadow: 0 0 1px #fff;
-	width: 100%;
+	span {
+		display:inline-block;
+		text-align: center;
+		background:#fff;
+		color: #ccc;
+	}
 }
 
 
