@@ -360,7 +360,8 @@ body {
         vertical-align: top;
         line-height: 1em;
         background: #fff;
-        box-sizing: content-box; }
+        box-sizing: content-box;
+        border: solid 2px yellow; }
         .my-lists .my-lis .my-li .my-li-header:hover,
         .my-lists .my-lis .my-li .my-li-header:hover span {
           color: orange; }
@@ -372,8 +373,7 @@ body {
           font-size: 85%; }
         .my-lists .my-lis .my-li .my-li-header .title-search {
           font-size: 85%; }
-        .my-lists .my-lis .my-li .my-li-header > span {
-          display: block;
+        .my-lists .my-lis .my-li .my-li-header > div {
           height: 1em;
           line-height: 1.25em; }
       .my-lists .my-lis .my-li .my-li-events {
