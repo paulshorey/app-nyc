@@ -31,7 +31,7 @@
 	 			<div class="my-lis">
 					<div class="my-li" ng-repeat="list in vm.lists | orderObjectBy:'data.addedOn':true">
 
-						{{:: list.data.category || 'Anything' }}
+						<span class="uui-title a title-category">{{:: list.data.category || 'Anything' }} </span>
 						
 						<div class="my-li-events" eventslist data="::list.data">
 						</div>
