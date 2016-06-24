@@ -439,7 +439,7 @@ body {
 				line-height:1em;
 				background: #fff;
 				box-sizing: content-box;
-				height:39px;
+				min-height:36px;
 				// @include background(linear-gradient(to bottom, #ffffff, #ffffff 85%, rgba(255,255,255,0.0)));
 				&:hover,
 				&:hover span {
