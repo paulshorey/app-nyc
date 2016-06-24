@@ -269,10 +269,10 @@ body {
   .my-top .top-left {
     position: absolute;
     left: 2px;
-    top: 1px;
+    top: 0px;
     font-size: 19.5px; }
     .my-top .top-left .top-search .ion-search {
-      margin: 3px -16px 0 -16px;
+      margin: 4px -16px 0 -16px;
       font-size: 27px; }
     .my-top .top-left .top-search .top-search-text {
       margin: 0 0 0 4px;
@@ -280,6 +280,8 @@ body {
       @media screen and (max-width: 600px) {
         .my-top .top-left .top-search .top-search-text {
           display: none; } }
+    .my-top .top-left .top-find .icon-plus {
+      margin: 1px 0 0 0; }
   .my-top .top-right {
     position: absolute;
     right: 2px;
@@ -313,8 +315,13 @@ body {
 .isMobile .my-top .top-left .icon-plus {
   margin-top: 3px; }
 
+.isMobile .my-top .top-left .ion-search {
+  margin-top: 3px; }
+
 .isMobile .my-top .top-right {
   top: 8px; }
+  .isMobile .my-top .top-right .icon-happy {
+    margin-top: 4px; }
 
 /*
 	MAIN: LISTS

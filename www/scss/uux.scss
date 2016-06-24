@@ -321,11 +321,11 @@ body {
 	.top-left {
 		position: absolute;
 		left: 2px;
-		top: 1px;
+		top: 0px;
 		font-size:19.5px;
 		.top-search {
 			.ion-search {
-				margin: 3px -16px 0 -16px;
+				margin: 4px -16px 0 -16px;
 				font-size: 27px;
 			}
 			.top-search-text {
@@ -337,6 +337,9 @@ body {
 			}
 		}
 		.top-find {
+			.icon-plus {
+				margin: 1px 0 0 0;
+			}
 		}
 	}
 	.top-right {
@@ -388,9 +391,15 @@ body {
 		.icon-plus {
 			margin-top:3px;
 		}
+		.ion-search {
+			margin-top: 3px;
+		}
 	}
 	.top-right {
 		top:8px;
+		.icon-happy {
+			margin-top:4px;
+		}
 	}
 }
 
