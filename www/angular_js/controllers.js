@@ -37,7 +37,6 @@ angular.module('ListModule.controllers', [])
 	$rootScope.modals.show = function(name) {
 		$rootScope.modals.close();
 		$timeout(function(){
-			console.log('modal_timeout',modal_timeout);
 			ModalService.showModal({
 				templateUrl: name,
 				controller: "Modal",
@@ -46,6 +45,11 @@ angular.module('ListModule.controllers', [])
 				}
 			}).then(function(modal) {
 				$rootScope.modals.opened.push( modal );
+				modal.scope.$on('$destroy', function(){
+					for (var mo in $rootScope.modals.opened) {
+						delete $rootScope.modals.opened[ mo ];
+					}
+				});
 				modal.close.then(function(result) {
 					$scope.message = "You said " + result;
 				});

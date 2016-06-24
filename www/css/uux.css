@@ -161,7 +161,7 @@ body {
   .my-modal .modal-content {
     position: relative;
     z-index: 1000000;
-    width: 600px;
+    width: 440px;
     top: 6.66vh;
     margin: 0 auto; }
     .my-modal .modal-content .modal-text {

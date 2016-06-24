@@ -78,7 +78,7 @@ React.html['eventslist'] = React.createClass({
 			if (timestring.indexOf('week') != -1 || timestring.indexOf('month') != -1) {
 				subtext.push(React.createElement(
 					'span',
-					{ 'ng-click': true },
+					null,
 					React.createElement('span', { className: 'ion-calendar' }),
 					' ',
 					React.createElement(
@@ -90,7 +90,7 @@ React.html['eventslist'] = React.createClass({
 			} else if (time && time != '12:00am') {
 				subtext.push(React.createElement(
 					'span',
-					{ 'ng-click': true },
+					null,
 					React.createElement('span', { className: 'ion-calendar' }),
 					' ',
 					React.createElement(

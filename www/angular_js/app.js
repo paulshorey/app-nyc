@@ -1,4 +1,4 @@
-angular.module('ListModule', ['react', 'ui.router', 'angularModalService', 'ListModule.components', 'ListModule.filters', 'ListModule.directives', 'ListModule.controllers', 'ListModule.services'])
+angular.module('ListModule', ['ui.router', 'angularModalService', 'ListModule.components', 'ListModule.filters', 'ListModule.directives', 'ListModule.controllers', 'ListModule.services'])
 
 .run(function ($rootScope, $injector) {
 	window.inject = function(who){

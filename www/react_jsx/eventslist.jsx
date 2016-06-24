@@ -56,9 +56,9 @@ React.html['eventslist'] = React.createClass({
 			}
 			var subtext = [];
 			if (timestring.indexOf('week') != -1 || timestring.indexOf('month') != -1) {
-				subtext.push(<span ng-click><span className="ion-calendar"></span> <span>{moment(event.timestamp).format('MMM D') +' '+time}</span></span>);
+				subtext.push(<span><span className="ion-calendar"></span> <span>{moment(event.timestamp).format('MMM D') +' '+time}</span></span>);
 			} else if (time && time!='12:00am') {
-				subtext.push(<span ng-click><span className="ion-calendar"></span> <span>{time}</span></span>);
+				subtext.push(<span><span className="ion-calendar"></span> <span>{time}</span></span>);
 			}
 			subtext.push(<a className="subtext-source" href={event.source_link} target="_blank" ><span className="icon-link"></span>{event.source_host.substr(0, event.source_host.indexOf('.'))}</a>);
 

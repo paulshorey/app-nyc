@@ -12,12 +12,12 @@
 	<script>
 	//<%- '\n\t window.env = '+JSON.stringify(process.window.env,null,'\t')+';\n' %>
 	window.loadStart = Date.now();
-	window.buildVersion  = 0.11;
+	window.buildVersion  = 0.13;
 	</script>
 
 	<!-- lib -->
 	<script src="https://drrjhlchpvi7e.cloudfront.net/libs/stamplay-js-sdk/2.0.5/stamplay.min.js"></script>
-	<script src="lib/all.js?0.02"></script>
+	<script src="lib/all.js?0.13"></script>
 
 	<!-- angular_js -->
 	<script>
@@ -30,15 +30,6 @@
 		document.write('<script src="angular_js/components.js?'+Math.random()+'"><\/script>\n');
 	} else {
 		document.write('<script src="angular_js/all.js?'+window.buildVersion+'"><\/script>\n');
-	}
-	</script>
-
-	<!-- react_js -->
-	<script>
-	if ( window.isLocalhost && !window.isLive) {
-		document.write('<script src="react_js/eventslist.js?'+Math.random()+'"><\/script>\n');
-	} else {
-		document.write('<script src="react_js/all.js?'+window.buildVersion+'"><\/script>\n');
 	}
 	</script>
 
