@@ -9830,7 +9830,7 @@ body {
 [scrollable-right],
 [scrollable-left] {
   position: absolute;
-  top: 7.5vh;
+  top: 0;
   right: 0;
   text-indent: 0;
   width: 24px;
@@ -9839,7 +9839,7 @@ body {
   text-align: left;
   cursor: pointer;
   color: orange;
-  padding: 0 0 7.5vh;
+  padding: 7.5vh 0 7.5vh;
   z-index: 100001;
   background: #fff; }
   [scrollable-right].scrollEnd,
@@ -10069,7 +10069,7 @@ body {
       .my-lists .my-lis .my-li .my-li-header {
         width: 100%;
         font-size: 21px;
-        margin: 1px 0 0 0;
+        margin: 1px 0 4px 0;
         color: orange;
         text-transform: uppercase;
         padding: 0;
@@ -10080,19 +10080,16 @@ body {
           color: orange; }
         .my-lists .my-lis .my-li .my-li-header .active {
           color: #4BAFE1; }
-        .my-lists .my-lis .my-li .my-li-header .my-li-title {
-          display: inline-block;
-          vertical-align: top; }
-          .my-lists .my-lis .my-li .my-li-header .my-li-title .title-time {
-            font-size: 85%; }
-          .my-lists .my-lis .my-li .my-li-header .my-li-title .title-scene {
-            font-size: 85%; }
-          .my-lists .my-lis .my-li .my-li-header .my-li-title .title-search {
-            font-size: 85%; }
-          .my-lists .my-lis .my-li .my-li-header .my-li-title span {
-            display: block;
-            height: 1em;
-            line-height: 1em; }
+        .my-lists .my-lis .my-li .my-li-header .title-time {
+          font-size: 85%; }
+        .my-lists .my-lis .my-li .my-li-header .title-scene {
+          font-size: 85%; }
+        .my-lists .my-lis .my-li .my-li-header .title-search {
+          font-size: 85%; }
+        .my-lists .my-lis .my-li .my-li-header > span {
+          display: block;
+          height: 1em;
+          line-height: 1.25em; }
       .my-lists .my-lis .my-li .my-li-events {
         height: 100%;
         overflow: hidden;

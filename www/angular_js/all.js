@@ -137,8 +137,10 @@ angular.module('ListModule.components', [])
 					//scope.vm.events = response.data.data;
 					angular.element(element)[0].innerHTML = template(response.data.data);
 					if (!$rootScope.initiallyLoaded) {
-						$rootScope.initiallyLoaded = true;
 						document.getElementById('stats').innerHTML = '<span>loaded in '+((Date.now()-window.loadStart)/1000)+'s</span>';
+						window.setTimeout(function(){
+							$rootScope.initiallyLoaded = true;
+						},500);
 					} else {
 						document.getElementById('stats').innerHTML = '';
 					}
