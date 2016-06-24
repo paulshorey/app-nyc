@@ -30,20 +30,22 @@
 			<div scrollable>
 	 			<div class="my-lis">
 					<div class="my-li" ng-repeat="list in vm.lists | orderObjectBy:'data.addedOn':true">
-						
-						<div class="my-li-header" ng-click="vm.listAdd(list)">
-							<span>
-								<span class="uui-title a title-category">{{:: list.data.category || 'Anything' }} </span>
-								<span ng-class="{'uui-icon-hollow-orange': !list.justAdded }" class="uui-icon uui-icon-hover-orange uui-icon icon-star"></span>
-							</span>
-							<span class="uui-subtitle a title-time" ng-if="::list.data.time">{{:: list.data.time || 'Anytime' }} </span>
-							<span class="uui-subtitle a title-scene" ng-if="::list.data.scene">{{:: list.data.scene || 'Any' }} </span>
-							<span class="uui-subtitle a title-search" ng-if="::list.data.search">"{{:: list.data.search || 'Any' }}" </span>
-						</div>
-						
-						<div class="my-li-events" eventslist data="::list.data">
-						</div>
+						<div class="my-li-content">
+							
+							<div class="my-li-header" ng-click="vm.listAdd(list)">
+								<span>
+									<span class="uui-title a title-category">{{:: list.data.category || 'Anything' }} </span>
+									<span ng-class="{'uui-icon-hollow-orange': !list.justAdded }" class="uui-icon uui-icon-hover-orange uui-icon icon-star"></span>
+								</span>
+								<span class="uui-subtitle a title-time" ng-if="::list.data.time">{{:: list.data.time || 'Anytime' }} </span>
+								<span class="uui-subtitle a title-scene" ng-if="::list.data.scene">{{:: list.data.scene || 'Any' }} </span>
+								<span class="uui-subtitle a title-search" ng-if="::list.data.search">"{{:: list.data.search || 'Any' }}" </span>
+							</div>
+							
+							<div class="my-li-events" eventslist data="::list.data">
+							</div>
 
+						</div>
 					</div>
 				</div>
 			</div>
