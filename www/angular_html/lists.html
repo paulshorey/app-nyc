@@ -3,7 +3,7 @@
 
 		<!-- TOP NAV -->
 		<div class="my-top top-mobile">
-			<div class="top-logo" ng-class="{ 'isMobile': client.isMobile }" ng-click="modals.show('angular_html/modals/contribute.html')">
+			<div class="top-logo" ng-click="modals.show('angular_html/modals/contribute.html')">
 			</div>
 			<div class="top-left">
 				<span ng-click="modals.show('angular_html/modals/select.html')" class="top-find">
@@ -29,14 +29,14 @@
 		<div class="my-lists">
 			<div scrollable>
 	 			<div class="my-lis">
-					<div class="my-li" ng-repeat="list in vm.lists | orderObjectBy:'data.addedOn':true" ng-if="list.events || (list.category!='' && list.category==vm.list.category)">
+					<div class="my-li" ng-repeat="list in vm.lists | orderObjectBy:'data.addedOn':true">
 
 						<div class="my-li-header uui-hover-orange" ng-click="vm.listAdd(list)">
 							<span class="my-li-title">
-								<span class="uui-title a title-category">{{ list.data.category || 'Anything' }} </span>
-								<span class="uui-subtitle a title-time" ng-if="list.data.time">{{ list.data.time || 'Anytime' }} </span>
-								<span class="uui-subtitle a title-scene" ng-if="list.data.scene">{{ list.data.scene || 'Any' }} </span>
-								<span class="uui-subtitle a title-search" ng-if="list.data.search">"{{ list.data.search || 'Any' }}" </span>
+								<span class="uui-title a title-category">{{:: list.data.category || 'Anything' }} </span>
+								<span class="uui-subtitle a title-time" ng-if="::list.data.time">{{:: list.data.time || 'Anytime' }} </span>
+								<span class="uui-subtitle a title-scene" ng-if="::list.data.scene">{{:: list.data.scene || 'Any' }} </span>
+								<span class="uui-subtitle a title-search" ng-if="::list.data.search">"{{:: list.data.search || 'Any' }}" </span>
 							</span>
 							<span ng-class="{'uui-hollow-orange': !list.justAdded }" class="my-li-buttons my-li-buttons-left uui-icon icon-star"></span>
 						</div>

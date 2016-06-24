@@ -76,6 +76,7 @@ angular.module('ListModule.components', [])
 
 				} else {
 					if ($rootScope.lazyLoadedLists[ scope.data.category ]) {
+						delete $rootScope.lazyLoadedLists[ scope.data.category ];
 						scope.list_reset();
 					}
 				}
