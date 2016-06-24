@@ -36,6 +36,7 @@ angular.module('ListModule.components', [])
 						//event.timestamp = event.timestamp.replace(' 12:00am','');
 						if (timestring != old_timestring && timestring != scope.data.time) {
 							//var timeUnique = cutOldBeginning(old_timestamp, event.timestamp);
+							html += '<div class="events-timestamp-spacer"> </div>\n';
 							html += '<div class="events-timestamp"><span>' + timestring + '</span></div>\n';
 						}
 						var ev = '';

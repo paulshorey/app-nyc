@@ -361,7 +361,7 @@ body {
         line-height: 1em;
         background: #fff;
         box-sizing: content-box;
-        border: solid 2px yellow; }
+        height: 39px; }
         .my-lists .my-lis .my-li .my-li-header:hover,
         .my-lists .my-lis .my-li .my-li-header:hover span {
           color: orange; }
@@ -457,8 +457,15 @@ body {
 .events-timestamp {
   font-weight: bold;
   text-transform: uppercase;
-  margin: 15px 0 0;
+  margin: 0;
   color: #FFBE00; }
+
+.events-timestamp-spacer {
+  font-weight: bold;
+  text-transform: uppercase;
+  height: 15px; }
+  .events-timestamp-spacer:first-child {
+    display: none; }
 
 .notin {
   margin: 13px 0 0 0; }

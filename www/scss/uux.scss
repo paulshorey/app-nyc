@@ -439,7 +439,7 @@ body {
 				line-height:1em;
 				background: #fff;
 				box-sizing: content-box;
-				border:solid 2px yellow;
+				height:39px;
 				// @include background(linear-gradient(to bottom, #ffffff, #ffffff 85%, rgba(255,255,255,0.0)));
 				&:hover,
 				&:hover span {
@@ -577,11 +577,16 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 .events-timestamp {
 	font-weight:bold;
 	text-transform: uppercase;
-	margin:15px 0 0;
+	margin:0;
 	color:#FFBE00;
-	// span.fragment {
-	// 	font-weight:normal;
-	// }
+}
+.events-timestamp-spacer {
+	font-weight:bold;
+	text-transform: uppercase;
+	height:15px;
+	&:first-child {
+		display:none;
+	}
 }
 .notin {
 	margin:13px 0 0 0;
