@@ -446,26 +446,27 @@ body {
 				.active {
 					color:#4BAFE1;
 				}
-				.my-li-title {
-					display:inline-block;
-					vertical-align:top;
-					.title-category {
-					}
-					.title-time {
-						font-size:85%;
-					}
-					.title-scene {
-						font-size:85%;
-					}
-					.title-search {
-						font-size:85%;
-					}
-					span {
-						display: block;
-						height:1em;
-						line-height:1em;
-					}
+				.title-category,
+				.title-time {
+					display: block;
+					height:1em;
+					line-height:1em;
 				}
+				.title-time {
+					font-size:85%;
+				}
+				.title-scene {
+					font-size:85%;
+				}
+				.title-search {
+					font-size:85%;
+				}
+				// [class^="title-"],
+				// [class*=" title-"] {
+				// 	display: block;
+				// 	height:1em;
+				// 	line-height:1em;
+				// }
 			}
 			.my-li-events {
 				height: 100%;

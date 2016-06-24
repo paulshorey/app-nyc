@@ -361,19 +361,17 @@ body {
           color: orange; }
         .my-lists .my-lis .my-li .my-li-header .active {
           color: #4BAFE1; }
-        .my-lists .my-lis .my-li .my-li-header .my-li-title {
-          display: inline-block;
-          vertical-align: top; }
-          .my-lists .my-lis .my-li .my-li-header .my-li-title .title-time {
-            font-size: 85%; }
-          .my-lists .my-lis .my-li .my-li-header .my-li-title .title-scene {
-            font-size: 85%; }
-          .my-lists .my-lis .my-li .my-li-header .my-li-title .title-search {
-            font-size: 85%; }
-          .my-lists .my-lis .my-li .my-li-header .my-li-title span {
-            display: block;
-            height: 1em;
-            line-height: 1em; }
+        .my-lists .my-lis .my-li .my-li-header .title-category,
+        .my-lists .my-lis .my-li .my-li-header .title-time {
+          display: block;
+          height: 1em;
+          line-height: 1em; }
+        .my-lists .my-lis .my-li .my-li-header .title-time {
+          font-size: 85%; }
+        .my-lists .my-lis .my-li .my-li-header .title-scene {
+          font-size: 85%; }
+        .my-lists .my-lis .my-li .my-li-header .title-search {
+          font-size: 85%; }
       .my-lists .my-lis .my-li .my-li-events {
         height: 100%;
         overflow: hidden;
