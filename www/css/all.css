@@ -10073,9 +10073,9 @@ body {
         -webkit-order: 1;
         -ms-flex-order: 1;
         order: 1;
-        -webkit-flex: 1;
-        -ms-flex: 1;
-        flex: 1;
+        -webkit-flex: none;
+        -ms-flex: none;
+        flex: none;
         width: 100%;
         font-size: 21px;
         padding: 1px 0 4px 0;
@@ -10105,9 +10105,9 @@ body {
         -webkit-order: 1;
         -ms-flex-order: 1;
         order: 1;
-        -webkit-flex: 1;
-        -ms-flex: 1;
-        flex: 1;
+        -webkit-flex: auto;
+        -ms-flex: auto;
+        flex: auto;
         height: auto;
         overflow: hidden;
         overflow-y: auto; }
