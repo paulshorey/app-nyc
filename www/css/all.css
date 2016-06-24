@@ -10086,6 +10086,7 @@ body {
         line-height: 1em;
         background: #fff;
         box-sizing: content-box;
+        height: 36px;
         min-height: 36px; }
         .my-lists .my-lis .my-li .my-li-header:hover,
         .my-lists .my-lis .my-li .my-li-header:hover span {
