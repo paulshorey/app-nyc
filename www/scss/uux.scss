@@ -431,12 +431,14 @@ body {
 			.my-li-header {
 				width:100%;
 				font-size:21px;
-				margin:1px 0 4px 0;
+				padding:1px 0 4px 0;
 				color:orange;
 				text-transform:uppercase;
-				padding: 0;
+				margin: 0;
 				vertical-align:top;
 				line-height:1em;
+				background: #fff;
+				box-sizing: content-box;
 				// @include background(linear-gradient(to bottom, #ffffff, #ffffff 85%, rgba(255,255,255,0.0)));
 				&:hover,
 				&:hover span {

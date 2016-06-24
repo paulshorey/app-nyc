@@ -10072,12 +10072,14 @@ body {
       .my-lists .my-lis .my-li .my-li-header {
         width: 100%;
         font-size: 21px;
-        margin: 1px 0 4px 0;
+        padding: 1px 0 4px 0;
         color: orange;
         text-transform: uppercase;
-        padding: 0;
+        margin: 0;
         vertical-align: top;
-        line-height: 1em; }
+        line-height: 1em;
+        background: #fff;
+        box-sizing: content-box; }
         .my-lists .my-lis .my-li .my-li-header:hover,
         .my-lists .my-lis .my-li .my-li-header:hover span {
           color: orange; }
