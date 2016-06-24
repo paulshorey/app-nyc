@@ -10070,6 +10070,12 @@ body {
         flex-direction: column;
         height: 100%; }
       .my-lists .my-lis .my-li .my-li-header {
+        -webkit-order: 1;
+        -ms-flex-order: 1;
+        order: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
         width: 100%;
         font-size: 21px;
         padding: 1px 0 4px 0;
@@ -10080,7 +10086,7 @@ body {
         line-height: 1em;
         background: #fff;
         box-sizing: content-box;
-        height: 39px; }
+        min-height: 36px; }
         .my-lists .my-lis .my-li .my-li-header:hover,
         .my-lists .my-lis .my-li .my-li-header:hover span {
           color: orange; }
@@ -10096,6 +10102,12 @@ body {
           height: 1em;
           line-height: 1.25em; }
       .my-lists .my-lis .my-li .my-li-events {
+        -webkit-order: 1;
+        -ms-flex-order: 1;
+        order: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
         height: auto;
         overflow: hidden;
         overflow-y: auto; }

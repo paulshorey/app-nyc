@@ -429,6 +429,8 @@ body {
 				height:100%;
 			}
 			.my-li-header {
+				order:1;
+				flex:none;
 				width:100%;
 				font-size:21px;
 				padding:1px 0 4px 0;
@@ -466,6 +468,8 @@ body {
 				}
 			}
 			.my-li-events {
+				order:1;
+				flex:auto;
 				height: auto;
 				overflow: hidden;
 				overflow-y: auto;
