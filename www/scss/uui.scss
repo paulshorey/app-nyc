@@ -111,7 +111,14 @@ a.uui-icon:before {
 /*
 	STYLES / EFFECTS
 */
-.uui-hollow {
+.uui-muted {
+	&:before,
+	span:before {
+		color:#ccc;
+	}
+}
+
+.uui-icon-hollow {
 	&:before {
 		text-shadow:0 0 1px #000;
 		color:#fff;
@@ -123,14 +130,7 @@ a.uui-icon:before {
 		}
 	}
 }
-.uui-muted {
-	&:before,
-	span:before {
-		color:#ccc;
-	}
-}
-.uui-hollow-orange {
-	span,
+.uui-icon-hollow-orange {
 	&:before,
 	span:before {
 		color:#fff;
@@ -138,8 +138,7 @@ a.uui-icon:before {
 		transition:text-shadow 1s, color 1s;
 	}
 }
-.uui-hover-orange:hover {
-	span,
+.uui-icon-hover-orange:hover {
 	&:before,
 	span:before {
 		color:orange;

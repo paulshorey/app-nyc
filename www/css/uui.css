@@ -105,25 +105,25 @@ a.uui-icon:before {
 /*
 	STYLES / EFFECTS
 */
-.uui-hollow:before {
-  text-shadow: 0 0 1px #000;
-  color: #fff; }
-
-.uui-hollow:hover:before {
-  text-shadow: #fff;
-  color: #000; }
-
 .uui-muted:before,
 .uui-muted span:before {
   color: #ccc; }
 
-.uui-hollow-orange span, .uui-hollow-orange:before,
-.uui-hollow-orange span:before {
+.uui-icon-hollow:before {
+  text-shadow: 0 0 1px #000;
+  color: #fff; }
+
+.uui-icon-hollow:hover:before {
+  text-shadow: #fff;
+  color: #000; }
+
+.uui-icon-hollow-orange:before,
+.uui-icon-hollow-orange span:before {
   color: #fff;
   text-shadow: 0 0 3px orange;
   transition: text-shadow 1s, color 1s; }
 
-.uui-hover-orange:hover span, .uui-hover-orange:hover:before,
-.uui-hover-orange:hover span:before {
+.uui-icon-hover-orange:hover:before,
+.uui-icon-hover-orange:hover span:before {
   color: orange;
   text-shadow: none; }
