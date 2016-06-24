@@ -168,7 +168,7 @@ angular.module('ListModule.components', [])
 // 		link: function (scope, element, attrs) {
 // 			scope.vm = {};
 
-// 			// template
+// 			// load template -- react component
 // 			scope.list_ready = function(){
 // 				var query = {};
 // 				query.category = scope.data.category;
@@ -187,7 +187,8 @@ angular.module('ListModule.components', [])
 // 					console.error(error);
 // 				});
 // 			}
-// 			// loading
+
+// 			// loading animation -- default state
 // 			scope.list_reset = function(){
 // 				scope.vm = {};
 // 				ReactDOM.render( 
@@ -202,7 +203,7 @@ angular.module('ListModule.components', [])
 // 			}
 // 			scope.list_reset();
 
-// 			// lazyload
+// 			// lazyload -- make API call only for content in view
 // 			if (!$rootScope.lazyLoadedLists) {
 // 				$rootScope.lazyLoadedLists = {};
 // 			}

@@ -210,7 +210,7 @@ angular.module('ListModule.components', [])
 // 		link: function (scope, element, attrs) {
 // 			scope.vm = {};
 
-// 			// template
+// 			// load template -- react component
 // 			scope.list_ready = function(){
 // 				var query = {};
 // 				query.category = scope.data.category;
@@ -229,7 +229,8 @@ angular.module('ListModule.components', [])
 // 					console.error(error);
 // 				});
 // 			}
-// 			// loading
+
+// 			// loading animation -- default state
 // 			scope.list_reset = function(){
 // 				scope.vm = {};
 // 				ReactDOM.render( 
@@ -244,7 +245,7 @@ angular.module('ListModule.components', [])
 // 			}
 // 			scope.list_reset();
 
-// 			// lazyload
+// 			// lazyload -- make API call only for content in view
 // 			if (!$rootScope.lazyLoadedLists) {
 // 				$rootScope.lazyLoadedLists = {};
 // 			}
@@ -906,9 +907,8 @@ angular.module('ListModule.services', [])
 		getEvents: function (query) {
 			var deffered = $q.defer();
 			$http({
-				url: window.env.api.host+'/events',
-				method: "POST",
-				dataa: query,
+				url: window.env.api.host+'/events?'+$.param(query),
+				method: "GET",
 				headers: {
 					'Content-Type': 'application/json; charset=utf-8',
 					'X-Host': window.location.host
