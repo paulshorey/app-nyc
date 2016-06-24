@@ -178,7 +178,8 @@ body {
 	.modal-content {
 		position:relative;
 		z-index:1000000;
-		width:440px;
+		width:100%;
+		max-width:480px;
 		top:6.66vh;
 		margin:0 auto;
 		.modal-text {
