@@ -1,15 +1,11 @@
-"use strict";
+'use strict';
 
 if (!React.html) {
 	React.html = {};
 }
 React.html['eventslist_loading'] = React.createClass({
 	render: function render() {
-		return React.createElement(
-			"div",
-			{ className: "loading-dance" },
-			React.createElement("img", { src: "gfx/gif/dance.gif" })
-		);
+		return React.createElement('div', { className: 'loading-dance', style: { backgroundImage: 'url(\'gfx/gif/dance.gif\')' } });
 	}
 });
 React.html['eventslist'] = React.createClass({
@@ -22,12 +18,12 @@ React.html['eventslist'] = React.createClass({
 	render: function render() {
 		if (!this.props.vm || !this.props.vm.events) {
 			return React.createElement(
-				"div",
-				{ className: "loading-error" },
+				'div',
+				{ className: 'loading-error' },
 				React.createElement(
-					"b",
+					'b',
 					null,
-					"Nothing found"
+					'Nothing found'
 				)
 			);
 		}
@@ -62,10 +58,10 @@ React.html['eventslist'] = React.createClass({
 			if (timestring != old_timestring) {
 				//var timeUnique = cutOldBeginning(old_timestamp, event.timestamp);
 				rows.push(React.createElement(
-					"div",
-					{ className: "events-timestamp" },
+					'div',
+					{ className: 'events-timestamp' },
 					React.createElement(
-						"span",
+						'span',
 						null,
 						timestring
 					)
@@ -81,66 +77,66 @@ React.html['eventslist'] = React.createClass({
 			var subtext = [];
 			if (timestring.indexOf('week') != -1 || timestring.indexOf('month') != -1) {
 				subtext.push(React.createElement(
-					"span",
-					{ "ng-click": true },
-					React.createElement("span", { className: "ion-calendar" }),
-					" ",
+					'span',
+					{ 'ng-click': true },
+					React.createElement('span', { className: 'ion-calendar' }),
+					' ',
 					React.createElement(
-						"span",
+						'span',
 						null,
 						moment(event.timestamp).format('MMM D') + ' ' + time
 					)
 				));
 			} else if (time && time != '12:00am') {
 				subtext.push(React.createElement(
-					"span",
-					{ "ng-click": true },
-					React.createElement("span", { className: "ion-calendar" }),
-					" ",
+					'span',
+					{ 'ng-click': true },
+					React.createElement('span', { className: 'ion-calendar' }),
+					' ',
 					React.createElement(
-						"span",
+						'span',
 						null,
 						time
 					)
 				));
 			}
 			subtext.push(React.createElement(
-				"a",
-				{ className: "subtext-source", href: event.source_link, target: "_blank" },
-				React.createElement("span", { className: "icon-link" }),
+				'a',
+				{ className: 'subtext-source', href: event.source_link, target: '_blank' },
+				React.createElement('span', { className: 'icon-link' }),
 				event.source_host.substr(0, event.source_host.indexOf('.'))
 			));
 
 			// <row>
 			rows.push(React.createElement(
-				"div",
-				{ className: "events-event" },
+				'div',
+				{ className: 'events-event' },
 				React.createElement(
-					"div",
-					{ className: "event-text" },
+					'div',
+					{ className: 'event-text' },
 					React.createElement(
-						"span",
+						'span',
 						null,
 						React.createElement(
-							"a",
-							{ className: "event-link", href: event.link, target: "_blank" },
+							'a',
+							{ className: 'event-link', href: event.link, target: '_blank' },
 							event.texts[0]
 						)
 					),
 					React.createElement(
-						"span",
+						'span',
 						null,
 						event.texts[1]
 					),
 					React.createElement(
-						"span",
+						'span',
 						null,
 						event.texts[2]
 					)
 				),
 				React.createElement(
-					"div",
-					{ className: "event-subtext" },
+					'div',
+					{ className: 'event-subtext' },
 					subtext
 				)
 			));
@@ -149,8 +145,8 @@ React.html['eventslist'] = React.createClass({
 		document.getElementById('stats').innerHTML = '<span>loaded in ' + (Date.now() - window.loadStart) / 1000 + 's</span>';
 
 		return React.createElement(
-			"div",
-			{ className: "my-events" },
+			'div',
+			{ className: 'my-events' },
 			rows
 		);
 	}

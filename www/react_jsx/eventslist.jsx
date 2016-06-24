@@ -3,7 +3,7 @@ if (!React.html) {
 }
 React.html['eventslist_loading'] = React.createClass({
 	render: function () {
-		return <div className="loading-dance"><img src="gfx/gif/dance.gif" /></div>;
+		return <div className="loading-dance" style={{backgroundImage:'url(\'gfx/gif/dance.gif\')'}}></div>;
 	}
 });
 React.html['eventslist'] = React.createClass({
