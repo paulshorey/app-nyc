@@ -56,8 +56,9 @@ angular.module('ListModule.services', [])
 		getEvents: function (query) {
 			var deffered = $q.defer();
 			$http({
-				url: window.env.api.host+'/events?'+$.param(query),
-				method: "GET",
+				url: window.env.api.host+'/events',
+				method: "POST",
+				dataa: query,
 				headers: {
 					'Content-Type': 'application/json; charset=utf-8',
 					'X-Host': window.location.host
