@@ -54,6 +54,7 @@ angular.module('ListModule.components', [])
 			// template
 			var template = function(events) {
 				var old_timestring = '';
+				var old_event_title = ' :) ';
 				var old_event_featured_images = [];
 				var old_date = '';
 				if (events.length) {
@@ -61,9 +62,15 @@ angular.module('ListModule.components', [])
 					var html = '		<div class="my-events">\n';
 					for (var each in events) {
 						var event = events[each];
+						
 						if (!event.texts) {
 							continue;
 						}
+						if (event.texts[0] == old_event_title) {
+							continue;
+						}
+						old_event_title = event.texts[0];
+
 						var timestring = Date.create(event.timestamp).short();
 						var todayEnd = moment().endOf('day').format('x');
 						if (event.timestamp < todayEnd -1) { // party must end before midnight, because we don't know when exactly tomorrow's dates are, most come in as 12:00am
@@ -145,10 +152,6 @@ angular.module('ListModule.components', [])
 					} else {
 						document.getElementById('stats').innerHTML = '';
 					}
-					// ReactDOM.render(  
-					//   React.createElement(React.html.eventslist, {vm:scope.vm,data:scope.data}), 
-					//   angular.element(element)[0]
-					// );
 				}, function (error) {
 					console.error(error);
 				});
@@ -157,10 +160,6 @@ angular.module('ListModule.components', [])
 			// remove
 			scope.list_reset = function(){
 				scope.vm = {};
-				// ReactDOM.render( 
-				// 	React.createElement(React.html.eventslist_loading, {data:scope.data}), 
-				// 	angular.element(element)[0]
-				// );
 				angular.element(element)[0].innerHTML = '<div class="loading-dance" style="background-image:url(\'gfx/gif/dance.gif\')"></div>';
 				$timeout(function(){
 					if (element) {
@@ -178,13 +177,14 @@ angular.module('ListModule.components', [])
 			scope.$watch(
 			function( scope ) {
 				element = scope.element;
-				var window_width = (window.innerWidth || document.documentElement.clientWidth);
+				var window_width = (document.body.clientWidth || document.documentElement.clientWidth || document.clientWidth ||window.innerWidth);
 				var rect = element[0].getBoundingClientRect();
+				console.log('window_width',window_width);
 				if (rect.left > 0 && rect.left < window_width) {
 
 					if (!$rootScope.lazyLoadedLists[ scope.data.category ]) {
 						$rootScope.lazyLoadedLists[ scope.data.category ] = scope;
-						console.log('listing ',scope.data.category);
+						console.log('listing ',scope.data.category+' '+rect.left);
 						scope.list_ready()
 					}
 
