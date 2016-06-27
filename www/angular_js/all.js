@@ -62,7 +62,7 @@ angular.module('ListModule.components', [])
 					var html = '		<div class="my-events">\n';
 					for (var each in events) {
 						var event = events[each];
-						
+
 						if (!event.texts) {
 							continue;
 						}
@@ -184,7 +184,7 @@ angular.module('ListModule.components', [])
 
 					if (!$rootScope.lazyLoadedLists[ scope.data.category ]) {
 						$rootScope.lazyLoadedLists[ scope.data.category ] = scope;
-						console.log('listing ',scope.data.category+' '+rect.left);
+						console.log('listing ',scope.data.category+' '+rect.left+' -->', element[0].innerHTML);
 						scope.list_ready()
 					}
 
