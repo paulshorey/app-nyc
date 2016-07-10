@@ -305,7 +305,7 @@ body {
 		background-color:#fff;
 	}
 	&.top-sub {
-		padding: 3px 0;
+		padding: 5px 0 2px 0;
 		background:orange;
 		text-align:center;
 		.sub-cat {
@@ -525,6 +525,9 @@ body {
 				> div {
 					height:1em;
 					line-height:1.25em;
+				}
+				.uui-icon {
+					margin-left:10px;
 				}
 			}
 			.my-li-events {

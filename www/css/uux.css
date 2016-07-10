@@ -256,7 +256,7 @@ body {
     padding: 4px 0;
     background-color: #fff; }
   .my-top.top-sub {
-    padding: 3px 0;
+    padding: 5px 0 2px 0;
     background: orange;
     text-align: center; }
     .my-top.top-sub .sub-cat {
@@ -408,6 +408,8 @@ body {
         .my-lists .my-lis .my-li .my-li-header > div {
           height: 1em;
           line-height: 1.25em; }
+        .my-lists .my-lis .my-li .my-li-header .uui-icon {
+          margin-left: 10px; }
       .my-lists .my-lis .my-li .my-li-events {
         -webkit-order: 1;
         -ms-flex-order: 1;
