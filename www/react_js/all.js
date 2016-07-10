@@ -151,3 +151,5 @@ React.html['eventslist'] = React.createClass({
 		);
 	}
 });
+
+//# sourceMappingURL=all.js.map

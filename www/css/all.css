@@ -9490,6 +9490,7 @@ a.button {
   opacity: 0;
   transition-duration: 0s; }
 
+
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: inherit; }
 
@@ -9587,6 +9588,7 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 .slide-in-top.ng-leave, .slide-in-top > .ng-leave {
   transition: all ease-in-out 250ms; }
 
+
 /*
 	RESET
 */
@@ -9596,7 +9598,8 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
   line-height: 1.5em;
   font-size: 1em;
   display: inline-block;
-  vertical-align: middle; }
+  vertical-align: middle;
+  box-sizing: border-box; }
 
 /*
 	ELEMENTS
@@ -9617,6 +9620,33 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
   display: inline-block;
   vertical-align: middle;
   padding: 0; }
+
+.uui-select {
+  position: relative;
+  line-height: 1.5em;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 5px;
+  height: auto;
+  margin-top: -1px; }
+  .uui-select .uui-selected {
+    display: block; }
+  .uui-select .uui-options {
+    position: relative;
+    display: block;
+    height: auto;
+    max-height: 0;
+    width: 100%;
+    border-radius: 5px;
+    background: #fff;
+    transition: max-height 1s;
+    overflow: hidden; }
+    .uui-select .uui-options .uui-option {
+      display: block;
+      margin: 5px; }
+  .uui-select:hover .uui-options {
+    transition: max-height 1s;
+    max-height: 500px; }
 
 .uui-text {
   position: relative;
@@ -9717,6 +9747,7 @@ a.uui-icon:before {
   color: orange;
   text-shadow: none; }
 
+
 /*
 	RESET
 */
@@ -9724,6 +9755,7 @@ body {
   margin: 0; }
 
 * {
+  box-sizing: border-box;
   user-select: auto;
   -moz-user-select: auto;
   -webkit-user-select: auto;
@@ -9966,18 +9998,39 @@ body {
           color: #ccc; }
 
 /*
-	TOP: all
+	TOP: nav
 */
 .my-top {
-  margin: 0 0 2px;
-  padding: 10px 0 0px;
-  position: relative;
-  border-bottom: solid 1px #ccc; }
+  position: relative; }
+  .my-top.top-nav {
+    padding: 4px 0;
+    background-color: #fff; }
+  .my-top.top-sub {
+    padding: 3px 0;
+    background: orange;
+    text-align: center; }
+    .my-top.top-sub .sub-cat {
+      font-family: sans-serif;
+      font-size: 1em;
+      line-height: 1em;
+      padding: 0 6.66px;
+      display: inline-block;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: #666; }
+      .my-top.top-sub .sub-cat.selected {
+        color: #fff; }
+  .my-top .top-select {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+    max-width: 330px;
+    width: 100%; }
   .my-top .top-logo {
     display: block;
-    margin: -4px auto 6px;
+    margin: 4px auto;
     width: 50%;
-    height: 31px;
+    height: 27px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -9988,7 +10041,7 @@ body {
     color: orange; }
   .my-top .top-left {
     position: absolute;
-    left: 2px;
+    left: 32px;
     top: 0px;
     font-size: 19.5px; }
     .my-top .top-left .top-search .ion-search {
@@ -10004,7 +10057,7 @@ body {
       margin: 1px 0 0 0; }
   .my-top .top-right {
     position: absolute;
-    right: 2px;
+    right: 32px;
     top: 5px;
     text-align: right;
     padding: 0 0 0 15px;
@@ -10022,7 +10075,7 @@ body {
   .my-top .uui-icon {
     width: 1.66em; }
   .my-top span {
-    color: #ccc; }
+    color: #777; }
     .my-top span.tl-left {
       color: orange; }
       .my-top span.tl-left:hover {
@@ -10043,6 +10096,9 @@ body {
   .isMobile .my-top .top-right .icon-happy {
     margin-top: 4px; }
 
+/*
+	TOP: nav
+*/
 /*
 	MAIN: LISTS
 */
@@ -10279,3 +10335,6 @@ body {
 
 .isMobile .my-featured [scrollable-left], .isMobile .my-featured [scrollable-right] {
   display: none; }
+
+
+/*# sourceMappingURL=all.css.map */

@@ -2,13 +2,26 @@
 	<div class="my-content" scroll-top>
 
 		<!-- TOP NAV -->
-		<div class="my-top top-mobile">
+		<div class="my-top top-nav">
 			<div class="top-logo" ng-click="modals.show('angular_html/modals/contribute.html')">
 			</div>
+			<!-- <div class="top-site">
+				<span class="uui-text ts ts-heading">WHATNEW .TODAY</span>
+				 <span class="uui-text ts ts-spacer">/ </span>
+				 <span class="uui-select ts ts-select">
+				 	<span class="uui-icon icon-select"></span>
+				 	<span class="uui-text">NYC</span>
+				 </span>
+				 <span class="uui-text ts ts-spacer">/ </span>
+				 <span class="uui-select ts ts-select">
+				 	<span class="uui-icon icon-select"></span>
+				 	<span class="uui-text">EVENTS</span>
+				 </span>
+			</div> -->
 			<div class="top-left">
-				<span ng-click="modals.show('angular_html/modals/select.html')" class="top-find">
+				<!-- <span ng-click="modals.show('angular_html/modals/select.html')" class="top-find">
 					<span class="uui-icon icon-plus"></span>
-				</span>
+				</span> -->
 				<span ng-click="modals.show('angular_html/modals/select.html')" class="top-search">
 					<span class="uui-icon ion-search"></span>
 					<span class="uui-text top-search-text">Search</span>
@@ -16,13 +29,27 @@
 			</div>
 			<div class="top-right">
 				<span ng-click="modals.show('angular_html/modals/options.html')" class="top-user">
-					<span class="uui-text top-user-text">{{ (user.firstName || user.displayName) || 'You' | firstWord}}</span>
+					<span class="uui-text top-user-text">{{ (user.firstName || user.displayName) || 'Login' | firstWord}}</span>
 					<span class="uui-icon icon-happy"></span>
 				</span>
-				<span ng-click="modals.show('angular_html/modals/options.html')" class="top-options">
+				<!-- <span ng-click="modals.show('angular_html/modals/options.html')" class="top-options">
 					<span class="uui-icon icon-options-large"></span>
-				</span>
+				</span> -->
 			</div>
+		</div>
+
+		<!-- SUB NAV -->
+		<div class="my-top top-sub">
+			<!-- <div class="top-select uui-select">
+				<div class="uui-selected">
+					<span class="uui-icon icon-options-large"></span>
+					<span class="uui-text">WHAT TO DO</span>
+				</div>
+				<div class="uui-options">
+					<div class="uui-option" ng-repeat="list in vm.lists | orderObjectBy:'data.addedOn':true">{{:: list.data.category || 'Anything' }}</div>
+				</div>
+			</div> -->
+			<div class="sub-cat" ng-repeat="list in vm.lists | orderObjectBy:'data.addedOn':true" ng-class="{'selected':list.data.count}">{{:: list.data.category || 'Anything' }}</div>
 		</div>
 
 		<!-- MAIN CONTENT -->
@@ -37,7 +64,6 @@
 									<span class="uui-title a title-category">{{:: list.data.category || 'Anything' }} </span>
 									<span ng-class="{'uui-icon-hollow-orange': !list.justAdded }" class="uui-icon uui-icon-hover-orange uui-icon icon-star"></span>
 								</div>
-								<div class="a title-time" ng-if="::list.data.time">{{:: list.data.time || 'Anytime' }} </div>
 								<div class="a title-scene" ng-if="::list.data.scene">{{:: list.data.scene || 'Any' }} </div>
 								<div class="a title-search" ng-if="::list.data.search">"{{:: list.data.search || 'Any' }}" </div>
 							</div>

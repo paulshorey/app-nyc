@@ -2,39 +2,32 @@
 <html>
 <head>
 
-	<!-- html -->
+	<!-- meta -->
 	<title>&nbsp;ALL EVENTS [in] NYC</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 	<link href="gfx/logo/square.ico" rel="shortcut icon" type="image/x-icon" />
 
-	<!-- ini -->
+	<!-- cache -->
+	<meta http-equiv="Cache-Control" content="no-cache" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+
+	<!-- env -->
 	<script>
-	//<%- '\n\t window.env = '+JSON.stringify(process.window.env,null,'\t')+';\n' %>
+	<%- 'window.env = '+JSON.stringify(process.window.env,null,'\t')+';' %>
 	window.loadStart = Date.now();
-	window.buildVersion  = 0.112;
 	</script>
 
 	<!-- lib -->
-	<link href="css/all.css" rel="stylesheet" />
 	<script src="https://drrjhlchpvi7e.cloudfront.net/libs/stamplay-js-sdk/2.0.5/stamplay.min.js"></script>
-	<script src="lib/all.js?0.112"></script>
+	<script src="lib/all.js?u=<%- Math.random()*1000000; %>"></script>
 
 	<!-- angular_js -->
-	<script>
-	if ( window.isLocalhost && !window.isLive) {
-		document.write('<script src="angular_js/app.js?'+Math.random()+'"><\/script>\n');
-		document.write('<script src="angular_js/services.js?'+Math.random()+'"><\/script>\n');
-		document.write('<script src="angular_js/controllers.js?'+Math.random()+'"><\/script>\n');
-		document.write('<script src="angular_js/filters.js?'+Math.random()+'"><\/script>\n');
-		document.write('<script src="angular_js/directives.js?'+Math.random()+'"><\/script>\n');
-		document.write('<script src="angular_js/components.js?'+Math.random()+'"><\/script>\n');
-	} else {
-		document.write('<script src="angular_js/all.js?'+window.buildVersion+'"><\/script>\n');
-	}
-	</script>
+	<script src="angular_js/all.js?u=<%- Math.random()*1000000; %>"></script>
 
 	<!-- css -->
+	<link href="css/all.css?u=<%- Math.random()*1000000; %>" rel="stylesheet" />
 	<link href="gfx/icomoon/style.css" rel="stylesheet">
 
 </head>

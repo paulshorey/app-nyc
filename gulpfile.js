@@ -5,7 +5,7 @@ var babel = require('gulp-babel');
 var scss = require('gulp-sass');
 var sh = require('shelljs');
 var autoprefixer = require("gulp-autoprefixer");
-var concat = require('gulp-concat');
+var concat = require('gulp-concat-sourcemap');
 var uglify = require('gulp-uglify');
 var bower = require('bower-files')();
 var jshint = require('gulp-jshint');
@@ -13,7 +13,7 @@ var jshint = require('gulp-jshint');
 var path = {
 	scss: {
 		src: ['./www/scss/*.scss', '!./www/scss/all.scss'],
-		dst: './www/css'
+		dst: './www/scss'
 	},
 	css: {
 		src: ['./www/css/*.css', '!./www/css/all.css'],
@@ -40,12 +40,13 @@ var path = {
 
 gulp.task('default', ['scss','react_jsx','concat_css','concat_angular_js','concat_lib','concat_react_js']);
 
-gulp.task('css', ['scss','concat_css']);
+gulp.task('css', ['scss']);
 
 gulp.task('lint', ['lint_angular_js']);
 
 gulp.task('watch', function () {
-	gulp.watch(path.scss.src, ['scss']);
+	gulp.watch(path.scss.src, ['scss','concat_css']);
+	gulp.watch(path.angular_js.src, ['lint_angular_js','concat_angular_js']);
 	gulp.watch(path.react_jsx.src, ['react_jsx']);
 });
 
@@ -58,7 +59,9 @@ gulp.task('scss', function (done) {
 			browsers: ['last 4 versions'],
 			cascade: false
 		}))
-		.pipe(gulp.dest(path.scss.dst))
+		.pipe(gulp.dest(path.css.dst))
+		.pipe(concat('all.css'))
+		.pipe(gulp.dest(path.css.dst))
 		.on('end', done);
 });
 gulp.task('react_jsx', function (done) {
@@ -84,7 +87,7 @@ gulp.task('concat_angular_js', function () {
 gulp.task('concat_lib', function (done) {
 	gulp.src(['./www/lib/window.js','./www/lib/angular/angular.min.js','./www/lib/angular-ui-router/release/angular-ui-router.min.js','./www/lib/sugar.js','./www/lib/angular-modal-service.js','./www/lib/jquery/dist/jquery.js','./www/lib/moment/moment.js'])
 		.pipe(concat('all.js'))
-		.pipe(uglify())
+		// .pipe(uglify())
 		.pipe(gulp.dest(path.lib.dst))
 		.on('end', done);
 });

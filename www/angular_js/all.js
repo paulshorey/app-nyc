@@ -40,6 +40,7 @@ angular.module('ListModule', ['ui.router', 'angularModalService', 'ListModule.co
 
 ;
 
+
 angular.module('ListModule.components', [])
 
 .directive('eventslist', function(EventService, $timeout, $rootScope){
@@ -50,6 +51,7 @@ angular.module('ListModule.components', [])
 		},
 		link: function (scope, element, attrs) {
 			scope.vm = {};
+			scope.data.count = 1;
 
 			// template
 			var template = function(events) {
@@ -58,6 +60,7 @@ angular.module('ListModule.components', [])
 				var old_event_featured_images = [];
 				var old_date = '';
 				if (events.length) {
+					scope.data.count = events.length;
 
 					var html = '		<div class="my-events">\n';
 					for (var each in events) {
@@ -83,7 +86,7 @@ angular.module('ListModule.components', [])
 							timestring = 'this month';
 						}
 						//event.timestamp = event.timestamp.replace(' 12:00am','');
-						if (timestring != old_timestring && timestring != scope.data.time) {
+						if (timestring != old_timestring) {
 							//var timeUnique = cutOldBeginning(old_timestamp, event.timestamp);
 							html += '<div class="events-timestamp-spacer"> </div>\n';
 							html += '<div class="events-timestamp"><span>' + timestring + '</span></div>\n';
@@ -139,7 +142,7 @@ angular.module('ListModule.components', [])
 				var query = {};
 				query.category = scope.data.category;
 				query.scene = scope.data.scene;
-				query.time = scope.data.time;
+				// query.time = scope.data.time;
 				EventService.getEvents(query)
 				.then(function (response) {
 					//scope.vm.events = response.data.data;
@@ -159,7 +162,8 @@ angular.module('ListModule.components', [])
 
 			// remove
 			scope.list_reset = function(){
-				scope.vm = {};
+				//scope.vm = {};
+				scope.data.count = 0;
 				angular.element(element)[0].innerHTML = '<div class="loading-dance" style="background-image:url(\'gfx/gif/dance.gif\')"></div>';
 				$timeout(function(){
 					if (element) {
@@ -179,12 +183,10 @@ angular.module('ListModule.components', [])
 				element = scope.element;
 				var window_width = (document.body.clientWidth || document.documentElement.clientWidth || document.clientWidth ||window.innerWidth);
 				var rect = element[0].getBoundingClientRect();
-				console.log('window_width',window_width);
 				if (rect.left > 0 && rect.left < window_width) {
 
 					if (!$rootScope.lazyLoadedLists[ scope.data.category ]) {
 						$rootScope.lazyLoadedLists[ scope.data.category ] = scope;
-						console.log('listing ',scope.data.category+' '+rect.left+' -->', element[0].innerHTML);
 						scope.list_ready()
 					}
 
@@ -200,82 +202,6 @@ angular.module('ListModule.components', [])
 	}
 })
 
-
-// .directive('reactEventslist', function (reactDirective, EventService,$timeout, $rootScope) {
-// 	return {
-// 		restrict: 'A',
-// 		scope: {
-// 			data: '='
-// 		},
-// 		link: function (scope, element, attrs) {
-// 			scope.vm = {};
-
-// 			// load template -- react component
-// 			scope.list_ready = function(){
-// 				var query = {};
-// 				query.category = scope.data.category;
-// 				query.scene = scope.data.scene;
-// 				query.time = scope.data.time;
-// 				EventService.getEvents(query)
-// 				.then(function (response) {
-// 					scope.vm.events = response.data.data;
-
-// 					ReactDOM.render(  
-// 					  React.createElement(React.html.eventslist, {vm:scope.vm,data:scope.data}), 
-// 					  angular.element(element)[0]
-// 					);
-
-// 				}, function (error) {
-// 					console.error(error);
-// 				});
-// 			}
-
-// 			// loading animation -- default state
-// 			scope.list_reset = function(){
-// 				scope.vm = {};
-// 				ReactDOM.render( 
-// 					React.createElement(React.html.eventslist_loading, {data:scope.data}), 
-// 					angular.element(element)[0]
-// 				);
-// 				$timeout(function(){
-// 					if (element) {
-// 						$(element).addClass('ready');
-// 					}
-// 				},1000);
-// 			}
-// 			scope.list_reset();
-
-// 			// lazyload -- make API call only for content in view
-// 			if (!$rootScope.lazyLoadedLists) {
-// 				$rootScope.lazyLoadedLists = {};
-// 			}
-// 			scope.element = element;
-// 			scope.$watch(
-// 			function( scope ) {
-// 				element = scope.element;
-// 				var window_width = (window.innerWidth || document.documentElement.clientWidth);
-// 				var rect = element[0].getBoundingClientRect();
-// 				if (rect.left > 0 && rect.left < window_width) {
-
-// 					if (!$rootScope.lazyLoadedLists[ scope.data.category ]) {
-// 						$rootScope.lazyLoadedLists[ scope.data.category ] = scope;
-// 						console.log('listing ',scope.data.category);
-// 						scope.list_ready()
-// 					}
-
-// 				} else {
-// 					if ($rootScope.lazyLoadedLists[ scope.data.category ]) {
-// 						delete $rootScope.lazyLoadedLists[ scope.data.category ];
-// 						scope.list_reset();
-// 					}
-// 				}
-// 			});
-
-// 		}
-// 	}
-// })
-
-;
 angular.module('ListModule.controllers', [])
 
 .controller('ListController', ["ModalService", "AccountService", "ListService", "EventService", "ContentService", "$window", "$scope", "$rootScope", "$state", "$timeout", "$stateParams", "$sce", "$compile", "$interpolate", "$parse", "$q", function (ModalService, AccountService, ListService, EventService, ContentService, $window, $scope, $rootScope, $state, $timeout, $stateParams, $sce, $compile, $interpolate, $parse, $q) {
@@ -579,6 +505,7 @@ angular.module('ListModule.controllers', [])
 
 }])
 ;
+
 angular.module('ListModule.directives', [])
 
 .directive('preventDefault', function () {
@@ -816,6 +743,7 @@ angular.module('ListModule.directives', [])
 })
 
 ;
+
 angular.module('ListModule.filters', [])
 
 .filter('firstWord', function () {
@@ -849,6 +777,7 @@ angular.module('ListModule.filters', [])
 })
 
 ;
+
 angular.module('ListModule.services', [])
 
 .factory('ContentService', ["$q", "$http", function ($q, $http) {
@@ -1019,3 +948,5 @@ angular.module('ListModule.services', [])
 
 	}
 }]);
+
+//# sourceMappingURL=all.js.map

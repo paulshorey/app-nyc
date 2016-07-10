@@ -8,6 +8,7 @@ angular.module('ListModule.components', [])
 		},
 		link: function (scope, element, attrs) {
 			scope.vm = {};
+			scope.data.count = 1;
 
 			// template
 			var template = function(events) {
@@ -16,6 +17,7 @@ angular.module('ListModule.components', [])
 				var old_event_featured_images = [];
 				var old_date = '';
 				if (events.length) {
+					scope.data.count = events.length;
 
 					var html = '		<div class="my-events">\n';
 					for (var each in events) {
@@ -41,7 +43,7 @@ angular.module('ListModule.components', [])
 							timestring = 'this month';
 						}
 						//event.timestamp = event.timestamp.replace(' 12:00am','');
-						if (timestring != old_timestring && timestring != scope.data.time) {
+						if (timestring != old_timestring) {
 							//var timeUnique = cutOldBeginning(old_timestamp, event.timestamp);
 							html += '<div class="events-timestamp-spacer"> </div>\n';
 							html += '<div class="events-timestamp"><span>' + timestring + '</span></div>\n';
@@ -97,7 +99,7 @@ angular.module('ListModule.components', [])
 				var query = {};
 				query.category = scope.data.category;
 				query.scene = scope.data.scene;
-				query.time = scope.data.time;
+				// query.time = scope.data.time;
 				EventService.getEvents(query)
 				.then(function (response) {
 					//scope.vm.events = response.data.data;
@@ -117,7 +119,8 @@ angular.module('ListModule.components', [])
 
 			// remove
 			scope.list_reset = function(){
-				scope.vm = {};
+				//scope.vm = {};
+				scope.data.count = 0;
 				angular.element(element)[0].innerHTML = '<div class="loading-dance" style="background-image:url(\'gfx/gif/dance.gif\')"></div>';
 				$timeout(function(){
 					if (element) {

@@ -7,7 +7,8 @@
   line-height: 1.5em;
   font-size: 1em;
   display: inline-block;
-  vertical-align: middle; }
+  vertical-align: middle;
+  box-sizing: border-box; }
 
 /*
 	ELEMENTS
@@ -28,6 +29,33 @@
   display: inline-block;
   vertical-align: middle;
   padding: 0; }
+
+.uui-select {
+  position: relative;
+  line-height: 1.5em;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 5px;
+  height: auto;
+  margin-top: -1px; }
+  .uui-select .uui-selected {
+    display: block; }
+  .uui-select .uui-options {
+    position: relative;
+    display: block;
+    height: auto;
+    max-height: 0;
+    width: 100%;
+    border-radius: 5px;
+    background: #fff;
+    transition: max-height 1s;
+    overflow: hidden; }
+    .uui-select .uui-options .uui-option {
+      display: block;
+      margin: 5px; }
+  .uui-select:hover .uui-options {
+    transition: max-height 1s;
+    max-height: 500px; }
 
 .uui-text {
   position: relative;
