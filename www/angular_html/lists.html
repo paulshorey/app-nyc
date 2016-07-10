@@ -6,16 +6,13 @@
 			<div class="top-logo" ng-click="modals.show('angular_html/modals/contribute.html')">
 			</div>
 			<!-- <div class="top-site">
-				<span class="uui-text ts ts-heading">WHATNEW .TODAY</span>
-				 <span class="uui-text ts ts-spacer">/ </span>
-				 <span class="uui-select ts ts-select">
+				<span class="uui-text">mir</span>
+				<span class="uui-icon icon-earth"></span>
+				<span class="uui-text">online</span>
+				<span class="uui-text ts-slash">/</span>
+				<span class="uui-text uui-select ts-select">
 				 	<span class="uui-icon icon-select"></span>
-				 	<span class="uui-text">NYC</span>
-				 </span>
-				 <span class="uui-text ts ts-spacer">/ </span>
-				 <span class="uui-select ts ts-select">
-				 	<span class="uui-icon icon-select"></span>
-				 	<span class="uui-text">EVENTS</span>
+				 	<span class="uui-text">What to do now in NYC</span>
 				 </span>
 			</div> -->
 			<div class="top-left">
@@ -49,7 +46,7 @@
 					<div class="uui-option" ng-repeat="list in vm.lists | orderObjectBy:'data.addedOn':true">{{:: list.data.category || 'Anything' }}</div>
 				</div>
 			</div> -->
-			<div class="sub-cat" ng-repeat="list in vm.lists | orderObjectBy:'data.addedOn':true" ng-class="{'selected':list.data.count}">{{:: list.data.category || 'Anything' }}</div>
+			<div class="sub-cat" ng-repeat="list in vm.lists | orderObjectBy:'data.addedOn':true" ng-class="{'selected':list.data.count}">{{list.data.count}} {{:: list.data.category || 'Anything' }}</div>
 		</div>
 
 		<!-- MAIN CONTENT -->

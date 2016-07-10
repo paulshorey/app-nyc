@@ -301,7 +301,7 @@ body {
 .my-top {
 	position: relative;
 	&.top-nav {
-		padding: 5px 0;
+		padding: 6px 0;
 		background-color:#fff;
 	}
 	&.top-sub {
@@ -322,12 +322,17 @@ body {
 			}
 		}
 	}
-	.top-select {
-		display:inline-block;
-		margin:0 auto;
+	.top-site {
+		font-size:20px;
+		line-height:40px;
 		text-align:center;
-		max-width:330px;
-		width:100%;
+		> * {
+			vertical-align:top;
+		}
+		> .icon-earth {
+			vertical-align:baseline;
+			margin:5px -5px 0;
+		}
 	}
 	.top-logo {
 		display:block;
@@ -373,14 +378,14 @@ body {
 	.top-right {
 		position:absolute;
 		right:32px;
-		top:6px;
+		top:7px;
 		text-align:right;
 		padding:0 0 0 15px;
 		font-size:20px;
 		height:23px;
 		.top-user {
 			.icon-earth {
-				margin: 2px 0 0 2px;
+				margin: 1px 0 0 2px;
 			}
 			.top-user-text {
 				margin: 0 -4px 0 0;
@@ -471,7 +476,7 @@ body {
 	position: relative;
 	overflow: hidden;
 	overflow-x: auto;
-	margin: 13px 0 5px 0;
+	margin: 14px 0 5px 0;
 	padding: 0 0 0 25px;
 	.my-lis {
 		white-space:nowrap;
