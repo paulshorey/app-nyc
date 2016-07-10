@@ -301,11 +301,11 @@ body {
 .my-top {
 	position: relative;
 	&.top-nav {
-		padding: 4px 0;
+		padding: 5px 0;
 		background-color:#fff;
 	}
 	&.top-sub {
-		padding: 5px 0 2px 0;
+		padding: 6px 0 3px 0;
 		background:orange;
 		text-align:center;
 		.sub-cat {
@@ -349,11 +349,11 @@ body {
 	.top-left {
 		position: absolute;
 		left: 32px;
-		top: 0px;
+		top: 1px;
 		font-size:19.5px;
 		.top-search {
 			.ion-search {
-				margin: 4px -16px 0 -16px;
+				margin: 2px -16px 0 -16px;
 				font-size: 27px;
 			}
 			.top-search-text {
@@ -373,14 +373,14 @@ body {
 	.top-right {
 		position:absolute;
 		right:32px;
-		top:5px;
+		top:6px;
 		text-align:right;
 		padding:0 0 0 15px;
 		font-size:20px;
 		height:23px;
 		.top-user {
-			.icon-happy {
-				margin: 3px -7px 0 0;
+			.icon-earth {
+				margin: 2px 0 0 2px;
 			}
 			.top-user-text {
 				margin: 0 -4px 0 0;
@@ -512,6 +512,7 @@ body {
 				}
 
 				.title-category {
+					margin:0 10px 0 0;
 				}
 				.title-time {
 					font-size:85%;
@@ -526,8 +527,42 @@ body {
 					height:1em;
 					line-height:1.25em;
 				}
-				.uui-icon {
-					margin-left:10px;
+				.my-icon-menu {
+					&:before {
+						opacity:0.66;
+					}
+					.my-icon-select {
+						display:none;
+						white-space:nowrap;
+						.my-icon-option {
+							margin: 0 -10px 0 0;
+							font-size:inherit;
+							line-height:inherit;
+							opacity:0.66;
+							transition: opacity 0.33s;
+							.uui-text {
+								margin:0 10px 0 -10px;
+							}
+							&:last-child {
+								opacity:0.33;
+							}
+							&:hover {
+								opacity:1;
+							}
+							.icon-close {
+								margin-top:4px;
+							}
+						}
+					}
+				}
+				&:hover {
+					.my-icon-menu:before {
+						content:'';
+						display:none;
+					}
+					.my-icon-select {
+						display:block;
+					}
 				}
 			}
 			.my-li-events {
@@ -611,6 +646,7 @@ $media-all: "(min-width:#{$c3-upto + 1})" !default;
 		overflow:hidden;
 		white-space:nowrap !important;
 		color:#ccc;
+		margin:1px 0;
 		> span {
 			display:inline-block;
 			text-transform:capitalize;

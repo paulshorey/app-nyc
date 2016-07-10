@@ -26,10 +26,10 @@ angular.module('ListModule.components', [])
 						if (!event.texts) {
 							continue;
 						}
-						if (event.texts[0] == old_event_title) {
+						if (event.texts[0].replace(/\w/g,'') == old_event_title) {
 							continue;
 						}
-						old_event_title = event.texts[0];
+						old_event_title = event.texts[0].replace(/\w/g,'');
 
 						var timestring = Date.create(event.timestamp).short();
 						var todayEnd = moment().endOf('day').format('x');
