@@ -10056,6 +10056,19 @@ body {
     background-size: contain;
     position: relative;
     background-image: url("../gfx/logo/allevents.nyc.png"); }
+    .my-top .top-logo .logo-caption {
+      background: #fff;
+      width: 100%;
+      display: inline-block;
+      font-size: 20px;
+      line-height: 1.25em;
+      text-align: center;
+      padding: 0 0 10px;
+      opacity: 0;
+      transition: opacity 0.66s;
+      color: #777; }
+      .my-top .top-logo .logo-caption:hover {
+        opacity: 1; }
   .my-top .top-you span,
   .my-top .top-search span {
     color: orange; }

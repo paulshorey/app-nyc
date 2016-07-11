@@ -276,6 +276,7 @@ angular.module('ListModule.controllers', [])
 		// from Default
 		ContentService.getAll().then(
 			function (all) {
+				console.log('all',all);
 				// lists
 				all.categories.forEach(function (item, i, array) {
 					var list = {
