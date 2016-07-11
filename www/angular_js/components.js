@@ -13,24 +13,26 @@ angular.module('ListModule.components', [])
 			// template
 			var template = function(events) {
 				var old_timestring = '';
-				var old_event_title = ' :) ';
+				var old_event_titles = {};
 				var old_event_featured_images = [];
 				var old_date = '';
+				scope.data.count = 0; // will be advanced if pass validation below
 				if (events.length) {
-					scope.data.count = events.length;
 
 					var html = '		<div class="my-events">\n';
 					for (var each in events) {
 						var event = events[each];
 
+						// validate
 						if (!event.texts) {
 							continue;
 						}
-						if (event.texts[0].replace(/\w/g,'') == old_event_title) {
+						if (old_event_titles[ event.texts[0].replace(/\w/g,'') ]) {
 							continue;
 						}
-						old_event_title = event.texts[0].replace(/\w/g,'');
+						old_event_titles[ event.texts[0].replace(/\w/g,'') ] = true;
 
+						// build
 						var timestring = Date.create(event.timestamp).short();
 						var todayEnd = moment().endOf('day').format('x');
 						if (event.timestamp < todayEnd -1) { // party must end before midnight, because we don't know when exactly tomorrow's dates are, most come in as 12:00am
@@ -86,6 +88,7 @@ angular.module('ListModule.components', [])
 						html += ev;
 						old_timestring = timestring;
 
+						scope.data.count++;
 					}
 					html += '		</div>\n';
 
