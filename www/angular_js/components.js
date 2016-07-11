@@ -138,8 +138,7 @@ angular.module('ListModule.components', [])
 				$rootScope.lazyLoadedLists = {};
 			}
 			scope.element = element;
-			scope.$watch(
-			function( scope ) {
+			var lazy_load = function(){
 				element = scope.element;
 				var window_width = (document.body.clientWidth || document.documentElement.clientWidth || document.clientWidth ||window.innerWidth);
 				var rect = element[0].getBoundingClientRect();
@@ -147,7 +146,7 @@ angular.module('ListModule.components', [])
 
 					if (!$rootScope.lazyLoadedLists[ scope.data.category ]) {
 						$rootScope.lazyLoadedLists[ scope.data.category ] = scope;
-						scope.list_ready()
+						scope.list_ready();
 					}
 
 				} else {
@@ -156,8 +155,12 @@ angular.module('ListModule.components', [])
 						scope.list_reset();
 					}
 				}
+			}
+			scope.$watch(lazy_load);
+			$(window).on("resize.doResize", lazy_load);
+			scope.$on("$destroy",function (){
+				$(window).off("resize.doResize");
 			});
-
 		}
 	}
 })
