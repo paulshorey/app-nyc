@@ -218,9 +218,6 @@ angular.module('ListModule.controllers', [])
 	*/
 	var vm = this;
 	vm.listsReady = 0;
-	$timeout(function(){
-		vm.listsReady ++;
-	},200);
 	vm.list = {
 		data: {}
 	};
@@ -298,6 +295,9 @@ angular.module('ListModule.controllers', [])
 					}
 				});
 				vm.syncLists();
+				$timeout(function(){
+					vm.listsReady = true;
+				},0);
 				// content
 				vm.categories = all.categories;
 				vm.scenes = all.scenes;
@@ -615,11 +615,11 @@ angular.module('ListModule.directives', [])
 	return {
 		restrict: 'A',
 		scope: {
-			vm: '='
+			which: '='
 		},
 		link: function (scope, element, attrs) {
 
-			scope.scroll_enable = function () {
+			scope.scrollCheck = function () {
 				var target = element[0];
 				target.doNotScroll = false;
 				target.scrollLeftLast = target.scrollLeft;
@@ -628,19 +628,19 @@ angular.module('ListModule.directives', [])
 				} else {
 					$(element).siblings('[scrollable-left]').removeClass('scrollEnd');
 				}
-				if (target.scrollLeft > ( target.scrollWidth - document.body.scrollWidth - 10 ) ) {
+				if (target.scrollLeft > ( target.scrollWidth - target.parentElement.scrollWidth - 10 ) ) {
 					$(element).siblings('[scrollable-right]').addClass('scrollEnd');
 				} else {
 					$(element).siblings('[scrollable-right]').removeClass('scrollEnd');
 				}
 			};
 			$timeout(
-				scope.scroll_enable,
-				100
+				scope.scrollCheck,
+				500
 			);
-			$(window).on('resize',scope.scroll_enable);
+			$(window).on('resize',scope.scrollCheck);
 			scope.$on('$destroy',function(){
-				$(window).off('resize',scope.scroll_enable);
+				$(window).off('resize',scope.scrollCheck);
 			});
 
 			scope.$watch(
@@ -668,7 +668,7 @@ angular.module('ListModule.directives', [])
 								});
 
 							$timeout(
-								scope.scroll_enable,
+								scope.scrollCheck,
 								duration + 10
 							);
 
@@ -696,7 +696,7 @@ angular.module('ListModule.directives', [])
 
 				target.doNotScroll = 'scrollable-left';
 				$timeout(
-					scope.scroll_enable,
+					scope.scrollCheck,
 					duration
 				);
 			});
@@ -719,7 +719,7 @@ angular.module('ListModule.directives', [])
 
 				target.doNotScroll = 'scrollable-right';
 				$timeout(
-					scope.scroll_enable,
+					scope.scrollCheck,
 					duration
 				);
 			});
@@ -747,7 +747,7 @@ angular.module('ListModule.directives', [])
 				// done
 				target.doNotScroll = true;
 				$timeout(
-					scope.scroll_enable,
+					scope.scrollCheck,
 					duration
 				);
 			};

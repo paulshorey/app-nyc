@@ -11,9 +11,6 @@ angular.module('ListModule.controllers', [])
 	*/
 	var vm = this;
 	vm.listsReady = 0;
-	$timeout(function(){
-		vm.listsReady ++;
-	},200);
 	vm.list = {
 		data: {}
 	};
@@ -91,6 +88,9 @@ angular.module('ListModule.controllers', [])
 					}
 				});
 				vm.syncLists();
+				$timeout(function(){
+					vm.listsReady = true;
+				},0);
 				// content
 				vm.categories = all.categories;
 				vm.scenes = all.scenes;
