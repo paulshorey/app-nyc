@@ -88,7 +88,6 @@ angular.module('ListModule.controllers', [])
 					list.data.uid = list.data.category;
 					if (!vm.lists[list.data.uid] || ( vm.lists[list.data.uid].data && vm.lists[list.data.uid].data.addedOn < list.data.addedOn ) ) {
 						vm.lists[list.data.uid] = list;
-						vm.listEvents(list);
 					}
 				});
 				vm.syncLists();
@@ -117,7 +116,6 @@ angular.module('ListModule.controllers', [])
 						};
 						if (!vm.lists[list.data.uid] || list.data.addedOn > vm.lists[list.data.uid].data.addedOn) {
 							vm.lists[list.data.uid] = list;
-							vm.listEvents(list);
 						}
 					}
 				});
@@ -176,7 +174,6 @@ angular.module('ListModule.controllers', [])
 		}, 1500);
 		// add
 		vm.lists[vm.list.data.uid] = vm.list;
-		vm.listEvents(vm.list);
 		var listsIds = Object.keys(vm.lists)
 			.sort(function (a, b) {
 				return (vm.lists[b].data.addedOn - vm.lists[a].data.addedOn)
@@ -187,24 +184,29 @@ angular.module('ListModule.controllers', [])
 		vm.syncListsUp();
 		// </lists>
 	}
-	vm.listEvents = function (list) {
-		// vm.listsReady -= 1;
-		// var query = {};
-		// query.category = list.data.category;
-		// query.scene = list.data.scene;
-		// query.time = list.data.time;
-		// EventService.getEvents(query)
-		// 	.then(function (response) {
-		// 		list.events = response.data.data;
-		// 		$timeout(function () {
-		// 			vm.listsReady += 1;
-		// 		},10);
-		// 	}, function (error) {
-		// 		$timeout(function () {
-		// 			vm.listsReady += 1;
-		// 		},10);
-		// 		console.error(error);
-		// 	});
+	vm.listHide = function (list) {
+		$rootScope.modals.close();
+		if ($rootScope.lazyLoadedLists[ list.data.category ]) {
+			delete $rootScope.lazyLoadedLists[ list.data.category ];
+		}
+		// <lists>
+		if (list) {
+			vm.list.data = list.data;
+		}
+		// make
+		vm.list.data.addedOn = 10000000000 - Math.round(Date.now() / 1000); // hack - will work fine unless they wait for like an entire week to hide the next list
+		vm.list.data.uid = vm.list.data.category;
+		// add
+		vm.lists[vm.list.data.uid] = vm.list;
+		var listsIds = Object.keys(vm.lists)
+			.sort(function (a, b) {
+				return (vm.lists[b].data.addedOn - vm.lists[a].data.addedOn)
+			});
+		vm.list = {
+			data: {}
+		};
+		vm.syncListsUp();
+		// </lists>
 	}
 
 
@@ -225,7 +227,6 @@ angular.module('ListModule.controllers', [])
 			if ( localStorage_lists[li] && localStorage_lists[li].data && localStorage_lists[li].data.addedOn > vm.lists[li].data.addedOn ) {
 				// sync Down
 				vm.lists[li] = {data:localStorage_lists[li].data};
-				vm.listEvents(vm.lists[li]);
 			} else {
 				// sync Up
 				localStorage_lists[li] = vm.lists[li];

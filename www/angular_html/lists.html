@@ -60,16 +60,16 @@
 					<div class="my-li" ng-repeat="list in vm.lists | orderObjectBy:'data.addedOn':true">
 						<div class="my-li-content">
 							
-							<div class="my-li-header" ng-click="vm.listAdd(list)">
+							<div class="my-li-header">
 								<div>
 									<span class="uui-title a title-category">{{:: list.data.category || 'Anything' }} </span>
 									<span class="uui-icon my-icon-menu icon-options-large">
-										<span class="my-icon-select">
+										<span class="my-icon-select" ng-click="vm.listAdd(list)">
 											<span class="my-icon-option">
 												<span class="uui-icon icon-fav-add"></span>
 												<span class="uui-text">Save</span>
 											</span>
-											<span class="my-icon-option">
+											<span class="my-icon-option" ng-click="vm.listHide(list)">
 												<span class="uui-icon icon-close"></span>
 												<span class="uui-text">Hide</span>
 											</span>

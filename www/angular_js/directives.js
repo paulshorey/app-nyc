@@ -98,10 +98,9 @@ angular.module('ListModule.directives', [])
 			vm: '='
 		},
 		link: function (scope, element, attrs) {
-			
+
 			scope.scroll_enable = function () {
 				var target = element[0];
-				console.log('scroll??',target.scrollLeft);
 				target.doNotScroll = false;
 				target.scrollLeftLast = target.scrollLeft;
 				if (target.scrollLeft<10) {
