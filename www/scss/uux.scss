@@ -319,13 +319,13 @@ body {
 			width:30px;
 			font-size: 16px;
 			color:#777;
-			padding:6px 0;
+			padding:7px 0;
 			&.scrollEnd {
 				color:orange;
 			}
 		}
 		[scrollable-left] {
-			text-indent:0;
+			text-indent:4px;
 		}
 		[scrollable-right] {
 			width:20px;
