@@ -78,8 +78,8 @@
 										</span>
 									</span>
 								</div>
-								<div class="a title-scene" ng-if="::list.data.scene">{{:: list.data.scene || 'Any' }} </div>
-								<div class="a title-search" ng-if="::list.data.text">"{{:: list.data.text || 'Any' }}" </div>
+								<div class="a title-time" ng-if="::list.data.time">{{:: list.data.time || 'Any' }} &nbsp;<span class="uui-icon icon-close" ng-click="list.data.time=undefined;vm.listAdd(list)"></span> </div>
+								<div class="a title-search" ng-if="::list.data.text">"{{:: list.data.text || 'Any' }}" &nbsp;<span class="uui-icon icon-close" ng-click="list.data.text=undefined;vm.listAdd(list)"></span> </div>
 							</div>
 							
 							<div class="my-li-events" eventslist data="::list.data">

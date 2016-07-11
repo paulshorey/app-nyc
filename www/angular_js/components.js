@@ -45,7 +45,7 @@ angular.module('ListModule.components', [])
 							timestring = 'this month';
 						}
 						//event.timestamp = event.timestamp.replace(' 12:00am','');
-						if (timestring != old_timestring) {
+						if (!scope.data.time && timestring != old_timestring) {
 							//var timeUnique = cutOldBeginning(old_timestamp, event.timestamp);
 							html += '<div class="events-timestamp-spacer"> </div>\n';
 							html += '<div class="events-timestamp"><span>' + timestring + '</span></div>\n';
