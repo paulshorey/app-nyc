@@ -46,7 +46,7 @@
 					<div class="uui-option" ng-repeat="list in vm.lists | orderObjectBy:'data.addedOn':true">{{:: list.data.category || 'Anything' }}</div>
 				</div>
 			</div> -->
-			<div class="sub-cat" ng-repeat="list in vm.lists | orderObjectBy:'data.addedOn':true" ng-class="{'selected':list.data.count}">{{list.data.count}} {{:: list.data.category || 'Anything' }}</div>
+			<div class="sub-cat" ng-repeat="list in vm.lists | orderObjectBy:'data.addedOn':true" ng-class="{'selected':list.data.count}" ng-click="vm.listAdd({data:{category:list.data.category}})">{{list.data.count || ''}} {{:: list.data.category || 'Anything' }}</div>
 		</div>
 
 		<!-- MAIN CONTENT -->

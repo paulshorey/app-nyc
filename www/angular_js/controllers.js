@@ -151,12 +151,17 @@ angular.module('ListModule.controllers', [])
 		LIST 
 	*/
 	vm.listAdd = function (list) {
+		vm.listJustAdded = list.data.category;
 		function removeJustAdded() {
 			for (var li in vm.lists) {
+				vm.listJustAdded = false;
 				vm.lists[li].justAdded = false;
 			}
 		}
 		$rootScope.modals.close();
+		if ($rootScope.lazyLoadedLists[ list.data.category ]) {
+			delete $rootScope.lazyLoadedLists[ list.data.category ];
+		}
 		// <lists>
 		if (list) {
 			vm.list.data = list.data;

@@ -377,7 +377,7 @@ body {
 	}
 	.top-right {
 		position:absolute;
-		right:32px;
+		right:21px;
 		top:7px;
 		text-align:right;
 		padding:0 0 0 15px;
@@ -486,7 +486,7 @@ body {
 			vertical-align:top;
 			white-space:normal;
 			padding:0 4px 0 6px;
-			height:calc(100vh - 60px);
+			height:calc(100vh - 10px);
 			.my-li-content {
 				display:flex;
 				flex-direction:column;

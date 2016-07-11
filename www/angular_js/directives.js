@@ -113,42 +113,39 @@ angular.module('ListModule.directives', [])
 					$(element).siblings('[scrollable-right]').removeClass('scrollEnd');
 				}
 			};
-			// scope.$watch(
-			// 	function () {
-			// 		if (scope.$parent.vm.listsReady == 1) {
-			// 			return element[0].innerText;
-			// 		} else {
-			// 			return false;
-			// 		}
-			// 		// if (element[0].firstElementChild.firstElementChild) {
-			// 		// 	return element[0].firstElementChild.firstElementChild.innerText;
-			// 		// }
-			// 	},
-			// 	function (newValue, oldValue) {
-			// 		// scroll to beginning
-			// 		if (newValue && newValue != oldValue) {
-			// 			var target = element[0];
-			// 			var duration = 400; // target.clientWidth / 2;
+			scope.$watch(
+				function () {
+					if (scope.$parent.vm.listJustAdded) {
+						return scope.$parent.vm.listJustAdded;
+					} else {
+						return false;
+					}
+				},
+				function (newValue, oldValue) {
+					// scroll to beginning
+					if (newValue && newValue != oldValue) {
+						var target = element[0];
+						var duration = 400; // target.clientWidth / 2;
 
-			// 			var scrollTo = 0;
-			// 			target.doNotScroll = 'scroll--changed';
-			// 			$timeout(function () {
-			// 				$(target)
-			// 					.animate({
-			// 						scrollLeft: 0
-			// 					}, {
-			// 						duration: duration
-			// 					});
+						var scrollTo = 0;
+						target.doNotScroll = 'scroll--changed';
+						$timeout(function () {
+							$(target)
+								.animate({
+									scrollLeft: 0
+								}, {
+									duration: duration
+								});
 
-			// 				$timeout(
-			// 					scope.scroll_enable,
-			// 					duration + 10
-			// 				);
+							$timeout(
+								scope.scroll_enable,
+								duration + 10
+							);
 
-			// 			}, 100);
-			// 		}
-			// 	}
-			// );
+						}, 100);
+					}
+				}
+			);
 
 			$(element)
 			.siblings('[scrollable-left]')
