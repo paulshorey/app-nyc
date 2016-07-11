@@ -10018,12 +10018,12 @@ body {
       width: 30px;
       font-size: 16px;
       color: #777;
-      padding: 6px 0; }
+      padding: 7px 0; }
       .my-top.top-sub [scrollable-right].scrollEnd,
       .my-top.top-sub [scrollable-left].scrollEnd {
         color: orange; }
     .my-top.top-sub [scrollable-left] {
-      text-indent: 0; }
+      text-indent: 4px; }
     .my-top.top-sub [scrollable-right] {
       width: 20px; }
     .my-top.top-sub .sub-cat {
@@ -10077,7 +10077,7 @@ body {
       margin: 1px 0 0 0; }
   .my-top .top-right {
     position: absolute;
-    right: 22px;
+    right: 18px;
     top: 8px;
     text-align: right;
     padding: 0 0 0 15px;

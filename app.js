@@ -40,8 +40,9 @@ process.response = require("./node_custom/response.js");
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // VIEW
 process.window = {};
-process.window.server = {};
-process.window.server.platform = process.os.platform();
+process.window.env = {};
+process.window.env.platform = process.os.platform();
+process.window.env.buildVersion = 0.01;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // INDEX

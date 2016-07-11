@@ -21,26 +21,14 @@
 
 	<!-- lib -->
 	<script src="https://drrjhlchpvi7e.cloudfront.net/libs/stamplay-js-sdk/2.0.5/stamplay.min.js"></script>
-	<script src="lib/all.js?u=<%- Math.random()*1000000; %>"></script>
+	<script src="lib/all.js?u=<%- process.window.env.buildVersion; %>"></script>
 
 	<!-- angular_js -->
-	<script>
-	if ( window.isLocalhost && !window.isLive) {
-		document.write('<script src="angular_js/app.js?'+Math.random()+'"><\/script>\n');
-		document.write('<script src="angular_js/services.js?'+Math.random()+'"><\/script>\n');
-		document.write('<script src="angular_js/controllers.js?'+Math.random()+'"><\/script>\n');
-		document.write('<script src="angular_js/filters.js?'+Math.random()+'"><\/script>\n');
-		document.write('<script src="angular_js/directives.js?'+Math.random()+'"><\/script>\n');
-		document.write('<script src="angular_js/components.js?'+Math.random()+'"><\/script>\n');
-	} else {
-		document.write('<script src="angular_js/all.js?'+Math.random()+'"><\/script>\n');
-	}
-	</script>
-	<!--<script src="angular_js/all.js?u=<%- Math.random()*1000000; %>"></script>-->
+	<script src="angular_js/all.js?u=<%- process.window.env.buildVersion; %>"></script>
 
 	<!-- css -->
-	<link href="css/all.css?u=<%- Math.random()*1000000; %>" rel="stylesheet" />
-	<link href="gfx/icomoon/style.css" rel="stylesheet">
+	<link href="css/all.css?u=<%- process.window.env.buildVersion; %>" rel="stylesheet" />
+	<link href="gfx/icomoon/style.css?u=<%- process.window.env.buildVersion; %>" rel="stylesheet">
 
 </head>
 <body ng-app="ListModule">

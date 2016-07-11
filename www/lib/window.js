@@ -5,11 +5,13 @@ window.isNative = window.location ? false : true; // !(/localhost|stamplay|allev
 window.isLocalhost = window.location.hostname.indexOf('localhost')!=-1;
 
 // url (for login / data api)
-window.env = {
-	api:{},
-	stamplay:{},
-	app:{}
-};
+if (!window.env) {
+	window.env = {};
+}
+window.env.api = {};
+window.env.stamplay = {};
+window.env.app = {};
+//
 window.env.api.host = 'http'+(window.isNative || isLocalhost?'':'s')+'://'+(window.isNative || isLocalhost?'localhost:1080':'api.allevents.nyc');
 window.env.stamplay.host = 'http'+(window.isNative?'':'s')+'://ionic-nyc.stamplayapp.com';
 window.env.app.host = 'http'+(window.isNative || isLocalhost?'':'s')+'://'+(window.isNative || isLocalhost?'localhost:3080':'allevents.nyc');
