@@ -149,7 +149,13 @@ angular.module('ListModule.controllers', [])
 		LIST 
 	*/
 	vm.listAdd = function (list) {
-		vm.listJustAdded = list.data.category;
+		console.log('list',list);
+		if (list && list.data) {
+			angular.extend( vm.list.data, list.data);
+		}
+		console.log('vm.list',vm.list);
+
+		vm.listJustAdded = vm.list.data.category;
 		function removeJustAdded() {
 			for (var li in vm.lists) {
 				vm.listJustAdded = false;
@@ -157,13 +163,10 @@ angular.module('ListModule.controllers', [])
 			}
 		}
 		$rootScope.modals.close();
-		if ($rootScope.lazyLoadedLists[ list.data.category ]) {
-			delete $rootScope.lazyLoadedLists[ list.data.category ];
+		if ($rootScope.lazyLoadedLists[ vm.list.data.category ]) {
+			delete $rootScope.lazyLoadedLists[ vm.list.data.category ];
 		}
 		// <lists>
-		if (list) {
-			vm.list.data = list.data;
-		}
 		// make
 		vm.list.data.addedOn = Date.now();
 		vm.list.data.uid = vm.list.data.category;
@@ -185,15 +188,15 @@ angular.module('ListModule.controllers', [])
 		// </lists>
 	}
 	vm.listHide = function (list) {
+		if (list && list.data) {
+			angular.extend( vm.list.data, list.data);
+		}
+
 		$rootScope.modals.close();
 		if ($rootScope.lazyLoadedLists[ list.data.category ]) {
 			delete $rootScope.lazyLoadedLists[ list.data.category ];
 		}
 		// <lists>
-		if (list) {
-			vm.list.data = list.data;
-		}
-		// make
 		vm.list.data.addedOn = 10000000000 - Math.round(Date.now() / 1000); // hack - will work fine unless they wait for like an entire week to hide the next list
 		vm.list.data.uid = vm.list.data.category;
 		// add

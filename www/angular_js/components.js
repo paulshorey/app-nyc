@@ -98,8 +98,8 @@ angular.module('ListModule.components', [])
 			scope.list_ready = function(){
 				var query = {};
 				query.category = scope.data.category;
-				query.scene = scope.data.scene;
-				// query.time = scope.data.time;
+				query.text = scope.data.text;
+				query.time = scope.data.time;
 				EventService.getEvents(query)
 				.then(function (response) {
 					//scope.vm.events = response.data.data;

@@ -24,7 +24,19 @@
 	<script src="lib/all.js?u=<%- Math.random()*1000000; %>"></script>
 
 	<!-- angular_js -->
-	<script src="angular_js/all.js?u=<%- Math.random()*1000000; %>"></script>
+	<script>
+	if ( window.isLocalhost && !window.isLive) {
+		document.write('<script src="angular_js/app.js?'+Math.random()+'"><\/script>\n');
+		document.write('<script src="angular_js/services.js?'+Math.random()+'"><\/script>\n');
+		document.write('<script src="angular_js/controllers.js?'+Math.random()+'"><\/script>\n');
+		document.write('<script src="angular_js/filters.js?'+Math.random()+'"><\/script>\n');
+		document.write('<script src="angular_js/directives.js?'+Math.random()+'"><\/script>\n');
+		document.write('<script src="angular_js/components.js?'+Math.random()+'"><\/script>\n');
+	} else {
+		document.write('<script src="angular_js/all.js?'+Math.random()+'"><\/script>\n');
+	}
+	</script>
+	<!--<script src="angular_js/all.js?u=<%- Math.random()*1000000; %>"></script>-->
 
 	<!-- css -->
 	<link href="css/all.css?u=<%- Math.random()*1000000; %>" rel="stylesheet" />

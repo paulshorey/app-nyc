@@ -81,7 +81,9 @@ gulp.task('concat_css', function () {
 });
 gulp.task('concat_angular_js', function () {
 	return gulp.src(path.angular_js.src)
-		.pipe(concat('all.js'))
+		.pipe(concat('all.js', {
+			sourcesContent: true
+		}))
 		.pipe(gulp.dest(path.angular_js.dst));
 });
 gulp.task('concat_lib', function (done) {
