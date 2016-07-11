@@ -116,7 +116,7 @@ angular.module('ListModule.directives', [])
 			};
 			$timeout(
 				scope.scroll_enable,
-				100
+				500
 			);
 			$(window).on('resize',scope.scroll_enable);
 			scope.$on('$destroy',function(){
