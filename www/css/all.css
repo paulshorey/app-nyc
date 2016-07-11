@@ -10143,16 +10143,13 @@ body {
         flex: none;
         width: 100%;
         font-size: 21px;
-        padding: 1px 0 4px 0;
+        margin: 1px 0 12px 0;
         color: orange;
         text-transform: uppercase;
-        margin: 0;
         vertical-align: top;
         line-height: 1em;
         background: #fff;
-        box-sizing: content-box;
-        height: 36px;
-        min-height: 36px; }
+        box-sizing: content-box; }
         .my-lists .my-lis .my-li .my-li-header:hover,
         .my-lists .my-lis .my-li .my-li-header:hover span {
           color: orange; }
@@ -10167,8 +10164,8 @@ body {
         .my-lists .my-lis .my-li .my-li-header .title-search {
           font-size: 85%; }
         .my-lists .my-lis .my-li .my-li-header > div {
-          height: 1em;
-          line-height: 1.25em; }
+          line-height: 1.25em;
+          height: 1.25em; }
         .my-lists .my-lis .my-li .my-li-header .my-icon-menu:before {
           opacity: 0.66; }
         .my-lists .my-lis .my-li .my-li-header .my-icon-menu .my-icon-select {

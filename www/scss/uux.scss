@@ -503,16 +503,15 @@ body {
 				flex:none;
 				width:100%;
 				font-size:21px;
-				padding:1px 0 4px 0;
+				margin:1px 0 12px 0;
 				color:orange;
 				text-transform:uppercase;
-				margin: 0;
 				vertical-align:top;
 				line-height:1em;
 				background: #fff;
 				box-sizing: content-box;
-				height:36px;
-				min-height:36px;
+				// height:36px;
+				// min-height:36px;
 				// @include background(linear-gradient(to bottom, #ffffff, #ffffff 85%, rgba(255,255,255,0.0)));
 				&:hover,
 				&:hover span {
@@ -535,8 +534,8 @@ body {
 					font-size:85%;
 				}
 				> div {
-					height:1em;
-					line-height:1.25em;
+					line-height: 1.25em;
+					height: 1.25em;
 				}
 				.my-icon-menu {
 					&:before {
