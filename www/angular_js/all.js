@@ -611,8 +611,10 @@ angular.module('ListModule.directives', [])
 			vm: '='
 		},
 		link: function (scope, element, attrs) {
+			
 			scope.scroll_enable = function () {
 				var target = element[0];
+				console.log('scroll??',target.scrollLeft);
 				target.doNotScroll = false;
 				target.scrollLeftLast = target.scrollLeft;
 				if (target.scrollLeft<10) {
@@ -626,6 +628,15 @@ angular.module('ListModule.directives', [])
 					$(element).siblings('[scrollable-right]').removeClass('scrollEnd');
 				}
 			};
+			$timeout(
+				scope.scroll_enable,
+				100
+			);
+			$(window).on('resize',scope.scroll_enable);
+			scope.$on('$destroy',function(){
+				$(window).off('resize',scope.scroll_enable);
+			});
+
 			scope.$watch(
 				function () {
 					if (scope.$parent.vm.listJustAdded) {

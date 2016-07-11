@@ -31,8 +31,8 @@
 				}
 			],
 			"properties": {
-				"order": 53,
-				"id": 11,
+				"order": 59,
+				"id": 12,
 				"prevSize": 32,
 				"code": 59648,
 				"name": "fav-add"
@@ -65,7 +65,7 @@
 			],
 			"properties": {
 				"order": 52,
-				"id": 10,
+				"id": 13,
 				"prevSize": 32,
 				"code": 59649,
 				"name": "close"
@@ -104,13 +104,13 @@
 			],
 			"properties": {
 				"order": 39,
-				"id": 4,
+				"id": 16,
 				"prevSize": 32,
 				"code": 59665,
 				"name": "select"
 			},
-			"setIdx": 2,
-			"setId": 3,
+			"setIdx": 0,
+			"setId": 5,
 			"iconIdx": 4
 		},
 		{
@@ -143,14 +143,14 @@
 			],
 			"properties": {
 				"order": 37,
-				"id": 10,
+				"id": 17,
 				"prevSize": 32,
 				"code": 59660,
 				"name": "column-arrow-left"
 			},
-			"setIdx": 4,
-			"setId": 1,
-			"iconIdx": 1
+			"setIdx": 0,
+			"setId": 5,
+			"iconIdx": 5
 		},
 		{
 			"icon": {
@@ -182,14 +182,14 @@
 			],
 			"properties": {
 				"order": 36,
-				"id": 9,
+				"id": 18,
 				"prevSize": 32,
 				"code": 59661,
 				"name": "column-arrow-right"
 			},
-			"setIdx": 4,
-			"setId": 1,
-			"iconIdx": 2
+			"setIdx": 0,
+			"setId": 5,
+			"iconIdx": 6
 		},
 		{
 			"icon": {
@@ -241,13 +241,91 @@
 			],
 			"properties": {
 				"order": 49,
-				"id": 7,
+				"id": 19,
 				"prevSize": 32,
 				"code": 59663,
 				"name": "options-large"
 			},
-			"setIdx": 4,
-			"setId": 1,
+			"setIdx": 0,
+			"setId": 5,
+			"iconIdx": 7
+		},
+		{
+			"icon": {
+				"paths": [
+					"M787.264 0l-621.952 511.456 621.952 511.52v-256.192l-310.976-255.296 310.976-255.296z"
+				],
+				"attrs": [
+					{
+						"fill": "rgb(105, 105, 105)"
+					}
+				],
+				"isMulticolor": false,
+				"grid": 0,
+				"tags": [
+					"select"
+				],
+				"colorPermutations": {
+					"10510510512042042041": [
+						{
+							"f": 0
+						}
+					]
+				}
+			},
+			"attrs": [
+				{
+					"fill": "rgb(105, 105, 105)"
+				}
+			],
+			"properties": {
+				"order": 61,
+				"id": 6,
+				"prevSize": 32,
+				"name": "select-left",
+				"code": 59662
+			},
+			"setIdx": 1,
+			"setId": 3,
+			"iconIdx": 3
+		},
+		{
+			"icon": {
+				"paths": [
+					"M252.672 1024l621.952-511.456-621.952-511.52v256.192l310.976 255.296-310.976 255.296z"
+				],
+				"attrs": [
+					{
+						"fill": "rgb(105, 105, 105)"
+					}
+				],
+				"isMulticolor": false,
+				"grid": 0,
+				"tags": [
+					"select"
+				],
+				"colorPermutations": {
+					"10510510512042042041": [
+						{
+							"f": 0
+						}
+					]
+				}
+			},
+			"attrs": [
+				{
+					"fill": "rgb(105, 105, 105)"
+				}
+			],
+			"properties": {
+				"order": 60,
+				"id": 5,
+				"prevSize": 32,
+				"name": "select-right",
+				"code": 59664
+			},
+			"setIdx": 1,
+			"setId": 3,
 			"iconIdx": 4
 		},
 		{
@@ -271,11 +349,11 @@
 				"prevSize": 16,
 				"ligatures": "pen, write3",
 				"name": "pen",
-				"id": 9,
+				"id": 20,
 				"code": 59666
 			},
-			"setIdx": 5,
-			"setId": 0,
+			"setIdx": 0,
+			"setId": 5,
 			"iconIdx": 8
 		},
 		{
@@ -298,12 +376,12 @@
 				"prevSize": 16,
 				"ligatures": "pacman, game2",
 				"name": "pacman",
-				"id": 23,
+				"id": 21,
 				"code": 59672
 			},
-			"setIdx": 5,
-			"setId": 0,
-			"iconIdx": 22
+			"setIdx": 0,
+			"setId": 5,
+			"iconIdx": 9
 		},
 		{
 			"icon": {
@@ -326,12 +404,12 @@
 				"prevSize": 16,
 				"ligatures": "connection, wifi",
 				"name": "connection",
-				"id": 28,
+				"id": 22,
 				"code": 59659
 			},
-			"setIdx": 5,
-			"setId": 0,
-			"iconIdx": 27
+			"setIdx": 0,
+			"setId": 5,
+			"iconIdx": 10
 		},
 		{
 			"icon": {
@@ -352,12 +430,12 @@
 				"prevSize": 16,
 				"ligatures": "pushpin, pin",
 				"name": "pushpin",
-				"id": 71,
+				"id": 23,
 				"code": 59667
 			},
-			"setIdx": 5,
-			"setId": 0,
-			"iconIdx": 70
+			"setIdx": 0,
+			"setId": 5,
+			"iconIdx": 11
 		},
 		{
 			"icon": {
@@ -378,12 +456,12 @@
 				"prevSize": 16,
 				"ligatures": "unlocked, lock-open",
 				"name": "unlocked",
-				"id": 145,
+				"id": 24,
 				"code": 59651
 			},
-			"setIdx": 5,
-			"setId": 0,
-			"iconIdx": 144
+			"setIdx": 0,
+			"setId": 5,
+			"iconIdx": 12
 		},
 		{
 			"icon": {
@@ -409,12 +487,12 @@
 				"prevSize": 16,
 				"ligatures": "earth, globe2",
 				"name": "earth",
-				"id": 203,
+				"id": 25,
 				"code": 59650
 			},
-			"setIdx": 5,
-			"setId": 0,
-			"iconIdx": 202
+			"setIdx": 0,
+			"setId": 5,
+			"iconIdx": 13
 		},
 		{
 			"icon": {
@@ -439,12 +517,12 @@
 				"prevSize": 16,
 				"ligatures": "link, chain",
 				"name": "link",
-				"id": 204,
+				"id": 26,
 				"code": 59668
 			},
-			"setIdx": 5,
-			"setId": 0,
-			"iconIdx": 203
+			"setIdx": 0,
+			"setId": 5,
+			"iconIdx": 14
 		},
 		{
 			"icon": {
@@ -467,12 +545,12 @@
 				"prevSize": 16,
 				"ligatures": "heart, like",
 				"name": "heart",
-				"id": 219,
+				"id": 27,
 				"code": 59673
 			},
-			"setIdx": 5,
-			"setId": 0,
-			"iconIdx": 218
+			"setIdx": 0,
+			"setId": 5,
+			"iconIdx": 15
 		},
 		{
 			"icon": {
@@ -495,12 +573,12 @@
 				"prevSize": 16,
 				"ligatures": "happy, emoticon",
 				"name": "happy",
-				"id": 224,
+				"id": 28,
 				"code": 59652
 			},
-			"setIdx": 5,
-			"setId": 0,
-			"iconIdx": 223
+			"setIdx": 0,
+			"setId": 5,
+			"iconIdx": 16
 		},
 		{
 			"icon": {
@@ -523,12 +601,12 @@
 				"prevSize": 16,
 				"ligatures": "cool2, emoticon14",
 				"name": "cool2",
-				"id": 237,
+				"id": 29,
 				"code": 59671
 			},
-			"setIdx": 5,
-			"setId": 0,
-			"iconIdx": 236
+			"setIdx": 0,
+			"setId": 5,
+			"iconIdx": 17
 		},
 		{
 			"icon": {
@@ -552,12 +630,12 @@
 				"prevSize": 16,
 				"ligatures": "hipster2, emoticon28",
 				"name": "hipster2",
-				"id": 251,
+				"id": 30,
 				"code": 59669
 			},
-			"setIdx": 5,
-			"setId": 0,
-			"iconIdx": 250
+			"setIdx": 0,
+			"setId": 5,
+			"iconIdx": 18
 		},
 		{
 			"icon": {
@@ -579,12 +657,12 @@
 				"prevSize": 16,
 				"ligatures": "plus, add",
 				"name": "plus",
-				"id": 267,
+				"id": 31,
 				"code": 59653
 			},
-			"setIdx": 5,
-			"setId": 0,
-			"iconIdx": 266
+			"setIdx": 0,
+			"setId": 5,
+			"iconIdx": 19
 		},
 		{
 			"icon": {
@@ -608,12 +686,12 @@
 				"prevSize": 16,
 				"ligatures": "cross, cancel",
 				"name": "cross",
-				"id": 272,
+				"id": 32,
 				"code": 59654
 			},
-			"setIdx": 5,
-			"setId": 0,
-			"iconIdx": 271
+			"setIdx": 0,
+			"setId": 5,
+			"iconIdx": 20
 		},
 		{
 			"icon": {
@@ -636,12 +714,12 @@
 				"prevSize": 16,
 				"ligatures": "arrow-up, up",
 				"name": "arrow-up",
-				"id": 307,
+				"id": 33,
 				"code": 59674
 			},
-			"setIdx": 5,
-			"setId": 0,
-			"iconIdx": 306
+			"setIdx": 0,
+			"setId": 5,
+			"iconIdx": 21
 		},
 		{
 			"icon": {
@@ -665,12 +743,12 @@
 				"prevSize": 16,
 				"ligatures": "checkbox-checked, checkbox",
 				"name": "checkbox-checked",
-				"id": 339,
+				"id": 34,
 				"code": 59655
 			},
-			"setIdx": 5,
-			"setId": 0,
-			"iconIdx": 338
+			"setIdx": 0,
+			"setId": 5,
+			"iconIdx": 22
 		},
 		{
 			"icon": {
@@ -691,12 +769,12 @@
 				"prevSize": 16,
 				"name": "google",
 				"ligatures": "google, brand2",
-				"id": 393,
+				"id": 35,
 				"code": 59656
 			},
-			"setIdx": 5,
-			"setId": 0,
-			"iconIdx": 392
+			"setIdx": 0,
+			"setId": 5,
+			"iconIdx": 23
 		},
 		{
 			"icon": {
@@ -718,12 +796,12 @@
 				"prevSize": 16,
 				"ligatures": "facebook, brand10",
 				"name": "facebook",
-				"id": 401,
+				"id": 36,
 				"code": 59657
 			},
-			"setIdx": 5,
-			"setId": 0,
-			"iconIdx": 400
+			"setIdx": 0,
+			"setId": 5,
+			"iconIdx": 24
 		},
 		{
 			"icon": {
@@ -746,12 +824,12 @@
 				"prevSize": 16,
 				"ligatures": "github, brand40",
 				"name": "github",
-				"id": 433,
+				"id": 37,
 				"code": 59658
 			},
-			"setIdx": 5,
-			"setId": 0,
-			"iconIdx": 432
+			"setIdx": 0,
+			"setId": 5,
+			"iconIdx": 25
 		},
 		{
 			"icon": {
@@ -773,12 +851,12 @@
 				"prevSize": 16,
 				"ligatures": "reddit, brand61",
 				"name": "reddit",
-				"id": 455,
+				"id": 38,
 				"code": 59670
 			},
-			"setIdx": 5,
-			"setId": 0,
-			"iconIdx": 454
+			"setIdx": 0,
+			"setId": 5,
+			"iconIdx": 26
 		}
 	],
 	"height": 1024,
