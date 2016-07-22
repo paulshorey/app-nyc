@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'icomoon';
-    src:    url('fonts/icomoon.eot?r7uiz0');
-    src:    url('fonts/icomoon.eot?r7uiz0#iefix') format('embedded-opentype'),
-        url('fonts/icomoon.ttf?r7uiz0') format('truetype'),
-        url('fonts/icomoon.woff?r7uiz0') format('woff'),
-        url('fonts/icomoon.svg?r7uiz0#icomoon') format('svg');
+    src:    url('fonts/icomoon.eot?2g58s4');
+    src:    url('fonts/icomoon.eot?2g58s4#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?2g58s4') format('truetype'),
+        url('fonts/icomoon.woff?2g58s4') format('woff'),
+        url('fonts/icomoon.svg?2g58s4#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -47,6 +47,9 @@
 }
 .icon-select-right:before {
     content: "\e910";
+}
+.icon-star:before {
+    content: "\e91b";
 }
 .icon-pen:before {
     content: "\e912";

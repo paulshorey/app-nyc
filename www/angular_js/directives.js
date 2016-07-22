@@ -99,30 +99,7 @@ angular.module('ListModule.directives', [])
 		},
 		link: function (scope, element, attrs) {
 
-			scope.scrollCheck = function () {
-				var target = element[0];
-				target.doNotScroll = false;
-				target.scrollLeftLast = target.scrollLeft;
-				if (target.scrollLeft<10) {
-					$(element).siblings('[scrollable-left]').addClass('scrollEnd');
-				} else {
-					$(element).siblings('[scrollable-left]').removeClass('scrollEnd');
-				}
-				if (target.scrollLeft > ( target.scrollWidth - target.parentElement.scrollWidth - 10 ) ) {
-					$(element).siblings('[scrollable-right]').addClass('scrollEnd');
-				} else {
-					$(element).siblings('[scrollable-right]').removeClass('scrollEnd');
-				}
-			};
-			$timeout(
-				scope.scrollCheck,
-				500
-			);
-			$(window).on('resize',scope.scrollCheck);
-			scope.$on('$destroy',function(){
-				$(window).off('resize',scope.scrollCheck);
-			});
-
+			// to scroll or not to scroll
 			scope.$watch(
 				function () {
 					if (scope.$parent.vm.listJustAdded) {
@@ -157,6 +134,7 @@ angular.module('ListModule.directives', [])
 				}
 			);
 
+			// the arrows
 			$(element)
 			.siblings('[scrollable-left]')
 			.click(function () {
@@ -203,6 +181,7 @@ angular.module('ListModule.directives', [])
 					duration
 				);
 			});
+
 			// finish scroll position to nearest column or page
 			scope.scrollfix = function(){
 				var target = element[0];
@@ -236,6 +215,31 @@ angular.module('ListModule.directives', [])
 				scope.scrollfix_timeout = window.setTimeout(function(){
 					scope.scrollfix();
 				},222); // timeout must be greater than duration of 
+			});
+
+			// ends - disable arrow when at beginning or end
+			scope.scrollCheck = function () {
+				var target = element[0];
+				target.doNotScroll = false;
+				target.scrollLeftLast = target.scrollLeft;
+				if (target.scrollLeft<10) {
+					$(element).siblings('[scrollable-left]').addClass('scrollEnd');
+				} else {
+					$(element).siblings('[scrollable-left]').removeClass('scrollEnd');
+				}
+				if (target.scrollLeft > ( target.scrollWidth - target.parentElement.scrollWidth - 10 ) ) {
+					$(element).siblings('[scrollable-right]').addClass('scrollEnd');
+				} else {
+					$(element).siblings('[scrollable-right]').removeClass('scrollEnd');
+				}
+			};
+			$timeout(
+				scope.scrollCheck,
+				500
+			);
+			$(window).on('resize',scope.scrollCheck);
+			scope.$on('$destroy',function(){
+				$(window).off('resize',scope.scrollCheck);
 			});
 		}
 	}

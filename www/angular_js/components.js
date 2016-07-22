@@ -72,6 +72,7 @@ angular.module('ListModule.components', [])
 						if (time=='12:00am') {
 							time = '';
 						}
+						ev += '		<span ng-click><span class="icon-star"></span> </span>\n';
 						if (timestring.indexOf('week') !=1 || timestring.indexOf('month') !=1) {
 							ev += '		<span ng-click><span class="ion-calendar"></span> <span>' + moment(event.timestamp).format('MMM D') +' '+time+ '</span></span>\n';
 						} else if (time && time!='12:00am') {
