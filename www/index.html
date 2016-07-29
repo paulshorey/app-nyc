@@ -15,6 +15,10 @@
 	<meta http-equiv="Expires" content="0" />
 	<script>
 	window.loadStart = Date.now();
+	// until I fix that SSL certificate, no time at all right now!
+	if (window.location.protocol == "https:") {
+		window.location.href = "http://allevents.nyc";
+	}
 	</script>
 
 	<!-- lib -->

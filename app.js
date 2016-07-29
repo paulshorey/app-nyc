@@ -46,8 +46,11 @@ process.window.env.buildVersion = 0.01;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // INDEX
-
 process.app.get(/^[a-z\/]*$/gi, function(request, response){
+	// if (/^https$/.test(request.protocol)) {
+	// 	response.redirect('http://'+request.headers.host);
+	// 	return;
+	// }
 	response.setHeader('Content-Type', 'text/html'); 
 	response.writeHead(200);
 	response.write(process.ejs.render(process.fs.readFileSync('./www/index.html', 'utf-8')));
