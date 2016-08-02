@@ -7,14 +7,14 @@
 		<div class="modal-options modal-select" id="top-modal-select">
 			<label class="item item-input item-select a select-what" ng-class="{ 'active': vm.list.data.category }">
 				<span class="uui-icon icon-select"></span>
-				<select class="uui-text" ng-model="vm.list.data.category">
+				<select class="uui-text" ng-model="vm.list.data.category" on-entert="vm.listAdd();">
 					<option selected value="">anything</option>
 					<option ng-repeat="cat in vm.categories" value="{{cat.title}}">{{cat.title}}</option>
 				</select>
 			</label>
 			<label class="item item-input item-select a select-when" ng-class="{ 'active': vm.list.data.time }">
 				<span class="uui-icon icon-select"></span>
-				<select class="uui-text" ng-model="vm.list.data.time">
+				<select class="uui-text" ng-model="vm.list.data.time" on-entert="vm.listAdd();">
 					<option selected value="">anytime</option>
 					<option value="today">today</option>
 					<option value="tomorrow">tomorrow</option>
@@ -24,7 +24,7 @@
 			</label>
 			<label class="item item-input item-select a select-search" hoverfocus ng-class="{ 'active': vm.list.data.text }">
 				<span class="uui-icon ion-search"></span>
-				<input class="uui-text" type="text" ng-model="vm.list.data.text" placeholder="SEARCH" />
+				<input class="uui-text" type="text" ng-model="vm.list.data.text" placeholder="SEARCH" on-entert="vm.listAdd();" />
 			</label>
 		</div>
 
