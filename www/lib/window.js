@@ -12,9 +12,9 @@ window.env.api = {};
 window.env.stamplay = {};
 window.env.app = {};
 //
-window.env.api.host = 'http'+(true || window.isNative || isLocalhost?'':'s')+'://'+(window.isNative || isLocalhost?'localhost:1080':'api.allevents.nyc');
-window.env.stamplay.host = 'http'+(true || window.isNative?'':'s')+'://ionic-nyc.stamplayapp.com';
-window.env.app.host = 'http'+(true || window.isNative || isLocalhost?'':'s')+'://'+(window.isNative || isLocalhost?'localhost:3080':'allevents.nyc');
+window.env.api.host = 'http'+(window.isNative || isLocalhost?'':'s')+'://'+(window.isNative || isLocalhost?'localhost:1080':'api.allevents.nyc');
+window.env.stamplay.host = 'http'+(window.isNative?'':'s')+'://ionic-nyc.stamplayapp.com';
+window.env.app.host = 'http'+(window.isNative || isLocalhost?'':'s')+'://'+(window.isNative || isLocalhost?'localhost:3080':'allevents.nyc');
 // client (nothing to do with ionic/stamplay, just for the end user)
 window.client = {};
 window.client.host = window.location.hostname || 'ionic';
