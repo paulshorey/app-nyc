@@ -277,7 +277,6 @@ angular.module('ListModule.controllers', [])
 		// from Default
 		ContentService.getAll().then(
 			function (all) {
-				console.log('all',all);
 				// lists
 				all.categories.forEach(function (item, i, array) {
 					var list = {
@@ -361,13 +360,11 @@ angular.module('ListModule.controllers', [])
 		LIST 
 	*/
 	vm.listAdd = function (list) {
-		console.log('list',list);
 		if (list && list.data) {
 			angular.extend( vm.list.data, list.data);
 		}
-		console.log('vm.list',vm.list);
 
-		vm.listJustAdded = vm.list.data.category;
+		vm.listJustAdded = true;
 		function removeJustAdded() {
 			for (var li in vm.lists) {
 				vm.listJustAdded = false;

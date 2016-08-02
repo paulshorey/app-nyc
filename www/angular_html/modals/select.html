@@ -4,17 +4,17 @@
 	</div>
 	<div class="modal-content">
 
-		<div class="modal-options modal-select" id="top-modal-select">
+		<form ng-submit="vm.listAdd()" class="modal-options modal-select" id="top-modal-select">
 			<label class="item item-input item-select a select-what" ng-class="{ 'active': vm.list.data.category }">
 				<span class="uui-icon icon-select"></span>
-				<select class="uui-text" ng-model="vm.list.data.category" on-entert="vm.listAdd();">
+				<select class="uui-text" ng-model="vm.list.data.category">
 					<option selected value="">anything</option>
 					<option ng-repeat="cat in vm.categories" value="{{cat.title}}">{{cat.title}}</option>
 				</select>
 			</label>
 			<label class="item item-input item-select a select-when" ng-class="{ 'active': vm.list.data.time }">
 				<span class="uui-icon icon-select"></span>
-				<select class="uui-text" ng-model="vm.list.data.time" on-entert="vm.listAdd();">
+				<select class="uui-text" ng-model="vm.list.data.time">
 					<option selected value="">anytime</option>
 					<option value="today">today</option>
 					<option value="tomorrow">tomorrow</option>
@@ -24,15 +24,16 @@
 			</label>
 			<label class="item item-input item-select a select-search" hoverfocus ng-class="{ 'active': vm.list.data.text }">
 				<span class="uui-icon ion-search"></span>
-				<input class="uui-text" type="text" ng-model="vm.list.data.text" placeholder="SEARCH" on-entert="vm.listAdd();" />
+				<input class="uui-text" type="text" ng-model="vm.list.data.text" placeholder="SEARCH" />
 			</label>
-		</div>
+		</form>
 
 		<div class="modal-options modal-select modal-buttons">
 			<label class="uui-button" ng-click="vm.listAdd();">
 				<span class="uui-icon ion-play"></span>
 				<span class="uui-text">GO &nbsp; </span>
 			</label>
+			<input type="submit" ng-click="vm.listAdd();" style="display:none;" />
 		</div>
 
 		<div class="modal-options modal-links modal-bottom-links">

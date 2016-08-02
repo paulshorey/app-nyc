@@ -1,6 +1,4 @@
-/*
-	RESET
-*/
+modal-options
 body {
   margin: 0; }
 
@@ -175,6 +173,7 @@ body {
       width: 66%;
       min-width: 280px; }
     .my-modal .modal-content .modal-options {
+      display: block;
       color: #ccc;
       font-size: 17px;
       padding: 4px 0 3px;

@@ -91,18 +91,6 @@ angular.module('ListModule.directives', [])
 	}
 })
 
-.directive('onEnter', function ($rootScope) {
-	return {
-		restrict: 'A',
-		scope: {
-			which: '='
-		},
-		link: function (scope, element, attrs) {
-			
-		}
-	}
-})
-
 .directive('scrollable', function ($timeout) {
 	return {
 		restrict: 'A',
