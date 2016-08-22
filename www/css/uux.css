@@ -556,5 +556,77 @@ body {
 /*
 	FEATURED EVENTS
 */
+.my-featured {
+  position: relative;
+  height: 162px;
+  width: 100%;
+  overflow: hidden;
+  padding: 5px 0;
+  box-sizing: content-box;
+  overflow-x: auto;
+  background: #555;
+  white-space: nowrap; }
+  .my-featured > [scrollable] {
+    height: 110%; }
+  .my-featured .featured-li {
+    display: inline-block;
+    vertical-align: top;
+    white-space: normal; }
+    .my-featured .featured-li .events-event {
+      position: relative;
+      display: block;
+      width: 251px;
+      height: 162px;
+      max-width: 100%; }
+      .my-featured .featured-li .events-event > * {
+        display: none; }
+      .my-featured .featured-li .events-event .event-text,
+      .my-featured .featured-li .events-event .event-subtext {
+        display: block;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: white;
+        width: 100%;
+        height: 100%;
+        padding: 10px 20px;
+        max-height: 100%;
+        transition: opacity 0.5s;
+        background: rgba(0, 0, 0, 0.66);
+        color: white;
+        font-family: "Arial Narrow", "Helvetica Neue", sans-serif;
+        line-height: 1.5; }
+      .my-featured .featured-li .events-event .event-subtext {
+        height: auto;
+        top: auto;
+        bottom: 0;
+        padding: 1px 20px; }
+      .my-featured .featured-li .events-event:hover * {
+        opacity: 1;
+        color: white; }
+        .my-featured .featured-li .events-event:hover * * {
+          color: white; }
+  .my-featured [scrollable-right],
+  .my-featured [scrollable-left] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 24px;
+    overflow: hidden;
+    font-size: 92px;
+    text-align: left;
+    cursor: pointer;
+    color: white;
+    padding: 22px 0 11px;
+    z-index: 1000000;
+    background: rgba(0, 0, 0, 0.05);
+    text-indent: 7px; }
+    .my-featured [scrollable-right].scrollEnd,
+    .my-featured [scrollable-left].scrollEnd {
+      color: #ccc; }
+  .my-featured [scrollable-left] {
+    text-indent: -35px; }
+
 .isMobile .my-featured [scrollable-left], .isMobile .my-featured [scrollable-right] {
   display: none; }

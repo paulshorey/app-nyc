@@ -1,6 +1,17 @@
 <ion-view ng-class="{ 'isMobile': client.isMobile }" data-tap-disabled="true" overflow-scroll="true">
 	<div class="my-content" scroll-top>
 
+		<!-- FEATURED - Ionic Lab can't use include paths -->
+		<div class="my-featured">
+			<div scrollable>
+				<a class="featured-li" ng-repeat="event in vm.featuredEvents | orderObjectBy:'random':true" ng-href="{{event.link}}" target="_blank" prevent-default>
+					<div ng-bind-html="event.eventsHTML"></div>
+				</a> 
+			</div>
+			<span scrollable-left class="icon-column-arrow-left a"></span>
+			<span scrollable-right class="icon-column-arrow-right a"></span>
+		</div>
+
 		<!-- TOP NAV -->
 		<div class="my-top top-nav">
 			<div class="top-logo" ng-click="modals.show('angular_html/modals/contribute.html')">

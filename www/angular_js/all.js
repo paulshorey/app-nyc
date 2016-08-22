@@ -133,6 +133,20 @@ angular.module('ListModule.components', [])
 						old_timestring = timestring;
 
 						scope.data.count++;
+
+
+						// <event>
+						if (event.featured) {
+							var event_featured = JSON.parse(JSON.stringify(event));
+							if (old_event_featured_images.indexOf(event_featured.image) == -1) {
+								event_featured.eventsHTML = $sce.trustAsHtml(ev);
+								vm.featuredEvents[event.random] = event_featured;
+								old_event_featured_images.push(event_featured.image);
+							}
+						}
+						// </event>
+						
+
 					}
 					html += '		</div>\n';
 
