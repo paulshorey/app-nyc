@@ -1,8 +1,8 @@
 #!/bin/bash
 
 eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/ps1-git
-cd /www/app-nyc
+ssh-add ~/.ssh/gitlab
+cd /www/app.allevents.nyc
 git reset HEAD -\-hard;
 git pull
 
